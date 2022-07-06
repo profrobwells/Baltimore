@@ -177,12 +177,15 @@ leafMap
 ```{r}
 #Notes on embedding and formatting Leaflet
 
+#https://profrobwells.github.io/Baltimore/leafMap.html
+
+
 #<iframe seamless src="/static/leaflet/leafmap/index.html" width="100%" height="500"></iframe>
 #https://waterdata.usgs.gov/blog/leaflet/
 #https://github.com/profrobwells/Test/blob/master/leafMap.html
 #https://leaflet-extras.github.io/leaflet-providers/preview/
 
-#https://profrobwells.github.io/Test/leafMap.html
+
 
 #Next up 
 #- link a list of neighborhood names to the census tracts

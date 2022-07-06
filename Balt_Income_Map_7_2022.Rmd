@@ -1,0 +1,193 @@
+---
+title: "Baltimore Income Map"
+author: "Rob Wells"
+date: "7/6/2022"
+output: html_document
+---
+
+Median Income Maps By Census Tract in Baltimore
+Source: Kyle Walker's tidycensus tutorial, Rachel Logan's leaflet map code for the Howard Center
+
+
+```{r message=FALSE, warning=FALSE}
+#remotes::install_github("walkerke/tidycensus")
+library(tidyverse)
+library(tidycensus)
+#a = get_decennial(geography = "state", variables = "P1_001N", year = 2020)
+# head(a, 5)
+#install.packages("formattable")
+library(formattable)
+library(htmlwidgets)
+library(leaflet)
+library(sf)
+```
+
+Census API key. 
+```{r message=FALSE}
+census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE)
+```
+
+There are two major functions implemented in tidycensus: 
+get_decennial, which grants access to the 1990, 2000, and 2010 decennial US Census APIs
+get_acs, which grants access to the 5-year American Community Survey APIs. 
+
+```{r}
+#Calls variables for the 2020 decennial census
+v20_dec <- load_variables(2020, "pl", cache = TRUE)
+#Calls variables for the 2020 ACS census
+v20_acs <- load_variables(2020, "acs5", cache = TRUE)
+```
+
+
+# Census Tract Median Income Using ACS 
+
+
+## Question: The 2010 and 2016 Maryland files each have 2812 rows, but the 2020 state file has 2950 rows. Why?
+
+```{r}
+#2020 Median Income By Census Tract ACS
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+#B19013_001 is the household median income
+md_income2020 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+
+ 
+md_income2020
+```
+
+```{r}
+#2016 Median Income By Census Tract ACS
+
+md_income2016 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2016) %>% 
+  mutate(year=("2016"))
+ 
+md_income2016
+```
+
+```{r}
+#2010 Median Income By Census Tract 2010
+md_income2010 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2010) %>% 
+  mutate(year=("2010"))
+ 
+md_income2010
+```
+
+## Create Baltimore city-county, city files
+```{r}
+#Bind together 2010, 2016, 2020 files
+
+md_income_all <- rbind(md_income2010, md_income2016, md_income2020)
+
+md_income_all <- separate(data = md_income_all, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right")
+
+#write.csv(md_income_all, "md_income_all.csv")
+
+#Subset Baltimore city-county, city files
+balt_income_all <- filter(md_income_all, grepl ("Baltimore", County))
+#write.csv(balt_income_all, "balt_income_all.csv")
+
+#Baltimore city median income, 2010, 2016, 2020
+
+baltcity_income <- filter(balt_income_all, grepl ("Baltimore city", County)) %>% 
+  filter(variable=="median_income")
+
+```
+
+
+```{r}
+#reshape baltcity_income table
+
+baltcity_income <- baltcity_income %>% 
+  select(-moe) %>% 
+  pivot_wider(names_from = "year", values_from = "estimate")
+
+baltcity_income <- janitor::clean_names(baltcity_income)
+
+baltcity_income <- baltcity_income %>% 
+  mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
+  mutate(Diff_2020_2016 = (x2020-x2016))
+
+write.csv(baltcity_income, "baltcity_income.csv")
+write_rds(baltcity_income, "baltcity_income.rds")
+```
+
+
+# Map Median Income by Census Tract
+
+```{r}
+#subset the geometry
+md_income2020_geo <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2020, geometry = TRUE) %>% 
+  mutate(year=("2020")) %>% 
+  select(GEOID, NAME)
+
+#join geocoordinates with baltcity
+baltcity_income <- md_income2020_geo  %>% 
+ right_join(baltcity_income, by=c("GEOID"="geoid")) %>% 
+  distinct()
+
+write_rds(baltcity_income, "baltcity_income.rds")
+
+#Census Tracts 1801, 1802 have no data for 2020, but have data for 2010, 2016
+
+```
+# Leaflet Map - income
+
+```{r}
+
+baltcity_income <- baltcity_income %>% 
+  sf::st_transform('+proj=longlat +datum=WGS84')
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = baltcity_income$Diff_2020_2010
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = baltcity_income,
+              color = ~pal(Diff_2020_2010),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              #label = ~Diff_2020_2010) %>%
+              label = paste("Change is:  $",baltcity_income$Diff_2020_2010, ",",baltcity_income$census_tract))   %>% 
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = baltcity_income$Diff_2020_2010,
+    title = "Median Income Change<br>Per Census Tract <br> 2010 to 2020"
+  )
+saveWidget(leafMap, "leafMap.html")
+leafMap
+```
+
+```{r}
+#Notes on embedding and formatting Leaflet
+
+#<iframe seamless src="/static/leaflet/leafmap/index.html" width="100%" height="500"></iframe>
+#https://waterdata.usgs.gov/blog/leaflet/
+#https://github.com/profrobwells/Test/blob/master/leafMap.html
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+
+#https://profrobwells.github.io/Test/leafMap.html
+
+#Next up 
+#- link a list of neighborhood names to the census tracts
+#Put population and %white in popup
+#Get more details on how to format popups
+
+```
+

@@ -163,13 +163,15 @@ leafMap <- leaflet() %>%
               smoothFactor = 0.2,
               fillOpacity = 0.5,
               #label = ~Diff_2020_2010) %>%
-              label = paste("Change is:  $",baltcity_income$Diff_2020_2010, ",",baltcity_income$census_tract))   %>% 
+              #label = paste("Change is:  $",baltcity_income$Diff_2020_2010, ",",baltcity_income$census_tract)) %>%  
+label = paste("Change is:",(scales::dollar(baltcity_income$Diff_2020_2010)), "for",baltcity_income$census_tract)) %>% 
   addLegend(
     position = "bottomright",
     pal = pal,
     values = baltcity_income$Diff_2020_2010,
     title = "Median Income Change<br>Per Census Tract <br> 2010 to 2020"
   )
+
 saveWidget(leafMap, "leafMap.html")
 leafMap
 ```
@@ -189,6 +191,9 @@ leafMap
 
 #Next up 
 #- link a list of neighborhood names to the census tracts
+#https://planning.baltimorecity.gov/sites/default/files/Neighborhood%20Statistical%20Areas%20with%20Census%20Tracts.pdf
+
+
 #Put population and %white in popup
 #Get more details on how to format popups
 

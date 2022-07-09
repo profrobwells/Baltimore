@@ -137,6 +137,16 @@ baltcity_income <- md_income2020_geo  %>%
  right_join(baltcity_income, by=c("GEOID"="geoid")) %>% 
   distinct()
 
+#join Community Statistical Area names
+#associates neighborhood names to Census Tracts using Community Statistical Areas, 2010 https://bniajfi.org/mapping-resources/
+csa <- rio::import("https://raw.githubusercontent.com/profrobwells/Baltimore/main/CTA_CSA_2010.csv")
+
+csa$GEOID10 <- as.character(csa$GEOID10)
+
+baltcity_income <- baltcity_income  %>% 
+ right_join(csa, by=c("GEOID"="GEOID10")) %>% 
+  distinct()
+
 write_rds(baltcity_income, "baltcity_income.rds")
 
 #Census Tracts 1801, 1802 have no data for 2020, but have data for 2010, 2016
@@ -162,9 +172,7 @@ leafMap <- leaflet() %>%
               weight = 2.5,
               smoothFactor = 0.2,
               fillOpacity = 0.5,
-              #label = ~Diff_2020_2010) %>%
-              #label = paste("Change is:  $",baltcity_income$Diff_2020_2010, ",",baltcity_income$census_tract)) %>%  
-label = paste("Change is:",(scales::dollar(baltcity_income$Diff_2020_2010)), "for",baltcity_income$census_tract)) %>% 
+              label = paste("Change is:",(scales::dollar(baltcity_income$Diff_2020_2010)), "for",baltcity_income$CSA2010)) %>% 
   addLegend(
     position = "bottomright",
     pal = pal,
@@ -188,11 +196,11 @@ leafMap
 #https://leaflet-extras.github.io/leaflet-providers/preview/
 
 
+#notes on old code
+#label = ~Diff_2020_2010) %>%
+              #label = paste("Change is:  $",baltcity_income$Diff_2020_2010, ",",baltcity_income$census_tract)) %>% 
 
-#Next up 
-#- link a list of neighborhood names to the census tracts
-#https://planning.baltimorecity.gov/sites/default/files/Neighborhood%20Statistical%20Areas%20with%20Census%20Tracts.pdf
-
+#next up
 
 #Put population and %white in popup
 #Get more details on how to format popups

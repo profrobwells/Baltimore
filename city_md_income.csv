@@ -1,0 +1,543 @@
+"","geoid","place","state","households","household_2010","household_2020","median_income","median_inc_2010","median_inc_2020"
+"1","2400125","Aberdeen city"," Maryland","number_households",5971,6412,"median_income",47868,66481
+"2","2400175","Aberdeen Proving Ground CDP"," Maryland","number_households",532,731,"median_income",42419,120583
+"3","2400225","Accident town"," Maryland","number_households",157,167,"median_income",35938,51563
+"4","2400250","Accokeek CDP"," Maryland","number_households",3481,4027,"median_income",117875,133992
+"5","2400350","Adamstown CDP"," Maryland","number_households",569,678,"median_income",137875,167857
+"6","2400400","Adelphi CDP"," Maryland","number_households",4884,4884,"median_income",55500,68516
+"7","2400712","Algonquin CDP"," Maryland","number_households",495,554,"median_income",54196,60833
+"8","2400800","Allen CDP"," Maryland","number_households",99,138,"median_income",69663,113816
+"9","2401450","Andrews AFB CDP"," Maryland","number_households",787,801,"median_income",52382,76359
+"10","2401600","Annapolis city"," Maryland","number_households",16133,16291,"median_income",70229,87897
+"11","2401635","Annapolis Neck CDP"," Maryland","number_households",4213,5304,"median_income",115121,136120
+"12","2401750","Antietam CDP"," Maryland","number_households",52,27,"median_income",85313,NA
+"13","2401925","Aquasco CDP"," Maryland","number_households",335,287,"median_income",43237,70144
+"14","2401975","Arbutus CDP"," Maryland","number_households",8069,7581,"median_income",59983,78598
+"15","2402025","Arden on the Severn CDP"," Maryland","number_households",802,611,"median_income",102206,126250
+"16","2402275","Arnold CDP"," Maryland","number_households",8471,8528,"median_income",100625,119504
+"17","2402762","Ashton-Sandy Spring CDP"," Maryland","number_households",1844,2065,"median_income",115357,125215
+"18","2402825","Aspen Hill CDP"," Maryland","number_households",16763,16890,"median_income",73513,87987
+"19","2403500","Baden CDP"," Maryland","number_households",803,565,"median_income",95917,124766
+"20","2403514","Bagtown CDP"," Maryland","number_households",109,151,"median_income",86477,107083
+"21","2403575","Bakersville CDP"," Maryland","number_households",0,0,"median_income",NA,NA
+"22","2403800","Ballenger Creek CDP"," Maryland","number_households",7188,8270,"median_income",72227,94385
+"23","2404000","Baltimore city"," Maryland","number_households",238392,242499,"median_income",39386,52164
+"24","2404050","Baltimore Highlands CDP"," Maryland","number_households",2555,2816,"median_income",46869,53205
+"25","2404250","Barclay town"," Maryland","number_households",67,67,"median_income",49861,NA
+"26","2404475","Barnesville town"," Maryland","number_households",49,55,"median_income",116875,116875
+"27","2404525","Barrelville CDP"," Maryland","number_households",0,21,"median_income",NA,NA
+"28","2404625","Barton town"," Maryland","number_households",143,173,"median_income",44688,44688
+"29","2404650","Bartonsville CDP"," Maryland","number_households",481,568,"median_income",109103,143889
+"30","2405250","Beaver Creek CDP"," Maryland","number_households",66,151,"median_income",73879,192171
+"31","2405525","Bel Air CDP"," Maryland","number_households",457,680,"median_income",51161,64194
+"32","2405550","Bel Air town"," Maryland","number_households",4239,4758,"median_income",65449,60476
+"33","2405825","Bel Air North CDP"," Maryland","number_households",10053,10699,"median_income",92828,117129
+"34","2405950","Bel Air South CDP"," Maryland","number_households",17627,21135,"median_income",82158,100824
+"35","2406400","Beltsville CDP"," Maryland","number_households",5410,6103,"median_income",70230,81980
+"36","2406550","Benedict CDP"," Maryland","number_households",116,118,"median_income",63526,NA
+"37","2406615","Bensville CDP"," Maryland","number_households",3848,NA,"median_income",119545,NA
+"38","2406800","Berlin town"," Maryland","number_households",1543,1767,"median_income",51004,60301
+"39","2406925","Berwyn Heights town"," Maryland","number_households",994,914,"median_income",90571,115750
+"40","2407125","Bethesda CDP"," Maryland","number_households",24302,26040,"median_income",133480,172873
+"41","2407200","Betterton town"," Maryland","number_households",128,180,"median_income",66750,58958
+"42","2407285","Bier CDP"," Maryland","number_households",161,129,"median_income",35931,45550
+"43","2407375","Big Pool CDP"," Maryland","number_households",22,34,"median_income",52708,NA
+"44","2407400","Big Spring CDP"," Maryland","number_households",43,22,"median_income",41979,NA
+"45","2407625","Bishopville CDP"," Maryland","number_households",194,210,"median_income",66923,63971
+"46","2407675","Bivalve CDP"," Maryland","number_households",103,67,"median_income",24922,NA
+"47","2407850","Bladensburg town"," Maryland","number_households",3590,3660,"median_income",43321,50390
+"48","2408050","Bloomington CDP"," Maryland","number_households",102,85,"median_income",41528,NA
+"49","2408625","Boonsboro town"," Maryland","number_households",1179,1441,"median_income",76875,82201
+"50","2408775","Bowie city"," Maryland","number_households",19693,20822,"median_income",101671,116796
+"51","2408800","Bowleys Quarters CDP"," Maryland","number_households",2629,2493,"median_income",66342,96797
+"52","2408850","Bowling Green CDP"," Maryland","number_households",442,597,"median_income",36771,62736
+"53","2408862","Bowmans Addition CDP"," Maryland","number_households",215,259,"median_income",33194,54125
+"54","2409100","Braddock Heights CDP"," Maryland","number_households",986,1124,"median_income",88281,103438
+"55","2409325","Brandywine CDP"," Maryland","number_households",2118,2910,"median_income",105366,148529
+"56","2409400","Breathedsville CDP"," Maryland","number_households",147,93,"median_income",44044,NA
+"57","2409500","Brentwood town"," Maryland","number_households",862,1045,"median_income",50636,80737
+"58","2410150","Brock Hall CDP"," Maryland","number_households",2815,3704,"median_income",131106,174569
+"59","2410225","Brookeville town"," Maryland","number_households",90,51,"median_income",213750,156250
+"60","2410475","Brooklyn Park CDP"," Maryland","number_households",5125,5241,"median_income",52381,66329
+"61","2410500","Brookmont CDP"," Maryland","number_households",1284,1347,"median_income",179545,249432
+"62","2410575","Brookview town"," Maryland","number_households",19,22,"median_income",33250,53750
+"63","2410650","Broomes Island CDP"," Maryland","number_households",84,219,"median_income",96406,128036
+"64","2410800","Brownsville CDP"," Maryland","number_households",80,8,"median_income",110119,NA
+"65","2410900","Brunswick city"," Maryland","number_households",2131,2411,"median_income",60848,84133
+"66","2410925","Bryans Road CDP"," Maryland","number_households",2622,2986,"median_income",83148,92319
+"67","2410950","Bryantown CDP"," Maryland","number_households",221,178,"median_income",90114,130750
+"68","2411050","Buckeystown CDP"," Maryland","number_households",529,539,"median_income",68917,87974
+"69","2411400","Burkittsville town"," Maryland","number_households",69,82,"median_income",78125,71071
+"70","2411750","Burtonsville CDP"," Maryland","number_households",2746,2801,"median_income",94794,122541
+"71","2411900","Butlertown CDP"," Maryland","number_households",189,166,"median_income",31961,NA
+"72","2412075","Cabin John CDP"," Maryland","number_households",857,880,"median_income",180054,181324
+"73","2412150","California CDP"," Maryland","number_households",4327,5490,"median_income",85240,97331
+"74","2412300","Calvert Beach CDP"," Maryland","number_households",241,275,"median_income",66339,72679
+"75","2412350","Calverton CDP"," Maryland","number_households",6840,6051,"median_income",73997,98977
+"76","2412400","Cambridge city"," Maryland","number_households",5106,5364,"median_income",34614,39063
+"77","2412600","Camp Springs CDP"," Maryland","number_households",6827,7449,"median_income",85923,102541
+"78","2412912","Cape St. Claire CDP"," Maryland","number_households",3189,3252,"median_income",92089,112206
+"79","2413000","Capitol Heights town"," Maryland","number_households",1551,1448,"median_income",58393,72209
+"80","2413225","Carlos CDP"," Maryland","number_households",50,22,"median_income",92685,55357
+"81","2413325","Carney CDP"," Maryland","number_households",12078,13163,"median_income",60500,70835
+"82","2414125","Catonsville CDP"," Maryland","number_households",15623,15566,"median_income",67679,91539
+"83","2414225","Cavetown CDP"," Maryland","number_households",506,446,"median_income",66786,88535
+"84","2414300","Cearfoss CDP"," Maryland","number_households",47,88,"median_income",32396,2499
+"85","2414325","Cecilton town"," Maryland","number_households",179,382,"median_income",47614,66667
+"86","2414800","Cedarville CDP"," Maryland","number_households",399,232,"median_income",44063,94423
+"87","2414950","Centreville town"," Maryland","number_households",1483,1693,"median_income",75446,98942
+"88","2415075","Chance CDP"," Maryland","number_households",108,162,"median_income",45000,53667
+"89","2415400","Charlestown town"," Maryland","number_households",407,611,"median_income",65795,95938
+"90","2415475","Charlotte Hall CDP"," Maryland","number_households",356,400,"median_income",73571,80658
+"91","2415500","Charlton CDP"," Maryland","number_households",70,112,"median_income",93269,NA
+"92","2415925","Chesapeake Beach town"," Maryland","number_households",2174,2568,"median_income",82568,111379
+"93","2415950","Chesapeake City town"," Maryland","number_households",372,347,"median_income",44211,58438
+"94","2416050","Chesapeake Ranch Estates CDP"," Maryland","number_households",3230,3242,"median_income",78368,98684
+"95","2416125","Chester CDP"," Maryland","number_households",1625,1881,"median_income",72906,82588
+"96","2416225","Chestertown town"," Maryland","number_households",1924,2134,"median_income",35741,39682
+"97","2416550","Cheverly town"," Maryland","number_households",2279,2617,"median_income",78449,99343
+"98","2416620","Chevy Chase town"," Maryland","number_households",959,1006,"median_income",204911,250001
+"99","2416625","Chevy Chase CDP"," Maryland","number_households",3742,3710,"median_income",143500,192273
+"100","2416720","Chevy Chase Section Five village"," Maryland","number_households",246,237,"median_income",250001,250001
+"101","2416730","Chevy Chase Section Three village"," Maryland","number_households",252,270,"median_income",201500,250001
+"102","2416775","Chevy Chase View town"," Maryland","number_households",332,342,"median_income",2e+05,250001
+"103","2416787","Chevy Chase Village town"," Maryland","number_households",691,679,"median_income",250001,250001
+"104","2416800","Chewsville CDP"," Maryland","number_households",62,102,"median_income",22500,NA
+"105","2416875","Chillum CDP"," Maryland","number_households",10813,10252,"median_income",52457,62412
+"106","2417000","Choptank CDP"," Maryland","number_households",66,22,"median_income",11346,NA
+"107","2417050","Church Creek town"," Maryland","number_households",42,46,"median_income",31250,42500
+"108","2417100","Church Hill town"," Maryland","number_households",215,339,"median_income",49875,67604
+"109","2417350","Clarksburg CDP"," Maryland","number_households",3332,7851,"median_income",123625,149173
+"110","2417475","Clarysville CDP"," Maryland","number_households",49,19,"median_income",75511,NA
+"111","2417600","Clear Spring town"," Maryland","number_households",208,188,"median_income",43056,59750
+"112","2417900","Clinton CDP"," Maryland","number_households",12023,12473,"median_income",95801,110108
+"113","2418150","Cloverly CDP"," Maryland","number_households",4990,4848,"median_income",122103,134527
+"114","2418200","Cobb Island CDP"," Maryland","number_households",356,474,"median_income",56667,NA
+"115","2418250","Cockeysville CDP"," Maryland","number_households",9145,9671,"median_income",55322,71417
+"116","2418475","Colesville CDP"," Maryland","number_households",4764,4949,"median_income",111071,126063
+"117","2418750","College Park city"," Maryland","number_households",6639,7620,"median_income",62366,68825
+"118","2418850","Colmar Manor town"," Maryland","number_households",367,422,"median_income",56133,73839
+"119","2419125","Columbia CDP"," Maryland","number_households",39448,41261,"median_income",93174,111278
+"120","2419825","Coral Hills CDP"," Maryland","number_households",3628,3483,"median_income",56164,63484
+"121","2419900","Cordova CDP"," Maryland","number_households",189,205,"median_income",69712,103295
+"122","2419975","Corriganville CDP"," Maryland","number_households",159,278,"median_income",32708,36071
+"123","2420050","Cottage City town"," Maryland","number_households",441,433,"median_income",43125,57404
+"124","2420500","Crellin CDP"," Maryland","number_households",36,35,"median_income",19500,NA
+"125","2420525","Cresaptown CDP"," Maryland","number_households",1233,972,"median_income",35417,47218
+"126","2420775","Crisfield city"," Maryland","number_households",1275,1072,"median_income",39046,34444
+"127","2420875","Crofton CDP"," Maryland","number_households",10217,10235,"median_income",100553,124019
+"128","2420925","Croom CDP"," Maryland","number_households",805,908,"median_income",109886,111250
+"129","2421075","Crownsville CDP"," Maryland","number_households",572,591,"median_income",73056,93750
+"130","2421325","Cumberland city"," Maryland","number_households",9158,8279,"median_income",30627,40888
+"131","2421475","Damascus CDP"," Maryland","number_households",5005,5565,"median_income",102035,128446
+"132","2421550","Dames Quarter CDP"," Maryland","number_households",71,38,"median_income",61080,57000
+"133","2421675","Danville CDP"," Maryland","number_households",126,274,"median_income",68125,2499
+"134","2421750","Dargan CDP"," Maryland","number_households",136,56,"median_income",36538,NA
+"135","2421800","Darlington CDP"," Maryland","number_households",182,213,"median_income",64500,103250
+"136","2421825","Darnestown CDP"," Maryland","number_households",2172,2293,"median_income",165893,188317
+"137","2421925","Dawson CDP"," Maryland","number_households",58,30,"median_income",33750,63636
+"138","2422050","Deale CDP"," Maryland","number_households",1927,1779,"median_income",89982,95116
+"139","2422100","Deal Island CDP"," Maryland","number_households",249,190,"median_income",31534,23333
+"140","2422275","Deer Park town"," Maryland","number_households",162,147,"median_income",31607,43068
+"141","2422600","Delmar town"," Maryland","number_households",1010,1282,"median_income",49786,59659
+"142","2422725","Denton town"," Maryland","number_households",1428,1421,"median_income",62420,50808
+"143","2422775","Derwood CDP"," Maryland","number_households",727,640,"median_income",112321,80595
+"144","2422825","Detmold CDP"," Maryland","number_households",41,187,"median_income",32440,43792
+"145","2423025","District Heights city"," Maryland","number_households",2182,2039,"median_income",63596,66758
+"146","2423500","Downsville CDP"," Maryland","number_households",115,316,"median_income",42250,NA
+"147","2423700","Drum Point CDP"," Maryland","number_households",1157,917,"median_income",91705,115096
+"148","2423975","Dundalk CDP"," Maryland","number_households",24628,23536,"median_income",46753,55489
+"149","2424062","Dunkirk CDP"," Maryland","number_households",816,NA,"median_income",108088,NA
+"150","2424200","Eagle Harbor town"," Maryland","number_households",9,36,"median_income",40417,66071
+"151","2424250","Eakles Mill CDP"," Maryland","number_households",0,0,"median_income",NA,NA
+"152","2424450","East New Market town"," Maryland","number_households",130,134,"median_income",56111,64375
+"153","2424475","Easton town"," Maryland","number_households",6441,7387,"median_income",59234,61639
+"154","2424650","East Riverdale CDP"," Maryland","number_households",4254,4317,"median_income",59805,79008
+"155","2424825","Eckhart Mines CDP"," Maryland","number_households",497,216,"median_income",54896,58938
+"156","2424850","Eden CDP"," Maryland","number_households",392,388,"median_income",36686,31149
+"157","2424925","Edesville CDP"," Maryland","number_households",92,79,"median_income",18125,31058
+"158","2424950","Edgemere CDP"," Maryland","number_households",3565,3334,"median_income",59235,87367
+"159","2425000","Edgemont CDP"," Maryland","number_households",75,99,"median_income",45216,80125
+"160","2425050","Edgewater CDP"," Maryland","number_households",3437,3643,"median_income",81300,89327
+"161","2425150","Edgewood CDP"," Maryland","number_households",9126,9047,"median_income",57369,68420
+"162","2425425","Edmonston town"," Maryland","number_households",444,386,"median_income",55417,71667
+"163","2425575","Eldersburg CDP"," Maryland","number_households",10621,10661,"median_income",97605,125981
+"164","2425600","Eldorado town"," Maryland","number_households",30,30,"median_income",67000,53214
+"165","2425750","Elkridge CDP"," Maryland","number_households",5002,7977,"median_income",76111,108627
+"166","2425800","Elkton town"," Maryland","number_households",5061,5601,"median_income",54902,54871
+"167","2425925","Ellerslie CDP"," Maryland","number_households",148,254,"median_income",38500,56667
+"168","2426000","Ellicott City CDP"," Maryland","number_households",23335,26364,"median_income",109888,132083
+"169","2426025","Elliott CDP"," Maryland","number_households",22,22,"median_income",95208,NA
+"170","2426200","Emmitsburg town"," Maryland","number_households",1010,1157,"median_income",53125,72887
+"171","2426550","Ernstville CDP"," Maryland","number_households",0,12,"median_income",NA,NA
+"172","2426600","Essex CDP"," Maryland","number_households",15149,14863,"median_income",49448,59426
+"173","2427250","Fairland CDP"," Maryland","number_households",8755,8741,"median_income",66212,84087
+"174","2427325","Fairlee CDP"," Maryland","number_households",115,192,"median_income",63807,NA
+"175","2427375","Fairmount CDP"," Maryland","number_households",170,171,"median_income",53026,70134
+"176","2427400","Fairmount Heights town"," Maryland","number_households",496,471,"median_income",62763,69519
+"177","2427425","Fairplay CDP"," Maryland","number_households",149,189,"median_income",102019,99148
+"178","2427500","Fairview CDP"," Maryland","number_households",0,8,"median_income",NA,NA
+"179","2427580","Fairwood CDP"," Maryland","number_households",1310,2194,"median_income",163786,171071
+"180","2427700","Fallston CDP"," Maryland","number_households",2903,3146,"median_income",98750,130625
+"181","2427900","Federalsburg town"," Maryland","number_households",1105,1005,"median_income",39776,31915
+"182","2428075","Ferndale CDP"," Maryland","number_households",6539,6361,"median_income",66390,74226
+"183","2428275","Finzel CDP"," Maryland","number_households",206,305,"median_income",65514,77375
+"184","2428300","Fishing Creek CDP"," Maryland","number_households",53,104,"median_income",108508,47955
+"185","2428425","Flintstone CDP"," Maryland","number_households",68,65,"median_income",29063,NA
+"186","2428640","Forest Glen CDP"," Maryland","number_households",2708,2284,"median_income",75455,98904
+"187","2428725","Forest Heights town"," Maryland","number_households",799,744,"median_income",73599,96111
+"188","2429000","Forestville CDP"," Maryland","number_households",4546,4160,"median_income",63705,64082
+"189","2429400","Fort Meade CDP"," Maryland","number_households",2958,2905,"median_income",58532,80438
+"190","2429450","Fort Ritchie CDP"," Maryland","number_households",64,19,"median_income",20909,NA
+"191","2429525","Fort Washington CDP"," Maryland","number_households",8395,8105,"median_income",106917,122206
+"192","2429712","Fountainhead-Orchard Hills CDP"," Maryland","number_households",2359,2359,"median_income",61530,75160
+"193","2429790","Four Corners CDP"," Maryland","number_households",2832,2771,"median_income",105660,160847
+"194","2430100","Franklin CDP"," Maryland","number_households",35,70,"median_income",26250,11651
+"195","2430325","Frederick city"," Maryland","number_households",25213,28754,"median_income",66570,78400
+"196","2430567","Frenchtown-Rumbly CDP"," Maryland","number_households",25,8,"median_income",92375,NA
+"197","2430575","Friendly CDP"," Maryland","number_households",3034,3277,"median_income",91066,128083
+"198","2430650","Friendship CDP"," Maryland","number_households",112,117,"median_income",133889,97721
+"199","2430800","Friendship Heights Village CDP"," Maryland","number_households",3804,2804,"median_income",76804,106771
+"200","2430850","Friendsville town"," Maryland","number_households",231,212,"median_income",32679,38026
+"201","2430900","Frostburg city"," Maryland","number_households",3277,2990,"median_income",32314,40781
+"202","2430950","Fruitland city"," Maryland","number_households",1887,1891,"median_income",55396,52392
+"203","2431025","Fulton CDP"," Maryland","number_households",654,1410,"median_income",170735,170357
+"204","2431100","Funkstown town"," Maryland","number_households",564,504,"median_income",39063,38235
+"205","2431175","Gaithersburg city"," Maryland","number_households",22832,24713,"median_income",78736,91845
+"206","2431225","Galena town"," Maryland","number_households",224,343,"median_income",66288,66563
+"207","2431250","Galestown town"," Maryland","number_households",33,31,"median_income",35417,33906
+"208","2431275","Galesville CDP"," Maryland","number_households",244,430,"median_income",73958,167723
+"209","2431350","Gambrills CDP"," Maryland","number_households",948,976,"median_income",110476,140238
+"210","2431400","Gapland CDP"," Maryland","number_households",47,28,"median_income",60417,NA
+"211","2431525","Garrett Park town"," Maryland","number_households",357,330,"median_income",116806,221250
+"212","2431575","Garretts Mill CDP"," Maryland","number_households",75,162,"median_income",65083,NA
+"213","2431625","Garrison CDP"," Maryland","number_households",3521,3440,"median_income",70022,85405
+"214","2431875","Georgetown CDP"," Maryland","number_households",85,6,"median_income",65250,NA
+"215","2432025","Germantown CDP"," Maryland","number_households",30541,30270,"median_income",85396,98829
+"216","2432175","Gilmore CDP"," Maryland","number_households",32,64,"median_income",38095,91842
+"217","2432250","Girdletree CDP"," Maryland","number_households",135,60,"median_income",27813,129167
+"218","2432350","Glassmanor CDP"," Maryland","number_households",6553,6495,"median_income",52648,61153
+"219","2432500","Glenarden city"," Maryland","number_households",2069,2250,"median_income",47943,87917
+"220","2432650","Glen Burnie CDP"," Maryland","number_households",26215,27595,"median_income",59453,74932
+"221","2432900","Glen Echo town"," Maryland","number_households",107,109,"median_income",140625,141250
+"222","2433250","Glenmont CDP"," Maryland","number_households",4444,4726,"median_income",84805,100365
+"223","2433400","Glenn Dale CDP"," Maryland","number_households",4410,4146,"median_income",101979,113576
+"224","2433850","Golden Beach CDP"," Maryland","number_households",1377,1348,"median_income",80859,83438
+"225","2433950","Goldsboro town"," Maryland","number_households",96,71,"median_income",49167,46875
+"226","2434150","Gorman CDP"," Maryland","number_households",27,82,"median_income",27750,NA
+"227","2434425","Grahamtown CDP"," Maryland","number_households",126,113,"median_income",61364,47629
+"228","2434525","Grantsville town"," Maryland","number_households",347,349,"median_income",43125,32607
+"229","2434550","Grasonville CDP"," Maryland","number_households",1208,1237,"median_income",73750,99550
+"230","2434775","Greenbelt city"," Maryland","number_households",9600,9791,"median_income",61143,71744
+"231","2435200","Greensboro town"," Maryland","number_households",830,883,"median_income",59821,39821
+"232","2435225","Greensburg CDP"," Maryland","number_households",54,69,"median_income",116364,57969
+"233","2436075","Hagerstown city"," Maryland","number_households",16720,16669,"median_income",36952,41905
+"234","2436125","Halfway CDP"," Maryland","number_households",4154,4487,"median_income",53960,67764
+"235","2436500","Hampstead town"," Maryland","number_households",2409,2590,"median_income",75719,75392
+"236","2436512","Hampton CDP"," Maryland","number_households",1868,1643,"median_income",112500,153268
+"237","2436600","Hancock town"," Maryland","number_households",641,725,"median_income",31858,43350
+"238","2437600","Havre de Grace city"," Maryland","number_households",5408,5811,"median_income",62014,80853
+"239","2437875","Hebron town"," Maryland","number_households",338,409,"median_income",56944,52375
+"240","2437925","Henderson town"," Maryland","number_households",50,39,"median_income",42031,NA
+"241","2438025","Herald Harbor CDP"," Maryland","number_households",919,981,"median_income",82054,140493
+"242","2438437","Highfield-Cascade CDP"," Maryland","number_households",416,332,"median_income",75615,68333
+"243","2438475","Highland CDP"," Maryland","number_households",279,364,"median_income",118348,2e+05
+"244","2438500","Highland Beach town"," Maryland","number_households",28,56,"median_income",116250,138152
+"245","2438850","Hillandale CDP"," Maryland","number_households",2087,1450,"median_income",98546,118779
+"246","2438975","Hillcrest Heights CDP"," Maryland","number_households",6869,6828,"median_income",56394,66463
+"247","2439175","Hillsboro town"," Maryland","number_households",32,47,"median_income",89500,61250
+"248","2440700","Hughesville CDP"," Maryland","number_households",581,912,"median_income",145859,123348
+"249","2441037","Huntingtown CDP"," Maryland","number_households",918,NA,"median_income",131786,NA
+"250","2441125","Hurlock town"," Maryland","number_households",747,877,"median_income",42039,58750
+"251","2441175","Hutton CDP"," Maryland","number_households",10,28,"median_income",NA,NA
+"252","2441250","Hyattsville city"," Maryland","number_households",5980,6816,"median_income",54839,80618
+"253","2441475","Ilchester CDP"," Maryland","number_households",8189,9302,"median_income",111374,123438
+"254","2441500","Indian Head town"," Maryland","number_households",1316,1596,"median_income",69079,64180
+"255","2441700","Indian Springs CDP"," Maryland","number_households",47,9,"median_income",75868,NA
+"256","2442325","Jarrettsville CDP"," Maryland","number_households",1064,988,"median_income",93167,117833
+"257","2442350","Jefferson CDP"," Maryland","number_households",794,901,"median_income",91875,116042
+"258","2442450","Jennings CDP"," Maryland","number_households",69,60,"median_income",69063,NA
+"259","2442550","Jessup CDP"," Maryland","number_households",420,1558,"median_income",47212,118603
+"260","2442575","Jesterville CDP"," Maryland","number_households",91,74,"median_income",84770,80875
+"261","2442875","Joppatowne CDP"," Maryland","number_households",4889,5066,"median_income",74446,89909
+"262","2442950","Jugtown CDP"," Maryland","number_households",80,49,"median_income",82115,164063
+"263","2443100","Keedysville town"," Maryland","number_households",332,370,"median_income",103929,116500
+"264","2443200","Kemp Mill CDP"," Maryland","number_households",4384,4784,"median_income",89294,126447
+"265","2443280","Kemps Mill CDP"," Maryland","number_households",32,0,"median_income",51786,NA
+"266","2443475","Kennedyville CDP"," Maryland","number_households",88,146,"median_income",29657,NA
+"267","2443500","Kensington town"," Maryland","number_households",767,823,"median_income",88558,126162
+"268","2443725","Kent Narrows CDP"," Maryland","number_households",338,289,"median_income",89861,100417
+"269","2443900","Kettering CDP"," Maryland","number_households",4802,5624,"median_income",93299,100428
+"270","2444325","Kingstown CDP"," Maryland","number_households",706,905,"median_income",82875,52798
+"271","2444350","Kingsville CDP"," Maryland","number_households",1572,1652,"median_income",81920,104265
+"272","2444450","Kitzmiller town"," Maryland","number_households",137,104,"median_income",31250,40000
+"273","2444525","Klondike CDP"," Maryland","number_households",60,49,"median_income",70403,73490
+"274","2444715","Konterra CDP"," Maryland","number_households",917,1110,"median_income",107386,101667
+"275","2444817","Lake Arbor CDP"," Maryland","number_households",4011,5506,"median_income",87436,108750
+"276","2444975","Lake Shore CDP"," Maryland","number_households",6955,6731,"median_income",90396,111940
+"277","2445325","Landover CDP"," Maryland","number_households",8169,8056,"median_income",53872,59015
+"278","2445400","Landover Hills town"," Maryland","number_households",526,553,"median_income",62054,73750
+"279","2445525","Langley Park CDP"," Maryland","number_households",4888,4732,"median_income",50759,63789
+"280","2445550","Lanham CDP"," Maryland","number_households",2944,2937,"median_income",88026,88054
+"281","2445650","Lansdowne CDP"," Maryland","number_households",3207,3360,"median_income",40274,43556
+"282","2445750","La Plata town"," Maryland","number_households",2924,3298,"median_income",80129,94755
+"283","2445825","Largo CDP"," Maryland","number_households",4434,4232,"median_income",75717,90236
+"284","2445900","Laurel city"," Maryland","number_households",9909,9647,"median_income",63271,80255
+"285","2446075","La Vale CDP"," Maryland","number_households",1525,1955,"median_income",54632,73872
+"286","2446150","Layhill CDP"," Maryland","number_households",1790,1579,"median_income",114634,93523
+"287","2446250","Laytonsville town"," Maryland","number_households",113,158,"median_income",107159,162500
+"288","2446375","Leisure World CDP"," Maryland","number_households",5524,6215,"median_income",52086,54789
+"289","2446400","Leitersburg CDP"," Maryland","number_households",247,224,"median_income",50039,NA
+"290","2446475","Leonardtown town"," Maryland","number_households",975,1241,"median_income",57083,119250
+"291","2446725","Lexington Park CDP"," Maryland","number_households",4288,5501,"median_income",64173,72920
+"292","2446800","Libertytown CDP"," Maryland","number_households",321,305,"median_income",85563,86719
+"293","2447040","Linganore CDP"," Maryland","number_households",2741,3504,"median_income",104774,146500
+"294","2447125","Linthicum CDP"," Maryland","number_households",3906,3856,"median_income",76791,93237
+"295","2447275","Little Orleans CDP"," Maryland","number_households",16,41,"median_income",19722,NA
+"296","2447450","Lochearn CDP"," Maryland","number_households",10138,9900,"median_income",53552,64986
+"297","2447525","Loch Lynn Heights town"," Maryland","number_households",271,187,"median_income",25234,49453
+"298","2447875","Lonaconing town"," Maryland","number_households",524,427,"median_income",31100,47824
+"299","2448025","Long Beach CDP"," Maryland","number_households",671,747,"median_income",112634,119078
+"300","2448775","Luke town"," Maryland","number_households",36,35,"median_income",17500,39028
+"301","2448800","Lusby CDP"," Maryland","number_households",730,930,"median_income",72372,82756
+"302","2448875","Lutherville CDP"," Maryland","number_households",2627,2461,"median_income",77219,118227
+"303","2449325","McCoole CDP"," Maryland","number_households",150,208,"median_income",63214,41029
+"304","2449700","Madison CDP"," Maryland","number_households",74,72,"median_income",80625,91842
+"305","2449950","Manchester town"," Maryland","number_households",1542,1737,"median_income",83200,91723
+"306","2450375","Mapleville CDP"," Maryland","number_households",52,111,"median_income",145469,65644
+"307","2450525","Mardela Springs town"," Maryland","number_households",128,159,"median_income",49318,83350
+"308","2450680","Marlboro Meadows CDP"," Maryland","number_households",1189,1383,"median_income",99171,86017
+"309","2450685","Marlboro Village CDP"," Maryland","number_households",3613,3366,"median_income",81951,103043
+"310","2450750","Marlow Heights CDP"," Maryland","number_households",2492,2300,"median_income",58250,69688
+"311","2450775","Marlton CDP"," Maryland","number_households",3178,3516,"median_income",99732,111868
+"312","2450965","Martin's Additions village"," Maryland","number_households",313,342,"median_income",173542,250001
+"313","2451025","Marydel town"," Maryland","number_households",58,60,"median_income",56071,41250
+"314","2451075","Maryland City CDP"," Maryland","number_households",6256,6873,"median_income",82112,98811
+"315","2451425","Maugansville CDP"," Maryland","number_households",1116,946,"median_income",49333,52143
+"316","2451575","Mayo CDP"," Maryland","number_households",3076,2958,"median_income",86318,123440
+"317","2451587","Mays Chapel CDP"," Maryland","number_households",4873,4734,"median_income",95733,110403
+"318","2451800","Mechanicsville CDP"," Maryland","number_households",551,628,"median_income",83125,99041
+"319","2451860","Melwood CDP"," Maryland","number_households",1278,NA,"median_income",73810,NA
+"320","2451945","Mercersville CDP"," Maryland","number_households",41,113,"median_income",24338,44016
+"321","2452225","Middleburg CDP"," Maryland","number_households",46,0,"median_income",86053,NA
+"322","2452300","Middle River CDP"," Maryland","number_households",9390,11125,"median_income",51573,65947
+"323","2452425","Middletown town"," Maryland","number_households",1375,1568,"median_income",108135,142903
+"324","2452475","Midland town"," Maryland","number_households",148,255,"median_income",36538,49250
+"325","2452525","Midlothian CDP"," Maryland","number_households",119,191,"median_income",48199,NA
+"326","2452562","Milford Mill CDP"," Maryland","number_households",11285,11512,"median_income",57188,65229
+"327","2452825","Millington town"," Maryland","number_households",167,215,"median_income",50795,59792
+"328","2452975","Mitchellville CDP"," Maryland","number_households",3844,3813,"median_income",109098,129975
+"329","2453100","Monrovia CDP"," Maryland","number_households",144,442,"median_income",89091,151786
+"330","2453325","Montgomery Village CDP"," Maryland","number_households",11837,11850,"median_income",81912,82135
+"331","2453625","Morningside town"," Maryland","number_households",477,420,"median_income",68750,62857
+"332","2453700","Moscow CDP"," Maryland","number_households",66,149,"median_income",46250,43606
+"333","2453750","Mount Aetna CDP"," Maryland","number_households",209,193,"median_income",127774,136625
+"334","2453800","Mountain Lake Park town"," Maryland","number_households",837,848,"median_income",32813,49907
+"335","2453875","Mount Airy town"," Maryland","number_households",3019,3159,"median_income",99160,123750
+"336","2453925","Mount Briar CDP"," Maryland","number_households",61,42,"median_income",48125,NA
+"337","2454125","Mount Lena CDP"," Maryland","number_households",202,128,"median_income",38833,NA
+"338","2454275","Mount Rainier city"," Maryland","number_households",3659,3963,"median_income",49119,57200
+"339","2454325","Mount Savage CDP"," Maryland","number_households",363,320,"median_income",50208,43929
+"340","2454375","Mount Vernon CDP"," Maryland","number_households",357,374,"median_income",52614,87895
+"341","2454875","Myersville town"," Maryland","number_households",576,626,"median_income",101389,125625
+"342","2454925","Nanticoke CDP"," Maryland","number_households",96,94,"median_income",43167,NA
+"343","2454930","Nanticoke Acres CDP"," Maryland","number_households",0,23,"median_income",NA,NA
+"344","2455000","National CDP"," Maryland","number_households",16,22,"median_income",NA,NA
+"345","2455018","National Harbor CDP"," Maryland","number_households",1313,1880,"median_income",63547,109559
+"346","2455050","Naval Academy CDP"," Maryland","number_households",248,257,"median_income",105625,101197
+"347","2455325","Newark CDP"," Maryland","number_households",96,168,"median_income",56563,NA
+"348","2455400","New Carrollton city"," Maryland","number_households",4121,4250,"median_income",60969,70776
+"349","2455650","New Market town"," Maryland","number_households",213,465,"median_income",74750,153472
+"350","2455925","New Windsor town"," Maryland","number_households",517,496,"median_income",82841,96818
+"351","2455950","Nikep CDP"," Maryland","number_households",19,0,"median_income",45125,NA
+"352","2456300","North Beach town"," Maryland","number_households",778,1114,"median_income",60213,69009
+"353","2456337","North Bethesda CDP"," Maryland","number_households",18397,21218,"median_income",94054,111694
+"354","2456375","North Brentwood town"," Maryland","number_households",179,209,"median_income",61042,79750
+"355","2456400","North Chevy Chase village"," Maryland","number_households",197,186,"median_income",178958,196250
+"356","2456450","North East town"," Maryland","number_households",1385,1420,"median_income",54591,54911
+"357","2456712","North Kensington CDP"," Maryland","number_households",3765,3481,"median_income",70977,109614
+"358","2456725","North Laurel CDP"," Maryland","number_households",1425,8523,"median_income",99659,103337
+"359","2456875","North Potomac CDP"," Maryland","number_households",8142,8076,"median_income",139463,166383
+"360","2457650","Oakland town"," Maryland","number_households",874,900,"median_income",43672,54519
+"361","2458215","Ocean CDP"," Maryland","number_households",0,0,"median_income",NA,NA
+"362","2458225","Ocean City town"," Maryland","number_households",3904,3720,"median_income",49000,55954
+"363","2458275","Ocean Pines CDP"," Maryland","number_households",5104,5838,"median_income",63370,77518
+"364","2458300","Odenton CDP"," Maryland","number_households",13896,17119,"median_income",91359,102539
+"365","2458775","Oldtown CDP"," Maryland","number_households",8,18,"median_income",NA,NA
+"366","2458900","Olney CDP"," Maryland","number_households",11285,11727,"median_income",124149,149155
+"367","2459325","Overlea CDP"," Maryland","number_households",5084,5060,"median_income",59560,65662
+"368","2459375","Owings CDP"," Maryland","number_households",652,932,"median_income",112381,137381
+"369","2459425","Owings Mills CDP"," Maryland","number_households",12877,13705,"median_income",67528,83106
+"370","2459450","Oxford town"," Maryland","number_households",298,425,"median_income",58750,72404
+"371","2459500","Oxon Hill CDP"," Maryland","number_households",7095,6900,"median_income",64564,88718
+"372","2459787","Paramount-Long Meadow CDP"," Maryland","number_households",925,920,"median_income",78052,84706
+"373","2460275","Parkville CDP"," Maryland","number_households",12747,12022,"median_income",52836,68608
+"374","2460325","Parole CDP"," Maryland","number_households",7366,8995,"median_income",83571,114355
+"375","2460425","Parsonsburg CDP"," Maryland","number_households",142,80,"median_income",48015,49333
+"376","2460475","Pasadena CDP"," Maryland","number_households",8085,11309,"median_income",88035,100832
+"377","2460770","Pecktonville CDP"," Maryland","number_households",24,66,"median_income",NA,85500
+"378","2460950","Peppermill Village CDP"," Maryland","number_households",1653,1755,"median_income",52582,71957
+"379","2460975","Perry Hall CDP"," Maryland","number_households",11095,10408,"median_income",75162,91702
+"380","2461075","Perryman CDP"," Maryland","number_households",887,971,"median_income",60063,59922
+"381","2461150","Perryville town"," Maryland","number_households",1731,1748,"median_income",64034,81974
+"382","2461400","Pikesville CDP"," Maryland","number_households",13642,13342,"median_income",69856,85343
+"383","2461700","Pinesburg CDP"," Maryland","number_households",206,109,"median_income",63750,NA
+"384","2461875","Piney Point CDP"," Maryland","number_households",388,415,"median_income",90600,123563
+"385","2462025","Pittsville town"," Maryland","number_households",557,685,"median_income",50550,60170
+"386","2462100","Pleasant Grove CDP"," Maryland","number_households",219,119,"median_income",31797,59904
+"387","2462175","Pleasant Hills CDP"," Maryland","number_households",1182,1404,"median_income",103482,121974
+"388","2462475","Pocomoke City city"," Maryland","number_households",1756,1786,"median_income",30297,38402
+"389","2462575","Point of Rocks CDP"," Maryland","number_households",520,700,"median_income",128625,112155
+"390","2462675","Pomfret CDP"," Maryland","number_households",216,199,"median_income",69167,99096
+"391","2462775","Pondsville CDP"," Maryland","number_households",37,9,"median_income",60795,NA
+"392","2462850","Poolesville town"," Maryland","number_households",1602,1640,"median_income",113036,183700
+"393","2463075","Port Deposit town"," Maryland","number_households",262,258,"median_income",54022,62000
+"394","2463225","Port Tobacco Village town"," Maryland","number_households",11,2,"median_income",42708,NA
+"395","2463300","Potomac CDP"," Maryland","number_households",15995,16131,"median_income",162766,189729
+"396","2463375","Potomac Heights CDP"," Maryland","number_households",548,636,"median_income",51420,58291
+"397","2463425","Potomac Park CDP"," Maryland","number_households",403,336,"median_income",36705,44545
+"398","2463725","Powellville CDP"," Maryland","number_households",45,40,"median_income",33672,NA
+"399","2463825","Preston town"," Maryland","number_households",193,326,"median_income",56513,58438
+"400","2463950","Prince Frederick CDP"," Maryland","number_households",988,1158,"median_income",56419,46216
+"401","2464000","Princess Anne town"," Maryland","number_households",1253,1440,"median_income",40011,34397
+"402","2464375","Pylesville CDP"," Maryland","number_households",216,288,"median_income",106250,114148
+"403","2464475","Quantico CDP"," Maryland","number_households",38,49,"median_income",53875,104732
+"404","2464495","Queen Anne CDP"," Maryland","number_households",428,439,"median_income",106250,139792
+"405","2464500","Queen Anne town"," Maryland","number_households",89,94,"median_income",80313,78750
+"406","2464535","Queenland CDP"," Maryland","number_households",673,NA,"median_income",120284,NA
+"407","2464600","Queenstown town"," Maryland","number_households",283,313,"median_income",73882,96736
+"408","2464950","Randallstown CDP"," Maryland","number_households",12015,12970,"median_income",71534,79842
+"409","2465150","Rawlings CDP"," Maryland","number_households",347,160,"median_income",52939,NA
+"410","2465312","Redland CDP"," Maryland","number_households",5568,5356,"median_income",96766,123005
+"411","2465550","Reid CDP"," Maryland","number_households",15,0,"median_income",NA,NA
+"412","2465600","Reisterstown CDP"," Maryland","number_households",10220,10512,"median_income",58170,71851
+"413","2466000","Ridgely town"," Maryland","number_households",695,753,"median_income",50987,55977
+"414","2466150","Ringgold CDP"," Maryland","number_households",66,45,"median_income",70714,92604
+"415","2466275","Rising Sun town"," Maryland","number_households",1094,982,"median_income",56429,72021
+"416","2466400","Riva CDP"," Maryland","number_households",1514,1588,"median_income",108393,126792
+"417","2466635","Riverdale Park town"," Maryland","number_households",2255,2096,"median_income",51480,84695
+"418","2466762","Riverside CDP"," Maryland","number_households",2407,2548,"median_income",78429,79620
+"419","2466850","Riviera Beach CDP"," Maryland","number_households",4643,4618,"median_income",79645,94773
+"420","2467000","Robinwood CDP"," Maryland","number_households",2818,2773,"median_income",76154,67109
+"421","2467400","Rock Hall town"," Maryland","number_households",503,671,"median_income",41771,47639
+"422","2467500","Rock Point CDP"," Maryland","number_households",56,30,"median_income",26250,86750
+"423","2467675","Rockville city"," Maryland","number_households",23034,26439,"median_income",89418,111797
+"424","2467950","Rohrersville CDP"," Maryland","number_households",117,106,"median_income",63594,69803
+"425","2468300","Rosaryville CDP"," Maryland","number_households",3651,3367,"median_income",117314,128616
+"426","2468400","Rosedale CDP"," Maryland","number_households",7166,7165,"median_income",62534,76577
+"427","2468600","Rosemont village"," Maryland","number_households",125,135,"median_income",103750,99514
+"428","2468700","Rossville CDP"," Maryland","number_households",5908,5958,"median_income",60206,77437
+"429","2469200","Sabillasville CDP"," Maryland","number_households",96,123,"median_income",68796,57917
+"430","2469425","St. George Island CDP"," Maryland","number_households",112,110,"median_income",103077,NA
+"431","2469550","St. James CDP"," Maryland","number_households",1115,1347,"median_income",71021,84434
+"432","2469675","St. Leonard CDP"," Maryland","number_households",244,197,"median_income",66875,160139
+"433","2469825","St. Michaels town"," Maryland","number_households",457,679,"median_income",43523,65885
+"434","2469925","Salisbury city"," Maryland","number_households",11019,12705,"median_income",38423,44474
+"435","2470175","Sandy Hook CDP"," Maryland","number_households",53,117,"median_income",45329,39926
+"436","2470300","San Mar CDP"," Maryland","number_households",132,87,"median_income",56607,77109
+"437","2470475","Savage CDP"," Maryland","number_households",2698,2736,"median_income",87068,91453
+"438","2470530","Scaggsville CDP"," Maryland","number_households",8078,NA,"median_income",101737,NA
+"439","2470775","Seabrook CDP"," Maryland","number_households",5488,5644,"median_income",67295,84750
+"440","2470850","Seat Pleasant city"," Maryland","number_households",1786,2074,"median_income",44408,53532
+"441","2470900","Secretary town"," Maryland","number_households",247,215,"median_income",59125,46583
+"442","2471150","Severn CDP"," Maryland","number_households",14798,19491,"median_income",91378,109948
+"443","2471200","Severna Park CDP"," Maryland","number_households",13000,13354,"median_income",110341,151969
+"444","2471450","Shady Side CDP"," Maryland","number_households",2217,1946,"median_income",88731,110417
+"445","2471460","Shaft CDP"," Maryland","number_households",60,97,"median_income",26563,132782
+"446","2471600","Sharpsburg town"," Maryland","number_households",310,312,"median_income",63250,75833
+"447","2471650","Sharptown town"," Maryland","number_households",331,249,"median_income",48393,70625
+"448","2472350","Silver Hill CDP"," Maryland","number_households",2789,2426,"median_income",57031,58262
+"449","2472450","Silver Spring CDP"," Maryland","number_households",28156,32114,"median_income",67918,88274
+"450","2472887","Smith Island CDP"," Maryland","number_households",121,138,"median_income",25903,69688
+"451","2472900","Smithsburg town"," Maryland","number_households",901,969,"median_income",69968,88625
+"452","2473075","Snow Hill town"," Maryland","number_households",960,895,"median_income",40313,46750
+"453","2473325","Solomons CDP"," Maryland","number_households",1040,1044,"median_income",72321,97727
+"454","2473350","Somerset town"," Maryland","number_households",442,349,"median_income",243125,250001
+"455","2473600","South Kensington CDP"," Maryland","number_households",2973,2904,"median_income",131802,177946
+"456","2473650","South Laurel CDP"," Maryland","number_households",9455,9888,"median_income",65986,77741
+"457","2474050","Spencerville CDP"," Maryland","number_households",524,476,"median_income",112404,104333
+"458","2474282","Springdale CDP"," Maryland","number_households",759,1455,"median_income",106289,119530
+"459","2474350","Spring Gap CDP"," Maryland","number_households",0,19,"median_income",NA,NA
+"460","2474560","Spring Ridge CDP"," Maryland","number_households",2068,2059,"median_income",94871,106078
+"461","2475025","Stevensville CDP"," Maryland","number_households",2392,3144,"median_income",86932,104440
+"462","2475200","Stockton CDP"," Maryland","number_households",24,27,"median_income",49265,NA
+"463","2475650","Sudlersville town"," Maryland","number_households",133,200,"median_income",52054,40000
+"464","2475725","Suitland CDP"," Maryland","number_households",10247,9916,"median_income",52576,62617
+"465","2475810","Summerfield CDP"," Maryland","number_households",4155,5451,"median_income",65025,84276
+"466","2476450","Swanton CDP"," Maryland","number_households",0,0,"median_income",NA,NA
+"467","2476550","Sykesville town"," Maryland","number_households",1671,1317,"median_income",89896,110335
+"468","2476650","Takoma Park city"," Maryland","number_households",6862,6619,"median_income",66660,83919
+"469","2476675","Tall Timbers CDP"," Maryland","number_households",141,219,"median_income",122768,NA
+"470","2476725","Taneytown city"," Maryland","number_households",2545,2639,"median_income",65869,67689
+"471","2476925","Taylors Island CDP"," Maryland","number_households",109,46,"median_income",71583,NA
+"472","2477100","Temple Hills CDP"," Maryland","number_households",3200,3158,"median_income",54571,68418
+"473","2477200","Templeville town"," Maryland","number_households",32,49,"median_income",56250,NA
+"474","2477825","Thurmont town"," Maryland","number_households",2229,2590,"median_income",71422,83654
+"475","2477912","Tilghman Island CDP"," Maryland","number_households",298,365,"median_income",61786,53792
+"476","2477925","Tilghmanton CDP"," Maryland","number_households",171,141,"median_income",97644,NA
+"477","2478050","Timonium CDP"," Maryland","number_households",4376,3954,"median_income",74698,106513
+"478","2478120","Tolchester CDP"," Maryland","number_households",232,183,"median_income",58548,126938
+"479","2478425","Towson CDP"," Maryland","number_households",20736,21013,"median_income",72949,90951
+"480","2478575","Trappe town"," Maryland","number_households",473,521,"median_income",50469,63819
+"481","2478650","Travilah CDP"," Maryland","number_households",3793,3635,"median_income",200346,235469
+"482","2478705","Trego-Rohrersville Station CDP"," Maryland","number_households",74,33,"median_income",51568,NA
+"483","2479225","Tyaskin CDP"," Maryland","number_households",105,69,"median_income",96020,NA
+"484","2479350","Union Bridge town"," Maryland","number_households",346,439,"median_income",43500,53750
+"485","2479675","University Park town"," Maryland","number_households",996,957,"median_income",129625,154896
+"486","2479875","Upper Marlboro town"," Maryland","number_households",299,276,"median_income",78750,92500
+"487","2479900","Urbana CDP"," Maryland","number_households",2295,3693,"median_income",126360,152314
+"488","2480075","Vale Summit CDP"," Maryland","number_households",62,65,"median_income",32188,121106
+"489","2480600","Vienna town"," Maryland","number_households",117,143,"median_income",53365,74063
+"490","2481175","Waldorf CDP"," Maryland","number_households",23498,28360,"median_income",82326,101733
+"491","2481250","Walker Mill CDP"," Maryland","number_households",4488,4171,"median_income",60184,66713
+"492","2481275","Walkersville town"," Maryland","number_households",1987,2468,"median_income",82891,107781
+"493","2481675","Washington Grove town"," Maryland","number_households",180,283,"median_income",115714,127917
+"494","2481925","Waterview CDP"," Maryland","number_households",32,10,"median_income",48864,NA
+"495","2482625","West Denton CDP"," Maryland","number_households",45,8,"median_income",23750,NA
+"496","2482750","Westernport town"," Maryland","number_households",838,695,"median_income",34397,45078
+"497","2483025","West Laurel CDP"," Maryland","number_households",1402,1412,"median_income",116359,140357
+"498","2483100","Westminster city"," Maryland","number_households",6678,7321,"median_income",48117,64399
+"499","2483225","West Ocean City CDP"," Maryland","number_households",1816,1966,"median_income",69643,90426
+"500","2483290","Westphalia CDP"," Maryland","number_households",2306,3309,"median_income",81339,134421
+"501","2483337","West Pocomoke CDP"," Maryland","number_households",209,227,"median_income",37450,NA
+"502","2483746","Whaleyville CDP"," Maryland","number_households",65,24,"median_income",72981,NA
+"503","2483775","Wheaton CDP"," Maryland","number_households",14214,15864,"median_income",69008,88241
+"504","2484225","Whitehaven CDP"," Maryland","number_households",53,75,"median_income",24375,NA
+"505","2484350","White Marsh CDP"," Maryland","number_households",3738,3658,"median_income",83119,96809
+"506","2484375","White Oak CDP"," Maryland","number_households",6485,5551,"median_income",61032,68559
+"507","2484950","Willards town"," Maryland","number_households",372,407,"median_income",44762,47461
+"508","2485100","Williamsport town"," Maryland","number_households",1047,869,"median_income",41189,49583
+"509","2485175","Williston CDP"," Maryland","number_households",102,68,"median_income",69844,160192
+"510","2485395","Wilson-Conococheague CDP"," Maryland","number_households",811,875,"median_income",51066,42486
+"511","2486275","Woodland CDP"," Maryland","number_households",32,24,"median_income",65000,28929
+"512","2486475","Woodlawn CDP (Baltimore County)"," Maryland","number_households",14697,14753,"median_income",61086,70087
+"513","2486525","Woodlawn CDP (Prince George's County)"," Maryland","number_households",2135,1875,"median_income",61090,77073
+"514","2486710","Woodmore CDP"," Maryland","number_households",1307,1642,"median_income",156847,168245
+"515","2486750","Woodsboro town"," Maryland","number_households",394,416,"median_income",66750,102500
+"516","2487000","Worton CDP"," Maryland","number_households",64,57,"median_income",56429,87596
+"517","2487150","Yarrowsburg CDP"," Maryland","number_households",29,79,"median_income",87868,NA
+"518","2487275","Zihlman CDP"," Maryland","number_households",161,157,"median_income",43359,44766
+"519","2400200","Abingdon CDP"," Maryland","number_households",NA,1801,"median_income",NA,128478
+"520","2406662","Bensville CDP"," Maryland","number_households",NA,4441,"median_income",NA,140060
+"521","2410737","Brown Station CDP"," Maryland","number_households",NA,1228,"median_income",NA,126250
+"522","2411550","Burnt Mills CDP"," Maryland","number_households",NA,1131,"median_income",NA,103207
+"523","2412175","Callaway CDP"," Maryland","number_households",NA,566,"median_income",NA,62262
+"524","2414550","Cedar Heights CDP"," Maryland","number_households",NA,611,"median_income",NA,83194
+"525","2416025","Chesapeake Landing CDP"," Maryland","number_households",NA,57,"median_income",NA,NA
+"526","2421150","Crumpton CDP"," Maryland","number_households",NA,164,"median_income",NA,65833
+"527","2424050","Dunkirk CDP"," Maryland","number_households",NA,715,"median_income",NA,135750
+"528","2428512","Flower Hill CDP"," Maryland","number_households",NA,4505,"median_income",NA,87017
+"529","2434350","Graceham CDP"," Maryland","number_households",NA,100,"median_income",NA,107321
+"530","2435412","Green Valley CDP"," Maryland","number_households",NA,3974,"median_income",NA,145158
+"531","2440200","Honeygo CDP"," Maryland","number_households",NA,4035,"median_income",NA,117209
+"532","2441025","Huntingtown CDP"," Maryland","number_households",NA,896,"median_income",NA,160000
+"533","2446650","Lewistown CDP"," Maryland","number_households",NA,179,"median_income",NA,96250
+"534","2447250","Lisbon CDP"," Maryland","number_households",NA,19,"median_income",NA,NA
+"535","2451125","Maryland Park CDP"," Maryland","number_households",NA,215,"median_income",NA,93692
+"536","2451940","Melwood CDP"," Maryland","number_households",NA,1588,"median_income",NA,81944
+"537","2464568","Queensland CDP"," Maryland","number_households",NA,623,"median_income",NA,143906
+"538","2468265","Romancoke CDP"," Maryland","number_households",NA,702,"median_income",NA,94423
+"539","2470525","Scaggsville CDP"," Maryland","number_households",NA,3072,"median_income",NA,163462
+"540","2475150","Still Pond CDP"," Maryland","number_households",NA,35,"median_income",NA,NA
+"541","2477262","Ten Mile Creek CDP"," Maryland","number_households",NA,194,"median_income",NA,147232
+"542","2484784","Wildewood CDP"," Maryland","number_households",NA,2658,"median_income",NA,111333

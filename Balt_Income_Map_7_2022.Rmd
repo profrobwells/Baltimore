@@ -429,19 +429,20 @@ baltcity_race2 <- janitor::clean_names(baltcity_race2)
  baltcity_race3 <- baltcity_race2 %>% 
   pivot_wider(names_from = "variable", values_from = c(x2010, x2020))
 
-baltcity_race <- baltcity_race3 %>% 
-  mutate(Pct_White_2020 = (x2020_white/x2020_total)) %>% 
-  mutate(Pct_White_2010 = (x2010_white/x2010_total)) %>% 
-  mutate(White_Pct_Diff_2020 = (Pct_White_2020-Pct_White_2010)) %>% 
-  as.data.frame()
+baltcity_race <- baltcity_race3 %>%
+   mutate(Pct_White_2020 = (x2020_white/x2020_total)) %>%
+   mutate(Pct_White_2010 = (x2010_white/x2010_total)) %>%
+   mutate(White_Pct_Diff_2020 = (Pct_White_2020-Pct_White_2010)) %>%
+   as.data.frame()
 
 library(formattable)
 
-baltcity_race$Pct_White_2010 <- formattable::percent(baltcity_race$Pct_White_2010)
-baltcity_race$Pct_White_2020 <- formattable::percent(baltcity_race$Pct_White_2020)
-baltcity_race$White_Pct_Diff_2020 <- formattable::percent(baltcity_race$White_Pct_Diff_2020)
+ baltcity_race$Pct_White_2010 <- formattable::percent(baltcity_race$Pct_White_2010)
+ baltcity_race$Pct_White_2020 <- formattable::percent(baltcity_race$Pct_White_2020)
+ baltcity_race$White_Pct_Diff_2020 <- formattable::percent(baltcity_race$White_Pct_Diff_2020)
 
-write.csv(baltcity_race, "/Volumes/GoogleDrive/My Drive/Baltimore Class/baltcity_race.csv")
+#special output for the class
+#write.csv(baltcity_race3, "DataOutput/baltcity_race_7_21.csv")
 
 ```
 

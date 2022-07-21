@@ -1,7 +1,7 @@
 ---
 title: "Baltimore Income Map"
 author: "Rob Wells"
-date: "7/6/2022"
+date: "7/21/2022"
 output: html_document
 editor_options: 
   markdown: 
@@ -159,8 +159,8 @@ baltcity_income <- baltcity_income %>%
   rename(Neighborhood = CSA2010,
   Census = NAME10)
 
-write_rds(baltcity_income, "baltcity_income.rds")
-write.csv(baltcity_income, "baltcity_income.csv")
+#write_rds(baltcity_income, "baltcity_income.rds")
+#write.csv(baltcity_income, "baltcity_income.csv")
 #Census Tracts 1801, 1802 have no data for 2020, but have data for 2010, 2016
 
 ```
@@ -222,85 +222,41 @@ x %>%
   kbl() %>% 
     kable_paper(full_width = F) %>%
   column_spec(1, bold = T, border_right = T) %>%
-  column_spec(4, width = "10em", background = "yellow") %>%     save_kable("/Volumes/GoogleDrive/My Drive/Baltimore Class/DataOutput/Census.pdf", density =1000)
-```
-
-
-
-```{r}
-#race by tract
-#join with map - white /nonwhite for tooltip
-#how white / nonwhite changed during the decade by tract
-
-#2020: B02001_001 Estimate!!Total RACE
-race2020 <- get_acs(geography = "tract", 
-              variables = c(total = "B02001_001", white = "B02001_002", black = "B02001_003", hispanic = "B03001_003"), 
-               state = "MD", 
-               year = 2020) %>% 
-  mutate(year=("2020"))
-
-race2010 <- get_acs(geography = "tract", 
-              variables = c(total = "B02001_001", white = "B02001_002", black = "B02001_003", hispanic = "B03001_003"), 
-               state = "MD", 
-               year = 2010) %>% 
-  mutate(year=("2010"))
-```
-
-```{r}
-md_race_all <- rbind(race2010, race2020)
-
-md_race_all <- separate(data = md_race_all, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right")
-
-#write.csv(md_income_all, "md_income_all.csv")
-
-#Subset Baltimore city-county, city files
-balt_race <- filter(md_race_all, grepl ("Baltimore", County))
-#write.csv(balt_income_all, "balt_income_all.csv")
-
-#Baltimore city median income, 2010, 2016, 2020
-
-baltcity_race <- filter(balt_race, grepl ("Baltimore city", County)) 
-
-```
-
-```{r}
-#reshape baltcity_income table
-
- baltcity_race2 <- baltcity_race %>% 
-   dplyr::select(-moe, -State) %>% 
-  pivot_wider(names_from = "year", values_from = "estimate")
-
-baltcity_race2 <- janitor::clean_names(baltcity_race2)
-
- baltcity_race3 <- baltcity_race2 %>% 
-  pivot_wider(names_from = "variable", values_from = c(x2010, x2020))
-
-baltcity_race <- baltcity_race3 %>% 
-  mutate(Pct_White_2020 = (x2020_white/x2020_total)) %>% 
-  mutate(Pct_White_2010 = (x2010_white/x2010_total)) %>% 
-  mutate(White_Pct_Diff_2020 = (Pct_White_2020-Pct_White_2010)) %>% 
-  as.data.frame()
-
-library(formattable)
-
-baltcity_race$Pct_White_2010 <- formattable::percent(baltcity_race$Pct_White_2010)
-baltcity_race$Pct_White_2020 <- formattable::percent(baltcity_race$Pct_White_2020)
-baltcity_race$White_Pct_Diff_2020 <- formattable::percent(baltcity_race$White_Pct_Diff_2020)
-
-write.csv(baltcity_race, "/Volumes/GoogleDrive/My Drive/Baltimore Class/baltcity_race.csv")
-
+  column_spec(4, width = "10em", background = "yellow") %>%     save_kable("/DataOutput/Census.pdf", density =1000)
 ```
 
 
 ```{r}
-#Revising data for the Fall class assignment
-baltcity_income_clean <- baltcity_income %>% 
+#Bottom Census tracts
+#For Baltimore Data Day presentation
+#Census tracts: generally 1,200 and 8,000 people, optimum size of 4,000
+min <- baltcity_income %>% 
   as.data.frame() %>% 
-  select(Neighborhood, x2010, x2016, x2020, Census, GEOID) %>% 
-  arrange(Census)
-write_csv(baltcity_income_clean, "baltcity_income_clean.csv")
+  select(Neighborhood, x2020, x2010, Diff_2020_2010, Census) %>% 
+  slice_min(Diff_2020_2010, n=10) 
+
+min$x2010 <- formattable::currency(min$x2010, "$", format = "d")
+min$x2020 <- formattable::currency(min$x2020, "$", format = "d")
+min$Diff_2020_2010 <- formattable::currency(min$Diff_2020_2010, "$", format = "d")
 ```
 
+```{r}
+library(knitr)
+library(kableExtra)
+# install.packages("knitr")
+# install.packages("kableExtra")
+#install.packages("magick")
+#library(magick)    
+min %>% 
+  kbl() %>% 
+    kable_paper(full_width = F) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(4, width = "10em", background = "yellow") %>%     save_kable("DataOutput/Min_Census.png")
+```
+
+
+
+# Statewide median income by place
 
 ```{r}
 #2020-2010 Median Income By Maryland City ACS
@@ -423,13 +379,83 @@ ggsave("top_md_city_summary.png",device = "png",width=9,height=6, dpi=800)
 ```
 
 
-###stopped July 19
+# Work in Progress Below
 
-###stopped July 19
+```{r}
+#race by tract
+#join with map - white /nonwhite for tooltip
+#how white / nonwhite changed during the decade by tract
 
-###stopped July 19
+#2020: B02001_001 Estimate!!Total RACE
+race2020 <- get_acs(geography = "tract", 
+              variables = c(total = "B02001_001", white = "B02001_002", black = "B02001_003", hispanic = "B03001_003"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
 
-next: link balt city race to the map and add tooltip
+race2010 <- get_acs(geography = "tract", 
+              variables = c(total = "B02001_001", white = "B02001_002", black = "B02001_003", hispanic = "B03001_003"), 
+               state = "MD", 
+               year = 2010) %>% 
+  mutate(year=("2010"))
+```
+
+```{r}
+md_race_all <- rbind(race2010, race2020)
+
+md_race_all <- separate(data = md_race_all, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right")
+
+#write.csv(md_income_all, "md_income_all.csv")
+
+#Subset Baltimore city-county, city files
+balt_race <- filter(md_race_all, grepl ("Baltimore", County))
+#write.csv(balt_income_all, "balt_income_all.csv")
+
+#Baltimore city median income, 2010, 2016, 2020
+
+baltcity_race <- filter(balt_race, grepl ("Baltimore city", County)) 
+
+```
+
+```{r}
+#reshape baltcity_income table
+
+ baltcity_race2 <- baltcity_race %>% 
+   dplyr::select(-moe, -State) %>% 
+  pivot_wider(names_from = "year", values_from = "estimate")
+
+baltcity_race2 <- janitor::clean_names(baltcity_race2)
+
+ baltcity_race3 <- baltcity_race2 %>% 
+  pivot_wider(names_from = "variable", values_from = c(x2010, x2020))
+
+baltcity_race <- baltcity_race3 %>% 
+  mutate(Pct_White_2020 = (x2020_white/x2020_total)) %>% 
+  mutate(Pct_White_2010 = (x2010_white/x2010_total)) %>% 
+  mutate(White_Pct_Diff_2020 = (Pct_White_2020-Pct_White_2010)) %>% 
+  as.data.frame()
+
+library(formattable)
+
+baltcity_race$Pct_White_2010 <- formattable::percent(baltcity_race$Pct_White_2010)
+baltcity_race$Pct_White_2020 <- formattable::percent(baltcity_race$Pct_White_2020)
+baltcity_race$White_Pct_Diff_2020 <- formattable::percent(baltcity_race$White_Pct_Diff_2020)
+
+write.csv(baltcity_race, "/Volumes/GoogleDrive/My Drive/Baltimore Class/baltcity_race.csv")
+
+```
+
+
+```{r}
+#Revising data for the Fall class assignment
+baltcity_income_clean <- baltcity_income %>% 
+  as.data.frame() %>% 
+  select(Neighborhood, x2010, x2016, x2020, Census, GEOID) %>% 
+  arrange(Census)
+write_csv(baltcity_income_clean, "baltcity_income_clean.csv")
+```
+
+# Redlining Maps
 
 ```{r}
 #Overlay with HOLC redlining maps

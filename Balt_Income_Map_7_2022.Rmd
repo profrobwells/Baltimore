@@ -3,11 +3,14 @@ title: "Baltimore Income Map"
 author: "Rob Wells"
 date: "7/6/2022"
 output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-Median Income Maps By Census Tract in Baltimore
-Source: Kyle Walker's tidycensus tutorial, Rachel Logan's leaflet map code for the Howard Center
-
+Median Income Maps By Census Tract in Baltimore Source: Kyle Walker's
+tidycensus tutorial, Rachel Logan's leaflet map code for the Howard
+Center
 
 ```{r message=FALSE, warning=FALSE}
 #remotes::install_github("walkerke/tidycensus")
@@ -20,16 +23,19 @@ library(formattable)
 library(htmlwidgets)
 library(leaflet)
 library(sf)
+library(formattable)
 ```
 
-Census API key. 
+Census API key.
+
 ```{r message=FALSE}
 census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE)
 ```
 
-There are two major functions implemented in tidycensus: 
-get_decennial, which grants access to the 1990, 2000, and 2010 decennial US Census APIs
-get_acs, which grants access to the 5-year American Community Survey APIs. 
+There are two major functions implemented in tidycensus: get_decennial,
+which grants access to the 1990, 2000, and 2010 decennial US Census APIs
+get_acs, which grants access to the 5-year American Community Survey
+APIs.
 
 ```{r}
 #Calls variables for the 2020 decennial census
@@ -38,14 +44,13 @@ v20_dec <- load_variables(2020, "pl", cache = TRUE)
 v20_acs <- load_variables(2020, "acs5", cache = TRUE)
 ```
 
-
-# Census Tract Median Income Using ACS 
-
+# Census Tract Median Income Using ACS
 
 ## Question: The 2010 and 2016 Maryland files each have 2812 rows, but the 2020 state file has 2950 rows. Why?
 
 ```{r}
 #2020 Median Income By Census Tract ACS
+#2016-2020
 #B19001 COUNTS THE NUMBER OF HOUSEHOLDS
 #B19013_001 is the household median income
 md_income2020 <- get_acs(geography = "tract", 
@@ -56,11 +61,12 @@ md_income2020 <- get_acs(geography = "tract",
 
  
 md_income2020
+#B19013 defined: https://www.socialexplorer.com/data/ACS2010_5yr/metadata/?ds=ACS10_5yr&var=B19013001
 ```
 
 ```{r}
 #2016 Median Income By Census Tract ACS
-
+#2016-2012
 md_income2016 <- get_acs(geography = "tract", 
               variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
                state = "MD", 
@@ -72,6 +78,7 @@ md_income2016
 
 ```{r}
 #2010 Median Income By Census Tract 2010
+#2006-2010 sample
 md_income2010 <- get_acs(geography = "tract", 
               variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
                state = "MD", 
@@ -82,6 +89,7 @@ md_income2010
 ```
 
 ## Create Baltimore city-county, city files
+
 ```{r}
 #Bind together 2010, 2016, 2020 files
 
@@ -102,7 +110,6 @@ baltcity_income <- filter(balt_income_all, grepl ("Baltimore city", County)) %>%
 
 ```
 
-
 ```{r}
 #reshape baltcity_income table
 
@@ -116,10 +123,9 @@ baltcity_income <- baltcity_income %>%
   mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
   mutate(Diff_2020_2016 = (x2020-x2016))
 
-write.csv(baltcity_income, "baltcity_income.csv")
-write_rds(baltcity_income, "baltcity_income.rds")
+# write.csv(baltcity_income, "baltcity_income.csv")
+# write_rds(baltcity_income, "baltcity_income.rds")
 ```
-
 
 # Map Median Income by Census Tract
 
@@ -139,6 +145,7 @@ baltcity_income <- md_income2020_geo  %>%
 
 #join Community Statistical Area names
 #associates neighborhood names to Census Tracts using Community Statistical Areas, 2010 https://bniajfi.org/mapping-resources/
+#Baltimore has 56 neighborhoods as measured by Community Statistical Areas
 csa <- rio::import("https://raw.githubusercontent.com/profrobwells/Baltimore/main/CTA_CSA_2010.csv")
 
 csa$GEOID10 <- as.character(csa$GEOID10)
@@ -147,15 +154,20 @@ baltcity_income <- baltcity_income  %>%
  right_join(csa, by=c("GEOID"="GEOID10")) %>% 
   distinct()
 
-write_rds(baltcity_income, "baltcity_income.rds")
+#Rename Columns
+baltcity_income <- baltcity_income %>% 
+  rename(Neighborhood = CSA2010,
+  Census = NAME10)
 
+write_rds(baltcity_income, "baltcity_income.rds")
+write.csv(baltcity_income, "baltcity_income.csv")
 #Census Tracts 1801, 1802 have no data for 2020, but have data for 2010, 2016
 
 ```
-# Leaflet Map - income
+
 
 ```{r}
-
+#Map by Median Income Difference
 baltcity_income <- baltcity_income %>% 
   sf::st_transform('+proj=longlat +datum=WGS84')
 
@@ -172,7 +184,7 @@ leafMap <- leaflet() %>%
               weight = 2.5,
               smoothFactor = 0.2,
               fillOpacity = 0.5,
-              label = paste("Change is:",(scales::dollar(baltcity_income$Diff_2020_2010)), "for",baltcity_income$CSA2010)) %>% 
+              label = paste("Change is:",(scales::dollar(baltcity_income$Diff_2020_2010)), "for",baltcity_income$Neighborhood)) %>% 
   addLegend(
     position = "bottomright",
     pal = pal,
@@ -180,8 +192,260 @@ leafMap <- leaflet() %>%
     title = "Median Income Change<br>Per Census Tract <br> 2010 to 2020"
   )
 
-saveWidget(leafMap, "leafMap.html")
+#saveWidget(leafMap, "leafMap.html")
 leafMap
+```
+
+```{r}
+#Top / bottom Census tracts
+#For Baltimore Data Day presentation
+#Census tracts: generally 1,200 and 8,000 people, optimum size of 4,000
+x <- baltcity_income %>% 
+  as.data.frame() %>% 
+  select(Neighborhood, x2020, x2010, Diff_2020_2010, Census) %>% 
+  top_n(10, Diff_2020_2010) %>%
+  arrange(desc(Diff_2020_2010))
+
+x$x2010 <- formattable::currency(x$x2010, "$", format = "d")
+x$x2020 <- formattable::currency(x$x2020, "$", format = "d")
+x$Diff_2020_2010 <- formattable::currency(x$Diff_2020_2010, "$", format = "d")
+```
+
+```{r}
+library(knitr)
+library(kableExtra)
+# install.packages("knitr")
+# install.packages("kableExtra")
+#install.packages("magick")
+#library(magick)    
+x %>% 
+  kbl() %>% 
+    kable_paper(full_width = F) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(4, width = "10em", background = "yellow") %>%     save_kable("/Volumes/GoogleDrive/My Drive/Baltimore Class/DataOutput/Census.pdf", density =1000)
+```
+
+
+
+```{r}
+#race by tract
+#join with map - white /nonwhite for tooltip
+#how white / nonwhite changed during the decade by tract
+
+#2020: B02001_001 Estimate!!Total RACE
+race2020 <- get_acs(geography = "tract", 
+              variables = c(total = "B02001_001", white = "B02001_002", black = "B02001_003", hispanic = "B03001_003"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+
+race2010 <- get_acs(geography = "tract", 
+              variables = c(total = "B02001_001", white = "B02001_002", black = "B02001_003", hispanic = "B03001_003"), 
+               state = "MD", 
+               year = 2010) %>% 
+  mutate(year=("2010"))
+```
+
+```{r}
+md_race_all <- rbind(race2010, race2020)
+
+md_race_all <- separate(data = md_race_all, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right")
+
+#write.csv(md_income_all, "md_income_all.csv")
+
+#Subset Baltimore city-county, city files
+balt_race <- filter(md_race_all, grepl ("Baltimore", County))
+#write.csv(balt_income_all, "balt_income_all.csv")
+
+#Baltimore city median income, 2010, 2016, 2020
+
+baltcity_race <- filter(balt_race, grepl ("Baltimore city", County)) 
+
+```
+
+```{r}
+#reshape baltcity_income table
+
+ baltcity_race2 <- baltcity_race %>% 
+   dplyr::select(-moe, -State) %>% 
+  pivot_wider(names_from = "year", values_from = "estimate")
+
+baltcity_race2 <- janitor::clean_names(baltcity_race2)
+
+ baltcity_race3 <- baltcity_race2 %>% 
+  pivot_wider(names_from = "variable", values_from = c(x2010, x2020))
+
+baltcity_race <- baltcity_race3 %>% 
+  mutate(Pct_White_2020 = (x2020_white/x2020_total)) %>% 
+  mutate(Pct_White_2010 = (x2010_white/x2010_total)) %>% 
+  mutate(White_Pct_Diff_2020 = (Pct_White_2020-Pct_White_2010)) %>% 
+  as.data.frame()
+
+library(formattable)
+
+baltcity_race$Pct_White_2010 <- formattable::percent(baltcity_race$Pct_White_2010)
+baltcity_race$Pct_White_2020 <- formattable::percent(baltcity_race$Pct_White_2020)
+baltcity_race$White_Pct_Diff_2020 <- formattable::percent(baltcity_race$White_Pct_Diff_2020)
+
+write.csv(baltcity_race, "/Volumes/GoogleDrive/My Drive/Baltimore Class/baltcity_race.csv")
+
+```
+
+
+```{r}
+#Revising data for the Fall class assignment
+baltcity_income_clean <- baltcity_income %>% 
+  as.data.frame() %>% 
+  select(Neighborhood, x2010, x2016, x2020, Census, GEOID) %>% 
+  arrange(Census)
+write_csv(baltcity_income_clean, "baltcity_income_clean.csv")
+```
+
+
+```{r}
+#2020-2010 Median Income By Maryland City ACS
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+#B19013_001 is the household median income
+city_md_income2020 <- get_acs(geography = "place", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+
+ 
+city_md_income2020
+#B19013 defined: https://www.socialexplorer.com/data/ACS2010_5yr/metadata/?ds=ACS10_5yr&var=B19013001
+
+city_md_income2020 <- separate(data = city_md_income2020, col = NAME, into = c("Place", "State"), sep = ",", extra = "merge", fill = "right")
+
+#2010
+city_md_income2010 <- get_acs(geography = "place", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2010) %>% 
+  mutate(year=("2010"))
+
+city_md_income2010 <- separate(data = city_md_income2010, col = NAME, into = c("Place", "State"), sep = ",", extra = "merge", fill = "right")
+#combine
+city_md_income <- rbind(city_md_income2010, city_md_income2020)
+#reshape, pivot
+city_md_income <- city_md_income %>% 
+  select(-moe) %>% 
+  pivot_wider(names_from = "year", values_from = "estimate")
+
+number <- city_md_income %>%
+    filter(variable =="number_households")
+
+median <- city_md_income %>%
+    filter(variable =="median_income")
+
+Xcity_md_income <- number %>% 
+  inner_join(median, by=c("GEOID", "Place", "State")) %>%  
+  janitor::clean_names() 
+
+city_md_income <- Xcity_md_income %>%
+    rename(households = variable_x, household_2010 = x2010_x, household_2020 = x2020_x, median_income = variable_y, median_inc_2010 = x2010_y, median_inc_2020 = x2020_y)
+
+write.csv(city_md_income, "city_md_income.csv")
+```
+
+
+
+```{r}
+#Analyze Md cities median income
+
+
+y <- city_md_income %>% 
+  mutate(Diff_Income = (median_inc_2020-median_inc_2010)) %>% 
+  mutate(Pct_Income_Chg = (median_inc_2020-median_inc_2010)/median_inc_2010) %>% 
+  mutate(Diff_Pop = (household_2020-household_2010)) %>% 
+  mutate(Pct_Pop = (household_2020-household_2010)/household_2010) %>% 
+  filter(household_2020 > 3512) %>% 
+  select(place, Diff_Income, Pct_Income_Chg, median_inc_2010, median_inc_2020) %>% 
+  arrange(desc(Pct_Income_Chg))
+
+y$Diff_Income <- formattable::currency(y$Diff_Income, "$", format = "d")
+y$median_inc_2010 <- formattable::currency(y$median_inc_2010, "$", format = "d")
+y$median_inc_2020 <- formattable::currency(y$median_inc_2020, "$", format = "d")
+y$Pct_Income_Chg <- formattable::percent(y$Pct_Income_Chg, 1)
+
+md_city_summary <- y
+
+#Clean names
+md_city_summary$place <- gsub("CDP", "", md_city_summary$place)
+md_city_summary$place <- gsub("city", "", md_city_summary$place)
+md_city_summary$place <- gsub("town", "", md_city_summary$place)
+
+
+write.csv(md_city_summary, "md_city_summary.csv")
+
+```
+
+```{r}
+#Chart of cities
+ggplot(md_city_summary,aes(x = reorder(place, -Pct_Income_Chg), y = Pct_Income_Chg,
+             fill = Pct_Income_Chg)) +
+  geom_col(position = "dodge") + 
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=3))+
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Gain in Median Household Income in Maryland",
+       subtitle = "2010 -> 2020 Census for Largest Cities, Towns",
+       caption = "Graphic by Rob Wells, 7-19-2022",
+       y="Pct Change 2010 vs 2020",
+       x="Place")
+
+ggsave("md_city_summary.png",device = "png",width=9,height=6, dpi=800)
+
+
+```
+
+```{r}
+#Chart of cities, shortened
+
+md_city_summary %>% 
+  top_n(25, Pct_Income_Chg) %>% 
+ggplot(aes(x = reorder(place, -Pct_Income_Chg), y = Pct_Income_Chg,
+             fill = Pct_Income_Chg)) +
+  geom_col(position = "dodge") + 
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=10))+
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Gain in Median Household Income in Maryland",
+       subtitle = "2010 -> 2020 Census for Largest Cities, Towns",
+       caption = "Graphic by Rob Wells, 7-19-2022",
+       y="Pct Change 2010 vs 2020",
+       x="Place")
+
+ggsave("top_md_city_summary.png",device = "png",width=9,height=6, dpi=800)
+
+
+```
+
+
+###stopped July 19
+
+###stopped July 19
+
+###stopped July 19
+
+next: link balt city race to the map and add tooltip
+
+```{r}
+#Overlay with HOLC redlining maps
+#https://s3.amazonaws.com/holc/tiles/MD/Baltimore/1937/holc-scan.jpg
+#install.packages("rjson")
+library("rjson")
+holc <- fromJSON(file="/Volumes/GoogleDrive/My Drive/Baltimore Class/Tracts_2020_HOLC/Tracts_2020_HOLC.geojson")
+
+#install.packages("rgdal")
+library(rgdal)
+library(raster)
+holc1 <- shapefile("/Volumes/GoogleDrive/My Drive/Baltimore Class/Tracts_2020_HOLC/Tracts_2020_HOLC.shp")
+
+holc2 <- holc1@data %>% 
+  filter(MAX_city=="Baltimore")
+
 ```
 
 ```{r}
@@ -206,4 +470,3 @@ leafMap
 #Get more details on how to format popups
 
 ```
-

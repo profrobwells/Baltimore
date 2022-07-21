@@ -1,0 +1,672 @@
+---
+title: "Baltimore_leaflet_analysis"
+author: "Rob Wells adapting code by Rachel Logan"
+date: "5/29/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Intro
+This is an attempt to adapt Rachel's notebook for my Baltimore class.
+
+Script pulled from https://github.com/Howard-Center-Investigations/fixed_lottery_files/blob/41d57a4df05f94aae19a3dc80f5aac19ec21d668/etl/geospatial_new/08_knit_to_leaflet_maps/leaflet_analysis%202.Rmd
+
+
+
+Rachel Note
+This markdown file maps census variables across census tracts in each state. For now, we're looking at just total population in Pennsylvania, but this can be expanded to each state in turn by four variables: from ACS, poverty/education/income; from 2020 data, race (mapped by non-white percentage, but details on hover for each demographic breakdown).
+
+
+##Load libraries
+```{r libraries, results=FALSE}
+library(tidyverse)
+#install.packages("janitor")
+library(janitor)
+
+#install.packages("censusxy")
+#install.packages("leaflet")
+library(censusxy)
+#install.packages("leaflet")
+#remotes::install_github("walkerke/tidycensus")
+library(tidycensus)
+library(dplyr)
+#rachel's key census_api_key("549950d36c22ff16455fe196bbbd01d63cfbe6cf")
+#install.packages("htmlwidgets")
+library(htmlwidgets)
+library(leaflet)
+library(sf)
+```
+
+#Picking up from Line 187 of Balt_Income_Map_7_2022
+
+```{r}
+md <- get_acs(
+  geography = "county",
+  state = "Maryland",
+  variables = c(medinc = "B19013_001",
+                medage = "B01002_001"),
+  year = 2020,
+  output = "wide"
+)
+#Median household income for each county is represented by medincE, for the estimate, and medincM, for the margin of error. 
+#https://walker-data.com/census-r/an-introduction-to-tidycensus.html
+
+#Baltimore City Median Income: Baltimore city, Maryland $52,164
+
+```
+
+```{r}
+#Migration, 5 year
+#By default, the function allows for analysis of in-migrants, emigrants, and net migration for a given geography using data from a given 5-year ACS sample.
+baltcity_migration <- get_flows(
+  geography = "county",
+  state = "MD",
+  county = "Baltimore City",
+  year = 2019
+)
+
+#baltimore city lost a net 9,373 residents in the 2019 five year period 
+baltcity_migration %>% 
+  filter(variable=="MOVEDNET") %>% 
+  summarise(total=sum(estimate,na.rm=TRUE))
+
+#list of top 50 locales for migration into Baltimore
+baltcity_migration %>% 
+  select(FULL2_NAME, variable, estimate) %>% 
+  filter(variable=="MOVEDNET") %>% 
+  arrange(desc(estimate)) %>% 
+  slice_max(estimate,n=50)
+
+#list of top 50 locales for migration out of Baltimore
+baltcity_migration %>% 
+  select(FULL2_NAME, variable, estimate) %>% 
+  filter(variable=="MOVEDNET") %>% 
+  arrange(desc(estimate)) %>% 
+  slice_min(estimate,n=50)
+
+```
+
+
+##Getting Decennial geometries
+```{r results=FALSE}
+
+state_list <- fips_codes %>%
+            distinct(state) %>%
+            as.list()
+state_list <-state_list$state[1:51]
+
+decennial_vars <- load_variables(2020, dataset="pl")
+
+nation_geometries <- get_decennial(year=2020, geography="tract",state=state_list, variables = "P3_001N", sumfile = "pl", geometry = TRUE)
+
+clean_dec_nation_geometries <- nation_geometries %>% 
+  clean_names() %>% 
+  separate(name, into = c("tract","county","state"), sep=", ") %>% 
+  mutate(total_pop=value) %>% 
+  select(-variable,-value)
+
+write_rds(clean_dec_nation_geometries,"dec_nation_geometries.rds")
+```
+
+
+## Loading retailer information 
+``` {r results=FALSE}
+#all_retailers <- read_rds("../../../data/processed/03_join_retailers/all_geocoded_retailers.rds")
+
+#file fails - 
+all_retailers <- read_rds("https://github.com/Howard-Center-Investigations/fixed_lottery_files/blob/41d57a4df05f94aae19a3dc80f5aac19ec21d668/data/processed/03_join_retailers/.all_geocoded_retailers.rds.zip.icloud?raw=true")
+
+
+retailers_w_tracts <- all_retailers %>%
+  filter(!is.na(decennial_2020_tract_geoid))
+
+join_retailers_populations <- retailers_w_tracts  %>% 
+  mutate(GEOID = decennial_2020_tract_geoid) %>%
+  left_join(nation_geometries)
+
+## this df below has the number of retailers in a given tract w/ geometries
+retailers_in_tracts <- join_retailers_populations %>%
+  clean_names() %>% 
+  separate(name, into = c("tract","county","state"), sep=", ") %>% 
+  mutate(total_pop=value) %>%
+  group_by(geoid, tract, county, state, total_pop) %>%
+  summarize (
+    count = n()
+    ) %>%
+  rename(retailer_count = count) %>%
+  ungroup() 
+
+retailers_in_tracts <- clean_dec_nation_geometries %>%
+  inner_join(retailers_in_tracts) %>%
+  ## some tracts have no people, but a lot of retailers, and vice versa. filter helps. 
+  filter(total_pop > 100) %>%
+  mutate( 
+    retailer_concentration = (retailer_count / total_pop) * 10000)  %>%
+  ungroup()
+  
+write_rds(retailers_in_tracts,"retailers_in_tracts.rds")
+
+```
+
+##Getting ACS geometries
+```{r results=FALSE}
+acs_nation_geometries <- get_acs(geography = "tract", state=state_list, variables = "B01001_001", geometry = TRUE)
+
+clean_acs_nation_geometries <- acs_nation_geometries %>% 
+  clean_names() %>% 
+  separate(name, into = c("tract","county","state"), sep=", ")%>% 
+  mutate(total_pop=estimate) %>% 
+  select(-variable,-estimate,-moe)
+
+write_rds(clean_acs_nation_geometries,"acs_nation_geometries.rds")
+```
+
+##Preparing leaflet
+```{r}
+clean_dec_nation_geometries <- readRDS("dec_nation_geometries.rds")
+
+MD_dec_geometries <- clean_dec_nation_geometries %>% 
+  filter(state== "Maryland")
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = MD_dec_geometries$total_pop
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = MD_dec_geometries,
+              color = ~pal(total_pop),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~total_pop) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = MD_dec_geometries$total_pop,
+    title = "total pop <br>per census tract"
+  )
+```
+
+## Retailer Concentration Mapping: Maryland
+```{r}
+#clean_dec_nation_geometries <- readRDS("dec_nation_geometries.rds")
+
+dec_geometries <- retailers_in_tracts %>% 
+  filter(state== 'Maryland')
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+
+
+## Retailer Concentration Mapping: DC
+```{r}
+
+DC_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "District of Columbia")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = DC_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = DC_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = DC_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+
+```
+
+
+## Retailer Concentration Mapping: Virginia
+``` {r}
+
+VA_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Virginia")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = VA_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = VA_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = VA_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+## Retailer Concentration Mapping: Michigan
+``` {r}
+
+MI_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Michigan")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = MI_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = MI_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = MI_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+## Retailer Concentration Mapping: Connecticut
+``` {r}
+
+CT_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Connecticut")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = CT_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = CT_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = CT_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+## Retailer Concentration Mapping: South Carolina
+``` {r}
+
+SC_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "South Carolina")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = SC_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = SC_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = SC_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+## Retailer Concentration Mapping: New York
+``` {r}
+
+NY_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "New York")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = NY_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = NY_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = NY_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+## Retailer Concentration Mapping: Texas
+``` {r}
+
+TX_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Texas")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = TX_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = TX_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = TX_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+## Retailer Concentration Mapping: Louisiana
+``` {r}
+
+LA_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Louisiana")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = LA_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = LA_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = LA_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+## Retailer Concentration Mapping: Arizona
+``` {r}
+
+AZ_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Arizona")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = AZ_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = AZ_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = AZ_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+## Retailer Concentration Mapping: Kentucky
+``` {r}
+
+KY_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Kentucky")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = KY_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = KY_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = KY_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+
+``` {r}
+
+NJ_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "New Jersey")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = NJ_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = NJ_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = NJ_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+
+```
+
+``` {r}
+FL_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Florida")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = FL_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = FL_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = FL_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+
+``` {r}
+
+KY_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Kentucky")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = KY_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = KY_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = KY_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+```
+
+``` {r}
+
+GA_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Georgia")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = GA_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = GA_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = GA_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+
+```
+
+``` {r}
+
+WA_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Washington")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = WA_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = WA_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = WA_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+
+```
+
+``` {r}
+
+CA_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "California")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = CA_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = CA_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = CA_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+
+```
+
+``` {r}
+NV_dec_geometries <- retailers_in_tracts %>% 
+  filter(state== "Nevada")
+
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = CA_dec_geometries$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = CA_dec_geometries,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = CA_dec_geometries$retailer_concentration,
+    title = "retailer concentration<br>per 10,000 people"
+  )
+
+
+```

@@ -1,0 +1,337 @@
+---
+title: "join_retailers"
+author: "Aadit Tambe"
+date: "2/9/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# load libraries 
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(censusxy)
+library(dplyr)
+library(parallel)
+library(tictoc)
+library(furrr)
+library(leaflet)
+library(leaflet.extras)
+library(sf)
+
+```
+
+### Load and clean ACS 2019 geocoded retailers
+
+```{r}
+
+# batch matches
+acs_2019_batch_matches <- read_rds("../../../data/processed/02_geocode_retailers/acs_2019_batch/binded_results/acs_2019_batch_all.rds") %>%
+  filter(cxy_status == "Match") %>%
+  mutate(geocoder_type = "acs_2019_batch_match") %>%
+  mutate(geographies_census_tracts_geoid = paste0(
+    str_pad(cxy_state_id, width="2",side="left",pad="0"),
+    str_pad(cxy_county_id, width="3",side="left",pad="0"),
+    str_pad(cxy_tract_id, width="6",side="left",pad="0")
+  )) %>%
+  select(unique_id,retailer_name:retailer_zipcode,cxy_matched_address,geographies_census_tracts_geoid,cxy_lat,cxy_lon, geocoder_type)
+  
+  
+acs_2019_oneline_all <- read_rds("../../../data/processed/02_geocode_retailers/acs_2019_oneline/binded_results/acs_2019_oneline_all.rds") %>% mutate(geocoder_type = case_when(
+    !is.na(coordinates_x) ~ "acs_2019_oneline_match",
+    TRUE ~ "acs_2019_oneline_no_match")) %>%
+  mutate(cxy_matched_address = case_when(
+    is.na(cxy_matched_address) ~ matched_address,
+    TRUE ~ cxy_matched_address
+  ))  %>%
+  mutate(cxy_matched_address = case_when(
+    is.na(cxy_matched_address) ~ cxy_address,
+    TRUE ~ cxy_matched_address
+  )) %>%
+  select(unique_id,retailer_name:retailer_zipcode,cxy_matched_address,geographies_census_tracts_geoid,cxy_lat = coordinates_y,cxy_lon = coordinates_x, geocoder_type)
+
+acs_2019_all <- acs_2019_batch_matches %>%
+  bind_rows(acs_2019_oneline_all) %>%
+  mutate(across(everything(), ~str_remove_all(.,"\n|\r|\n\r"))) %>%
+  mutate(across(everything(), ~str_trim(.,side="both"))) %>%
+  mutate(count_commas_matched_address = str_count(cxy_matched_address,",")) %>%
+  mutate(cxy_matched_address = case_when(
+    count_commas_matched_address > 3 ~ str_remove(cxy_matched_address,","),
+    TRUE ~ cxy_matched_address
+  )) %>%
+  mutate(count_commas_matched_address = str_count(cxy_matched_address,",")) %>%
+  mutate(cxy_matched_address = case_when(
+    str_detect(cxy_matched_address,"3930 VOGEL RD ARNOLD, MO, MO, 63010") ~ "3930 VOGEL RD, ARNOLD, MO, 63010",
+    TRUE ~ cxy_matched_address)) %>%
+  mutate(cxy_matched_address_separate = cxy_matched_address) %>%
+  separate(cxy_matched_address_separate, c("acs_2019_street_clean", "acs_2019_city_clean", "acs_2019_state_clean", "acs_2019_zip_clean"), sep=",") %>%
+    mutate(across(everything(), ~str_trim(.,side="both"))) %>%
+  select(unique_id:retailer_zipcode, acs_2019_street_clean:acs_2019_zip_clean, acs_2019_matched_address = cxy_matched_address,acs_2019_tract_geoid = geographies_census_tracts_geoid, acs_2019_latitude = cxy_lat, acs_2019_longitude = cxy_lon, acs_2019_latitude = cxy_lat, acs_2019_geocoder_type = geocoder_type) 
+
+rm(acs_2019_batch_matches, acs_2019_oneline_all)
+
+```
+
+### Load and clean decennial 2020
+
+```{r}
+
+# batch matches
+decennial_2020_batch_matches <- read_rds("../../../data/processed/02_geocode_retailers/decennial_2020_batch/binded_results/decennial_2020_batch_all.rds") %>%
+  filter(cxy_status == "Match") %>%
+  mutate(geocoder_type = "decennial_2020_batch_match") %>%
+  mutate(geographies_census_tracts_geoid = paste0(
+    str_pad(cxy_state_id, width="2",side="left",pad="0"),
+    str_pad(cxy_county_id, width="3",side="left",pad="0"),
+    str_pad(cxy_tract_id, width="6",side="left",pad="0")
+  )) %>%
+  select(unique_id,retailer_name:retailer_zipcode,cxy_matched_address,geographies_census_tracts_geoid,cxy_lat,cxy_lon, geocoder_type)
+  
+  
+decennial_2020_oneline_all <- read_rds("../../../data/processed/02_geocode_retailers/decennial_2020_oneline/binded_results/decennial_2020_oneline_all.rds") %>% mutate(geocoder_type = case_when(
+    !is.na(coordinates_x) ~ "decennial_2020_oneline_match",
+    TRUE ~ "decennial_2020_oneline_no_match")) %>%
+  mutate()  %>%
+  mutate(cxy_matched_address = case_when(
+    is.na(cxy_matched_address) ~ matched_address,
+    TRUE ~ cxy_matched_address
+  ))  %>%
+  mutate(cxy_matched_address = case_when(
+    is.na(cxy_matched_address) ~ cxy_address,
+    TRUE ~ cxy_matched_address
+  )) %>%
+  select(unique_id,retailer_name:retailer_zipcode,cxy_matched_address,geographies_census_tracts_geoid,cxy_lat = coordinates_y,cxy_lon = coordinates_x, geocoder_type)
+
+
+decennial_2020_all <- decennial_2020_batch_matches %>%
+  bind_rows(decennial_2020_oneline_all) %>%
+  mutate(across(everything(), ~str_remove_all(.,"\n|\r|\n\r"))) %>%
+  mutate(across(everything(), ~str_trim(.,side="both"))) %>%
+  mutate(count_commas_matched_address = str_count(cxy_matched_address,",")) %>%
+  mutate(cxy_matched_address = case_when(
+    count_commas_matched_address > 3 ~ str_remove(cxy_matched_address,","),
+    TRUE ~ cxy_matched_address
+  )) %>%
+  mutate(count_commas_matched_address = str_count(cxy_matched_address,",")) %>%
+  mutate(cxy_matched_address = case_when(
+    str_detect(cxy_matched_address,"3930 VOGEL RD ARNOLD, MO, MO, 63010") ~ "3930 VOGEL RD, ARNOLD, MO, 63010",
+    TRUE ~ cxy_matched_address)) %>%
+  mutate(cxy_matched_address_separate = cxy_matched_address) %>%
+  separate(cxy_matched_address_separate, c("decennial_2020_street_clean", "decennial_2020_city_clean", "decennial_2020_state_clean", "decennial_2020_zip_clean"), sep=",") %>%
+  mutate(across(everything(), ~str_trim(.,side="both"))) %>%
+  select(unique_id:retailer_zipcode, decennial_2020_street_clean:decennial_2020_zip_clean, decennial_2020_matched_address = cxy_matched_address,decennial_2020_tract_geoid = geographies_census_tracts_geoid, decennial_2020_latitude = cxy_lat, decennial_2020_longitude = cxy_lon, decennial_2020_latitude = cxy_lat, decennial_2020_geocoder_type = geocoder_type) 
+
+rm(decennial_2020_batch_matches, decennial_2020_oneline_all)
+
+```
+
+# Join both together and make modifications to send to safegraph
+```{r}
+
+all_geocoded_retailers <- acs_2019_all %>%
+  inner_join(decennial_2020_all,by=c("unique_id","retailer_name","retailer_address","retailer_city","retailer_state","retailer_zipcode" )) %>%
+  mutate(joint_latitude = case_when(
+    is.na(decennial_2020_latitude) ~ acs_2019_latitude,
+    TRUE ~ decennial_2020_latitude
+  )) %>%
+  mutate(joint_longitude = case_when(
+    is.na(decennial_2020_longitude) ~ acs_2019_longitude,
+    TRUE ~ decennial_2020_longitude
+  )) 
+  
+retailers_export_for_safegraph <- all_geocoded_retailers %>%
+  select(unique_id,retailer_name, acs_2019_street_clean:acs_2019_zip_clean, joint_latitude,joint_longitude)
+
+
+#write_csv(retailers_export_for_safegraph_sample,"../../../data/processed/03_join_retailers/retailers_export_for_safegraph_sample.csv")
+
+write_rds(all_geocoded_retailers,"../../../data/processed/03_join_retailers/all_geocoded_retailers.rds")
+
+write_csv(retailers_export_for_safegraph,"../../../data/processed/03_join_retailers/retailers_export_for_safegraph.csv")
+           
+```
+
+
+## Joining geocoded data and retailer total sales
+``` {r}
+#load data
+states_retailer_total_sales <- read_rds( "../../../data/processed/01A_load_retailer_sales_data/01A_retailer_sales_data.rds") %>%
+  mutate(retailer_name = toupper(retailer_name),
+         retailer_address=toupper(retailer_address),
+         retailer_city=toupper(retailer_city))
+
+all_geocoded_retailers <- read_rds("../../../data/processed/03_join_retailers/all_geocoded_retailers.rds") %>%
+  mutate(retailer_name = toupper(retailer_name),
+         retailer_address=toupper(retailer_address),
+         retailer_city=toupper(retailer_city))
+
+#join states_retailer_total_sales with geocoded dataframe
+geocoded_states_retailer_total_sales <- states_retailer_total_sales %>%
+  inner_join(all_geocoded_retailers) 
+
+x <- states_retailer_total_sales %>%
+  anti_join(all_geocoded_retailers) %>%
+  group_by(retailer_state) %>%
+  count()
+
+# Issue with connecticut that we'll need to fix later.  But basically we wrote a web scraper to capture connecticut's retaliers from their web app. Somehow it only included stamford for city.  We now have sales data that has the proper city for each state.  So when we attempt to join here, with geo data and sales data, the join won't work because city is different. SOLUTION: do a join just of connecticut data, but instead of joining by city, we need to join by retailer name, address, state, zip (NOT city). 
+
+# filter just for ct 
+states_retailer_total_sales_ct <- states_retailer_total_sales %>%
+  filter(retailer_state == "CT") %>%
+  left_join(all_geocoded_retailers, by = c("retailer_address", "retailer_state", "retailer_zipcode")) %>%
+  rename(retailer_city = retailer_city.x,
+         retailer_city_connecticut_error = retailer_city.y,
+         retailer_name = retailer_name.x,
+         retailer_name_connecticut_error = retailer_name.y,
+         unique_id = unique_id.x,
+         unique_id_connecticut_error = unique_id.y)
+
+geocoded_states_retailer_total_sales <- geocoded_states_retailer_total_sales %>%
+  bind_rows(states_retailer_total_sales_ct)
+  
+
+
+write_rds(geocoded_states_retailer_total_sales, "../../../data/processed/01A_load_retailer_sales_data/geocoded_states_retailer_total_sales.rds")
+```
+
+## Joining geocoded retailer total sales w demographics and geometry
+``` {r}
+#load data
+acs_demo_data <- read_rds("../06_get_census_data/data/demographic_percents_2019_acs.rds")
+dec_demo_data <- read_rds("../06_get_census_data/data/race_2020_decennial_census.rds")
+#acs_geometries_with_demo_data <- read_rds( "../../../data/processed/08_leaflet_maps/acs_geometries_with_demo_data.rds")
+#dec_geometries_with_demo_data <- read_rds( "../../../data/processed/08_leaflet_maps/dec_geometries_with_demo_data.rds")
+geocoded_states_retailer_total_sales <- read_rds("../../../data/processed/01A_load_retailer_sales_data/geocoded_states_retailer_total_sales.rds") %>%
+  ungroup()
+
+```
+
+
+``` {r}
+acs_retailers <- acs_demo_data %>%
+  filter(state %in% c("Arizona", "Connecticut", "District of Columbia", "Kentucky", "Louisiana", "Michigan", "New York", "South Carolina", "Texas", "Virginia")) %>%
+  left_join(geocoded_states_retailer_total_sales, by=c("geoid" = "acs_2019_tract_geoid"))
+
+dec_retailers <- dec_demo_data %>%
+  filter(state %in% c("Arizona", "Connecticut", "District of Columbia", "Kentucky", "Louisiana", "Michigan", "New York", "South Carolina", "Texas", "Virginia")) %>%
+  left_join(geocoded_states_retailer_total_sales, by=c("geoid" = "acs_2019_tract_geoid"))
+
+write_rds(acs_retailers, "../../../data/processed/03_join_retailers/acs_retailers_w_demo.rds")
+write_rds(dec_retailers, "../../../data/processed/03_join_retailers/dec_retailers_w_demo.rds")
+
+acs_tract_sales <- acs_retailers %>%
+  mutate(total_sales = replace_na(total_sales, 0)) %>%
+  mutate(tract_with_no_retailer = case_when(
+    is.na(unique_id) ~ "no_retailer_tract",
+    TRUE ~ "retailer_tract"
+  )) %>%
+  group_by(geoid,tract_with_no_retailer,state) %>%
+  summarize(total_sales = sum(total_sales), 
+            retailer_count = n(),
+            total_pop = mean(total_pop),
+            median_household_income = mean(median_household_income),
+            pct_hs_or_below = mean(pct_hs_or_below),
+            pct_poverty = mean(pct_poverty)) %>%
+  mutate(retailer_count = case_when(
+    tract_with_no_retailer == "no_retailer_tract" ~ as.integer(0),
+    TRUE ~ retailer_count))
+
+dec_tract_sales <- dec_retailers %>%
+  mutate(total_sales = replace_na(total_sales, 0)) %>%
+  mutate(tract_with_no_retailer = case_when(
+    is.na(unique_id) ~ "no_retailer_tract",
+    TRUE ~ "retailer_tract"
+  )) %>%
+  group_by(geoid,tract_with_no_retailer,state) %>%
+  summarize(total_sales = sum(total_sales), 
+            retailer_count = n(),
+            total_pop = mean(total),
+            pct_white = mean(pct_white),
+            pct_black = mean(pct_black),
+            pct_hispanic = mean(pct_hispanic)) %>%
+  mutate(retailer_count = case_when(
+    tract_with_no_retailer == "no_retailer_tract" ~ as.integer(0),
+    TRUE ~ retailer_count))
+
+#What are the average sales per store for a given census tract (per store sales are a common metric in measuring business productivity)? 
+acs_tract_sales <- acs_tract_sales %>%
+  mutate(average_sales_per_store = total_sales/retailer_count) %>%
+  mutate(average_sales_per_store = case_when(
+    is.nan(average_sales_per_store) ~ 0,
+    TRUE ~ average_sales_per_store)) %>%
+  mutate(pct_hs_or_below = case_when(
+    is.nan(pct_hs_or_below) ~ 0,
+    TRUE ~ pct_hs_or_below)) %>%
+  mutate(pct_poverty = case_when(
+    is.nan(pct_poverty) ~ 0,
+    TRUE ~ pct_poverty)) %>%
+  arrange(desc(average_sales_per_store))
+
+dec_tract_sales <- dec_tract_sales %>%
+  mutate(average_sales_per_store = total_sales/retailer_count) %>%
+  mutate(average_sales_per_store = case_when(
+    is.nan(average_sales_per_store) ~ 0,
+    TRUE ~ average_sales_per_store)) %>%
+  mutate(pct_white = case_when(
+    is.nan(pct_white) ~ 0,
+    TRUE ~ pct_white)) %>%
+  mutate(pct_black = case_when(
+    is.nan(pct_black) ~ 0,
+    TRUE ~ pct_black)) %>%
+  mutate(pct_hispanic = case_when(
+    is.nan(pct_hispanic) ~ 0,
+    TRUE ~ pct_hispanic)) %>%
+  arrange(desc(average_sales_per_store))
+
+#Question: What are the sales per capita (10,000) for a given census tract (total sales of all stores in a census tract/population)?
+acs_tract_sales <- acs_tract_sales %>%
+  mutate(tract_sales_per_capita_10000 = total_sales/total_pop*10000) %>%
+  mutate(tract_sales_per_capita_10000 = case_when(
+    is.infinite(tract_sales_per_capita_10000) ~ 0,
+    TRUE ~ tract_sales_per_capita_10000)) %>%
+  mutate(tract_sales_per_capita_10000 = case_when(
+    is.nan(tract_sales_per_capita_10000) ~ 0,
+    TRUE ~ tract_sales_per_capita_10000))
+dec_tract_sales <- dec_tract_sales %>%
+  mutate(tract_sales_per_capita_10000 = total_sales/total_pop*10000) %>%
+  mutate(tract_sales_per_capita_10000 = case_when(
+    is.infinite(tract_sales_per_capita_10000) ~ 0,
+    TRUE ~ tract_sales_per_capita_10000)) %>%
+  mutate(tract_sales_per_capita_10000 = case_when(
+    is.nan(tract_sales_per_capita_10000) ~ 0,
+    TRUE ~ tract_sales_per_capita_10000))
+
+write_rds(acs_tract_sales, "../../../data/processed/03_join_retailers/acs_tract_sales.rds")
+write_rds(dec_tract_sales, "../../../data/processed/03_join_retailers/dec_tract_sales.rds")
+```
+
+
+``` {r}
+
+#geocoded_retailers_sales_w_acs_demographics <- geocoded_retailers_sales_w_acs_demographics %>%
+#  mutate(mutate(geometry = asSpatial(geometry))
+
+         
+pal <- colorNumeric(
+  palette = "plasma",
+  domain = geocoded_retailers_sales_w_acs_demographics$retailer_concentration
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = geocoded_retailers_sales_w_acs_demographics,
+              color = ~pal(retailer_concentration),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~retailer_concentration) 
+
+
+
+
+```

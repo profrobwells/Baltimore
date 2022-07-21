@@ -1,0 +1,179 @@
+
+---
+title: "Local Check Cashing"
+author: "Michael Purdie and Jamie Pinzon" 
+output:
+  html_document:
+    theme: cerulean
+    code_folding: hide
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    df_print: paged
+  md_document:
+    variant: markdown_github
+    toc: true
+    toc_depth: 3
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#load libraries
+```{r include=FALSE} 
+# For general data science
+library(tidyverse)
+
+# For data cleaning
+library(janitor)
+
+# For working with datetime
+library(lubridate)
+
+# For pretty tables
+library(kableExtra)
+library(knitr)
+
+#For map
+library(tigris)
+library(sf)
+library(censusxy)
+library(tidycensus)
+#install.packages("leaflet")
+library(leaflet)
+```
+#read data
+```{r include=FALSE} 
+all_geocoded_retailers <- readRDS("../../data/processed/03_join_retailers/all_geocoded_retailers.rds")
+all_race_data <- read_rds("../../etl/geospatial/06_get_census_data/data/race_2020_decennial_census.rds")
+all_demographic_data <- read_rds("../../etl/geospatial/06_get_census_data/data/demographic_percents_2019_acs.rds")
+```
+
+#analysis
+```{r} 
+#converting retailer_name and retailer_city to title case
+all_geocoded_retailers <- all_geocoded_retailers %>%
+  mutate(retailer_name = str_to_title(retailer_name), retailer_city = str_to_title(retailer_city))
+
+#filtering for local retailers with keywords "cash," "checks" and so on
+local_check_cashers <- all_geocoded_retailers %>%
+  filter(str_detect(retailer_state, "MD|DC|VA")) %>%
+  filter(str_detect(retailer_city, "Hyattsville|Silver Spring|Gaithersburg|Adelphi|Beltsville|Rockville|East Riverdale|Washington|Alexandria|Arlington|Falls Church|Springfield|Annandale")) %>%
+  filter(str_detect(retailer_name, "Cash|Check")) 
+
+#get tract geoid list
+check_casher_census_tracts <- local_check_cashers %>%
+  select(acs_2019_tract_geoid) %>%
+  distinct() %>%
+  filter(!is.na(acs_2019_tract_geoid))
+
+#find lottery retailers in applicable tracts
+all_retailers_in_check_casher_census_tracts <- all_geocoded_retailers %>%
+  inner_join(check_casher_census_tracts)
+
+census_tracts_with_most_retailers <- all_retailers_in_check_casher_census_tracts %>%
+  group_by(acs_2019_tract_geoid) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(6) %>%
+  select(acs_2019_tract_geoid) %>%
+  as.list()
+
+census_tracts_with_most_retailers <- census_tracts_with_most_retailers$acs_2019_tract_geoid
+
+select_retailers_in_check_casher_census_tracts <- all_retailers_in_check_casher_census_tracts %>% 
+  inner_join(census_tracts_with_most_retailers)
+
+census_tract <-  "24033805201" 
+
+all_census_data <- read_rds("../")
+
+#wrting function loop
+make_spreadsheet <- function(census_tract) {
+  temp <- select_retailers_in_check_casher_census_tracts %>%
+    filter(acs_2019_tract_geoid == census_tract) %>%
+    #changing lat and long columns to <dbl>
+    mutate(joint_latitude = as.numeric(joint_latitude),
+           joint_longitude = as.numeric(joint_longitude)) %>%
+    select(retailer_name, acs_2019_matched_address, acs_2019_tract_geoid, joint_latitude, joint_longitude, decennial_2020_tract_geoid)
+  
+  retailer_spreadsheet_name <- paste0("teams_data/retailer_", census_tract, ".csv" )
+  census_spreadsheet_name <- paste0("teams_data/census_", census_tract, ".csv" )
+  
+  race <- all_race_data %>%
+    filter(geoid == census_tract)
+  demographic <- all_demographic_data %>%
+    filter(geoid == census_tract)
+  
+  all_census_information <- race %>%
+    bind_cols(demographic)
+  
+  write_csv(all_census_information, census_spreadsheet_name)
+  write_csv(temp, retailer_spreadsheet_name)
+  
+}
+
+make_map <- function(census_tract) {
+#printing map
+retailers_map <- leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addMarkers(data=temp, lng = ~joint_longitude, lat=~joint_latitude, label = ~retailer_name)
+retailers_map
+}
+make_table <- function(census_tract) {
+  #printing table
+retailers_table <- temp %>%
+    kable() %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), font_size = 14, fixed_thead = T) %>%
+    scroll_box(width = "100%")
+
+retailers_table
+
+  
+}
+
+#make_spreadsheet("24033805201")
+make_map("24033805201")
+make_table("24033805201")
+
+lapply(census_tracts_with_most_retailers,make_spreadsheet)
+
+#write dataframe to Excel, to later make as Google Sheet
+#write_csv(local_retailers, "~/Documents/Senior Year/Capstone/fixed_lottery_files/data/processed/01_load_retailers/local_retailers.csv")
+
+#joining local_retailers with all_geocoded_retailers to get geometry
+# geocoded_local_retailers <- local_retailers %>%
+#   inner_join(all_geocoded_retailers, by=c('unique_id','retailer_state')) %>%
+#   select(-retailer_name.y, -retailer_city.y, -retailer_address.y, -retailer_zipcode.y) %>%
+#   rename(retailer_name = retailer_name.x, retailer_city = retailer_city.x, retailer_address = retailer_address.x, retailer_zipcode = retailer_zipcode.x)
+```
+
+#mapping geocoded_local_retailers
+```{r}
+#state_list <- c("MD","VA","DC")
+
+#grabbing nation-wide state and county geometries
+#nation_geometries <- get_decennial(year=2020, geography="county",state=state_list, variables = "P3_001N", sumfile = "pl", geometry = TRUE)
+
+#cleaning new dataframe
+#clean_dec_nation_geometries <- nation_geometries %>% 
+ # clean_names() %>% 
+ # separate(name, into = c("county","state"), sep=", ") %>% 
+ # mutate(total_pop=value) %>% 
+ # select(-variable,-value)
+# 
+# #changing lat and long columns to <dbl>
+# geocoded_local_retailers$joint_latitude =as.numeric(geocoded_local_retailers$joint_latitude)
+# geocoded_local_retailers$joint_longitude =as.numeric(geocoded_local_retailers$joint_longitude)
+# 
+# #printing map
+# leaflet() %>%
+#   addProviderTiles(providers$Stamen.TonerLite) %>%
+#   addMarkers(data=geocoded_local_retailers, lng = ~joint_longitude, lat=~joint_latitude, label = ~retailer_name)
+# 
+# 
+# geocoded_local_retailers %>%
+#     kable() %>%
+#     kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), font_size = 14, fixed_thead = T) %>%
+#     scroll_box(width = "100%")
+```

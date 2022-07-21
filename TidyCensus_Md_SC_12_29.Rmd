@@ -1,0 +1,891 @@
+---
+title: "TidyCensus"
+author: "Rob Wells"
+date: "1/3/2022"
+output: html_document
+---
+
+## TidyCensus Tutorial Using Kyle Walker's How-To Page
+
+Source: vignettes/basic-usage.Rmd
+
+```{r message=FALSE, warning=FALSE}
+#remotes::install_github("walkerke/tidycensus")
+library(tidyverse)
+library(tidycensus)
+#a = get_decennial(geography = "state", variables = "P1_001N", year = 2020)
+# head(a, 5)
+#install.packages("formattable")
+library(formattable)
+```
+
+Get a Census API key. A key can be obtained from http://api.census.gov/data/key_signup.html.
+
+```{r}
+census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE)
+```
+
+
+
+There are two major functions implemented in tidycensus: 
+get_decennial, which grants access to the 1990, 2000, and 2010 decennial US Census APIs
+get_acs, which grants access to the 5-year American Community Survey APIs. 
+
+
+#2020 census tract:!!Total:!!Population of one race:!!White alone
+```{r}
+#2020 census tract
+#P1_003N  !!Total:!!Population of one race:!!White alone
+
+race_dec <- tidycensus::get_decennial( geography = "tract", geometry = TRUE, state = "MD", year = 2020, variables = "P1_003N", summary_var = "P1_002N") 
+
+```
+
+```{r}
+#Calls variables for the 2020 decennial census
+v20 <- load_variables(2020, "pl", cache = TRUE)
+```
+
+
+
+
+#Calls variables for the 2020 decinnial census
+```{r}
+v16 <- load_variables(2016, "acs5", cache = TRUE)
+
+#vars10 <- c("P005003", "P005004", "P005006", "P004003")
+# P1_003N
+#  !!Total:!!Population of one race:!!White alone
+# P1_004N
+#  !!Total:!!Population of one race:!!Black or African American alone
+# P1_005N
+#  !!Total:!!Population of one race:!!American Indian and Alaska Native alone	
+# P1_006N
+#  !!Total:!!Population of one race:!!Asian alone
+# P2_002N
+#  !!Total:!!Hispanic or Latino
+
+vars20 <- c("P1_003N", "P1_004N", "P1_005N", "P1_006N", "P2_002N")
+```
+
+#Race by Maryland County, 2020
+```{r}
+#Race by Maryland County, 2020
+
+MD_race <- get_decennial(geography = "county", geometry = TRUE, state = "MD", year = 2020, variables = c(white = "P1_003N", black = "P1_004N", asian = "P1_006N", nativeam = "P1_005N", hispanic = "P2_002N"), summary_var = "P1_002N") %>% 
+ mutate(pct_race = (value / summary_value)) %>% 
+  rename(race = variable, population = value, county_pop = summary_value)
+
+MD_race$pct_race <- round(MD_race$pct_race, 2)
+MD_race$pct_race <- percent(MD_race$pct_race, 0)
+
+#using the rename variables feature
+#https://walker-data.com/census-r/an-introduction-to-tidycensus.html#renaming-variable-ids
+
+MD_race <- as.data.frame(MD_race)
+
+MD_race <- MD_race %>% 
+  select(NAME, race, pct_race, population, county_pop)
+
+write.csv (MD_race, "MD_2020_counties_race.csv")
+```
+
+
+#Median Income
+```{r}
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+md_income1 <- get_acs(geography = "county", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2016)
+ 
+md_income1
+```
+
+#Median Income By Census Tract
+```{r}
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+md_income2016 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2016) %>% 
+  mutate(year=("2016"))
+ 
+md_income2016
+```
+#Median Income By Census Tract 2020
+```{r}
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+md_income2020 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+ 
+md_income2020
+```
+
+#Median Income By Census Tract 2010
+```{r}
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+md_income2010 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2010) %>% 
+  mutate(year=("2010"))
+ 
+md_income2010
+```
+
+#Bind together
+```{r}
+md_income_all <- rbind(md_income2010, md_income2016, md_income2020)
+
+md_income_all <- separate(data = md_income_all, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right")
+
+#write.csv(md_income_all, "md_income_all.csv")
+
+balt_income_all <- filter(md_income_all, grepl ("Baltimore", County))
+#write.csv(balt_income_all, "balt_income_all.csv")
+
+```
+
+#Baltimore city income
+```{r}
+baltcity_income <- filter(balt_income_all, grepl ("Baltimore city", County))
+
+baltcity_income <- baltcity_income %>% 
+  filter(variable=="median_income")
+
+```
+
+#reshape table
+```{r}
+# fish_encounters %>%
+#   pivot_wider(names_from = station, values_from = seen)
+
+baltcity_income2 <- baltcity_income %>% 
+  select(!(moe)) %>% 
+  pivot_wider(names_from = year, values_from = estimate)
+
+baltcity_income2 <- janitor::clean_names(baltcity_income2)
+
+baltcity_income2 <- baltcity_income2 %>% 
+  mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
+  mutate(Diff_2020_2016 = (x2020-x2016))
+
+write.csv(baltcity_income2, "baltcity_income2.csv")
+write_rds(baltcity_income2, "baltcity_income2.rds")
+```
+
+
+#Map Files
+
+
+
+##Getting Decennial geometries
+```{r results=FALSE}
+
+state_list <- fips_codes %>%
+            distinct(state) %>%
+            as.list()
+state_list <-state_list$state[1:51]
+
+decennial_vars <- load_variables(2020, dataset="pl")
+
+nation_geometries <- get_decennial(year=2020, geography="tract",state=state_list, variables = "P3_001N", sumfile = "pl", geometry = TRUE)
+
+clean_dec_nation_geometries <- nation_geometries %>% 
+  clean_names() %>% 
+  separate(name, into = c("tract","county","state"), sep=", ") %>% 
+  mutate(total_pop=value) %>% 
+  select(-variable,-value)
+
+write_rds(clean_dec_nation_geometries,"dec_nation_geometries.rds")
+
+
+baltcity_income_map <- nation_geometries  %>% 
+ right_join(baltcity_income2, by=c("GEOID"="geoid"))
+
+write.csv(baltcity_income_map, "baltcity_income_map.csv")
+
+
+```
+
+
+##Preparing leaflet - population
+```{r}
+clean_dec_nation_geometries <- readRDS("dec_nation_geometries.rds")
+
+MD_dec_geometries <- clean_dec_nation_geometries %>% 
+  filter(county== "Baltimore city")
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = MD_dec_geometries$total_pop
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = MD_dec_geometries,
+              color = ~pal(total_pop),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.75,
+              label = ~total_pop) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = MD_dec_geometries$total_pop,
+    title = "total pop <br>per census tract"
+  )
+```
+
+##Leaflet - income
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+```{r}
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = baltcity_income_map$Diff_2020_2010
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = baltcity_income_map,
+              color = ~pal(Diff_2020_2010),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = ~Diff_2020_2010) %>%
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = baltcity_income_map$Diff_2020_2010,
+    title = "Income difference <br>per census tract"
+  )
+saveWidget(leafMap, "leafMap.html")
+#<iframe seamless src="/static/leaflet/leafmap/index.html" width="100%" height="500"></iframe>
+#https://waterdata.usgs.gov/blog/leaflet/
+#https://github.com/profrobwells/Test/blob/master/leafMap.html
+
+https://profrobwells.github.io/Test/leafMap.html
+
+```
+
+
+#basic distribution of median income
+```{r}
+
+#baltcity_income$estimate <- as.numeric(baltcity_income$estimate)
+summary(baltcity_income$estimate)
+
+```
+
+#2020 summary w filter
+```{r}
+
+x <- baltcity_income %>% 
+  filter(year=="2020") %>% 
+  summary(estimate)
+
+x <- as.data.frame(x)
+
+sum2020 <- x %>% 
+  filter(Var2 ==("   estimate"))
+
+sum2020 <- sum2020 %>% 
+  select(Freq) 
+
+sum2020 <- separate(data = sum2020, col = Freq, into = c("Variable", "Amount"), sep = ":", extra = "merge", fill = "right")
+
+sum2020 <- sum2020 %>% 
+  mutate(year="2020")
+         
+```
+
+#2010 summary w filter
+```{r}
+
+x <- baltcity_income %>% 
+  filter(year=="2010") %>% 
+  summary(estimate)
+
+x <- as.data.frame(x)
+
+sum2010 <- x %>% 
+  filter(Var2 ==("   estimate"))
+
+sum2010 <- sum2010 %>% 
+  select(Freq) 
+
+sum2010 <- separate(data = sum2010, col = Freq, into = c("Variable", "Amount"), sep = ":", extra = "merge", fill = "right")
+
+sum2010 <- sum2010 %>% 
+  mutate(year="2010")
+         
+```
+
+
+
+#colbind
+```{r}
+
+decade_balcity <- bind_cols(sum2010, sum2020)
+
+decade_balcity  <- janitor::clean_names(decade_balcity)
+
+decade_balcity <- decade_balcity %>% 
+  select(variable_1, amount_2, amount_5) %>% 
+  rename(Distribution=variable_1, 
+         Median_2010=amount_2, 
+         Median_2020=amount_5)
+
+decade_balcity[2:3] <- lapply(decade_balcity[2:3], as.numeric)
+
+decade_balcity <- decade_balcity %>% 
+  mutate(pct_chg = (Median_2020 - Median_2010)/ Median_2010)
+
+decade_balcity$pct_chg <- round(decade_balcity$pct_chg, 2)
+decade_balcity$pct_chg <- percent(decade_balcity$pct_chg, 0)
+
+
+decade_balcity <- decade_balcity %>% 
+  filter(!Distribution=="NA's   ")   
+
+```
+
+
+#Plot
+```{r}
+
+ggplot(decade_balcity,aes(x = Distribution, y = pct_chg,
+             fill = pct_chg)) +
+  geom_col(position = "dodge") + 
+  theme(legend.position = "none") +
+#This is your title sequence
+  labs(title = "Change in Median Income, Baltimore City, 2010-2020",
+       subtitle = "Census ACD Data",
+       caption = "Graphic by Rob Wells, 3-23-2022",
+       y="Pct Change 2010 v 2020",
+       x="Quartile")
+
+```
+
+
+
+#Count Income Brackets by Maryland County, 2016
+```{r}
+MD_income_2016 <- get_acs(geography = "county", state = "MD", year = 2016, variables = c(
+less10K = "B19001_002",
+est10K_15K = "B19001_003", 
+est15K_20K = "B19001_004",
+est21K_25K = "B19001_005",
+est25K_30K = "B19001_006",
+est30K_35K = "B19001_007",
+est35K_40K = "B19001_008",
+est40K_45K = "B19001_009",
+est45K_50K = "B19001_010",
+est50K_60K = "B19001_011",
+est60K_75K = "B19001_012",
+est75K_100K = "B19001_013",
+est100K_125K = "B19001_014",
+est125K_150K = "B19001_015",
+est150K_200K = "B19001_016",
+more200K = "B19001_017"),summary_var = "B19001_001") %>% 
+ mutate(pct_total = (estimate / summary_est))
+
+MD_income_2016$pct_total <- round(MD_income_2016$pct_total, 2)
+MD_income_2016$pct_total <- percent(MD_income_2016$pct_total, 0)
+
+MD_income_2016$Year <- "2016"
+
+```
+#Count Income Brackets by Maryland County, 2018
+```{r}
+MD_income_2018 <- get_acs(geography = "county", state = "MD", year = 2018, variables = c(
+less10K = "B19001_002",
+est10K_15K = "B19001_003", 
+est15K_20K = "B19001_004",
+est21K_25K = "B19001_005",
+est25K_30K = "B19001_006",
+est30K_35K = "B19001_007",
+est35K_40K = "B19001_008",
+est40K_45K = "B19001_009",
+est45K_50K = "B19001_010",
+est50K_60K = "B19001_011",
+est60K_75K = "B19001_012",
+est75K_100K = "B19001_013",
+est100K_125K = "B19001_014",
+est125K_150K = "B19001_015",
+est150K_200K = "B19001_016",
+more200K = "B19001_017"),summary_var = "B19001_001") %>% 
+ mutate(pct_total = (estimate / summary_est))
+
+MD_income_2018$pct_total <- round(MD_income_2018$pct_total, 2)
+MD_income_2018$pct_total <- percent(MD_income_2018$pct_total, 0)
+
+MD_income_2018$Year <- "2018"
+
+```
+
+#Count Income Brackets by Maryland County, 2010
+```{r}
+MD_income_2010 <- get_acs(geography = "county", state = "MD", year = 2010, variables = c(
+less10K = "B19001_002",
+est10K_15K = "B19001_003", 
+est15K_20K = "B19001_004",
+est21K_25K = "B19001_005",
+est25K_30K = "B19001_006",
+est30K_35K = "B19001_007",
+est35K_40K = "B19001_008",
+est40K_45K = "B19001_009",
+est45K_50K = "B19001_010",
+est50K_60K = "B19001_011",
+est60K_75K = "B19001_012",
+est75K_100K = "B19001_013",
+est100K_125K = "B19001_014",
+est125K_150K = "B19001_015",
+est150K_200K = "B19001_016",
+more200K = "B19001_017"),summary_var = "B19001_001") %>% 
+ mutate(pct_total = (estimate / summary_est))
+
+MD_income_2010$pct_total <- round(MD_income_2010$pct_total, 2)
+MD_income_2010$pct_total <- percent(MD_income_2010$pct_total, 0)
+
+MD_income_2010$Year <- "2010"
+
+```
+#using the rename variables feature
+#https://walker-data.com/census-r/an-introduction-to-tidycensus.html#renaming-variable-ids
+
+MD_race <- as.data.frame(MD_race)
+
+MD_race <- MD_race %>% 
+  select(NAME, race, pct_race, population, county_pop)
+
+write.csv (MD_race, "MD_2020_counties_race.csv")
+
+
+#2020 population - All States
+```{r}
+#gathers state level 2020 population
+state_pop_2020 <- get_decennial(
+  geography = "state",
+  variables = "P1_001N",
+  year = 2020,
+  sumfile = "pl"
+)
+
+```
+
+
+#2010 Population by State
+```{r}
+#This works
+#https://walker-data.com/census-r/index.html
+total_population_10 <- get_decennial(
+  geography = "state", 
+  variables = "P001001",
+  year = 2010
+)
+
+```
+
+
+
+
+#--------------------------------------------------------------------------------------
+#
+#Migration Estimate #1
+#
+#------------------------------------------------------------------------------------
+
+#Net Migration By County - US
+```{r}
+net_migration <- get_estimates(geography = "county",
+                               variables = "RNETMIG",
+                               year = 2019,
+                               geometry = TRUE,
+                               #provides the decades' of data
+                               time_series = TRUE,
+                               resolution = "20m") #%>%
+  #shift_geometry()
+```
+
+#Translate the Period into Dates
+```{r}
+#Translate the Period into Dates
+net_migration$PERIOD_bak <- net_migration$PERIOD
+
+lkup <- c('1'="2010", '2'="2011", '3'="2012", '4'="2013", '5'="2014", '6'="2015", '7'="2016", '8'="2017", '9'="2018", '10'="2019")
+
+#This scans "disposition", finds ABA and replaces with Abated, finds ARR, replaces with Arrest, etc
+net_migration$PERIOD <- as.character(lkup[net_migration$PERIOD])
+```
+
+#Time period decoded:
+https://cran.r-project.org/web/packages/tidycensus/tidycensus.pdf
+https://www.census.gov/data/developers/data-sets/popest-popproj/popest/popest-vars/2019.html
+
+PERIOD_CODE: Period of Change
+
+1 = April 1, 2010 to June 30, 2010
+2 = July 1, 2010 to June 30, 2011
+3 = July 1, 2011 to June 30, 2012
+4 = July 1, 2012 to June 30, 2013
+5 = July 1, 2013 to June 30, 2014
+6 = July 1, 2014 to June 30, 2015
+7 = July 1, 2015 to June 30, 2016
+8 = July 1, 2016 to June 30, 2017
+9 = July 1, 2017 to June 30, 2018
+10 = July 1, 2018 to June 30, 2019
+11 = July 1, 2019 to June 30, 2020
+12 = July 1, 2020 to June 30, 2021
+
+parse by space and comma
+split data into two columns
+SF <- separate(data = SF, col = crime1, into = c("crime2", "crime3", "crime4"), sep = " ", extra = "merge", fill = "right")
+
+SF$crime2 <- gsub("[[:punct:]]", "", SF$crime2)
+
+#Parse by space and comma for all counties: 31,420 Results, 2010-2019
+```{r}
+US_migrate <- net_migration
+
+US_migrate <- separate(data = US_migrate, col = NAME, into = c("county", "state"), sep = ",", extra = "merge", fill = "right")
+
+#The variables included in the components of change product consist of both estimates of counts and rates. Rates are preceded by an R in the variable name and are calculated per 1000 residents.
+
+# In the example below, we’ll acquire data on the net migration rate between 2018 and 2019 for all counties in the United States.
+
+#https://walker-data.com/tidycensus/articles/other-datasets.html
+
+
+```
+
+#South Carolina Subset
+```{r}
+sc_migrate <- US_migrate %>% 
+  filter(state ==" South Carolina") %>% 
+  mutate(Pop_Change =(value*1000))
+
+sc_migrate$Pop_Change<-round(sc_migrate$Pop_Change, 0)
+
+#p$plaintiff_one <- gsub("[[:punct:]]", "", p$plaintiff_one)
+sc_migrate$county1 <- gsub(" County", "",sc_migrate$county)
+
+sc_migrate2 <- as.data.frame(sc_migrate)
+
+sc_migrate2 <- sc_migrate2 %>% 
+  select(county1, Pop_Change, PERIOD)
+
+write.csv(sc_migrate2, "sc_migrate2.csv")
+
+```
+
+
+#Table of articles by publication
+total <- test2 %>%
+  group_by(Pub) %>% 
+  mutate(total_articles = n()) %>% 
+  ungroup() %>% 
+  distinct(Pub, total_articles) %>% 
+  arrange(desc(total_articles))
+  
+
+#Sum Migration by County
+```{r}
+sc_migrate2 <- as.data.frame(sc_migrate2)
+
+sc_migrate3 <- sc_migrate2 %>% 
+  select(county1, Pop_Change) %>% 
+  group_by(county1) %>% 
+    summarise(Change_2010_2019 = sum(Pop_Change, na.rm=TRUE)) 
+  
+write.csv(sc_migrate3, "sc_migrate3.csv")  
+
+```
+
+
+
+#Migration Estimate by Specific County #2
+```{r}
+# honolulu_migration <- get_flows(
+#   geography = "county",
+#   state = "HI",
+#   county = "Honolulu",
+#   year = 2018,
+#   show_call = TRUE
+# )
+sc_migration <- get_flows(
+  geography = "county",
+  state = "SC",
+  county = "Allendale",
+  year = 2019,
+  show_call = TRUE
+)
+```
+
+#------------------------------------------------------------------------------------
+
+#Check for later
+https://www.census.gov/data/academy/data-gems.html
+
+Data Gem: Can I Compare 2020 Census and 2010 Census Redistricting Data ?
+
+https://www.youtube.com/watch?v=5ff8ezDmGOM
+
+The function returns a tibble with four columns by default: 
+
+GEOID, which is an identifier for the geographical unit associated with the row; 
+NAME, which is a descriptive name of the geographical unit; 
+variable, which is the Census variable represented in the row; 
+and value, which is the value of the variable for that unit. 
+
+```{r}
+m90 %>%
+  ggplot(aes(x = value, y = reorder(NAME, value))) + 
+  geom_point()
+```
+
+Example #2, from Machlis book
+```{r}
+md_income <- get_acs(state = "MD", geography = "county", variables = "B19013_001", geometry = TRUE) 
+```
+
+```{r}
+if (FALSE) {
+# Plot of race/ethnicity by county in Illinois for 2010
+library(tidycensus)
+library(tidyverse)
+library(viridis)
+census_api_key("YOUR KEY GOES HERE")
+vars10 <- c("P005003", "P005004", "P005006", "P004003")
+
+il <- get_decennial(geography = "county", variables = vars10, year = 2010,
+                    summary_var = "P001001", state = "IL", geometry = TRUE) %>%
+  mutate(pct = 100 * (value / summary_value))
+
+ggplot(il, aes(fill = pct, color = pct)) +
+  geom_sf() +
+  facet_wrap(~variable)
+
+#racial breakdown by county for 2010 census
+md <- get_decennial(geography = "county", variables = vars10, year = 2010,
+                    summary_var = "P001001", state = 24, geometry = TRUE) %>%
+  mutate(pct = 100 * (value / summary_value))
+
+}
+
+```
+
+#Error message for 2020
+Getting data from the 2020 decennial Census
+Downloading feature geometry from the Census website.  To cache shapefiles for use in future sessions, set `options(tigris_use_cache = TRUE)`.
+Using FIPS code '17' for state 'IL'
+Using the PL 94-171 Redistricting Data summary file
+Error in UseMethod("gather") : 
+  no applicable method for 'gather' applied to an object of class "character"
+
+FIPS codes
+https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?cid=nrcs143_013696
+
+MD = 24
+SC = 45
+
+
+
+Geography in tidycensus
+
+To get decennial Census data or American Community Survey data, tidycensus users supply an argument to the required geography parameter. Arguments are formatted as consumed by the Census API, and specified in the table below. Not all geographies are available for all surveys, all years, and all variables. Most Census geographies are supported in tidycensus at the moment; if you require a geography that is missing from the table below, please file an issue at https://github.com/walkerke/tidycensus/issues.
+
+If state or county is in bold face in “Available by”, you are required to supply a state and/or county for the given geography.
+Geography 	Definition 	Available by 	Available in
+"us" 	United States 		get_acs()
+"region" 	Census region 		get_acs()
+"division" 	Census division 		get_acs()
+"state" 	State or equivalent 	state 	get_acs(), get_decennial()
+"county" 	County or equivalent 	state, county 	get_acs(), get_decennial()
+"county subdivision" 	County subdivision 	state, county 	get_acs(), get_decennial()
+"tract" 	Census tract 	state, county 	get_acs(), get_decennial()
+"block group" 	Census block group 	state, county 	get_acs(), get_decennial()
+"block" 	Census block 	state, county 	get_decennial()
+"place" 	Census-designated place 	state 	get_acs(), get_decennial()
+"alaska native regional corporation" 	Alaska native regional corporation 	state 	get_acs(), get_decennial()
+"american indian area/alaska native area/hawaiian home land" 	Federal and state-recognized American Indian reservations and Hawaiian home lands 	state 	get_acs(), get_decennial()
+"american indian area/alaska native area (reservation or statistical entity only)" 	Only reservations and statistical entities 	state 	get_acs()
+"american indian area (off-reservation trust land only)/hawaiian home land" 	Only off-reservation trust lands and Hawaiian home lands 	state 	get_acs()
+"metropolitan statistical area/micropolitan statistical area" 	Core-based statistical area 	state 	get_acs(), get_decennial()
+"combined statistical area" 	Combined statistical area 	state 	get_acs()
+"new england city and town area" 	New England city/town area 	state 	get_acs()
+"combined new england city and town area" 	Combined New England area 	state 	get_acs()
+"urban area" 	Census-defined urbanized areas 		get_acs()
+"congressional district" 	Congressional district for the year-appropriate Congress 	state 	get_acs(), get_decennial()
+"school district (elementary)" 	Elementary school district 	state 	get_acs()
+"school district (secondary)" 	Secondary school district 	state 	get_acs()
+"school district (unified)" 	Unified school district 	state 	get_acs()
+"public use microdata area" 	PUMA (geography associated with Census microdata samples) 	state 	get_acs()
+"zip code tabulation area" OR "zcta" 	Zip code tabulation area 		get_acs(), get_decennial()
+"state legislative district (upper chamber)" 	State senate districts 	state 	get_acs(), get_decennial()
+"state legislative district (lower chamber)" 	State house districts 	state 	get_acs(), get_decennial()
+Searching for variables
+
+Getting variables from the Census or ACS requires knowing the variable ID - and there are thousands of these IDs across the different Census files. 
+
+To rapidly search for variables, use the load_variables function. The function takes two required arguments: the year of the Census or endyear of the ACS sample, and the dataset - one of "sf1", "sf3", or "acs5". For ideal functionality, I recommend assigning the result of this function to a variable, setting cache = TRUE to store the result on your computer for future access, and using the View function in RStudio to interactively browse for variables.
+
+```{r}
+v17 <- load_variables(2017, "acs5", cache = TRUE)
+
+View(v17)
+```
+
+
+```{r}
+v19 <- load_variables(2019, "acs5", cache = TRUE)
+
+View(v19)
+```
+
+
+```{r}
+v19 <- load_variables(2019, "acs5", cache = TRUE)
+
+View(v19)
+```
+
+By filtering for “median age” I can quickly view the variable IDs that correspond to my query.
+Working with ACS data
+
+American Community Survey data differ from decennial Census data in that ACS data are based on an annual sample of approximately 3 million households, rather than a more complete enumeration of the US population. In turn, ACS data points are estimates characterized by a margin of error. tidycensus will always return the estimate and margin of error together for any requested variables. In turn, when requesting ACS data with tidycensus, it is not necessary to specify the "E" or "M" suffix for a variable name. Let’s fetch median household income data from the 2014-2018 ACS for counties in Vermont.
+
+```{r}
+#DP03 <- load_variables(2017, "DP03", cache = TRUE)
+
+
+#View(DP03)
+```
+
+
+```{r}
+# ar <- get_acs(geography = "county", 
+#               variables = c(medincome = "B19013_001"), 
+#               state = "AR", 
+#               year = 2018)
+# 
+# ar
+```
+
+
+
+Black Employment by County
+```{r}
+ar_black <- get_acs(geography = "county", 
+              variables = c(black_employ = "C23002B_001"), 
+              state = "AR", 
+              year = 2018)
+
+ar_black
+```
+
+
+The output is similar to a call to get_decennial, but instead of a value column, get_acs returns estimate and moe columns for the ACS estimate and margin of error, respectively. moe represents the default 90 percent confidence level around the estimate; this can be changed to 95 or 99 percent with the moe_level parameter in get_acs if desired.
+
+As we have the margin of error, we can visualize the uncertainty around the estimate:
+```{r}
+# ar %>%
+#   mutate(NAME = gsub(" County, Arkansas", "", NAME)) %>%
+#   ggplot(aes(x = estimate, y = reorder(NAME, estimate))) +
+#   geom_errorbarh(aes(xmin = estimate - moe, xmax = estimate + moe)) +
+#   geom_point(color = "red", size = 3) +
+#   labs(title = "Household income by county in Arkansas",
+#        subtitle = "2014-2018 American Community Survey",
+#        y = "",
+#        x = "ACS estimate (bars represent margin of error)")
+```
+
+HD01_VD02,Estimate; Income in the past 12 months below the poverty level:
+```{r}
+# ar_pov <- get_acs(geography = "county", 
+#                variables = "HD01_VD02", 
+#               state = "AR", 
+#               year = 2017)
+# 
+# ar_pov
+```
+
+
+
+See https://walkerke.github.io/tidycensus/ for more information about the package. Walker also has some helpful blog posts such as Compare US metropolitan area characteristics in R with tidycensus and tigris, at https://walkerke.github.io/2017/06/comparing-metros/.
+
+
+
+HC03_VC161,PERCENTAGE OF FAMILIES AND PEOPLE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL – All families
+```{r}
+# ar_pov <- get_acs(geography = "county", 
+#                variables = "HC03_VC161E", 
+#               state = "AR", 
+#               year = 2017)
+# 
+# ar_pov
+```
+```{r}
+# ar <- get_acs(table = "DP03",
+#   geography = "county", 
+#               variables = "HC03_VC161E", 
+#               state = "AR", 
+#               year = 2018)
+# 
+# ar
+```
+
+```{r}
+us_components <- get_estimates(geography = "state", product = "components")
+
+us_components
+```
+
+
+By default, the returned categories are formatted as integers that map onto the Census Bureau definitions explained here: https://www.census.gov/data/developers/data-sets/popest-popproj/popest/popest-vars/2017.html. However, by specifying breakdown_labels = TRUE, the function will return the appropriate labels instead. For example:
+
+la_age_hisp <- get_estimates(geography = "county", 
+                             product = "characteristics", 
+                             breakdown = c("SEX", "AGEGROUP", "HISP"),  
+                             breakdown_labels = TRUE, 
+                             state = "CA", 
+                             county = "Los Angeles")
+
+la_age_hisp
+
+#Older code that worked but better options were found later
+
+```{r}
+#Rename Values
+MD_race_dec <- MD_race_dec %>%
+  mutate(race = (variable)) 
+
+
+MD_race_dec$race <- str_replace_all(MD_race_dec$race, pattern=fixed('P1_003N'), replacement=fixed('white') )
+MD_race_dec$race <- str_replace_all(MD_race_dec$race, pattern=fixed('P1_004N'), replacement=fixed('black') )
+MD_race_dec$race <- str_replace_all(MD_race_dec$race, pattern=fixed('P1_006N'), replacement=fixed('asian') )
+MD_race_dec$race <- str_replace_all(MD_race_dec$race, pattern=fixed('P1_005N'), replacement=fixed('native_am') )
+MD_race_dec$race <- str_replace_all(MD_race_dec$race, pattern=fixed('P2_002N'), replacement=fixed('hispanic') )
+
+```
+
+
+
+#Errors and issues to Fix
+Example: In this basic example, let’s look at median gross rent by state in 1990:
+
+```{r}
+#Error in UseMethod("gather") : 
+#no applicable method for 'gather' applied to an object of class "character"
+#https://github.com/walkerke/tidycensus/issues/403
+m90 <- get_decennial(geography = "state", variables = "H043A001", year = 1990)
+#Error in UseMethod("gather") : 
+head(m90)
+
+# m90 <- get_acs(geography = "state", variables = "H043A001", year = 2020)
+```

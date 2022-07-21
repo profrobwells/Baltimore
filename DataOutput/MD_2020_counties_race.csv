@@ -1,0 +1,121 @@
+"","NAME","race","pct_race","population","county_pop"
+"1","Queen Anne's County, Maryland","white",90%,42290,47134
+"2","Queen Anne's County, Maryland","black",6%,2811,47134
+"3","Queen Anne's County, Maryland","asian",1%,589,47134
+"4","Queen Anne's County, Maryland","nativeam",0%,156,47134
+"5","Queen Anne's County, Maryland","hispanic",5%,2538,47134
+"6","Wicomico County, Maryland","white",63%,61425,96813
+"7","Wicomico County, Maryland","black",29%,27990,96813
+"8","Wicomico County, Maryland","asian",3%,3152,96813
+"9","Wicomico County, Maryland","nativeam",0%,438,96813
+"10","Wicomico County, Maryland","hispanic",7%,7091,96813
+"11","Garrett County, Maryland","white",98%,27521,28023
+"12","Garrett County, Maryland","black",1%,246,28023
+"13","Garrett County, Maryland","asian",0%,85,28023
+"14","Garrett County, Maryland","nativeam",0%,33,28023
+"15","Garrett County, Maryland","hispanic",1%,321,28023
+"16","Prince George's County, Maryland","white",14%,124863,894607
+"17","Prince George's County, Maryland","black",65%,578703,894607
+"18","Prince George's County, Maryland","asian",5%,41875,894607
+"19","Prince George's County, Maryland","nativeam",1%,8935,894607
+"20","Prince George's County, Maryland","hispanic",23%,205463,894607
+"21","Caroline County, Maryland","white",79%,24479,31124
+"22","Caroline County, Maryland","black",14%,4434,31124
+"23","Caroline County, Maryland","asian",1%,350,31124
+"24","Caroline County, Maryland","nativeam",0%,146,31124
+"25","Caroline County, Maryland","hispanic",9%,2820,31124
+"26","St. Mary's County, Maryland","white",78%,81952,104415
+"27","St. Mary's County, Maryland","black",16%,16294,104415
+"28","St. Mary's County, Maryland","asian",3%,3362,104415
+"29","St. Mary's County, Maryland","nativeam",0%,438,104415
+"30","St. Mary's County, Maryland","hispanic",6%,6545,104415
+"31","Anne Arundel County, Maryland","white",70%,377634,538783
+"32","Anne Arundel County, Maryland","black",19%,104473,538783
+"33","Anne Arundel County, Maryland","asian",5%,25504,538783
+"34","Anne Arundel County, Maryland","nativeam",0%,2354,538783
+"35","Anne Arundel County, Maryland","hispanic",11%,56796,538783
+"36","Calvert County, Maryland","white",82%,69935,85298
+"37","Calvert County, Maryland","black",14%,12100,85298
+"38","Calvert County, Maryland","asian",2%,1581,85298
+"39","Calvert County, Maryland","nativeam",0%,305,85298
+"40","Calvert County, Maryland","hispanic",5%,4202,85298
+"41","Worcester County, Maryland","white",84%,41845,49818
+"42","Worcester County, Maryland","black",13%,6236,49818
+"43","Worcester County, Maryland","asian",2%,753,49818
+"44","Worcester County, Maryland","nativeam",0%,136,49818
+"45","Worcester County, Maryland","hispanic",4%,2078,49818
+"46","Harford County, Maryland","white",78%,190128,242425
+"47","Harford County, Maryland","black",16%,37706,242425
+"48","Harford County, Maryland","asian",3%,8173,242425
+"49","Harford County, Maryland","nativeam",0%,712,242425
+"50","Harford County, Maryland","hispanic",6%,14007,242425
+"51","Montgomery County, Maryland","white",49%,457783,942799
+"52","Montgomery County, Maryland","black",21%,197077,942799
+"53","Montgomery County, Maryland","asian",17%,163507,942799
+"54","Montgomery County, Maryland","nativeam",1%,7036,942799
+"55","Montgomery County, Maryland","hispanic",23%,217409,942799
+"56","Talbot County, Maryland","white",81%,28436,35287
+"57","Talbot County, Maryland","black",12%,4249,35287
+"58","Talbot County, Maryland","asian",2%,538,35287
+"59","Talbot County, Maryland","nativeam",0%,146,35287
+"60","Talbot County, Maryland","hispanic",9%,3352,35287
+"61","Dorchester County, Maryland","white",66%,20128,30722
+"62","Dorchester County, Maryland","black",30%,9140,30722
+"63","Dorchester County, Maryland","asian",1%,355,30722
+"64","Dorchester County, Maryland","nativeam",0%,132,30722
+"65","Dorchester County, Maryland","hispanic",6%,1777,30722
+"66","Cecil County, Maryland","white",88%,84806,96256
+"67","Cecil County, Maryland","black",8%,7803,96256
+"68","Cecil County, Maryland","asian",1%,1247,96256
+"69","Cecil County, Maryland","nativeam",0%,294,96256
+"70","Cecil County, Maryland","hispanic",6%,5450,96256
+"71","Carroll County, Maryland","white",92%,148621,162291
+"72","Carroll County, Maryland","black",4%,6482,162291
+"73","Carroll County, Maryland","asian",2%,3775,162291
+"74","Carroll County, Maryland","nativeam",0%,396,162291
+"75","Carroll County, Maryland","hispanic",5%,7745,162291
+"76","Washington County, Maryland","white",82%,117465,143424
+"77","Washington County, Maryland","black",12%,17691,143424
+"78","Washington County, Maryland","asian",2%,3109,143424
+"79","Washington County, Maryland","nativeam",0%,465,143424
+"80","Washington County, Maryland","hispanic",7%,10289,143424
+"81","Frederick County, Maryland","white",77%,189470,246631
+"82","Frederick County, Maryland","black",11%,27802,246631
+"83","Frederick County, Maryland","asian",6%,13570,246631
+"84","Frederick County, Maryland","nativeam",0%,1165,246631
+"85","Frederick County, Maryland","hispanic",13%,32119,246631
+"86","Howard County, Maryland","white",52%,159329,305197
+"87","Howard County, Maryland","black",21%,65275,305197
+"88","Howard County, Maryland","asian",22%,66288,305197
+"89","Howard County, Maryland","nativeam",0%,1190,305197
+"90","Howard County, Maryland","hispanic",9%,27362,305197
+"91","Kent County, Maryland","white",80%,14574,18115
+"92","Kent County, Maryland","black",16%,2808,18115
+"93","Kent County, Maryland","asian",1%,251,18115
+"94","Kent County, Maryland","nativeam",0%,41,18115
+"95","Kent County, Maryland","hispanic",6%,1061,18115
+"96","Baltimore County, Maryland","white",56%,452124,800914
+"97","Baltimore County, Maryland","black",32%,255793,800914
+"98","Baltimore County, Maryland","asian",7%,54968,800914
+"99","Baltimore County, Maryland","nativeam",0%,3527,800914
+"100","Baltimore County, Maryland","hispanic",8%,61492,800914
+"101","Allegany County, Maryland","white",90%,58377,65087
+"102","Allegany County, Maryland","black",8%,5341,65087
+"103","Allegany County, Maryland","asian",1%,742,65087
+"104","Allegany County, Maryland","nativeam",0%,137,65087
+"105","Allegany County, Maryland","hispanic",2%,1149,65087
+"106","Somerset County, Maryland","white",55%,13076,23626
+"107","Somerset County, Maryland","black",40%,9505,23626
+"108","Somerset County, Maryland","asian",1%,254,23626
+"109","Somerset County, Maryland","nativeam",0%,115,23626
+"110","Somerset County, Maryland","hispanic",5%,1075,23626
+"111","Charles County, Maryland","white",38%,58587,153276
+"112","Charles County, Maryland","black",54%,82035,153276
+"113","Charles County, Maryland","asian",4%,5706,153276
+"114","Charles County, Maryland","nativeam",1%,1236,153276
+"115","Charles County, Maryland","hispanic",8%,11677,153276
+"116","Baltimore city, Maryland","white",29%,163026,553258
+"117","Baltimore city, Maryland","black",61%,338478,553258
+"118","Baltimore city, Maryland","asian",4%,21210,553258
+"119","Baltimore city, Maryland","nativeam",0%,2312,553258
+"120","Baltimore city, Maryland","hispanic",8%,45927,553258

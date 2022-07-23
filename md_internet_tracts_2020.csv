@@ -1,0 +1,1476 @@
+"","GEOID","Census_Tract","County","State","year","total","yes_internet","no_internet"
+"1","24001000100","Census Tract 1"," Allegany County"," Maryland","2020",1575,1195,355
+"2","24001000200","Census Tract 2"," Allegany County"," Maryland","2020",1128,801,308
+"3","24001000500","Census Tract 5"," Allegany County"," Maryland","2020",695,489,204
+"4","24001000600","Census Tract 6"," Allegany County"," Maryland","2020",1252,929,235
+"5","24001000700","Census Tract 7"," Allegany County"," Maryland","2020",1443,1141,238
+"6","24001000800","Census Tract 8"," Allegany County"," Maryland","2020",760,584,136
+"7","24001001000","Census Tract 10"," Allegany County"," Maryland","2020",1007,665,322
+"8","24001001100","Census Tract 11"," Allegany County"," Maryland","2020",623,516,77
+"9","24001001200","Census Tract 12"," Allegany County"," Maryland","2020",1257,1160,87
+"10","24001001300","Census Tract 13"," Allegany County"," Maryland","2020",959,818,120
+"11","24001001401","Census Tract 14.01"," Allegany County"," Maryland","2020",1505,1341,145
+"12","24001001402","Census Tract 14.02"," Allegany County"," Maryland","2020",788,702,86
+"13","24001001502","Census Tract 15.02"," Allegany County"," Maryland","2020",877,632,221
+"14","24001001503","Census Tract 15.03"," Allegany County"," Maryland","2020",764,540,198
+"15","24001001600","Census Tract 16"," Allegany County"," Maryland","2020",808,698,93
+"16","24001001700","Census Tract 17"," Allegany County"," Maryland","2020",1738,1439,261
+"17","24001001800","Census Tract 18"," Allegany County"," Maryland","2020",1518,1318,193
+"18","24001001900","Census Tract 19"," Allegany County"," Maryland","2020",1048,782,209
+"19","24001002000","Census Tract 20"," Allegany County"," Maryland","2020",2308,1932,234
+"20","24001002100","Census Tract 21"," Allegany County"," Maryland","2020",1293,1034,244
+"21","24001002200","Census Tract 22"," Allegany County"," Maryland","2020",1493,1159,320
+"22","24001002300","Census Tract 23"," Allegany County"," Maryland","2020",2530,2016,420
+"23","24003701101","Census Tract 7011.01"," Anne Arundel County"," Maryland","2020",1596,1495,85
+"24","24003701103","Census Tract 7011.03"," Anne Arundel County"," Maryland","2020",1618,1559,59
+"25","24003701104","Census Tract 7011.04"," Anne Arundel County"," Maryland","2020",1394,1363,31
+"26","24003701201","Census Tract 7012.01"," Anne Arundel County"," Maryland","2020",1366,1317,16
+"27","24003701202","Census Tract 7012.02"," Anne Arundel County"," Maryland","2020",1592,1447,72
+"28","24003701301","Census Tract 7013.01"," Anne Arundel County"," Maryland","2020",1379,1314,65
+"29","24003701302","Census Tract 7013.02"," Anne Arundel County"," Maryland","2020",1275,1188,87
+"30","24003701400","Census Tract 7014"," Anne Arundel County"," Maryland","2020",1284,1187,85
+"31","24003702100","Census Tract 7021"," Anne Arundel County"," Maryland","2020",2437,2331,106
+"32","24003702204","Census Tract 7022.04"," Anne Arundel County"," Maryland","2020",1558,1504,36
+"33","24003702205","Census Tract 7022.05"," Anne Arundel County"," Maryland","2020",2169,2097,38
+"34","24003702206","Census Tract 7022.06"," Anne Arundel County"," Maryland","2020",2478,2420,32
+"35","24003702208","Census Tract 7022.08"," Anne Arundel County"," Maryland","2020",2707,2673,13
+"36","24003702209","Census Tract 7022.09"," Anne Arundel County"," Maryland","2020",1323,1297,14
+"37","24003702300","Census Tract 7023"," Anne Arundel County"," Maryland","2020",2097,1980,104
+"38","24003702402","Census Tract 7024.02"," Anne Arundel County"," Maryland","2020",3589,3258,213
+"39","24003702500","Census Tract 7025"," Anne Arundel County"," Maryland","2020",2334,2088,223
+"40","24003702601","Census Tract 7026.01"," Anne Arundel County"," Maryland","2020",2197,2111,21
+"41","24003702602","Census Tract 7026.02"," Anne Arundel County"," Maryland","2020",2483,2351,68
+"42","24003702702","Census Tract 7027.02"," Anne Arundel County"," Maryland","2020",1428,1370,45
+"43","24003702703","Census Tract 7027.03"," Anne Arundel County"," Maryland","2020",1318,1262,26
+"44","24003702704","Census Tract 7027.04"," Anne Arundel County"," Maryland","2020",1184,1132,30
+"45","24003706102","Census Tract 7061.02"," Anne Arundel County"," Maryland","2020",1088,886,194
+"46","24003706103","Census Tract 7061.03"," Anne Arundel County"," Maryland","2020",601,586,9
+"47","24003706302","Census Tract 7063.02"," Anne Arundel County"," Maryland","2020",1799,1686,80
+"48","24003706303","Census Tract 7063.03"," Anne Arundel County"," Maryland","2020",1400,1228,153
+"49","24003706304","Census Tract 7063.04"," Anne Arundel County"," Maryland","2020",1360,1253,46
+"50","24003706402","Census Tract 7064.02"," Anne Arundel County"," Maryland","2020",1620,1373,230
+"51","24003706403","Census Tract 7064.03"," Anne Arundel County"," Maryland","2020",1324,1204,120
+"52","24003706404","Census Tract 7064.04"," Anne Arundel County"," Maryland","2020",882,567,8
+"53","24003706500","Census Tract 7065"," Anne Arundel County"," Maryland","2020",2356,2092,180
+"54","24003706600","Census Tract 7066"," Anne Arundel County"," Maryland","2020",2083,1883,162
+"55","24003706700","Census Tract 7067"," Anne Arundel County"," Maryland","2020",381,361,20
+"56","24003707001","Census Tract 7070.01"," Anne Arundel County"," Maryland","2020",2164,2100,64
+"57","24003707002","Census Tract 7070.02"," Anne Arundel County"," Maryland","2020",1721,1577,144
+"58","24003708001","Census Tract 7080.01"," Anne Arundel County"," Maryland","2020",1396,1300,87
+"59","24003708004","Census Tract 7080.04"," Anne Arundel County"," Maryland","2020",2062,1624,289
+"60","24003730101","Census Tract 7301.01"," Anne Arundel County"," Maryland","2020",886,863,23
+"61","24003730102","Census Tract 7301.02"," Anne Arundel County"," Maryland","2020",3774,3635,85
+"62","24003730204","Census Tract 7302.04"," Anne Arundel County"," Maryland","2020",2258,2134,82
+"63","24003730205","Census Tract 7302.05"," Anne Arundel County"," Maryland","2020",1087,969,118
+"64","24003730206","Census Tract 7302.06"," Anne Arundel County"," Maryland","2020",1469,1207,222
+"65","24003730300","Census Tract 7303"," Anne Arundel County"," Maryland","2020",1147,1036,97
+"66","24003730401","Census Tract 7304.01"," Anne Arundel County"," Maryland","2020",2201,1859,280
+"67","24003730403","Census Tract 7304.03"," Anne Arundel County"," Maryland","2020",1542,1427,95
+"68","24003730404","Census Tract 7304.04"," Anne Arundel County"," Maryland","2020",765,673,92
+"69","24003730507","Census Tract 7305.07"," Anne Arundel County"," Maryland","2020",1511,1451,60
+"70","24003730508","Census Tract 7305.08"," Anne Arundel County"," Maryland","2020",941,849,62
+"71","24003730509","Census Tract 7305.09"," Anne Arundel County"," Maryland","2020",1551,1476,75
+"72","24003730510","Census Tract 7305.10"," Anne Arundel County"," Maryland","2020",1161,1093,68
+"73","24003730511","Census Tract 7305.11"," Anne Arundel County"," Maryland","2020",754,647,107
+"74","24003730512","Census Tract 7305.12"," Anne Arundel County"," Maryland","2020",985,900,74
+"75","24003730513","Census Tract 7305.13"," Anne Arundel County"," Maryland","2020",682,649,33
+"76","24003730514","Census Tract 7305.14"," Anne Arundel County"," Maryland","2020",1476,1295,163
+"77","24003730601","Census Tract 7306.01"," Anne Arundel County"," Maryland","2020",2354,2258,70
+"78","24003730603","Census Tract 7306.03"," Anne Arundel County"," Maryland","2020",1027,936,81
+"79","24003730605","Census Tract 7306.05"," Anne Arundel County"," Maryland","2020",1090,1018,72
+"80","24003730606","Census Tract 7306.06"," Anne Arundel County"," Maryland","2020",1580,1478,58
+"81","24003730701","Census Tract 7307.01"," Anne Arundel County"," Maryland","2020",1024,995,29
+"82","24003730702","Census Tract 7307.02"," Anne Arundel County"," Maryland","2020",1545,1479,59
+"83","24003730800","Census Tract 7308"," Anne Arundel County"," Maryland","2020",874,822,36
+"84","24003730901","Census Tract 7309.01"," Anne Arundel County"," Maryland","2020",942,911,0
+"85","24003730902","Census Tract 7309.02"," Anne Arundel County"," Maryland","2020",1269,1263,0
+"86","24003731002","Census Tract 7310.02"," Anne Arundel County"," Maryland","2020",1359,1320,39
+"87","24003731003","Census Tract 7310.03"," Anne Arundel County"," Maryland","2020",1649,1570,79
+"88","24003731004","Census Tract 7310.04"," Anne Arundel County"," Maryland","2020",1553,1515,30
+"89","24003731103","Census Tract 7311.03"," Anne Arundel County"," Maryland","2020",1913,1894,9
+"90","24003731104","Census Tract 7311.04"," Anne Arundel County"," Maryland","2020",1682,1638,34
+"91","24003731105","Census Tract 7311.05"," Anne Arundel County"," Maryland","2020",1200,1151,39
+"92","24003731106","Census Tract 7311.06"," Anne Arundel County"," Maryland","2020",1705,1573,52
+"93","24003731107","Census Tract 7311.07"," Anne Arundel County"," Maryland","2020",1233,1190,43
+"94","24003731201","Census Tract 7312.01"," Anne Arundel County"," Maryland","2020",2190,2150,21
+"95","24003731205","Census Tract 7312.05"," Anne Arundel County"," Maryland","2020",1731,1539,141
+"96","24003731206","Census Tract 7312.06"," Anne Arundel County"," Maryland","2020",1101,1042,48
+"97","24003731207","Census Tract 7312.07"," Anne Arundel County"," Maryland","2020",1074,1048,14
+"98","24003731208","Census Tract 7312.08"," Anne Arundel County"," Maryland","2020",1396,1259,123
+"99","24003731209","Census Tract 7312.09"," Anne Arundel County"," Maryland","2020",2037,1886,140
+"100","24003731210","Census Tract 7312.10"," Anne Arundel County"," Maryland","2020",764,639,125
+"101","24003731303","Census Tract 7313.03"," Anne Arundel County"," Maryland","2020",2562,2446,116
+"102","24003731306","Census Tract 7313.06"," Anne Arundel County"," Maryland","2020",2196,2040,67
+"103","24003731307","Census Tract 7313.07"," Anne Arundel County"," Maryland","2020",2206,2008,148
+"104","24003731308","Census Tract 7313.08"," Anne Arundel County"," Maryland","2020",1546,1366,172
+"105","24003731309","Census Tract 7313.09"," Anne Arundel County"," Maryland","2020",1873,1743,104
+"106","24003731310","Census Tract 7313.10"," Anne Arundel County"," Maryland","2020",1923,1828,63
+"107","24003731312","Census Tract 7313.12"," Anne Arundel County"," Maryland","2020",1484,1373,111
+"108","24003731313","Census Tract 7313.13"," Anne Arundel County"," Maryland","2020",1310,1296,14
+"109","24003740103","Census Tract 7401.03"," Anne Arundel County"," Maryland","2020",3212,3115,35
+"110","24003740104","Census Tract 7401.04"," Anne Arundel County"," Maryland","2020",3097,3037,22
+"111","24003740105","Census Tract 7401.05"," Anne Arundel County"," Maryland","2020",1476,1413,46
+"112","24003740106","Census Tract 7401.06"," Anne Arundel County"," Maryland","2020",1027,965,62
+"113","24003740107","Census Tract 7401.07"," Anne Arundel County"," Maryland","2020",1395,1395,0
+"114","24003740108","Census Tract 7401.08"," Anne Arundel County"," Maryland","2020",2064,2064,0
+"115","24003740203","Census Tract 7402.03"," Anne Arundel County"," Maryland","2020",1827,1688,122
+"116","24003740204","Census Tract 7402.04"," Anne Arundel County"," Maryland","2020",1650,1591,59
+"117","24003740205","Census Tract 7402.05"," Anne Arundel County"," Maryland","2020",1216,1028,146
+"118","24003740303","Census Tract 7403.03"," Anne Arundel County"," Maryland","2020",1586,1513,73
+"119","24003740304","Census Tract 7403.04"," Anne Arundel County"," Maryland","2020",2976,2424,327
+"120","24003740305","Census Tract 7403.05"," Anne Arundel County"," Maryland","2020",4521,4399,48
+"121","24003740400","Census Tract 7404"," Anne Arundel County"," Maryland","2020",0,0,0
+"122","24003740501","Census Tract 7405.01"," Anne Arundel County"," Maryland","2020",2453,2314,90
+"123","24003740502","Census Tract 7405.02"," Anne Arundel County"," Maryland","2020",1953,1940,13
+"124","24003740601","Census Tract 7406.01"," Anne Arundel County"," Maryland","2020",1542,1534,0
+"125","24003740602","Census Tract 7406.02"," Anne Arundel County"," Maryland","2020",1038,1027,8
+"126","24003740603","Census Tract 7406.03"," Anne Arundel County"," Maryland","2020",670,491,26
+"127","24003740701","Census Tract 7407.01"," Anne Arundel County"," Maryland","2020",3025,2894,114
+"128","24003740703","Census Tract 7407.03"," Anne Arundel County"," Maryland","2020",2016,1985,31
+"129","24003740704","Census Tract 7407.04"," Anne Arundel County"," Maryland","2020",2056,2017,39
+"130","24003740800","Census Tract 7408"," Anne Arundel County"," Maryland","2020",1682,1516,127
+"131","24003740900","Census Tract 7409"," Anne Arundel County"," Maryland","2020",2597,2385,212
+"132","24003741000","Census Tract 7410"," Anne Arundel County"," Maryland","2020",860,796,48
+"133","24003750101","Census Tract 7501.01"," Anne Arundel County"," Maryland","2020",1474,1196,200
+"134","24003750102","Census Tract 7501.02"," Anne Arundel County"," Maryland","2020",956,736,200
+"135","24003750201","Census Tract 7502.01"," Anne Arundel County"," Maryland","2020",1105,818,236
+"136","24003750204","Census Tract 7502.04"," Anne Arundel County"," Maryland","2020",1706,1570,102
+"137","24003750300","Census Tract 7503"," Anne Arundel County"," Maryland","2020",1002,863,69
+"138","24003750400","Census Tract 7504"," Anne Arundel County"," Maryland","2020",1556,1387,159
+"139","24003750801","Census Tract 7508.01"," Anne Arundel County"," Maryland","2020",2011,1760,205
+"140","24003750803","Census Tract 7508.03"," Anne Arundel County"," Maryland","2020",2868,2550,301
+"141","24003750804","Census Tract 7508.04"," Anne Arundel County"," Maryland","2020",1482,1229,246
+"142","24003750900","Census Tract 7509"," Anne Arundel County"," Maryland","2020",1310,1080,222
+"143","24003751000","Census Tract 7510"," Anne Arundel County"," Maryland","2020",1525,1263,147
+"144","24003751102","Census Tract 7511.02"," Anne Arundel County"," Maryland","2020",1839,1594,193
+"145","24003751103","Census Tract 7511.03"," Anne Arundel County"," Maryland","2020",2175,1920,248
+"146","24003751200","Census Tract 7512"," Anne Arundel County"," Maryland","2020",1940,1744,78
+"147","24003751400","Census Tract 7514"," Anne Arundel County"," Maryland","2020",1522,1430,85
+"148","24003751500","Census Tract 7515"," Anne Arundel County"," Maryland","2020",2467,2185,282
+"149","24003751600","Census Tract 7516"," Anne Arundel County"," Maryland","2020",2702,2439,263
+"150","24003751700","Census Tract 7517"," Anne Arundel County"," Maryland","2020",918,894,24
+"151","24003980000","Census Tract 9800"," Anne Arundel County"," Maryland","2020",0,0,0
+"152","24003990000","Census Tract 9900"," Anne Arundel County"," Maryland","2020",0,0,0
+"153","24005400100","Census Tract 4001"," Baltimore County"," Maryland","2020",2342,1059,639
+"154","24005400200","Census Tract 4002"," Baltimore County"," Maryland","2020",1011,957,44
+"155","24005400400","Census Tract 4004"," Baltimore County"," Maryland","2020",2274,1920,131
+"156","24005400500","Census Tract 4005"," Baltimore County"," Maryland","2020",924,895,24
+"157","24005400600","Census Tract 4006"," Baltimore County"," Maryland","2020",1332,1251,48
+"158","24005400701","Census Tract 4007.01"," Baltimore County"," Maryland","2020",1368,1279,51
+"159","24005400702","Census Tract 4007.02"," Baltimore County"," Maryland","2020",672,660,8
+"160","24005400800","Census Tract 4008"," Baltimore County"," Maryland","2020",967,892,75
+"161","24005400900","Census Tract 4009"," Baltimore County"," Maryland","2020",711,546,81
+"162","24005401000","Census Tract 4010"," Baltimore County"," Maryland","2020",746,722,19
+"163","24005401101","Census Tract 4011.01"," Baltimore County"," Maryland","2020",2124,1728,222
+"164","24005401102","Census Tract 4011.02"," Baltimore County"," Maryland","2020",445,336,80
+"165","24005401200","Census Tract 4012"," Baltimore County"," Maryland","2020",1154,932,83
+"166","24005401301","Census Tract 4013.01"," Baltimore County"," Maryland","2020",1409,1255,90
+"167","24005401302","Census Tract 4013.02"," Baltimore County"," Maryland","2020",1479,1294,160
+"168","24005401400","Census Tract 4014"," Baltimore County"," Maryland","2020",546,522,24
+"169","24005401503","Census Tract 4015.03"," Baltimore County"," Maryland","2020",2662,2489,67
+"170","24005401504","Census Tract 4015.04"," Baltimore County"," Maryland","2020",2366,2266,100
+"171","24005401505","Census Tract 4015.05"," Baltimore County"," Maryland","2020",1441,1141,282
+"172","24005401506","Census Tract 4015.06"," Baltimore County"," Maryland","2020",1731,1595,95
+"173","24005401507","Census Tract 4015.07"," Baltimore County"," Maryland","2020",2187,2021,59
+"174","24005402201","Census Tract 4022.01"," Baltimore County"," Maryland","2020",1014,937,58
+"175","24005402202","Census Tract 4022.02"," Baltimore County"," Maryland","2020",604,596,4
+"176","24005402302","Census Tract 4023.02"," Baltimore County"," Maryland","2020",1878,1703,175
+"177","24005402303","Census Tract 4023.03"," Baltimore County"," Maryland","2020",2631,2061,570
+"178","24005402304","Census Tract 4023.04"," Baltimore County"," Maryland","2020",1256,978,138
+"179","24005402305","Census Tract 4023.05"," Baltimore County"," Maryland","2020",931,657,71
+"180","24005402306","Census Tract 4023.06"," Baltimore County"," Maryland","2020",1513,1280,170
+"181","24005402307","Census Tract 4023.07"," Baltimore County"," Maryland","2020",2300,2091,58
+"182","24005402403","Census Tract 4024.03"," Baltimore County"," Maryland","2020",792,506,126
+"183","24005402404","Census Tract 4024.04"," Baltimore County"," Maryland","2020",2138,1694,167
+"184","24005402405","Census Tract 4024.05"," Baltimore County"," Maryland","2020",1464,1180,168
+"185","24005402407","Census Tract 4024.07"," Baltimore County"," Maryland","2020",513,438,46
+"186","24005402408","Census Tract 4024.08"," Baltimore County"," Maryland","2020",1006,952,0
+"187","24005402409","Census Tract 4024.09"," Baltimore County"," Maryland","2020",1671,1492,52
+"188","24005402503","Census Tract 4025.03"," Baltimore County"," Maryland","2020",2245,1901,252
+"189","24005402504","Census Tract 4025.04"," Baltimore County"," Maryland","2020",1725,1630,77
+"190","24005402505","Census Tract 4025.05"," Baltimore County"," Maryland","2020",1256,1120,83
+"191","24005402506","Census Tract 4025.06"," Baltimore County"," Maryland","2020",1669,1560,74
+"192","24005402510","Census Tract 4025.10"," Baltimore County"," Maryland","2020",2178,1914,264
+"193","24005402511","Census Tract 4025.11"," Baltimore County"," Maryland","2020",2155,2013,142
+"194","24005402602","Census Tract 4026.02"," Baltimore County"," Maryland","2020",765,735,19
+"195","24005402603","Census Tract 4026.03"," Baltimore County"," Maryland","2020",2394,2237,120
+"196","24005402604","Census Tract 4026.04"," Baltimore County"," Maryland","2020",2321,2195,107
+"197","24005403100","Census Tract 4031"," Baltimore County"," Maryland","2020",837,707,108
+"198","24005403201","Census Tract 4032.01"," Baltimore County"," Maryland","2020",1189,1043,86
+"199","24005403202","Census Tract 4032.02"," Baltimore County"," Maryland","2020",771,690,14
+"200","24005403300","Census Tract 4033"," Baltimore County"," Maryland","2020",939,736,131
+"201","24005403401","Census Tract 4034.01"," Baltimore County"," Maryland","2020",1804,1281,482
+"202","24005403402","Census Tract 4034.02"," Baltimore County"," Maryland","2020",2229,1710,364
+"203","24005403500","Census Tract 4035"," Baltimore County"," Maryland","2020",1817,1495,260
+"204","24005403601","Census Tract 4036.01"," Baltimore County"," Maryland","2020",1757,1654,90
+"205","24005403602","Census Tract 4036.02"," Baltimore County"," Maryland","2020",2306,2131,47
+"206","24005403702","Census Tract 4037.02"," Baltimore County"," Maryland","2020",1955,1828,114
+"207","24005403703","Census Tract 4037.03"," Baltimore County"," Maryland","2020",1251,1000,177
+"208","24005403704","Census Tract 4037.04"," Baltimore County"," Maryland","2020",1790,1662,93
+"209","24005403801","Census Tract 4038.01"," Baltimore County"," Maryland","2020",530,504,26
+"210","24005403802","Census Tract 4038.02"," Baltimore County"," Maryland","2020",956,907,49
+"211","24005403803","Census Tract 4038.03"," Baltimore County"," Maryland","2020",1480,1371,106
+"212","24005404101","Census Tract 4041.01"," Baltimore County"," Maryland","2020",2807,2799,8
+"213","24005404102","Census Tract 4041.02"," Baltimore County"," Maryland","2020",2250,2101,98
+"214","24005404201","Census Tract 4042.01"," Baltimore County"," Maryland","2020",2250,2141,109
+"215","24005404202","Census Tract 4042.02"," Baltimore County"," Maryland","2020",2751,2163,588
+"216","24005404402","Census Tract 4044.02"," Baltimore County"," Maryland","2020",2334,2334,0
+"217","24005404403","Census Tract 4044.03"," Baltimore County"," Maryland","2020",1839,1663,166
+"218","24005404404","Census Tract 4044.04"," Baltimore County"," Maryland","2020",2346,2125,208
+"219","24005404501","Census Tract 4045.01"," Baltimore County"," Maryland","2020",2588,2387,170
+"220","24005404502","Census Tract 4045.02"," Baltimore County"," Maryland","2020",1489,1398,85
+"221","24005404600","Census Tract 4046"," Baltimore County"," Maryland","2020",979,867,78
+"222","24005404800","Census Tract 4048"," Baltimore County"," Maryland","2020",731,655,51
+"223","24005404900","Census Tract 4049"," Baltimore County"," Maryland","2020",1761,1510,243
+"224","24005405000","Census Tract 4050"," Baltimore County"," Maryland","2020",1582,1423,159
+"225","24005406000","Census Tract 4060"," Baltimore County"," Maryland","2020",2036,1977,45
+"226","24005407001","Census Tract 4070.01"," Baltimore County"," Maryland","2020",1055,1016,39
+"227","24005407002","Census Tract 4070.02"," Baltimore County"," Maryland","2020",1843,1717,126
+"228","24005408100","Census Tract 4081"," Baltimore County"," Maryland","2020",2227,2142,45
+"229","24005408200","Census Tract 4082"," Baltimore County"," Maryland","2020",702,653,35
+"230","24005408302","Census Tract 4083.02"," Baltimore County"," Maryland","2020",1181,1112,50
+"231","24005408303","Census Tract 4083.03"," Baltimore County"," Maryland","2020",1111,1111,0
+"232","24005408304","Census Tract 4083.04"," Baltimore County"," Maryland","2020",2319,2170,123
+"233","24005408400","Census Tract 4084"," Baltimore County"," Maryland","2020",684,549,124
+"234","24005408502","Census Tract 4085.02"," Baltimore County"," Maryland","2020",2014,1622,220
+"235","24005408503","Census Tract 4085.03"," Baltimore County"," Maryland","2020",1640,1464,161
+"236","24005408505","Census Tract 4085.05"," Baltimore County"," Maryland","2020",1436,1368,68
+"237","24005408506","Census Tract 4085.06"," Baltimore County"," Maryland","2020",2138,1911,194
+"238","24005408507","Census Tract 4085.07"," Baltimore County"," Maryland","2020",2858,2660,131
+"239","24005408601","Census Tract 4086.01"," Baltimore County"," Maryland","2020",1492,1442,40
+"240","24005408602","Census Tract 4086.02"," Baltimore County"," Maryland","2020",727,659,62
+"241","24005408702","Census Tract 4087.02"," Baltimore County"," Maryland","2020",898,787,47
+"242","24005408703","Census Tract 4087.03"," Baltimore County"," Maryland","2020",2827,2645,157
+"243","24005408704","Census Tract 4087.04"," Baltimore County"," Maryland","2020",1907,1874,33
+"244","24005408800","Census Tract 4088"," Baltimore County"," Maryland","2020",918,767,126
+"245","24005408900","Census Tract 4089"," Baltimore County"," Maryland","2020",1053,970,83
+"246","24005410100","Census Tract 4101"," Baltimore County"," Maryland","2020",2054,1932,122
+"247","24005410200","Census Tract 4102"," Baltimore County"," Maryland","2020",1683,1640,30
+"248","24005411101","Census Tract 4111.01"," Baltimore County"," Maryland","2020",861,768,93
+"249","24005411102","Census Tract 4111.02"," Baltimore County"," Maryland","2020",1196,1080,100
+"250","24005411201","Census Tract 4112.01"," Baltimore County"," Maryland","2020",1064,982,76
+"251","24005411202","Census Tract 4112.02"," Baltimore County"," Maryland","2020",1464,1233,144
+"252","24005411302","Census Tract 4113.02"," Baltimore County"," Maryland","2020",1184,1085,70
+"253","24005411303","Census Tract 4113.03"," Baltimore County"," Maryland","2020",2411,2256,130
+"254","24005411306","Census Tract 4113.06"," Baltimore County"," Maryland","2020",2031,1946,60
+"255","24005411307","Census Tract 4113.07"," Baltimore County"," Maryland","2020",1384,1292,59
+"256","24005411308","Census Tract 4113.08"," Baltimore County"," Maryland","2020",1627,1519,108
+"257","24005411309","Census Tract 4113.09"," Baltimore County"," Maryland","2020",3145,2724,334
+"258","24005411404","Census Tract 4114.04"," Baltimore County"," Maryland","2020",1253,1146,100
+"259","24005411406","Census Tract 4114.06"," Baltimore County"," Maryland","2020",1624,1370,254
+"260","24005411408","Census Tract 4114.08"," Baltimore County"," Maryland","2020",1486,1396,47
+"261","24005411409","Census Tract 4114.09"," Baltimore County"," Maryland","2020",1555,1510,35
+"262","24005411410","Census Tract 4114.10"," Baltimore County"," Maryland","2020",1734,1697,28
+"263","24005411411","Census Tract 4114.11"," Baltimore County"," Maryland","2020",1130,1028,102
+"264","24005411412","Census Tract 4114.12"," Baltimore County"," Maryland","2020",1449,1289,32
+"265","24005411413","Census Tract 4114.13"," Baltimore County"," Maryland","2020",3117,1330,607
+"266","24005420100","Census Tract 4201"," Baltimore County"," Maryland","2020",1274,1115,133
+"267","24005420200","Census Tract 4202"," Baltimore County"," Maryland","2020",1455,1259,178
+"268","24005420301","Census Tract 4203.01"," Baltimore County"," Maryland","2020",1022,851,163
+"269","24005420302","Census Tract 4203.02"," Baltimore County"," Maryland","2020",899,817,82
+"270","24005420303","Census Tract 4203.03"," Baltimore County"," Maryland","2020",484,395,76
+"271","24005420401","Census Tract 4204.01"," Baltimore County"," Maryland","2020",1988,1743,237
+"272","24005420402","Census Tract 4204.02"," Baltimore County"," Maryland","2020",714,617,80
+"273","24005420500","Census Tract 4205"," Baltimore County"," Maryland","2020",1353,1184,134
+"274","24005420600","Census Tract 4206"," Baltimore County"," Maryland","2020",1275,1109,144
+"275","24005420701","Census Tract 4207.01"," Baltimore County"," Maryland","2020",1204,977,166
+"276","24005420702","Census Tract 4207.02"," Baltimore County"," Maryland","2020",747,622,125
+"277","24005420800","Census Tract 4208"," Baltimore County"," Maryland","2020",1279,1135,144
+"278","24005420900","Census Tract 4209"," Baltimore County"," Maryland","2020",1336,1155,159
+"279","24005421000","Census Tract 4210"," Baltimore County"," Maryland","2020",982,590,334
+"280","24005421101","Census Tract 4211.01"," Baltimore County"," Maryland","2020",1173,887,258
+"281","24005421102","Census Tract 4211.02"," Baltimore County"," Maryland","2020",1046,867,174
+"282","24005421200","Census Tract 4212"," Baltimore County"," Maryland","2020",731,607,111
+"283","24005430101","Census Tract 4301.01"," Baltimore County"," Maryland","2020",1744,1355,309
+"284","24005430104","Census Tract 4301.04"," Baltimore County"," Maryland","2020",1072,717,80
+"285","24005430200","Census Tract 4302"," Baltimore County"," Maryland","2020",1217,940,245
+"286","24005430300","Census Tract 4303"," Baltimore County"," Maryland","2020",2143,1667,413
+"287","24005430400","Census Tract 4304"," Baltimore County"," Maryland","2020",1620,1484,78
+"288","24005430600","Census Tract 4306"," Baltimore County"," Maryland","2020",863,781,32
+"289","24005430700","Census Tract 4307"," Baltimore County"," Maryland","2020",1958,1755,184
+"290","24005430800","Census Tract 4308"," Baltimore County"," Maryland","2020",1468,1196,162
+"291","24005430900","Census Tract 4309"," Baltimore County"," Maryland","2020",1672,1247,425
+"292","24005440100","Census Tract 4401"," Baltimore County"," Maryland","2020",1607,1359,225
+"293","24005440200","Census Tract 4402"," Baltimore County"," Maryland","2020",967,803,164
+"294","24005440300","Census Tract 4403"," Baltimore County"," Maryland","2020",925,804,112
+"295","24005440400","Census Tract 4404"," Baltimore County"," Maryland","2020",2204,2013,145
+"296","24005440500","Census Tract 4405"," Baltimore County"," Maryland","2020",1199,1073,108
+"297","24005440600","Census Tract 4406"," Baltimore County"," Maryland","2020",773,749,18
+"298","24005440701","Census Tract 4407.01"," Baltimore County"," Maryland","2020",2467,2249,178
+"299","24005440702","Census Tract 4407.02"," Baltimore County"," Maryland","2020",2043,1905,69
+"300","24005440800","Census Tract 4408"," Baltimore County"," Maryland","2020",1387,1186,126
+"301","24005440900","Census Tract 4409"," Baltimore County"," Maryland","2020",1446,1317,129
+"302","24005441000","Census Tract 4410"," Baltimore County"," Maryland","2020",1300,1187,113
+"303","24005441101","Census Tract 4411.01"," Baltimore County"," Maryland","2020",848,773,65
+"304","24005441102","Census Tract 4411.02"," Baltimore County"," Maryland","2020",1917,1603,306
+"305","24005450100","Census Tract 4501"," Baltimore County"," Maryland","2020",1365,1114,206
+"306","24005450200","Census Tract 4502"," Baltimore County"," Maryland","2020",1218,1011,180
+"307","24005450300","Census Tract 4503"," Baltimore County"," Maryland","2020",1249,954,248
+"308","24005450400","Census Tract 4504"," Baltimore County"," Maryland","2020",764,687,65
+"309","24005450501","Census Tract 4505.01"," Baltimore County"," Maryland","2020",1558,1243,305
+"310","24005450503","Census Tract 4505.03"," Baltimore County"," Maryland","2020",2233,1972,261
+"311","24005450504","Census Tract 4505.04"," Baltimore County"," Maryland","2020",2511,2089,422
+"312","24005450800","Census Tract 4508"," Baltimore County"," Maryland","2020",1580,1212,279
+"313","24005450900","Census Tract 4509"," Baltimore County"," Maryland","2020",1529,1391,117
+"314","24005451000","Census Tract 4510"," Baltimore County"," Maryland","2020",624,567,51
+"315","24005451100","Census Tract 4511"," Baltimore County"," Maryland","2020",702,625,70
+"316","24005451200","Census Tract 4512"," Baltimore County"," Maryland","2020",1591,1378,156
+"317","24005451300","Census Tract 4513"," Baltimore County"," Maryland","2020",1386,940,285
+"318","24005451401","Census Tract 4514.01"," Baltimore County"," Maryland","2020",1296,1123,111
+"319","24005451402","Census Tract 4514.02"," Baltimore County"," Maryland","2020",1778,1548,149
+"320","24005451500","Census Tract 4515"," Baltimore County"," Maryland","2020",1257,1100,157
+"321","24005451600","Census Tract 4516"," Baltimore County"," Maryland","2020",858,709,112
+"322","24005451701","Census Tract 4517.01"," Baltimore County"," Maryland","2020",1852,1728,90
+"323","24005451702","Census Tract 4517.02"," Baltimore County"," Maryland","2020",687,623,60
+"324","24005451801","Census Tract 4518.01"," Baltimore County"," Maryland","2020",1948,1795,127
+"325","24005451802","Census Tract 4518.02"," Baltimore County"," Maryland","2020",1758,1590,168
+"326","24005451803","Census Tract 4518.03"," Baltimore County"," Maryland","2020",1628,1447,121
+"327","24005451900","Census Tract 4519"," Baltimore County"," Maryland","2020",982,912,70
+"328","24005452000","Census Tract 4520"," Baltimore County"," Maryland","2020",1030,855,143
+"329","24005452100","Census Tract 4521"," Baltimore County"," Maryland","2020",1229,1069,122
+"330","24005452300","Census Tract 4523"," Baltimore County"," Maryland","2020",1020,830,181
+"331","24005452400","Census Tract 4524"," Baltimore County"," Maryland","2020",1154,1052,78
+"332","24005452500","Census Tract 4525"," Baltimore County"," Maryland","2020",1218,1117,81
+"333","24005490100","Census Tract 4901"," Baltimore County"," Maryland","2020",1374,1357,8
+"334","24005490200","Census Tract 4902"," Baltimore County"," Maryland","2020",1016,962,45
+"335","24005490302","Census Tract 4903.02"," Baltimore County"," Maryland","2020",1407,1208,97
+"336","24005490303","Census Tract 4903.03"," Baltimore County"," Maryland","2020",1026,849,49
+"337","24005490304","Census Tract 4903.04"," Baltimore County"," Maryland","2020",2021,1864,157
+"338","24005490400","Census Tract 4904"," Baltimore County"," Maryland","2020",637,600,5
+"339","24005490500","Census Tract 4905"," Baltimore County"," Maryland","2020",1453,1409,16
+"340","24005490601","Census Tract 4906.01"," Baltimore County"," Maryland","2020",768,715,29
+"341","24005490602","Census Tract 4906.02"," Baltimore County"," Maryland","2020",1277,1250,18
+"342","24005490603","Census Tract 4906.03"," Baltimore County"," Maryland","2020",950,839,65
+"343","24005490605","Census Tract 4906.05"," Baltimore County"," Maryland","2020",127,81,19
+"344","24005490701","Census Tract 4907.01"," Baltimore County"," Maryland","2020",646,507,54
+"345","24005490703","Census Tract 4907.03"," Baltimore County"," Maryland","2020",1459,1405,27
+"346","24005490800","Census Tract 4908"," Baltimore County"," Maryland","2020",1210,1150,37
+"347","24005490900","Census Tract 4909"," Baltimore County"," Maryland","2020",2246,1830,359
+"348","24005491000","Census Tract 4910"," Baltimore County"," Maryland","2020",745,727,16
+"349","24005491100","Census Tract 4911"," Baltimore County"," Maryland","2020",1188,1115,73
+"350","24005491201","Census Tract 4912.01"," Baltimore County"," Maryland","2020",786,754,29
+"351","24005491202","Census Tract 4912.02"," Baltimore County"," Maryland","2020",746,711,23
+"352","24005491300","Census Tract 4913"," Baltimore County"," Maryland","2020",1367,1275,78
+"353","24005491401","Census Tract 4914.01"," Baltimore County"," Maryland","2020",2166,1948,192
+"354","24005491402","Census Tract 4914.02"," Baltimore County"," Maryland","2020",1035,888,111
+"355","24005491500","Census Tract 4915"," Baltimore County"," Maryland","2020",1761,1621,140
+"356","24005491600","Census Tract 4916"," Baltimore County"," Maryland","2020",1097,882,212
+"357","24005491701","Census Tract 4917.01"," Baltimore County"," Maryland","2020",1680,1626,45
+"358","24005491900","Census Tract 4919"," Baltimore County"," Maryland","2020",698,552,136
+"359","24005492001","Census Tract 4920.01"," Baltimore County"," Maryland","2020",520,457,45
+"360","24005492002","Census Tract 4920.02"," Baltimore County"," Maryland","2020",1448,1291,106
+"361","24005492101","Census Tract 4921.01"," Baltimore County"," Maryland","2020",1601,1455,133
+"362","24005492102","Census Tract 4921.02"," Baltimore County"," Maryland","2020",787,703,47
+"363","24005492200","Census Tract 4922"," Baltimore County"," Maryland","2020",1964,1815,136
+"364","24005492300","Census Tract 4923"," Baltimore County"," Maryland","2020",1365,1262,97
+"365","24005492401","Census Tract 4924.01"," Baltimore County"," Maryland","2020",1334,1284,50
+"366","24005492402","Census Tract 4924.02"," Baltimore County"," Maryland","2020",2764,2571,169
+"367","24005492500","Census Tract 4925"," Baltimore County"," Maryland","2020",11,8,3
+"368","24005492600","Census Tract 4926"," Baltimore County"," Maryland","2020",1439,1361,55
+"369","24005492700","Census Tract 4927"," Baltimore County"," Maryland","2020",1275,934,331
+"370","24005980100","Census Tract 9801"," Baltimore County"," Maryland","2020",0,0,0
+"371","24005980200","Census Tract 9802"," Baltimore County"," Maryland","2020",0,0,0
+"372","24009860103","Census Tract 8601.03"," Calvert County"," Maryland","2020",2036,1891,92
+"373","24009860200","Census Tract 8602"," Calvert County"," Maryland","2020",2080,1900,124
+"374","24009860300","Census Tract 8603"," Calvert County"," Maryland","2020",1445,1215,171
+"375","24009860402","Census Tract 8604.02"," Calvert County"," Maryland","2020",1377,1186,191
+"376","24009860403","Census Tract 8604.03"," Calvert County"," Maryland","2020",1465,1322,143
+"377","24009860404","Census Tract 8604.04"," Calvert County"," Maryland","2020",2834,2448,307
+"378","24009860501","Census Tract 8605.01"," Calvert County"," Maryland","2020",2074,1942,76
+"379","24009860502","Census Tract 8605.02"," Calvert County"," Maryland","2020",1259,1225,34
+"380","24009860600","Census Tract 8606"," Calvert County"," Maryland","2020",2126,1980,127
+"381","24009860701","Census Tract 8607.01"," Calvert County"," Maryland","2020",1260,1043,205
+"382","24009860702","Census Tract 8607.02"," Calvert County"," Maryland","2020",1031,883,116
+"383","24009860703","Census Tract 8607.03"," Calvert County"," Maryland","2020",1506,1361,125
+"384","24009860801","Census Tract 8608.01"," Calvert County"," Maryland","2020",2254,2044,210
+"385","24009860901","Census Tract 8609.01"," Calvert County"," Maryland","2020",2157,1890,236
+"386","24009860902","Census Tract 8609.02"," Calvert County"," Maryland","2020",963,941,14
+"387","24009861003","Census Tract 8610.03"," Calvert County"," Maryland","2020",2112,1887,208
+"388","24009861004","Census Tract 8610.04"," Calvert County"," Maryland","2020",2336,2197,126
+"389","24009861100","Census Tract 8611"," Calvert County"," Maryland","2020",2243,2159,77
+"390","24009990100","Census Tract 9901"," Calvert County"," Maryland","2020",0,0,0
+"391","24011955000","Census Tract 9550"," Caroline County"," Maryland","2020",1027,839,175
+"392","24011955100","Census Tract 9551"," Caroline County"," Maryland","2020",2200,1782,363
+"393","24011955201","Census Tract 9552.01"," Caroline County"," Maryland","2020",1556,1323,182
+"394","24011955202","Census Tract 9552.02"," Caroline County"," Maryland","2020",809,670,120
+"395","24011955301","Census Tract 9553.01"," Caroline County"," Maryland","2020",1403,1289,79
+"396","24011955302","Census Tract 9553.02"," Caroline County"," Maryland","2020",1088,968,91
+"397","24011955400","Census Tract 9554"," Caroline County"," Maryland","2020",811,674,124
+"398","24011955500","Census Tract 9555"," Caroline County"," Maryland","2020",1460,1279,144
+"399","24011955600","Census Tract 9556"," Caroline County"," Maryland","2020",1806,1320,410
+"400","24013501001","Census Tract 5010.01"," Carroll County"," Maryland","2020",1558,1388,162
+"401","24013501002","Census Tract 5010.02"," Carroll County"," Maryland","2020",2199,1838,361
+"402","24013502000","Census Tract 5020"," Carroll County"," Maryland","2020",1474,1245,212
+"403","24013503000","Census Tract 5030"," Carroll County"," Maryland","2020",2098,1885,182
+"404","24013504100","Census Tract 5041"," Carroll County"," Maryland","2020",1799,1603,196
+"405","24013504201","Census Tract 5042.01"," Carroll County"," Maryland","2020",2127,1911,203
+"406","24013504202","Census Tract 5042.02"," Carroll County"," Maryland","2020",2305,2136,156
+"407","24013505101","Census Tract 5051.01"," Carroll County"," Maryland","2020",1330,1257,62
+"408","24013505102","Census Tract 5051.02"," Carroll County"," Maryland","2020",1966,1927,39
+"409","24013505203","Census Tract 5052.03"," Carroll County"," Maryland","2020",1243,1169,74
+"410","24013505205","Census Tract 5052.05"," Carroll County"," Maryland","2020",1205,1195,10
+"411","24013505206","Census Tract 5052.06"," Carroll County"," Maryland","2020",1228,1077,74
+"412","24013505207","Census Tract 5052.07"," Carroll County"," Maryland","2020",1224,1146,67
+"413","24013505208","Census Tract 5052.08"," Carroll County"," Maryland","2020",1607,1482,111
+"414","24013506101","Census Tract 5061.01"," Carroll County"," Maryland","2020",1682,1541,126
+"415","24013506102","Census Tract 5061.02"," Carroll County"," Maryland","2020",1553,1333,187
+"416","24013506200","Census Tract 5062"," Carroll County"," Maryland","2020",2027,1756,241
+"417","24013507500","Census Tract 5075"," Carroll County"," Maryland","2020",1155,1107,39
+"418","24013507601","Census Tract 5076.01"," Carroll County"," Maryland","2020",1606,1452,143
+"419","24013507602","Census Tract 5076.02"," Carroll County"," Maryland","2020",1801,1269,409
+"420","24013507702","Census Tract 5077.02"," Carroll County"," Maryland","2020",1636,1366,254
+"421","24013507703","Census Tract 5077.03"," Carroll County"," Maryland","2020",1463,1155,258
+"422","24013507704","Census Tract 5077.04"," Carroll County"," Maryland","2020",2052,1916,70
+"423","24013507801","Census Tract 5078.01"," Carroll County"," Maryland","2020",2467,2089,361
+"424","24013507802","Census Tract 5078.02"," Carroll County"," Maryland","2020",1900,1527,349
+"425","24013508103","Census Tract 5081.03"," Carroll County"," Maryland","2020",3084,2672,345
+"426","24013508200","Census Tract 5082"," Carroll County"," Maryland","2020",2426,2269,137
+"427","24013509001","Census Tract 5090.01"," Carroll County"," Maryland","2020",1754,1595,131
+"428","24013509002","Census Tract 5090.02"," Carroll County"," Maryland","2020",1006,912,83
+"429","24013510000","Census Tract 5100"," Carroll County"," Maryland","2020",454,419,32
+"430","24013511000","Census Tract 5110"," Carroll County"," Maryland","2020",1428,1274,109
+"431","24013512000","Census Tract 5120"," Carroll County"," Maryland","2020",629,486,124
+"432","24013513001","Census Tract 5130.01"," Carroll County"," Maryland","2020",1727,1521,151
+"433","24013513002","Census Tract 5130.02"," Carroll County"," Maryland","2020",1728,1635,76
+"434","24013514100","Census Tract 5141"," Carroll County"," Maryland","2020",1222,1155,67
+"435","24013514201","Census Tract 5142.01"," Carroll County"," Maryland","2020",1871,1702,125
+"436","24013514202","Census Tract 5142.02"," Carroll County"," Maryland","2020",1227,1154,73
+"437","24015030100","Census Tract 301"," Cecil County"," Maryland","2020",2079,1788,228
+"438","24015030200","Census Tract 302"," Cecil County"," Maryland","2020",2100,1910,149
+"439","24015030400","Census Tract 304"," Cecil County"," Maryland","2020",1758,1335,347
+"440","24015030501","Census Tract 305.01"," Cecil County"," Maryland","2020",1391,1246,145
+"441","24015030503","Census Tract 305.03"," Cecil County"," Maryland","2020",2161,1765,342
+"442","24015030505","Census Tract 305.05"," Cecil County"," Maryland","2020",1288,1134,154
+"443","24015030507","Census Tract 305.07"," Cecil County"," Maryland","2020",1364,1268,96
+"444","24015030508","Census Tract 305.08"," Cecil County"," Maryland","2020",1610,1306,118
+"445","24015030601","Census Tract 306.01"," Cecil County"," Maryland","2020",1466,1343,111
+"446","24015030602","Census Tract 306.02"," Cecil County"," Maryland","2020",1955,1878,77
+"447","24015030700","Census Tract 307"," Cecil County"," Maryland","2020",1665,1514,151
+"448","24015030903","Census Tract 309.03"," Cecil County"," Maryland","2020",2034,1630,216
+"449","24015030904","Census Tract 309.04"," Cecil County"," Maryland","2020",2819,2551,201
+"450","24015030905","Census Tract 309.05"," Cecil County"," Maryland","2020",909,830,79
+"451","24015030907","Census Tract 309.07"," Cecil County"," Maryland","2020",1599,1410,161
+"452","24015030908","Census Tract 309.08"," Cecil County"," Maryland","2020",1834,1784,50
+"453","24015031201","Census Tract 312.01"," Cecil County"," Maryland","2020",2096,1898,185
+"454","24015031202","Census Tract 312.02"," Cecil County"," Maryland","2020",2137,1893,244
+"455","24015031301","Census Tract 313.01"," Cecil County"," Maryland","2020",1169,1010,159
+"456","24015031302","Census Tract 313.02"," Cecil County"," Maryland","2020",2354,2133,212
+"457","24015031400","Census Tract 314"," Cecil County"," Maryland","2020",1505,1328,122
+"458","24017850101","Census Tract 8501.01"," Charles County"," Maryland","2020",2287,1913,360
+"459","24017850102","Census Tract 8501.02"," Charles County"," Maryland","2020",884,677,207
+"460","24017850201","Census Tract 8502.01"," Charles County"," Maryland","2020",258,253,5
+"461","24017850202","Census Tract 8502.02"," Charles County"," Maryland","2020",2138,1693,378
+"462","24017850300","Census Tract 8503"," Charles County"," Maryland","2020",791,680,97
+"463","24017850400","Census Tract 8504"," Charles County"," Maryland","2020",1239,823,401
+"464","24017850500","Census Tract 8505"," Charles County"," Maryland","2020",951,833,109
+"465","24017850600","Census Tract 8506"," Charles County"," Maryland","2020",1696,1600,59
+"466","24017850706","Census Tract 8507.06"," Charles County"," Maryland","2020",1776,1739,37
+"467","24017850708","Census Tract 8507.08"," Charles County"," Maryland","2020",1911,1780,116
+"468","24017850709","Census Tract 8507.09"," Charles County"," Maryland","2020",2466,2391,29
+"469","24017850710","Census Tract 8507.10"," Charles County"," Maryland","2020",2145,1793,104
+"470","24017850711","Census Tract 8507.11"," Charles County"," Maryland","2020",1840,1643,140
+"471","24017850712","Census Tract 8507.12"," Charles County"," Maryland","2020",1786,1733,38
+"472","24017850713","Census Tract 8507.13"," Charles County"," Maryland","2020",2847,2807,40
+"473","24017850801","Census Tract 8508.01"," Charles County"," Maryland","2020",1563,1425,97
+"474","24017850802","Census Tract 8508.02"," Charles County"," Maryland","2020",2151,2089,45
+"475","24017850901","Census Tract 8509.01"," Charles County"," Maryland","2020",2093,1729,317
+"476","24017850902","Census Tract 8509.02"," Charles County"," Maryland","2020",1812,1563,249
+"477","24017850904","Census Tract 8509.04"," Charles County"," Maryland","2020",4275,4096,157
+"478","24017850905","Census Tract 8509.05"," Charles County"," Maryland","2020",1417,1373,44
+"479","24017850906","Census Tract 8509.06"," Charles County"," Maryland","2020",1899,1595,290
+"480","24017851001","Census Tract 8510.01"," Charles County"," Maryland","2020",1164,1053,63
+"481","24017851003","Census Tract 8510.03"," Charles County"," Maryland","2020",1433,1368,65
+"482","24017851004","Census Tract 8510.04"," Charles County"," Maryland","2020",2029,1604,400
+"483","24017851100","Census Tract 8511"," Charles County"," Maryland","2020",983,790,158
+"484","24017851200","Census Tract 8512"," Charles County"," Maryland","2020",1856,1511,333
+"485","24017851301","Census Tract 8513.01"," Charles County"," Maryland","2020",1667,1379,277
+"486","24017851302","Census Tract 8513.02"," Charles County"," Maryland","2020",1381,1239,142
+"487","24017851401","Census Tract 8514.01"," Charles County"," Maryland","2020",1047,941,71
+"488","24017851402","Census Tract 8514.02"," Charles County"," Maryland","2020",1271,1209,62
+"489","24017851403","Census Tract 8514.03"," Charles County"," Maryland","2020",541,527,0
+"490","24017851501","Census Tract 8515.01"," Charles County"," Maryland","2020",1702,1481,129
+"491","24017851502","Census Tract 8515.02"," Charles County"," Maryland","2020",2089,1775,177
+"492","24017990000","Census Tract 9900"," Charles County"," Maryland","2020",0,0,0
+"493","24019970100","Census Tract 9701"," Dorchester County"," Maryland","2020",1184,996,155
+"494","24019970200","Census Tract 9702"," Dorchester County"," Maryland","2020",2217,1872,319
+"495","24019970300","Census Tract 9703"," Dorchester County"," Maryland","2020",1666,1370,292
+"496","24019970400","Census Tract 9704"," Dorchester County"," Maryland","2020",1578,1330,248
+"497","24019970500","Census Tract 9705"," Dorchester County"," Maryland","2020",1485,924,435
+"498","24019970600","Census Tract 9706"," Dorchester County"," Maryland","2020",2172,1818,316
+"499","24019970702","Census Tract 9707.02"," Dorchester County"," Maryland","2020",1765,1485,273
+"500","24019970804","Census Tract 9708.04"," Dorchester County"," Maryland","2020",823,671,149
+"501","24019970900","Census Tract 9709"," Dorchester County"," Maryland","2020",543,377,155
+"502","24019990000","Census Tract 9900"," Dorchester County"," Maryland","2020",0,0,0
+"503","24021740200","Census Tract 7402"," Frederick County"," Maryland","2020",1962,1716,234
+"504","24021750100","Census Tract 7501"," Frederick County"," Maryland","2020",791,723,56
+"505","24021750200","Census Tract 7502"," Frederick County"," Maryland","2020",1032,907,117
+"506","24021750300","Census Tract 7503"," Frederick County"," Maryland","2020",861,566,255
+"507","24021750504","Census Tract 7505.04"," Frederick County"," Maryland","2020",2240,2023,182
+"508","24021750505","Census Tract 7505.05"," Frederick County"," Maryland","2020",2722,2459,243
+"509","24021750506","Census Tract 7505.06"," Frederick County"," Maryland","2020",1342,1282,46
+"510","24021750507","Census Tract 7505.07"," Frederick County"," Maryland","2020",1295,1080,154
+"511","24021750508","Census Tract 7505.08"," Frederick County"," Maryland","2020",1463,1293,170
+"512","24021750600","Census Tract 7506"," Frederick County"," Maryland","2020",899,855,44
+"513","24021750701","Census Tract 7507.01"," Frederick County"," Maryland","2020",1762,1740,12
+"514","24021750702","Census Tract 7507.02"," Frederick County"," Maryland","2020",1630,1431,145
+"515","24021750801","Census Tract 7508.01"," Frederick County"," Maryland","2020",1706,1464,195
+"516","24021750802","Census Tract 7508.02"," Frederick County"," Maryland","2020",2440,2219,74
+"517","24021750804","Census Tract 7508.04"," Frederick County"," Maryland","2020",793,758,20
+"518","24021750805","Census Tract 7508.05"," Frederick County"," Maryland","2020",1672,1612,52
+"519","24021751001","Census Tract 7510.01"," Frederick County"," Maryland","2020",435,430,5
+"520","24021751002","Census Tract 7510.02"," Frederick County"," Maryland","2020",2311,1925,368
+"521","24021751003","Census Tract 7510.03"," Frederick County"," Maryland","2020",2095,1785,239
+"522","24021751004","Census Tract 7510.04"," Frederick County"," Maryland","2020",1862,1796,66
+"523","24021751201","Census Tract 7512.01"," Frederick County"," Maryland","2020",1902,1803,24
+"524","24021751202","Census Tract 7512.02"," Frederick County"," Maryland","2020",2602,2410,158
+"525","24021751203","Census Tract 7512.03"," Frederick County"," Maryland","2020",702,651,51
+"526","24021751301","Census Tract 7513.01"," Frederick County"," Maryland","2020",1760,1546,179
+"527","24021751302","Census Tract 7513.02"," Frederick County"," Maryland","2020",1260,1122,138
+"528","24021751600","Census Tract 7516"," Frederick County"," Maryland","2020",1086,909,177
+"529","24021751701","Census Tract 7517.01"," Frederick County"," Maryland","2020",899,801,91
+"530","24021751702","Census Tract 7517.02"," Frederick County"," Maryland","2020",1368,1122,219
+"531","24021751801","Census Tract 7518.01"," Frederick County"," Maryland","2020",1655,1529,117
+"532","24021751802","Census Tract 7518.02"," Frederick County"," Maryland","2020",1297,1228,62
+"533","24021751902","Census Tract 7519.02"," Frederick County"," Maryland","2020",2059,1981,78
+"534","24021751903","Census Tract 7519.03"," Frederick County"," Maryland","2020",2152,2063,61
+"535","24021751904","Census Tract 7519.04"," Frederick County"," Maryland","2020",1147,1082,59
+"536","24021751905","Census Tract 7519.05"," Frederick County"," Maryland","2020",911,903,8
+"537","24021751906","Census Tract 7519.06"," Frederick County"," Maryland","2020",799,783,16
+"538","24021752001","Census Tract 7520.01"," Frederick County"," Maryland","2020",1753,1586,81
+"539","24021752101","Census Tract 7521.01"," Frederick County"," Maryland","2020",1076,1052,24
+"540","24021752102","Census Tract 7521.02"," Frederick County"," Maryland","2020",1793,1699,74
+"541","24021752201","Census Tract 7522.01"," Frederick County"," Maryland","2020",833,748,85
+"542","24021752202","Census Tract 7522.02"," Frederick County"," Maryland","2020",1170,1170,0
+"543","24021752205","Census Tract 7522.05"," Frederick County"," Maryland","2020",1087,1087,0
+"544","24021752206","Census Tract 7522.06"," Frederick County"," Maryland","2020",1723,1695,28
+"545","24021752301","Census Tract 7523.01"," Frederick County"," Maryland","2020",2132,2069,52
+"546","24021752302","Census Tract 7523.02"," Frederick County"," Maryland","2020",1584,1350,177
+"547","24021752303","Census Tract 7523.03"," Frederick County"," Maryland","2020",1171,1084,82
+"548","24021752501","Census Tract 7525.01"," Frederick County"," Maryland","2020",1871,1750,107
+"549","24021752502","Census Tract 7525.02"," Frederick County"," Maryland","2020",974,878,92
+"550","24021752601","Census Tract 7526.01"," Frederick County"," Maryland","2020",1484,1410,62
+"551","24021752602","Census Tract 7526.02"," Frederick County"," Maryland","2020",907,826,55
+"552","24021752603","Census Tract 7526.03"," Frederick County"," Maryland","2020",1424,1354,70
+"553","24021752801","Census Tract 7528.01"," Frederick County"," Maryland","2020",740,633,107
+"554","24021752802","Census Tract 7528.02"," Frederick County"," Maryland","2020",1312,1179,125
+"555","24021752900","Census Tract 7529"," Frederick County"," Maryland","2020",1266,1111,132
+"556","24021753001","Census Tract 7530.01"," Frederick County"," Maryland","2020",2073,1687,371
+"557","24021753002","Census Tract 7530.02"," Frederick County"," Maryland","2020",1033,878,110
+"558","24021765100","Census Tract 7651"," Frederick County"," Maryland","2020",1758,1507,238
+"559","24021766800","Census Tract 7668"," Frederick County"," Maryland","2020",1530,1156,369
+"560","24021767500","Census Tract 7675"," Frederick County"," Maryland","2020",1083,766,299
+"561","24021767600","Census Tract 7676"," Frederick County"," Maryland","2020",1111,918,139
+"562","24021770700","Census Tract 7707"," Frederick County"," Maryland","2020",1361,1279,82
+"563","24021772200","Census Tract 7722"," Frederick County"," Maryland","2020",715,608,100
+"564","24021773500","Census Tract 7735"," Frederick County"," Maryland","2020",1697,1544,132
+"565","24021775302","Census Tract 7753.02"," Frederick County"," Maryland","2020",1787,1542,218
+"566","24021775400","Census Tract 7754"," Frederick County"," Maryland","2020",1407,1233,137
+"567","24021775600","Census Tract 7756"," Frederick County"," Maryland","2020",1532,1489,24
+"568","24023000100","Census Tract 1"," Garrett County"," Maryland","2020",1697,1254,398
+"569","24023000200","Census Tract 2"," Garrett County"," Maryland","2020",1586,1279,287
+"570","24023000300","Census Tract 3"," Garrett County"," Maryland","2020",1068,953,84
+"571","24023000400","Census Tract 4"," Garrett County"," Maryland","2020",1228,816,274
+"572","24023000501","Census Tract 5.01"," Garrett County"," Maryland","2020",681,644,37
+"573","24023000502","Census Tract 5.02"," Garrett County"," Maryland","2020",1489,1258,109
+"574","24023000601","Census Tract 6.01"," Garrett County"," Maryland","2020",1805,1472,279
+"575","24023000602","Census Tract 6.02"," Garrett County"," Maryland","2020",779,512,213
+"576","24023000700","Census Tract 7"," Garrett County"," Maryland","2020",2412,1871,528
+"577","24025301102","Census Tract 3011.02"," Harford County"," Maryland","2020",1278,1063,165
+"578","24025301105","Census Tract 3011.05"," Harford County"," Maryland","2020",1374,1306,32
+"579","24025301106","Census Tract 3011.06"," Harford County"," Maryland","2020",1483,1404,46
+"580","24025301107","Census Tract 3011.07"," Harford County"," Maryland","2020",1705,1543,140
+"581","24025301108","Census Tract 3011.08"," Harford County"," Maryland","2020",1309,1258,51
+"582","24025301201","Census Tract 3012.01"," Harford County"," Maryland","2020",705,567,138
+"583","24025301202","Census Tract 3012.02"," Harford County"," Maryland","2020",2950,2937,13
+"584","24025301204","Census Tract 3012.04"," Harford County"," Maryland","2020",1507,1443,26
+"585","24025301205","Census Tract 3012.05"," Harford County"," Maryland","2020",1805,1647,151
+"586","24025301301","Census Tract 3013.01"," Harford County"," Maryland","2020",1800,1614,151
+"587","24025301302","Census Tract 3013.02"," Harford County"," Maryland","2020",2765,2331,301
+"588","24025301401","Census Tract 3014.01"," Harford County"," Maryland","2020",3092,2708,372
+"589","24025301402","Census Tract 3014.02"," Harford County"," Maryland","2020",982,911,60
+"590","24025301601","Census Tract 3016.01"," Harford County"," Maryland","2020",2237,1873,337
+"591","24025301602","Census Tract 3016.02"," Harford County"," Maryland","2020",2684,2380,264
+"592","24025301703","Census Tract 3017.03"," Harford County"," Maryland","2020",1848,1828,20
+"593","24025301704","Census Tract 3017.04"," Harford County"," Maryland","2020",1288,1235,44
+"594","24025301705","Census Tract 3017.05"," Harford County"," Maryland","2020",962,912,12
+"595","24025301706","Census Tract 3017.06"," Harford County"," Maryland","2020",1146,1132,14
+"596","24025301707","Census Tract 3017.07"," Harford County"," Maryland","2020",1678,1639,8
+"597","24025302100","Census Tract 3021"," Harford County"," Maryland","2020",834,792,42
+"598","24025302200","Census Tract 3022"," Harford County"," Maryland","2020",1290,1212,59
+"599","24025302400","Census Tract 3024"," Harford County"," Maryland","2020",1390,1217,130
+"600","24025302801","Census Tract 3028.01"," Harford County"," Maryland","2020",1283,1107,134
+"601","24025302802","Census Tract 3028.02"," Harford County"," Maryland","2020",1944,1668,233
+"602","24025302901","Census Tract 3029.01"," Harford County"," Maryland","2020",989,812,177
+"603","24025302902","Census Tract 3029.02"," Harford County"," Maryland","2020",1962,1517,395
+"604","24025303101","Census Tract 3031.01"," Harford County"," Maryland","2020",2180,2068,97
+"605","24025303102","Census Tract 3031.02"," Harford County"," Maryland","2020",841,791,30
+"606","24025303201","Census Tract 3032.01"," Harford County"," Maryland","2020",1883,1824,59
+"607","24025303203","Census Tract 3032.03"," Harford County"," Maryland","2020",1248,1151,69
+"608","24025303204","Census Tract 3032.04"," Harford County"," Maryland","2020",1799,1715,55
+"609","24025303205","Census Tract 3032.05"," Harford County"," Maryland","2020",593,565,24
+"610","24025303206","Census Tract 3032.06"," Harford County"," Maryland","2020",1215,1155,52
+"611","24025303300","Census Tract 3033"," Harford County"," Maryland","2020",2244,2076,154
+"612","24025303400","Census Tract 3034"," Harford County"," Maryland","2020",1670,1626,30
+"613","24025303501","Census Tract 3035.01"," Harford County"," Maryland","2020",2658,2243,366
+"614","24025303502","Census Tract 3035.02"," Harford County"," Maryland","2020",1130,1070,52
+"615","24025303602","Census Tract 3036.02"," Harford County"," Maryland","2020",1319,1246,51
+"616","24025303603","Census Tract 3036.03"," Harford County"," Maryland","2020",2154,2052,78
+"617","24025303605","Census Tract 3036.05"," Harford County"," Maryland","2020",2481,2266,215
+"618","24025303606","Census Tract 3036.06"," Harford County"," Maryland","2020",1043,1021,16
+"619","24025303700","Census Tract 3037"," Harford County"," Maryland","2020",1534,1295,210
+"620","24025303801","Census Tract 3038.01"," Harford County"," Maryland","2020",1446,1223,111
+"621","24025303802","Census Tract 3038.02"," Harford County"," Maryland","2020",793,729,64
+"622","24025303803","Census Tract 3038.03"," Harford County"," Maryland","2020",2145,1871,254
+"623","24025303900","Census Tract 3039"," Harford County"," Maryland","2020",991,970,21
+"624","24025304101","Census Tract 3041.01"," Harford County"," Maryland","2020",1673,1544,63
+"625","24025304102","Census Tract 3041.02"," Harford County"," Maryland","2020",1311,1174,121
+"626","24025304201","Census Tract 3042.01"," Harford County"," Maryland","2020",2453,2276,177
+"627","24025304202","Census Tract 3042.02"," Harford County"," Maryland","2020",2173,2062,111
+"628","24025305100","Census Tract 3051"," Harford County"," Maryland","2020",2639,2349,258
+"629","24025305200","Census Tract 3052"," Harford County"," Maryland","2020",1109,836,212
+"630","24025305300","Census Tract 3053"," Harford County"," Maryland","2020",758,674,73
+"631","24025306100","Census Tract 3061"," Harford County"," Maryland","2020",1872,1499,322
+"632","24025306200","Census Tract 3062"," Harford County"," Maryland","2020",971,811,153
+"633","24025306300","Census Tract 3063"," Harford County"," Maryland","2020",1140,1076,64
+"634","24025306400","Census Tract 3064"," Harford County"," Maryland","2020",2474,2339,107
+"635","24025306500","Census Tract 3065"," Harford County"," Maryland","2020",864,817,25
+"636","24027601103","Census Tract 6011.03"," Howard County"," Maryland","2020",2048,2017,31
+"637","24027601104","Census Tract 6011.04"," Howard County"," Maryland","2020",2079,2041,29
+"638","24027601105","Census Tract 6011.05"," Howard County"," Maryland","2020",1945,1891,48
+"639","24027601107","Census Tract 6011.07"," Howard County"," Maryland","2020",1813,1723,64
+"640","24027601108","Census Tract 6011.08"," Howard County"," Maryland","2020",1417,1410,7
+"641","24027601203","Census Tract 6012.03"," Howard County"," Maryland","2020",2376,2309,50
+"642","24027601204","Census Tract 6012.04"," Howard County"," Maryland","2020",2645,2594,23
+"643","24027601205","Census Tract 6012.05"," Howard County"," Maryland","2020",1776,1651,61
+"644","24027601206","Census Tract 6012.06"," Howard County"," Maryland","2020",1202,1170,17
+"645","24027602100","Census Tract 6021"," Howard County"," Maryland","2020",2590,2508,82
+"646","24027602201","Census Tract 6022.01"," Howard County"," Maryland","2020",1127,1120,0
+"647","24027602202","Census Tract 6022.02"," Howard County"," Maryland","2020",1864,1807,49
+"648","24027602302","Census Tract 6023.02"," Howard County"," Maryland","2020",2282,2250,32
+"649","24027602303","Census Tract 6023.03"," Howard County"," Maryland","2020",1423,1380,30
+"650","24027602304","Census Tract 6023.04"," Howard County"," Maryland","2020",1584,1548,36
+"651","24027602305","Census Tract 6023.05"," Howard County"," Maryland","2020",1458,1345,36
+"652","24027602306","Census Tract 6023.06"," Howard County"," Maryland","2020",2384,2174,107
+"653","24027602600","Census Tract 6026"," Howard County"," Maryland","2020",3167,2851,301
+"654","24027602700","Census Tract 6027"," Howard County"," Maryland","2020",2058,2001,31
+"655","24027602800","Census Tract 6028"," Howard County"," Maryland","2020",2048,2030,18
+"656","24027602900","Census Tract 6029"," Howard County"," Maryland","2020",2059,1863,180
+"657","24027603001","Census Tract 6030.01"," Howard County"," Maryland","2020",2481,2215,233
+"658","24027603003","Census Tract 6030.03"," Howard County"," Maryland","2020",1410,1345,57
+"659","24027603004","Census Tract 6030.04"," Howard County"," Maryland","2020",2630,2431,170
+"660","24027604001","Census Tract 6040.01"," Howard County"," Maryland","2020",1995,1939,56
+"661","24027604003","Census Tract 6040.03"," Howard County"," Maryland","2020",1306,1227,62
+"662","24027604004","Census Tract 6040.04"," Howard County"," Maryland","2020",1441,1330,94
+"663","24027605103","Census Tract 6051.03"," Howard County"," Maryland","2020",1721,1648,54
+"664","24027605104","Census Tract 6051.04"," Howard County"," Maryland","2020",1779,1712,67
+"665","24027605105","Census Tract 6051.05"," Howard County"," Maryland","2020",2404,2386,0
+"666","24027605106","Census Tract 6051.06"," Howard County"," Maryland","2020",1297,1260,26
+"667","24027605401","Census Tract 6054.01"," Howard County"," Maryland","2020",2316,2262,54
+"668","24027605403","Census Tract 6054.03"," Howard County"," Maryland","2020",1788,1589,144
+"669","24027605404","Census Tract 6054.04"," Howard County"," Maryland","2020",2401,2151,131
+"670","24027605502","Census Tract 6055.02"," Howard County"," Maryland","2020",1825,1733,41
+"671","24027605503","Census Tract 6055.03"," Howard County"," Maryland","2020",2152,1838,206
+"672","24027605504","Census Tract 6055.04"," Howard County"," Maryland","2020",797,797,0
+"673","24027605505","Census Tract 6055.05"," Howard County"," Maryland","2020",1943,1909,34
+"674","24027605601","Census Tract 6056.01"," Howard County"," Maryland","2020",3231,2939,232
+"675","24027605602","Census Tract 6056.02"," Howard County"," Maryland","2020",3215,3148,67
+"676","24027606601","Census Tract 6066.01"," Howard County"," Maryland","2020",1279,1233,35
+"677","24027606603","Census Tract 6066.03"," Howard County"," Maryland","2020",3169,3041,100
+"678","24027606604","Census Tract 6066.04"," Howard County"," Maryland","2020",1605,1589,16
+"679","24027606606","Census Tract 6066.06"," Howard County"," Maryland","2020",2260,2090,150
+"680","24027606607","Census Tract 6066.07"," Howard County"," Maryland","2020",1572,1480,68
+"681","24027606701","Census Tract 6067.01"," Howard County"," Maryland","2020",873,857,2
+"682","24027606704","Census Tract 6067.04"," Howard County"," Maryland","2020",2673,2318,340
+"683","24027606706","Census Tract 6067.06"," Howard County"," Maryland","2020",2032,1951,73
+"684","24027606708","Census Tract 6067.08"," Howard County"," Maryland","2020",2491,2346,134
+"685","24027606803","Census Tract 6068.03"," Howard County"," Maryland","2020",2352,2205,139
+"686","24027606804","Census Tract 6068.04"," Howard County"," Maryland","2020",1173,1140,0
+"687","24027606805","Census Tract 6068.05"," Howard County"," Maryland","2020",1610,1569,23
+"688","24027606807","Census Tract 6068.07"," Howard County"," Maryland","2020",651,633,18
+"689","24027606808","Census Tract 6068.08"," Howard County"," Maryland","2020",1925,1903,22
+"690","24027606901","Census Tract 6069.01"," Howard County"," Maryland","2020",2513,2367,123
+"691","24027606904","Census Tract 6069.04"," Howard County"," Maryland","2020",1465,1406,27
+"692","24027606905","Census Tract 6069.05"," Howard County"," Maryland","2020",2837,2746,91
+"693","24027606906","Census Tract 6069.06"," Howard County"," Maryland","2020",2133,1946,145
+"694","24027606907","Census Tract 6069.07"," Howard County"," Maryland","2020",2367,2296,57
+"695","24029950100","Census Tract 9501"," Kent County"," Maryland","2020",1619,1316,242
+"696","24029950200","Census Tract 9502"," Kent County"," Maryland","2020",1877,1354,444
+"697","24029950300","Census Tract 9503"," Kent County"," Maryland","2020",2373,1630,586
+"698","24029950400","Census Tract 9504"," Kent County"," Maryland","2020",1253,1015,228
+"699","24029950500","Census Tract 9505"," Kent County"," Maryland","2020",1152,878,261
+"700","24029990000","Census Tract 9900"," Kent County"," Maryland","2020",0,0,0
+"701","24031700101","Census Tract 7001.01"," Montgomery County"," Maryland","2020",1556,1512,32
+"702","24031700103","Census Tract 7001.03"," Montgomery County"," Maryland","2020",1786,1611,150
+"703","24031700104","Census Tract 7001.04"," Montgomery County"," Maryland","2020",1739,1622,80
+"704","24031700105","Census Tract 7001.05"," Montgomery County"," Maryland","2020",2046,2020,0
+"705","24031700204","Census Tract 7002.04"," Montgomery County"," Maryland","2020",847,727,98
+"706","24031700206","Census Tract 7002.06"," Montgomery County"," Maryland","2020",1875,1815,51
+"707","24031700207","Census Tract 7002.07"," Montgomery County"," Maryland","2020",1768,1662,58
+"708","24031700208","Census Tract 7002.08"," Montgomery County"," Maryland","2020",749,689,60
+"709","24031700209","Census Tract 7002.09"," Montgomery County"," Maryland","2020",1575,1417,26
+"710","24031700210","Census Tract 7002.10"," Montgomery County"," Maryland","2020",2553,2442,47
+"711","24031700306","Census Tract 7003.06"," Montgomery County"," Maryland","2020",2363,2308,55
+"712","24031700308","Census Tract 7003.08"," Montgomery County"," Maryland","2020",2371,2247,77
+"713","24031700309","Census Tract 7003.09"," Montgomery County"," Maryland","2020",1884,1829,55
+"714","24031700310","Census Tract 7003.10"," Montgomery County"," Maryland","2020",2620,2575,26
+"715","24031700313","Census Tract 7003.13"," Montgomery County"," Maryland","2020",1417,1417,0
+"716","24031700314","Census Tract 7003.14"," Montgomery County"," Maryland","2020",1099,1051,3
+"717","24031700315","Census Tract 7003.15"," Montgomery County"," Maryland","2020",1701,1691,10
+"718","24031700316","Census Tract 7003.16"," Montgomery County"," Maryland","2020",1079,1058,21
+"719","24031700317","Census Tract 7003.17"," Montgomery County"," Maryland","2020",1607,1554,43
+"720","24031700318","Census Tract 7003.18"," Montgomery County"," Maryland","2020",982,951,13
+"721","24031700400","Census Tract 7004"," Montgomery County"," Maryland","2020",804,747,51
+"722","24031700500","Census Tract 7005"," Montgomery County"," Maryland","2020",2224,2114,84
+"723","24031700604","Census Tract 7006.04"," Montgomery County"," Maryland","2020",2293,2277,16
+"724","24031700606","Census Tract 7006.06"," Montgomery County"," Maryland","2020",1331,1289,18
+"725","24031700608","Census Tract 7006.08"," Montgomery County"," Maryland","2020",1742,1644,74
+"726","24031700610","Census Tract 7006.10"," Montgomery County"," Maryland","2020",729,722,3
+"727","24031700611","Census Tract 7006.11"," Montgomery County"," Maryland","2020",1660,1660,0
+"728","24031700613","Census Tract 7006.13"," Montgomery County"," Maryland","2020",2034,1956,65
+"729","24031700614","Census Tract 7006.14"," Montgomery County"," Maryland","2020",2243,1981,189
+"730","24031700615","Census Tract 7006.15"," Montgomery County"," Maryland","2020",1005,977,23
+"731","24031700616","Census Tract 7006.16"," Montgomery County"," Maryland","2020",1685,1675,10
+"732","24031700617","Census Tract 7006.17"," Montgomery County"," Maryland","2020",739,733,6
+"733","24031700618","Census Tract 7006.18"," Montgomery County"," Maryland","2020",1632,1632,0
+"734","24031700706","Census Tract 7007.06"," Montgomery County"," Maryland","2020",1578,1420,158
+"735","24031700710","Census Tract 7007.10"," Montgomery County"," Maryland","2020",1980,1834,77
+"736","24031700711","Census Tract 7007.11"," Montgomery County"," Maryland","2020",2193,2137,43
+"737","24031700713","Census Tract 7007.13"," Montgomery County"," Maryland","2020",1886,1542,268
+"738","24031700715","Census Tract 7007.15"," Montgomery County"," Maryland","2020",2031,1996,35
+"739","24031700718","Census Tract 7007.18"," Montgomery County"," Maryland","2020",3237,3103,40
+"740","24031700720","Census Tract 7007.20"," Montgomery County"," Maryland","2020",943,878,43
+"741","24031700721","Census Tract 7007.21"," Montgomery County"," Maryland","2020",1574,1440,112
+"742","24031700723","Census Tract 7007.23"," Montgomery County"," Maryland","2020",1831,1474,297
+"743","24031700724","Census Tract 7007.24"," Montgomery County"," Maryland","2020",1116,843,232
+"744","24031700725","Census Tract 7007.25"," Montgomery County"," Maryland","2020",1749,1455,183
+"745","24031700726","Census Tract 7007.26"," Montgomery County"," Maryland","2020",1542,1326,168
+"746","24031700727","Census Tract 7007.27"," Montgomery County"," Maryland","2020",499,419,74
+"747","24031700728","Census Tract 7007.28"," Montgomery County"," Maryland","2020",664,659,5
+"748","24031700729","Census Tract 7007.29"," Montgomery County"," Maryland","2020",886,886,0
+"749","24031700730","Census Tract 7007.30"," Montgomery County"," Maryland","2020",1715,1482,177
+"750","24031700731","Census Tract 7007.31"," Montgomery County"," Maryland","2020",1319,1147,86
+"751","24031700732","Census Tract 7007.32"," Montgomery County"," Maryland","2020",1016,821,195
+"752","24031700733","Census Tract 7007.33"," Montgomery County"," Maryland","2020",1936,1750,73
+"753","24031700810","Census Tract 7008.10"," Montgomery County"," Maryland","2020",1882,1823,50
+"754","24031700811","Census Tract 7008.11"," Montgomery County"," Maryland","2020",1428,1380,37
+"755","24031700812","Census Tract 7008.12"," Montgomery County"," Maryland","2020",1641,1319,119
+"756","24031700813","Census Tract 7008.13"," Montgomery County"," Maryland","2020",1954,1631,308
+"757","24031700815","Census Tract 7008.15"," Montgomery County"," Maryland","2020",2425,2303,110
+"758","24031700818","Census Tract 7008.18"," Montgomery County"," Maryland","2020",2325,2118,152
+"759","24031700819","Census Tract 7008.19"," Montgomery County"," Maryland","2020",2234,2182,6
+"760","24031700820","Census Tract 7008.20"," Montgomery County"," Maryland","2020",1105,1074,25
+"761","24031700822","Census Tract 7008.22"," Montgomery County"," Maryland","2020",663,595,68
+"762","24031700823","Census Tract 7008.23"," Montgomery County"," Maryland","2020",1059,1050,9
+"763","24031700824","Census Tract 7008.24"," Montgomery County"," Maryland","2020",926,906,20
+"764","24031700826","Census Tract 7008.26"," Montgomery County"," Maryland","2020",2648,2516,132
+"765","24031700828","Census Tract 7008.28"," Montgomery County"," Maryland","2020",792,776,11
+"766","24031700829","Census Tract 7008.29"," Montgomery County"," Maryland","2020",1228,1222,6
+"767","24031700830","Census Tract 7008.30"," Montgomery County"," Maryland","2020",1020,948,72
+"768","24031700832","Census Tract 7008.32"," Montgomery County"," Maryland","2020",887,826,61
+"769","24031700833","Census Tract 7008.33"," Montgomery County"," Maryland","2020",1273,1112,129
+"770","24031700834","Census Tract 7008.34"," Montgomery County"," Maryland","2020",1645,1558,70
+"771","24031700835","Census Tract 7008.35"," Montgomery County"," Maryland","2020",1408,1322,68
+"772","24031700836","Census Tract 7008.36"," Montgomery County"," Maryland","2020",600,579,21
+"773","24031700837","Census Tract 7008.37"," Montgomery County"," Maryland","2020",2198,2084,47
+"774","24031700838","Census Tract 7008.38"," Montgomery County"," Maryland","2020",1562,1508,40
+"775","24031700839","Census Tract 7008.39"," Montgomery County"," Maryland","2020",2357,2298,46
+"776","24031700901","Census Tract 7009.01"," Montgomery County"," Maryland","2020",2836,2407,300
+"777","24031700902","Census Tract 7009.02"," Montgomery County"," Maryland","2020",1369,1310,52
+"778","24031700903","Census Tract 7009.03"," Montgomery County"," Maryland","2020",657,620,32
+"779","24031700904","Census Tract 7009.04"," Montgomery County"," Maryland","2020",1507,1313,151
+"780","24031700905","Census Tract 7009.05"," Montgomery County"," Maryland","2020",1537,1452,54
+"781","24031701001","Census Tract 7010.01"," Montgomery County"," Maryland","2020",2152,2002,90
+"782","24031701002","Census Tract 7010.02"," Montgomery County"," Maryland","2020",1538,1518,20
+"783","24031701004","Census Tract 7010.04"," Montgomery County"," Maryland","2020",1746,1718,8
+"784","24031701005","Census Tract 7010.05"," Montgomery County"," Maryland","2020",1104,1058,34
+"785","24031701006","Census Tract 7010.06"," Montgomery County"," Maryland","2020",1877,1821,30
+"786","24031701007","Census Tract 7010.07"," Montgomery County"," Maryland","2020",1468,1409,34
+"787","24031701101","Census Tract 7011.01"," Montgomery County"," Maryland","2020",1561,1327,145
+"788","24031701102","Census Tract 7011.02"," Montgomery County"," Maryland","2020",2055,1890,152
+"789","24031701201","Census Tract 7012.01"," Montgomery County"," Maryland","2020",2339,2287,32
+"790","24031701202","Census Tract 7012.02"," Montgomery County"," Maryland","2020",989,953,21
+"791","24031701205","Census Tract 7012.05"," Montgomery County"," Maryland","2020",2331,2270,48
+"792","24031701206","Census Tract 7012.06"," Montgomery County"," Maryland","2020",2012,1958,50
+"793","24031701210","Census Tract 7012.10"," Montgomery County"," Maryland","2020",1259,1210,39
+"794","24031701211","Census Tract 7012.11"," Montgomery County"," Maryland","2020",2275,2234,41
+"795","24031701212","Census Tract 7012.12"," Montgomery County"," Maryland","2020",831,788,32
+"796","24031701214","Census Tract 7012.14"," Montgomery County"," Maryland","2020",2014,1997,17
+"797","24031701215","Census Tract 7012.15"," Montgomery County"," Maryland","2020",2558,2299,76
+"798","24031701216","Census Tract 7012.16"," Montgomery County"," Maryland","2020",3173,3082,42
+"799","24031701218","Census Tract 7012.18"," Montgomery County"," Maryland","2020",1389,1241,127
+"800","24031701219","Census Tract 7012.19"," Montgomery County"," Maryland","2020",1779,1509,236
+"801","24031701220","Census Tract 7012.20"," Montgomery County"," Maryland","2020",1147,1135,12
+"802","24031701221","Census Tract 7012.21"," Montgomery County"," Maryland","2020",1684,1600,84
+"803","24031701222","Census Tract 7012.22"," Montgomery County"," Maryland","2020",1751,1676,75
+"804","24031701223","Census Tract 7012.23"," Montgomery County"," Maryland","2020",1508,1508,0
+"805","24031701303","Census Tract 7013.03"," Montgomery County"," Maryland","2020",1349,1290,30
+"806","24031701304","Census Tract 7013.04"," Montgomery County"," Maryland","2020",2139,2063,76
+"807","24031701306","Census Tract 7013.06"," Montgomery County"," Maryland","2020",913,894,19
+"808","24031701307","Census Tract 7013.07"," Montgomery County"," Maryland","2020",1559,1509,42
+"809","24031701308","Census Tract 7013.08"," Montgomery County"," Maryland","2020",1296,1225,60
+"810","24031701312","Census Tract 7013.12"," Montgomery County"," Maryland","2020",1979,1948,31
+"811","24031701313","Census Tract 7013.13"," Montgomery County"," Maryland","2020",1142,1123,19
+"812","24031701314","Census Tract 7013.14"," Montgomery County"," Maryland","2020",1024,999,7
+"813","24031701315","Census Tract 7013.15"," Montgomery County"," Maryland","2020",1723,1605,106
+"814","24031701316","Census Tract 7013.16"," Montgomery County"," Maryland","2020",2357,2222,135
+"815","24031701317","Census Tract 7013.17"," Montgomery County"," Maryland","2020",1297,1186,48
+"816","24031701407","Census Tract 7014.07"," Montgomery County"," Maryland","2020",1857,1808,39
+"817","24031701408","Census Tract 7014.08"," Montgomery County"," Maryland","2020",1730,1684,46
+"818","24031701409","Census Tract 7014.09"," Montgomery County"," Maryland","2020",1338,1298,40
+"819","24031701414","Census Tract 7014.14"," Montgomery County"," Maryland","2020",2256,2156,83
+"820","24031701415","Census Tract 7014.15"," Montgomery County"," Maryland","2020",2448,2410,38
+"821","24031701417","Census Tract 7014.17"," Montgomery County"," Maryland","2020",2422,2394,28
+"822","24031701418","Census Tract 7014.18"," Montgomery County"," Maryland","2020",1117,1080,21
+"823","24031701422","Census Tract 7014.22"," Montgomery County"," Maryland","2020",1049,1020,19
+"824","24031701423","Census Tract 7014.23"," Montgomery County"," Maryland","2020",1860,1712,148
+"825","24031701424","Census Tract 7014.24"," Montgomery County"," Maryland","2020",945,916,15
+"826","24031701425","Census Tract 7014.25"," Montgomery County"," Maryland","2020",1828,1262,161
+"827","24031701426","Census Tract 7014.26"," Montgomery County"," Maryland","2020",1897,1788,56
+"828","24031701427","Census Tract 7014.27"," Montgomery County"," Maryland","2020",887,887,0
+"829","24031701503","Census Tract 7015.03"," Montgomery County"," Maryland","2020",2113,1916,197
+"830","24031701505","Census Tract 7015.05"," Montgomery County"," Maryland","2020",2341,2144,184
+"831","24031701506","Census Tract 7015.06"," Montgomery County"," Maryland","2020",1729,1695,24
+"832","24031701507","Census Tract 7015.07"," Montgomery County"," Maryland","2020",1971,1835,80
+"833","24031701508","Census Tract 7015.08"," Montgomery County"," Maryland","2020",1521,1404,73
+"834","24031701509","Census Tract 7015.09"," Montgomery County"," Maryland","2020",2060,1837,114
+"835","24031701601","Census Tract 7016.01"," Montgomery County"," Maryland","2020",725,631,81
+"836","24031701602","Census Tract 7016.02"," Montgomery County"," Maryland","2020",1833,1615,143
+"837","24031701701","Census Tract 7017.01"," Montgomery County"," Maryland","2020",1497,1311,153
+"838","24031701702","Census Tract 7017.02"," Montgomery County"," Maryland","2020",1022,913,101
+"839","24031701703","Census Tract 7017.03"," Montgomery County"," Maryland","2020",1291,1228,10
+"840","24031701704","Census Tract 7017.04"," Montgomery County"," Maryland","2020",1033,969,64
+"841","24031701800","Census Tract 7018"," Montgomery County"," Maryland","2020",1754,1585,141
+"842","24031701900","Census Tract 7019"," Montgomery County"," Maryland","2020",1211,1141,61
+"843","24031702000","Census Tract 7020"," Montgomery County"," Maryland","2020",1540,1283,245
+"844","24031702101","Census Tract 7021.01"," Montgomery County"," Maryland","2020",1824,1609,157
+"845","24031702102","Census Tract 7021.02"," Montgomery County"," Maryland","2020",1122,1054,68
+"846","24031702200","Census Tract 7022"," Montgomery County"," Maryland","2020",1570,1561,9
+"847","24031702301","Census Tract 7023.01"," Montgomery County"," Maryland","2020",1324,1224,100
+"848","24031702302","Census Tract 7023.02"," Montgomery County"," Maryland","2020",1706,1541,146
+"849","24031702401","Census Tract 7024.01"," Montgomery County"," Maryland","2020",1078,1065,13
+"850","24031702402","Census Tract 7024.02"," Montgomery County"," Maryland","2020",2016,2003,13
+"851","24031702501","Census Tract 7025.01"," Montgomery County"," Maryland","2020",2201,2138,63
+"852","24031702502","Census Tract 7025.02"," Montgomery County"," Maryland","2020",780,648,42
+"853","24031702503","Census Tract 7025.03"," Montgomery County"," Maryland","2020",2141,1937,146
+"854","24031702602","Census Tract 7026.02"," Montgomery County"," Maryland","2020",2110,2023,28
+"855","24031702603","Census Tract 7026.03"," Montgomery County"," Maryland","2020",1052,989,63
+"856","24031702604","Census Tract 7026.04"," Montgomery County"," Maryland","2020",1520,1330,134
+"857","24031702700","Census Tract 7027"," Montgomery County"," Maryland","2020",2450,2192,221
+"858","24031702800","Census Tract 7028"," Montgomery County"," Maryland","2020",2735,2381,336
+"859","24031702900","Census Tract 7029"," Montgomery County"," Maryland","2020",2320,2172,130
+"860","24031703000","Census Tract 7030"," Montgomery County"," Maryland","2020",678,657,18
+"861","24031703100","Census Tract 7031"," Montgomery County"," Maryland","2020",1466,1423,43
+"862","24031703201","Census Tract 7032.01"," Montgomery County"," Maryland","2020",2353,2160,117
+"863","24031703202","Census Tract 7032.02"," Montgomery County"," Maryland","2020",2089,1968,108
+"864","24031703206","Census Tract 7032.06"," Montgomery County"," Maryland","2020",1129,1072,45
+"865","24031703207","Census Tract 7032.07"," Montgomery County"," Maryland","2020",1607,1501,65
+"866","24031703208","Census Tract 7032.08"," Montgomery County"," Maryland","2020",1653,1595,58
+"867","24031703209","Census Tract 7032.09"," Montgomery County"," Maryland","2020",2387,2279,91
+"868","24031703210","Census Tract 7032.10"," Montgomery County"," Maryland","2020",1321,1254,47
+"869","24031703213","Census Tract 7032.13"," Montgomery County"," Maryland","2020",2308,2005,259
+"870","24031703214","Census Tract 7032.14"," Montgomery County"," Maryland","2020",2416,2123,232
+"871","24031703215","Census Tract 7032.15"," Montgomery County"," Maryland","2020",1023,928,95
+"872","24031703216","Census Tract 7032.16"," Montgomery County"," Maryland","2020",2179,1759,332
+"873","24031703218","Census Tract 7032.18"," Montgomery County"," Maryland","2020",1604,1323,240
+"874","24031703219","Census Tract 7032.19"," Montgomery County"," Maryland","2020",2432,2073,254
+"875","24031703220","Census Tract 7032.20"," Montgomery County"," Maryland","2020",1848,1569,250
+"876","24031703221","Census Tract 7032.21"," Montgomery County"," Maryland","2020",1561,1487,39
+"877","24031703222","Census Tract 7032.22"," Montgomery County"," Maryland","2020",1532,1405,127
+"878","24031703223","Census Tract 7032.23"," Montgomery County"," Maryland","2020",1767,1601,126
+"879","24031703301","Census Tract 7033.01"," Montgomery County"," Maryland","2020",1358,1206,137
+"880","24031703302","Census Tract 7033.02"," Montgomery County"," Maryland","2020",1185,1011,159
+"881","24031703401","Census Tract 7034.01"," Montgomery County"," Maryland","2020",1378,1244,127
+"882","24031703402","Census Tract 7034.02"," Montgomery County"," Maryland","2020",1063,1030,33
+"883","24031703403","Census Tract 7034.03"," Montgomery County"," Maryland","2020",951,872,61
+"884","24031703404","Census Tract 7034.04"," Montgomery County"," Maryland","2020",877,763,112
+"885","24031703501","Census Tract 7035.01"," Montgomery County"," Maryland","2020",2009,1816,147
+"886","24031703502","Census Tract 7035.02"," Montgomery County"," Maryland","2020",1184,1099,78
+"887","24031703601","Census Tract 7036.01"," Montgomery County"," Maryland","2020",1814,1586,155
+"888","24031703602","Census Tract 7036.02"," Montgomery County"," Maryland","2020",1018,1003,15
+"889","24031703701","Census Tract 7037.01"," Montgomery County"," Maryland","2020",1170,1073,97
+"890","24031703702","Census Tract 7037.02"," Montgomery County"," Maryland","2020",1246,1161,67
+"891","24031703800","Census Tract 7038"," Montgomery County"," Maryland","2020",1847,1674,105
+"892","24031703901","Census Tract 7039.01"," Montgomery County"," Maryland","2020",1102,1027,59
+"893","24031703902","Census Tract 7039.02"," Montgomery County"," Maryland","2020",2528,2358,145
+"894","24031704000","Census Tract 7040"," Montgomery County"," Maryland","2020",2268,2051,176
+"895","24031704100","Census Tract 7041"," Montgomery County"," Maryland","2020",1667,1509,50
+"896","24031704200","Census Tract 7042"," Montgomery County"," Maryland","2020",823,788,28
+"897","24031704300","Census Tract 7043"," Montgomery County"," Maryland","2020",1315,1285,18
+"898","24031704401","Census Tract 7044.01"," Montgomery County"," Maryland","2020",1027,1027,0
+"899","24031704403","Census Tract 7044.03"," Montgomery County"," Maryland","2020",930,881,42
+"900","24031704404","Census Tract 7044.04"," Montgomery County"," Maryland","2020",2120,2007,100
+"901","24031704501","Census Tract 7045.01"," Montgomery County"," Maryland","2020",1060,1025,15
+"902","24031704502","Census Tract 7045.02"," Montgomery County"," Maryland","2020",907,880,22
+"903","24031704503","Census Tract 7045.03"," Montgomery County"," Maryland","2020",1357,1300,8
+"904","24031704600","Census Tract 7046"," Montgomery County"," Maryland","2020",1849,1827,22
+"905","24031704700","Census Tract 7047"," Montgomery County"," Maryland","2020",1318,1303,9
+"906","24031704803","Census Tract 7048.03"," Montgomery County"," Maryland","2020",2187,1929,99
+"907","24031704804","Census Tract 7048.04"," Montgomery County"," Maryland","2020",1000,977,7
+"908","24031704805","Census Tract 7048.05"," Montgomery County"," Maryland","2020",1241,1182,53
+"909","24031704806","Census Tract 7048.06"," Montgomery County"," Maryland","2020",2344,2114,55
+"910","24031705000","Census Tract 7050"," Montgomery County"," Maryland","2020",1763,1639,124
+"911","24031705100","Census Tract 7051"," Montgomery County"," Maryland","2020",1890,1812,69
+"912","24031705200","Census Tract 7052"," Montgomery County"," Maryland","2020",1101,1070,29
+"913","24031705300","Census Tract 7053"," Montgomery County"," Maryland","2020",679,648,20
+"914","24031705400","Census Tract 7054"," Montgomery County"," Maryland","2020",1006,1006,0
+"915","24031705501","Census Tract 7055.01"," Montgomery County"," Maryland","2020",1188,1095,39
+"916","24031705502","Census Tract 7055.02"," Montgomery County"," Maryland","2020",1662,1604,50
+"917","24031705601","Census Tract 7056.01"," Montgomery County"," Maryland","2020",1151,1117,34
+"918","24031705602","Census Tract 7056.02"," Montgomery County"," Maryland","2020",2523,2269,202
+"919","24031705701","Census Tract 7057.01"," Montgomery County"," Maryland","2020",1598,1522,68
+"920","24031705702","Census Tract 7057.02"," Montgomery County"," Maryland","2020",1590,1554,22
+"921","24031705800","Census Tract 7058"," Montgomery County"," Maryland","2020",2336,2254,63
+"922","24031705901","Census Tract 7059.01"," Montgomery County"," Maryland","2020",1480,1379,47
+"923","24031705902","Census Tract 7059.02"," Montgomery County"," Maryland","2020",1362,1323,32
+"924","24031705903","Census Tract 7059.03"," Montgomery County"," Maryland","2020",1739,1739,0
+"925","24031706005","Census Tract 7060.05"," Montgomery County"," Maryland","2020",1548,1481,25
+"926","24031706007","Census Tract 7060.07"," Montgomery County"," Maryland","2020",2204,2188,0
+"927","24031706008","Census Tract 7060.08"," Montgomery County"," Maryland","2020",1972,1931,8
+"928","24031706009","Census Tract 7060.09"," Montgomery County"," Maryland","2020",1719,1698,9
+"929","24031706010","Census Tract 7060.10"," Montgomery County"," Maryland","2020",1135,1079,56
+"930","24031706011","Census Tract 7060.11"," Montgomery County"," Maryland","2020",1821,1800,21
+"931","24031706012","Census Tract 7060.12"," Montgomery County"," Maryland","2020",1837,1681,133
+"932","24031706013","Census Tract 7060.13"," Montgomery County"," Maryland","2020",884,872,12
+"933","24033800102","Census Tract 8001.02"," Prince George's County"," Maryland","2020",1288,1191,86
+"934","24033800103","Census Tract 8001.03"," Prince George's County"," Maryland","2020",832,665,139
+"935","24033800105","Census Tract 8001.05"," Prince George's County"," Maryland","2020",1178,1130,31
+"936","24033800106","Census Tract 8001.06"," Prince George's County"," Maryland","2020",1003,989,14
+"937","24033800108","Census Tract 8001.08"," Prince George's County"," Maryland","2020",1424,1359,43
+"938","24033800109","Census Tract 8001.09"," Prince George's County"," Maryland","2020",1145,995,122
+"939","24033800203","Census Tract 8002.03"," Prince George's County"," Maryland","2020",1490,1408,77
+"940","24033800206","Census Tract 8002.06"," Prince George's County"," Maryland","2020",1553,1424,105
+"941","24033800209","Census Tract 8002.09"," Prince George's County"," Maryland","2020",1334,1220,114
+"942","24033800210","Census Tract 8002.10"," Prince George's County"," Maryland","2020",1121,967,119
+"943","24033800211","Census Tract 8002.11"," Prince George's County"," Maryland","2020",1303,1105,191
+"944","24033800212","Census Tract 8002.12"," Prince George's County"," Maryland","2020",2196,2068,109
+"945","24033800213","Census Tract 8002.13"," Prince George's County"," Maryland","2020",1421,1359,54
+"946","24033800216","Census Tract 8002.16"," Prince George's County"," Maryland","2020",1359,1213,133
+"947","24033800217","Census Tract 8002.17"," Prince George's County"," Maryland","2020",1479,1435,40
+"948","24033800218","Census Tract 8002.18"," Prince George's County"," Maryland","2020",2191,2051,127
+"949","24033800401","Census Tract 8004.01"," Prince George's County"," Maryland","2020",858,835,17
+"950","24033800402","Census Tract 8004.02"," Prince George's County"," Maryland","2020",1847,1805,42
+"951","24033800403","Census Tract 8004.03"," Prince George's County"," Maryland","2020",1268,1251,17
+"952","24033800408","Census Tract 8004.08"," Prince George's County"," Maryland","2020",1925,1903,8
+"953","24033800409","Census Tract 8004.09"," Prince George's County"," Maryland","2020",2274,2075,55
+"954","24033800410","Census Tract 8004.10"," Prince George's County"," Maryland","2020",1718,1699,19
+"955","24033800411","Census Tract 8004.11"," Prince George's County"," Maryland","2020",1300,1282,11
+"956","24033800412","Census Tract 8004.12"," Prince George's County"," Maryland","2020",1219,1085,134
+"957","24033800413","Census Tract 8004.13"," Prince George's County"," Maryland","2020",1388,1299,78
+"958","24033800504","Census Tract 8005.04"," Prince George's County"," Maryland","2020",1651,1522,66
+"959","24033800505","Census Tract 8005.05"," Prince George's County"," Maryland","2020",940,917,23
+"960","24033800507","Census Tract 8005.07"," Prince George's County"," Maryland","2020",1103,1065,17
+"961","24033800511","Census Tract 8005.11"," Prince George's County"," Maryland","2020",1999,1865,77
+"962","24033800513","Census Tract 8005.13"," Prince George's County"," Maryland","2020",2076,2057,14
+"963","24033800514","Census Tract 8005.14"," Prince George's County"," Maryland","2020",2014,2014,0
+"964","24033800515","Census Tract 8005.15"," Prince George's County"," Maryland","2020",1960,1891,69
+"965","24033800516","Census Tract 8005.16"," Prince George's County"," Maryland","2020",1562,1453,80
+"966","24033800517","Census Tract 8005.17"," Prince George's County"," Maryland","2020",1899,1804,58
+"967","24033800518","Census Tract 8005.18"," Prince George's County"," Maryland","2020",1122,1065,47
+"968","24033800519","Census Tract 8005.19"," Prince George's County"," Maryland","2020",1446,1419,0
+"969","24033800520","Census Tract 8005.20"," Prince George's County"," Maryland","2020",979,832,91
+"970","24033800521","Census Tract 8005.21"," Prince George's County"," Maryland","2020",3087,2876,211
+"971","24033800522","Census Tract 8005.22"," Prince George's County"," Maryland","2020",1314,1293,0
+"972","24033800605","Census Tract 8006.05"," Prince George's County"," Maryland","2020",1408,1323,72
+"973","24033800606","Census Tract 8006.06"," Prince George's County"," Maryland","2020",2125,1981,98
+"974","24033800607","Census Tract 8006.07"," Prince George's County"," Maryland","2020",1998,1951,34
+"975","24033800608","Census Tract 8006.08"," Prince George's County"," Maryland","2020",2348,2255,29
+"976","24033800609","Census Tract 8006.09"," Prince George's County"," Maryland","2020",1383,1280,98
+"977","24033800701","Census Tract 8007.01"," Prince George's County"," Maryland","2020",2513,2513,0
+"978","24033800704","Census Tract 8007.04"," Prince George's County"," Maryland","2020",2019,1911,87
+"979","24033800705","Census Tract 8007.05"," Prince George's County"," Maryland","2020",1513,1491,22
+"980","24033800706","Census Tract 8007.06"," Prince George's County"," Maryland","2020",1291,1272,19
+"981","24033800707","Census Tract 8007.07"," Prince George's County"," Maryland","2020",1291,1094,75
+"982","24033800800","Census Tract 8008"," Prince George's County"," Maryland","2020",1069,1013,46
+"983","24033800900","Census Tract 8009"," Prince George's County"," Maryland","2020",550,415,99
+"984","24033801003","Census Tract 8010.03"," Prince George's County"," Maryland","2020",1783,1591,168
+"985","24033801004","Census Tract 8010.04"," Prince George's County"," Maryland","2020",1406,1281,60
+"986","24033801005","Census Tract 8010.05"," Prince George's County"," Maryland","2020",1200,1159,10
+"987","24033801006","Census Tract 8010.06"," Prince George's County"," Maryland","2020",1274,1250,24
+"988","24033801105","Census Tract 8011.05"," Prince George's County"," Maryland","2020",360,326,34
+"989","24033801106","Census Tract 8011.06"," Prince George's County"," Maryland","2020",441,421,0
+"990","24033801207","Census Tract 8012.07"," Prince George's County"," Maryland","2020",1402,1349,42
+"991","24033801208","Census Tract 8012.08"," Prince George's County"," Maryland","2020",1705,1606,82
+"992","24033801209","Census Tract 8012.09"," Prince George's County"," Maryland","2020",1461,1408,37
+"993","24033801210","Census Tract 8012.10"," Prince George's County"," Maryland","2020",1473,1407,56
+"994","24033801211","Census Tract 8012.11"," Prince George's County"," Maryland","2020",975,911,27
+"995","24033801212","Census Tract 8012.12"," Prince George's County"," Maryland","2020",1041,960,73
+"996","24033801213","Census Tract 8012.13"," Prince George's County"," Maryland","2020",1430,1296,119
+"997","24033801214","Census Tract 8012.14"," Prince George's County"," Maryland","2020",1541,1186,295
+"998","24033801215","Census Tract 8012.15"," Prince George's County"," Maryland","2020",887,870,8
+"999","24033801216","Census Tract 8012.16"," Prince George's County"," Maryland","2020",1146,1072,74
+"1000","24033801217","Census Tract 8012.17"," Prince George's County"," Maryland","2020",1042,919,116
+"1001","24033801302","Census Tract 8013.02"," Prince George's County"," Maryland","2020",925,853,61
+"1002","24033801305","Census Tract 8013.05"," Prince George's County"," Maryland","2020",1849,1735,60
+"1003","24033801307","Census Tract 8013.07"," Prince George's County"," Maryland","2020",1235,1206,29
+"1004","24033801308","Census Tract 8013.08"," Prince George's County"," Maryland","2020",1182,1063,69
+"1005","24033801309","Census Tract 8013.09"," Prince George's County"," Maryland","2020",1253,1173,51
+"1006","24033801310","Census Tract 8013.10"," Prince George's County"," Maryland","2020",2202,2023,148
+"1007","24033801311","Census Tract 8013.11"," Prince George's County"," Maryland","2020",2125,2024,28
+"1008","24033801312","Census Tract 8013.12"," Prince George's County"," Maryland","2020",1513,1427,76
+"1009","24033801313","Census Tract 8013.13"," Prince George's County"," Maryland","2020",1032,963,59
+"1010","24033801404","Census Tract 8014.04"," Prince George's County"," Maryland","2020",2314,2118,149
+"1011","24033801405","Census Tract 8014.05"," Prince George's County"," Maryland","2020",1432,1305,116
+"1012","24033801406","Census Tract 8014.06"," Prince George's County"," Maryland","2020",1373,1185,161
+"1013","24033801407","Census Tract 8014.07"," Prince George's County"," Maryland","2020",2257,2156,94
+"1014","24033801408","Census Tract 8014.08"," Prince George's County"," Maryland","2020",1332,1196,108
+"1015","24033801409","Census Tract 8014.09"," Prince George's County"," Maryland","2020",934,800,102
+"1016","24033801410","Census Tract 8014.10"," Prince George's County"," Maryland","2020",1130,1090,28
+"1017","24033801411","Census Tract 8014.11"," Prince George's County"," Maryland","2020",1050,961,74
+"1018","24033801500","Census Tract 8015"," Prince George's County"," Maryland","2020",726,683,43
+"1019","24033801600","Census Tract 8016"," Prince George's County"," Maryland","2020",1065,857,146
+"1020","24033801701","Census Tract 8017.01"," Prince George's County"," Maryland","2020",1533,1450,76
+"1021","24033801702","Census Tract 8017.02"," Prince George's County"," Maryland","2020",1573,1304,89
+"1022","24033801704","Census Tract 8017.04"," Prince George's County"," Maryland","2020",2179,1774,341
+"1023","24033801707","Census Tract 8017.07"," Prince George's County"," Maryland","2020",2134,1754,296
+"1024","24033801709","Census Tract 8017.09"," Prince George's County"," Maryland","2020",1857,1613,224
+"1025","24033801801","Census Tract 8018.01"," Prince George's County"," Maryland","2020",773,666,92
+"1026","24033801802","Census Tract 8018.02"," Prince George's County"," Maryland","2020",1671,1435,200
+"1027","24033801807","Census Tract 8018.07"," Prince George's County"," Maryland","2020",2096,1955,122
+"1028","24033801808","Census Tract 8018.08"," Prince George's County"," Maryland","2020",1469,1165,174
+"1029","24033801809","Census Tract 8018.09"," Prince George's County"," Maryland","2020",1878,1539,249
+"1030","24033801901","Census Tract 8019.01"," Prince George's County"," Maryland","2020",1625,1466,151
+"1031","24033801904","Census Tract 8019.04"," Prince George's County"," Maryland","2020",1132,964,145
+"1032","24033801905","Census Tract 8019.05"," Prince George's County"," Maryland","2020",2603,2380,205
+"1033","24033801906","Census Tract 8019.06"," Prince George's County"," Maryland","2020",694,503,181
+"1034","24033801907","Census Tract 8019.07"," Prince George's County"," Maryland","2020",1607,1315,233
+"1035","24033801908","Census Tract 8019.08"," Prince George's County"," Maryland","2020",1294,1074,171
+"1036","24033802001","Census Tract 8020.01"," Prince George's County"," Maryland","2020",2025,1646,261
+"1037","24033802002","Census Tract 8020.02"," Prince George's County"," Maryland","2020",1531,1316,194
+"1038","24033802103","Census Tract 8021.03"," Prince George's County"," Maryland","2020",988,877,90
+"1039","24033802104","Census Tract 8021.04"," Prince George's County"," Maryland","2020",870,667,147
+"1040","24033802106","Census Tract 8021.06"," Prince George's County"," Maryland","2020",1895,1651,192
+"1041","24033802107","Census Tract 8021.07"," Prince George's County"," Maryland","2020",1388,1248,121
+"1042","24033802201","Census Tract 8022.01"," Prince George's County"," Maryland","2020",1340,1142,174
+"1043","24033802203","Census Tract 8022.03"," Prince George's County"," Maryland","2020",1729,1337,280
+"1044","24033802204","Census Tract 8022.04"," Prince George's County"," Maryland","2020",1925,1747,162
+"1045","24033802301","Census Tract 8023.01"," Prince George's County"," Maryland","2020",1134,1065,69
+"1046","24033802404","Census Tract 8024.04"," Prince George's County"," Maryland","2020",1810,1453,264
+"1047","24033802405","Census Tract 8024.05"," Prince George's County"," Maryland","2020",1621,1244,331
+"1048","24033802406","Census Tract 8024.06"," Prince George's County"," Maryland","2020",941,859,82
+"1049","24033802407","Census Tract 8024.07"," Prince George's County"," Maryland","2020",1928,1574,324
+"1050","24033802408","Census Tract 8024.08"," Prince George's County"," Maryland","2020",955,741,169
+"1051","24033802501","Census Tract 8025.01"," Prince George's County"," Maryland","2020",1032,808,224
+"1052","24033802502","Census Tract 8025.02"," Prince George's County"," Maryland","2020",802,674,101
+"1053","24033802600","Census Tract 8026"," Prince George's County"," Maryland","2020",1195,967,191
+"1054","24033802700","Census Tract 8027"," Prince George's County"," Maryland","2020",946,697,192
+"1055","24033802803","Census Tract 8028.03"," Prince George's County"," Maryland","2020",2300,1929,308
+"1056","24033802804","Census Tract 8028.04"," Prince George's County"," Maryland","2020",1855,1590,214
+"1057","24033802805","Census Tract 8028.05"," Prince George's County"," Maryland","2020",1755,1601,109
+"1058","24033802901","Census Tract 8029.01"," Prince George's County"," Maryland","2020",1677,1403,274
+"1059","24033803001","Census Tract 8030.01"," Prince George's County"," Maryland","2020",1071,884,146
+"1060","24033803002","Census Tract 8030.02"," Prince George's County"," Maryland","2020",995,768,227
+"1061","24033803100","Census Tract 8031"," Prince George's County"," Maryland","2020",1061,845,156
+"1062","24033803200","Census Tract 8032"," Prince George's County"," Maryland","2020",1112,1028,84
+"1063","24033803300","Census Tract 8033"," Prince George's County"," Maryland","2020",1550,1464,67
+"1064","24033803403","Census Tract 8034.03"," Prince George's County"," Maryland","2020",2088,1723,337
+"1065","24033803508","Census Tract 8035.08"," Prince George's County"," Maryland","2020",1147,1005,142
+"1066","24033803509","Census Tract 8035.09"," Prince George's County"," Maryland","2020",1141,981,137
+"1067","24033803512","Census Tract 8035.12"," Prince George's County"," Maryland","2020",2251,2162,89
+"1068","24033803513","Census Tract 8035.13"," Prince George's County"," Maryland","2020",1981,1755,184
+"1069","24033803514","Census Tract 8035.14"," Prince George's County"," Maryland","2020",2436,2144,277
+"1070","24033803516","Census Tract 8035.16"," Prince George's County"," Maryland","2020",1550,1503,41
+"1071","24033803519","Census Tract 8035.19"," Prince George's County"," Maryland","2020",2358,2214,103
+"1072","24033803520","Census Tract 8035.20"," Prince George's County"," Maryland","2020",1588,1573,4
+"1073","24033803521","Census Tract 8035.21"," Prince George's County"," Maryland","2020",2601,2462,34
+"1074","24033803524","Census Tract 8035.24"," Prince George's County"," Maryland","2020",1589,1461,116
+"1075","24033803525","Census Tract 8035.25"," Prince George's County"," Maryland","2020",987,922,55
+"1076","24033803526","Census Tract 8035.26"," Prince George's County"," Maryland","2020",1320,1208,61
+"1077","24033803527","Census Tract 8035.27"," Prince George's County"," Maryland","2020",1217,1169,19
+"1078","24033803528","Census Tract 8035.28"," Prince George's County"," Maryland","2020",2285,2241,0
+"1079","24033803601","Census Tract 8036.01"," Prince George's County"," Maryland","2020",1190,1165,8
+"1080","24033803602","Census Tract 8036.02"," Prince George's County"," Maryland","2020",857,782,75
+"1081","24033803605","Census Tract 8036.05"," Prince George's County"," Maryland","2020",1897,1706,125
+"1082","24033803606","Census Tract 8036.06"," Prince George's County"," Maryland","2020",1309,1225,57
+"1083","24033803607","Census Tract 8036.07"," Prince George's County"," Maryland","2020",1011,912,63
+"1084","24033803608","Census Tract 8036.08"," Prince George's County"," Maryland","2020",1729,1523,190
+"1085","24033803610","Census Tract 8036.10"," Prince George's County"," Maryland","2020",1077,1014,50
+"1086","24033803612","Census Tract 8036.12"," Prince George's County"," Maryland","2020",1290,1031,259
+"1087","24033803613","Census Tract 8036.13"," Prince George's County"," Maryland","2020",2250,1873,238
+"1088","24033803700","Census Tract 8037"," Prince George's County"," Maryland","2020",748,682,66
+"1089","24033803801","Census Tract 8038.01"," Prince George's County"," Maryland","2020",672,554,95
+"1090","24033803803","Census Tract 8038.03"," Prince George's County"," Maryland","2020",1579,1411,159
+"1091","24033803900","Census Tract 8039"," Prince George's County"," Maryland","2020",865,672,137
+"1092","24033804001","Census Tract 8040.01"," Prince George's County"," Maryland","2020",2367,1945,327
+"1093","24033804002","Census Tract 8040.02"," Prince George's County"," Maryland","2020",1317,1123,194
+"1094","24033804101","Census Tract 8041.01"," Prince George's County"," Maryland","2020",1250,1135,115
+"1095","24033804102","Census Tract 8041.02"," Prince George's County"," Maryland","2020",1946,1646,226
+"1096","24033804200","Census Tract 8042"," Prince George's County"," Maryland","2020",1369,1316,53
+"1097","24033804300","Census Tract 8043"," Prince George's County"," Maryland","2020",1121,819,276
+"1098","24033804400","Census Tract 8044"," Prince George's County"," Maryland","2020",855,721,105
+"1099","24033804600","Census Tract 8046"," Prince George's County"," Maryland","2020",931,813,83
+"1100","24033804700","Census Tract 8047"," Prince George's County"," Maryland","2020",1689,1526,118
+"1101","24033804801","Census Tract 8048.01"," Prince George's County"," Maryland","2020",1436,1259,177
+"1102","24033804802","Census Tract 8048.02"," Prince George's County"," Maryland","2020",1161,918,231
+"1103","24033804900","Census Tract 8049"," Prince George's County"," Maryland","2020",1328,1106,201
+"1104","24033805000","Census Tract 8050"," Prince George's County"," Maryland","2020",2063,1672,357
+"1105","24033805101","Census Tract 8051.01"," Prince George's County"," Maryland","2020",1220,1003,163
+"1106","24033805201","Census Tract 8052.01"," Prince George's County"," Maryland","2020",1267,1130,137
+"1107","24033805202","Census Tract 8052.02"," Prince George's County"," Maryland","2020",1102,1031,59
+"1108","24033805500","Census Tract 8055"," Prince George's County"," Maryland","2020",1019,841,178
+"1109","24033805601","Census Tract 8056.01"," Prince George's County"," Maryland","2020",1570,1247,306
+"1110","24033805602","Census Tract 8056.02"," Prince George's County"," Maryland","2020",1202,1127,75
+"1111","24033805700","Census Tract 8057"," Prince George's County"," Maryland","2020",1560,1445,103
+"1112","24033805801","Census Tract 8058.01"," Prince George's County"," Maryland","2020",914,853,59
+"1113","24033805802","Census Tract 8058.02"," Prince George's County"," Maryland","2020",1031,962,69
+"1114","24033805904","Census Tract 8059.04"," Prince George's County"," Maryland","2020",870,836,31
+"1115","24033805906","Census Tract 8059.06"," Prince George's County"," Maryland","2020",1220,1108,99
+"1116","24033805907","Census Tract 8059.07"," Prince George's County"," Maryland","2020",1198,1062,136
+"1117","24033805908","Census Tract 8059.08"," Prince George's County"," Maryland","2020",866,811,55
+"1118","24033805909","Census Tract 8059.09"," Prince George's County"," Maryland","2020",1947,1737,78
+"1119","24033806000","Census Tract 8060"," Prince George's County"," Maryland","2020",1786,1650,128
+"1120","24033806100","Census Tract 8061"," Prince George's County"," Maryland","2020",1313,1247,66
+"1121","24033806400","Census Tract 8064"," Prince George's County"," Maryland","2020",1518,1442,24
+"1122","24033806501","Census Tract 8065.01"," Prince George's County"," Maryland","2020",1539,1238,247
+"1123","24033806601","Census Tract 8066.01"," Prince George's County"," Maryland","2020",1366,1028,302
+"1124","24033806602","Census Tract 8066.02"," Prince George's County"," Maryland","2020",1258,1054,146
+"1125","24033806706","Census Tract 8067.06"," Prince George's County"," Maryland","2020",1406,1289,110
+"1126","24033806708","Census Tract 8067.08"," Prince George's County"," Maryland","2020",2106,1965,114
+"1127","24033806710","Census Tract 8067.10"," Prince George's County"," Maryland","2020",2189,2072,99
+"1128","24033806711","Census Tract 8067.11"," Prince George's County"," Maryland","2020",1914,1727,151
+"1129","24033806712","Census Tract 8067.12"," Prince George's County"," Maryland","2020",1603,1531,62
+"1130","24033806713","Census Tract 8067.13"," Prince George's County"," Maryland","2020",1147,1063,84
+"1131","24033806714","Census Tract 8067.14"," Prince George's County"," Maryland","2020",1742,1572,170
+"1132","24033806800","Census Tract 8068"," Prince George's County"," Maryland","2020",1155,1065,56
+"1133","24033806900","Census Tract 8069"," Prince George's County"," Maryland","2020",1448,1338,73
+"1134","24033807000","Census Tract 8070"," Prince George's County"," Maryland","2020",2949,2371,278
+"1135","24033807102","Census Tract 8071.02"," Prince George's County"," Maryland","2020",938,825,85
+"1136","24033807301","Census Tract 8073.01"," Prince George's County"," Maryland","2020",1288,1121,63
+"1137","24033807304","Census Tract 8073.04"," Prince George's County"," Maryland","2020",588,565,20
+"1138","24033807305","Census Tract 8073.05"," Prince George's County"," Maryland","2020",952,923,29
+"1139","24033807404","Census Tract 8074.04"," Prince George's County"," Maryland","2020",1579,1472,81
+"1140","24033807405","Census Tract 8074.05"," Prince George's County"," Maryland","2020",1922,1745,159
+"1141","24033807407","Census Tract 8074.07"," Prince George's County"," Maryland","2020",2188,2074,114
+"1142","24033807408","Census Tract 8074.08"," Prince George's County"," Maryland","2020",2297,2215,70
+"1143","24033807409","Census Tract 8074.09"," Prince George's County"," Maryland","2020",1105,988,101
+"1144","24033807410","Census Tract 8074.10"," Prince George's County"," Maryland","2020",2390,1410,216
+"1145","24033807500","Census Tract 8075"," Prince George's County"," Maryland","2020",2464,2236,216
+"1146","24033980000","Census Tract 9800"," Prince George's County"," Maryland","2020",833,676,41
+"1147","24035810100","Census Tract 8101"," Queen Anne's County"," Maryland","2020",987,722,152
+"1148","24035810200","Census Tract 8102"," Queen Anne's County"," Maryland","2020",1027,792,206
+"1149","24035810300","Census Tract 8103"," Queen Anne's County"," Maryland","2020",1968,1668,222
+"1150","24035810400","Census Tract 8104"," Queen Anne's County"," Maryland","2020",2049,1839,85
+"1151","24035810500","Census Tract 8105"," Queen Anne's County"," Maryland","2020",1783,1499,180
+"1152","24035810600","Census Tract 8106"," Queen Anne's County"," Maryland","2020",2021,1838,126
+"1153","24035810700","Census Tract 8107"," Queen Anne's County"," Maryland","2020",1526,1324,133
+"1154","24035810800","Census Tract 8108"," Queen Anne's County"," Maryland","2020",2411,2218,121
+"1155","24035810901","Census Tract 8109.01"," Queen Anne's County"," Maryland","2020",2262,1958,110
+"1156","24035810902","Census Tract 8109.02"," Queen Anne's County"," Maryland","2020",1081,974,44
+"1157","24035811000","Census Tract 8110"," Queen Anne's County"," Maryland","2020",1885,1657,146
+"1158","24035990000","Census Tract 9900"," Queen Anne's County"," Maryland","2020",0,0,0
+"1159","24035990100","Census Tract 9901"," Queen Anne's County"," Maryland","2020",0,0,0
+"1160","24035990200","Census Tract 9902"," Queen Anne's County"," Maryland","2020",0,0,0
+"1161","24037875000","Census Tract 8750"," St. Mary's County"," Maryland","2020",2122,1992,82
+"1162","24037875100","Census Tract 8751"," St. Mary's County"," Maryland","2020",1786,1533,218
+"1163","24037875201","Census Tract 8752.01"," St. Mary's County"," Maryland","2020",1947,1686,201
+"1164","24037875202","Census Tract 8752.02"," St. Mary's County"," Maryland","2020",2045,1747,274
+"1165","24037875300","Census Tract 8753"," St. Mary's County"," Maryland","2020",1245,909,285
+"1166","24037875400","Census Tract 8754"," St. Mary's County"," Maryland","2020",2359,2058,294
+"1167","24037875501","Census Tract 8755.01"," St. Mary's County"," Maryland","2020",2463,2134,202
+"1168","24037875502","Census Tract 8755.02"," St. Mary's County"," Maryland","2020",1271,1038,227
+"1169","24037875601","Census Tract 8756.01"," St. Mary's County"," Maryland","2020",651,464,151
+"1170","24037875602","Census Tract 8756.02"," St. Mary's County"," Maryland","2020",2666,2584,65
+"1171","24037875700","Census Tract 8757"," St. Mary's County"," Maryland","2020",2612,2241,316
+"1172","24037875803","Census Tract 8758.03"," St. Mary's County"," Maryland","2020",1980,1859,82
+"1173","24037875903","Census Tract 8759.03"," St. Mary's County"," Maryland","2020",1365,1167,124
+"1174","24037875904","Census Tract 8759.04"," St. Mary's County"," Maryland","2020",2466,1965,408
+"1175","24037875905","Census Tract 8759.05"," St. Mary's County"," Maryland","2020",1025,901,102
+"1176","24037875906","Census Tract 8759.06"," St. Mary's County"," Maryland","2020",1952,1786,124
+"1177","24037876001","Census Tract 8760.01"," St. Mary's County"," Maryland","2020",2307,1970,271
+"1178","24037876003","Census Tract 8760.03"," St. Mary's County"," Maryland","2020",1204,994,18
+"1179","24037876004","Census Tract 8760.04"," St. Mary's County"," Maryland","2020",2718,2550,120
+"1180","24037876101","Census Tract 8761.01"," St. Mary's County"," Maryland","2020",1684,1370,271
+"1181","24037876102","Census Tract 8761.02"," St. Mary's County"," Maryland","2020",1204,1074,56
+"1182","24037876200","Census Tract 8762"," St. Mary's County"," Maryland","2020",2208,1880,268
+"1183","24037990000","Census Tract 9900"," St. Mary's County"," Maryland","2020",0,0,0
+"1184","24039930101","Census Tract 9301.01"," Somerset County"," Maryland","2020",2305,1931,262
+"1185","24039930102","Census Tract 9301.02"," Somerset County"," Maryland","2020",1605,1326,272
+"1186","24039930200","Census Tract 9302"," Somerset County"," Maryland","2020",724,446,250
+"1187","24039930500","Census Tract 9305"," Somerset County"," Maryland","2020",1650,1328,289
+"1188","24039930600","Census Tract 9306"," Somerset County"," Maryland","2020",1152,875,264
+"1189","24039930800","Census Tract 9308"," Somerset County"," Maryland","2020",1073,944,120
+"1190","24039990100","Census Tract 9901"," Somerset County"," Maryland","2020",0,0,0
+"1191","24041960100","Census Tract 9601"," Talbot County"," Maryland","2020",1494,1322,162
+"1192","24041960201","Census Tract 9602.01"," Talbot County"," Maryland","2020",1988,1905,65
+"1193","24041960300","Census Tract 9603"," Talbot County"," Maryland","2020",1687,1336,288
+"1194","24041960400","Census Tract 9604"," Talbot County"," Maryland","2020",2505,2073,419
+"1195","24041960501","Census Tract 9605.01"," Talbot County"," Maryland","2020",1992,1751,221
+"1196","24041960502","Census Tract 9605.02"," Talbot County"," Maryland","2020",1680,1352,328
+"1197","24041960600","Census Tract 9606"," Talbot County"," Maryland","2020",782,695,42
+"1198","24041960700","Census Tract 9607"," Talbot County"," Maryland","2020",1855,1702,136
+"1199","24041960800","Census Tract 9608"," Talbot County"," Maryland","2020",911,840,71
+"1200","24041960900","Census Tract 9609"," Talbot County"," Maryland","2020",1916,1686,189
+"1201","24041990000","Census Tract 9900"," Talbot County"," Maryland","2020",0,0,0
+"1202","24043000100","Census Tract 1"," Washington County"," Maryland","2020",1561,1350,204
+"1203","24043000200","Census Tract 2"," Washington County"," Maryland","2020",1636,1462,153
+"1204","24043000301","Census Tract 3.01"," Washington County"," Maryland","2020",1241,978,240
+"1205","24043000302","Census Tract 3.02"," Washington County"," Maryland","2020",927,727,178
+"1206","24043000400","Census Tract 4"," Washington County"," Maryland","2020",782,538,195
+"1207","24043000500","Census Tract 5"," Washington County"," Maryland","2020",2258,1861,268
+"1208","24043000601","Census Tract 6.01"," Washington County"," Maryland","2020",908,737,151
+"1209","24043000602","Census Tract 6.02"," Washington County"," Maryland","2020",1597,1281,247
+"1210","24043000700","Census Tract 7"," Washington County"," Maryland","2020",1261,784,469
+"1211","24043000800","Census Tract 8"," Washington County"," Maryland","2020",1697,1098,511
+"1212","24043000900","Census Tract 9"," Washington County"," Maryland","2020",1227,998,229
+"1213","24043001001","Census Tract 10.01"," Washington County"," Maryland","2020",1975,1529,348
+"1214","24043001002","Census Tract 10.02"," Washington County"," Maryland","2020",1486,1300,186
+"1215","24043010100","Census Tract 101"," Washington County"," Maryland","2020",355,326,19
+"1216","24043010200","Census Tract 102"," Washington County"," Maryland","2020",1778,1450,291
+"1217","24043010300","Census Tract 103"," Washington County"," Maryland","2020",2859,2452,347
+"1218","24043010401","Census Tract 104.01"," Washington County"," Maryland","2020",1453,1213,202
+"1219","24043010402","Census Tract 104.02"," Washington County"," Maryland","2020",2097,1899,179
+"1220","24043010600","Census Tract 106"," Washington County"," Maryland","2020",1919,1535,355
+"1221","24043010700","Census Tract 107"," Washington County"," Maryland","2020",1451,1107,337
+"1222","24043010802","Census Tract 108.02"," Washington County"," Maryland","2020",1074,880,165
+"1223","24043010803","Census Tract 108.03"," Washington County"," Maryland","2020",1661,1381,207
+"1224","24043010901","Census Tract 109.01"," Washington County"," Maryland","2020",2226,2039,187
+"1225","24043010902","Census Tract 109.02"," Washington County"," Maryland","2020",1163,902,261
+"1226","24043011000","Census Tract 110"," Washington County"," Maryland","2020",0,0,0
+"1227","24043011100","Census Tract 111"," Washington County"," Maryland","2020",2834,2383,393
+"1228","24043011202","Census Tract 112.02"," Washington County"," Maryland","2020",1561,1340,202
+"1229","24043011203","Census Tract 112.03"," Washington County"," Maryland","2020",1965,1669,281
+"1230","24043011204","Census Tract 112.04"," Washington County"," Maryland","2020",1588,1441,67
+"1231","24043011301","Census Tract 113.01"," Washington County"," Maryland","2020",1840,1600,216
+"1232","24043011302","Census Tract 113.02"," Washington County"," Maryland","2020",1406,1207,188
+"1233","24043011400","Census Tract 114"," Washington County"," Maryland","2020",2567,2064,362
+"1234","24043011501","Census Tract 115.01"," Washington County"," Maryland","2020",1526,1407,77
+"1235","24043011502","Census Tract 115.02"," Washington County"," Maryland","2020",1256,987,269
+"1236","24043011600","Census Tract 116"," Washington County"," Maryland","2020",1179,1040,122
+"1237","24043011700","Census Tract 117"," Washington County"," Maryland","2020",2053,1718,277
+"1238","24045000100","Census Tract 1"," Wicomico County"," Maryland","2020",2343,1742,450
+"1239","24045000200","Census Tract 2"," Wicomico County"," Maryland","2020",745,606,93
+"1240","24045000300","Census Tract 3"," Wicomico County"," Maryland","2020",500,324,152
+"1241","24045000400","Census Tract 4"," Wicomico County"," Maryland","2020",1662,1473,189
+"1242","24045000500","Census Tract 5"," Wicomico County"," Maryland","2020",1052,846,155
+"1243","24045010101","Census Tract 101.01"," Wicomico County"," Maryland","2020",2399,2222,160
+"1244","24045010102","Census Tract 101.02"," Wicomico County"," Maryland","2020",1325,1122,167
+"1245","24045010200","Census Tract 102"," Wicomico County"," Maryland","2020",2437,1791,598
+"1246","24045010300","Census Tract 103"," Wicomico County"," Maryland","2020",3064,2646,290
+"1247","24045010400","Census Tract 104"," Wicomico County"," Maryland","2020",2115,1810,305
+"1248","24045010501","Census Tract 105.01"," Wicomico County"," Maryland","2020",2067,1799,264
+"1249","24045010503","Census Tract 105.03"," Wicomico County"," Maryland","2020",1186,991,41
+"1250","24045010504","Census Tract 105.04"," Wicomico County"," Maryland","2020",2045,1809,173
+"1251","24045010603","Census Tract 106.03"," Wicomico County"," Maryland","2020",3213,2903,310
+"1252","24045010604","Census Tract 106.04"," Wicomico County"," Maryland","2020",2003,1666,301
+"1253","24045010605","Census Tract 106.05"," Wicomico County"," Maryland","2020",1408,1322,52
+"1254","24045010606","Census Tract 106.06"," Wicomico County"," Maryland","2020",1630,1377,244
+"1255","24045010701","Census Tract 107.01"," Wicomico County"," Maryland","2020",1536,1213,278
+"1256","24045010703","Census Tract 107.03"," Wicomico County"," Maryland","2020",1450,1226,224
+"1257","24045010704","Census Tract 107.04"," Wicomico County"," Maryland","2020",1617,1440,162
+"1258","24045010800","Census Tract 108"," Wicomico County"," Maryland","2020",2345,1905,411
+"1259","24047950000","Census Tract 9500"," Worcester County"," Maryland","2020",836,757,79
+"1260","24047950100","Census Tract 9501"," Worcester County"," Maryland","2020",1145,1010,97
+"1261","24047950300","Census Tract 9503"," Worcester County"," Maryland","2020",1844,1551,226
+"1262","24047950400","Census Tract 9504"," Worcester County"," Maryland","2020",1115,1063,52
+"1263","24047950600","Census Tract 9506"," Worcester County"," Maryland","2020",1429,1385,40
+"1264","24047950700","Census Tract 9507"," Worcester County"," Maryland","2020",1148,1095,53
+"1265","24047950800","Census Tract 9508"," Worcester County"," Maryland","2020",2048,1748,288
+"1266","24047950900","Census Tract 9509"," Worcester County"," Maryland","2020",816,717,93
+"1267","24047951000","Census Tract 9510"," Worcester County"," Maryland","2020",1761,1564,143
+"1268","24047951101","Census Tract 9511.01"," Worcester County"," Maryland","2020",1733,1405,304
+"1269","24047951102","Census Tract 9511.02"," Worcester County"," Maryland","2020",1613,1474,125
+"1270","24047951200","Census Tract 9512"," Worcester County"," Maryland","2020",1323,1111,186
+"1271","24047951300","Census Tract 9513"," Worcester County"," Maryland","2020",1037,784,244
+"1272","24047951400","Census Tract 9514"," Worcester County"," Maryland","2020",1256,838,409
+"1273","24047951500","Census Tract 9515"," Worcester County"," Maryland","2020",2021,1572,340
+"1274","24047951700","Census Tract 9517"," Worcester County"," Maryland","2020",1536,1336,126
+"1275","24047980000","Census Tract 9800"," Worcester County"," Maryland","2020",0,0,0
+"1276","24047990000","Census Tract 9900"," Worcester County"," Maryland","2020",0,0,0
+"1277","24510010100","Census Tract 101"," Baltimore city"," Maryland","2020",1476,1394,72
+"1278","24510010200","Census Tract 102"," Baltimore city"," Maryland","2020",1398,1245,129
+"1279","24510010300","Census Tract 103"," Baltimore city"," Maryland","2020",990,926,64
+"1280","24510010400","Census Tract 104"," Baltimore city"," Maryland","2020",1529,1466,63
+"1281","24510010500","Census Tract 105"," Baltimore city"," Maryland","2020",789,750,39
+"1282","24510020100","Census Tract 201"," Baltimore city"," Maryland","2020",813,772,30
+"1283","24510020200","Census Tract 202"," Baltimore city"," Maryland","2020",743,681,50
+"1284","24510020300","Census Tract 203"," Baltimore city"," Maryland","2020",2251,2093,128
+"1285","24510030100","Census Tract 301"," Baltimore city"," Maryland","2020",1009,751,173
+"1286","24510030200","Census Tract 302"," Baltimore city"," Maryland","2020",1307,1174,94
+"1287","24510040100","Census Tract 401"," Baltimore city"," Maryland","2020",3393,3203,99
+"1288","24510040200","Census Tract 402"," Baltimore city"," Maryland","2020",290,215,45
+"1289","24510060100","Census Tract 601"," Baltimore city"," Maryland","2020",1165,854,284
+"1290","24510060200","Census Tract 602"," Baltimore city"," Maryland","2020",1069,851,148
+"1291","24510060300","Census Tract 603"," Baltimore city"," Maryland","2020",682,605,77
+"1292","24510060400","Census Tract 604"," Baltimore city"," Maryland","2020",900,661,176
+"1293","24510070100","Census Tract 701"," Baltimore city"," Maryland","2020",734,507,169
+"1294","24510070200","Census Tract 702"," Baltimore city"," Maryland","2020",972,866,106
+"1295","24510070300","Census Tract 703"," Baltimore city"," Maryland","2020",364,293,71
+"1296","24510070400","Census Tract 704"," Baltimore city"," Maryland","2020",722,446,202
+"1297","24510080101","Census Tract 801.01"," Baltimore city"," Maryland","2020",1412,1208,182
+"1298","24510080102","Census Tract 801.02"," Baltimore city"," Maryland","2020",702,501,196
+"1299","24510080200","Census Tract 802"," Baltimore city"," Maryland","2020",370,199,171
+"1300","24510080301","Census Tract 803.01"," Baltimore city"," Maryland","2020",683,454,175
+"1301","24510080302","Census Tract 803.02"," Baltimore city"," Maryland","2020",1093,774,319
+"1302","24510080400","Census Tract 804"," Baltimore city"," Maryland","2020",421,300,76
+"1303","24510080500","Census Tract 805"," Baltimore city"," Maryland","2020",518,458,56
+"1304","24510080600","Census Tract 806"," Baltimore city"," Maryland","2020",664,457,167
+"1305","24510080700","Census Tract 807"," Baltimore city"," Maryland","2020",305,258,39
+"1306","24510080800","Census Tract 808"," Baltimore city"," Maryland","2020",672,602,58
+"1307","24510090100","Census Tract 901"," Baltimore city"," Maryland","2020",1606,1371,204
+"1308","24510090200","Census Tract 902"," Baltimore city"," Maryland","2020",1282,1077,190
+"1309","24510090300","Census Tract 903"," Baltimore city"," Maryland","2020",1945,1436,337
+"1310","24510090400","Census Tract 904"," Baltimore city"," Maryland","2020",653,461,181
+"1311","24510090500","Census Tract 905"," Baltimore city"," Maryland","2020",637,495,129
+"1312","24510090600","Census Tract 906"," Baltimore city"," Maryland","2020",811,504,176
+"1313","24510090700","Census Tract 907"," Baltimore city"," Maryland","2020",928,593,237
+"1314","24510090800","Census Tract 908"," Baltimore city"," Maryland","2020",873,582,291
+"1315","24510090900","Census Tract 909"," Baltimore city"," Maryland","2020",940,565,326
+"1316","24510100100","Census Tract 1001"," Baltimore city"," Maryland","2020",751,475,228
+"1317","24510100200","Census Tract 1002"," Baltimore city"," Maryland","2020",1127,770,351
+"1318","24510100300","Census Tract 1003"," Baltimore city"," Maryland","2020",0,0,0
+"1319","24510110100","Census Tract 1101"," Baltimore city"," Maryland","2020",2020,1817,33
+"1320","24510110200","Census Tract 1102"," Baltimore city"," Maryland","2020",4066,3353,462
+"1321","24510120100","Census Tract 1201"," Baltimore city"," Maryland","2020",2513,2349,117
+"1322","24510120201","Census Tract 1202.01"," Baltimore city"," Maryland","2020",881,770,10
+"1323","24510120202","Census Tract 1202.02"," Baltimore city"," Maryland","2020",1509,1416,30
+"1324","24510120300","Census Tract 1203"," Baltimore city"," Maryland","2020",1471,1224,177
+"1325","24510120400","Census Tract 1204"," Baltimore city"," Maryland","2020",729,602,110
+"1326","24510120500","Census Tract 1205"," Baltimore city"," Maryland","2020",1103,951,102
+"1327","24510120600","Census Tract 1206"," Baltimore city"," Maryland","2020",1638,1246,351
+"1328","24510120700","Census Tract 1207"," Baltimore city"," Maryland","2020",1057,880,90
+"1329","24510130100","Census Tract 1301"," Baltimore city"," Maryland","2020",1633,1161,340
+"1330","24510130200","Census Tract 1302"," Baltimore city"," Maryland","2020",1187,942,222
+"1331","24510130300","Census Tract 1303"," Baltimore city"," Maryland","2020",785,574,197
+"1332","24510130400","Census Tract 1304"," Baltimore city"," Maryland","2020",673,446,182
+"1333","24510130600","Census Tract 1306"," Baltimore city"," Maryland","2020",1705,1608,38
+"1334","24510130700","Census Tract 1307"," Baltimore city"," Maryland","2020",2525,2159,277
+"1335","24510130803","Census Tract 1308.03"," Baltimore city"," Maryland","2020",1249,1016,223
+"1336","24510130804","Census Tract 1308.04"," Baltimore city"," Maryland","2020",855,772,83
+"1337","24510130805","Census Tract 1308.05"," Baltimore city"," Maryland","2020",607,453,149
+"1338","24510130806","Census Tract 1308.06"," Baltimore city"," Maryland","2020",606,556,13
+"1339","24510140100","Census Tract 1401"," Baltimore city"," Maryland","2020",2108,1661,302
+"1340","24510140200","Census Tract 1402"," Baltimore city"," Maryland","2020",1102,900,192
+"1341","24510140300","Census Tract 1403"," Baltimore city"," Maryland","2020",853,627,128
+"1342","24510150100","Census Tract 1501"," Baltimore city"," Maryland","2020",967,606,341
+"1343","24510150200","Census Tract 1502"," Baltimore city"," Maryland","2020",939,522,411
+"1344","24510150300","Census Tract 1503"," Baltimore city"," Maryland","2020",498,281,150
+"1345","24510150400","Census Tract 1504"," Baltimore city"," Maryland","2020",1283,727,496
+"1346","24510150500","Census Tract 1505"," Baltimore city"," Maryland","2020",592,325,208
+"1347","24510150600","Census Tract 1506"," Baltimore city"," Maryland","2020",1154,645,449
+"1348","24510150701","Census Tract 1507.01"," Baltimore city"," Maryland","2020",576,346,101
+"1349","24510150702","Census Tract 1507.02"," Baltimore city"," Maryland","2020",703,412,234
+"1350","24510150800","Census Tract 1508"," Baltimore city"," Maryland","2020",1825,791,784
+"1351","24510150900","Census Tract 1509"," Baltimore city"," Maryland","2020",1300,848,341
+"1352","24510151000","Census Tract 1510"," Baltimore city"," Maryland","2020",1888,1176,482
+"1353","24510151100","Census Tract 1511"," Baltimore city"," Maryland","2020",2854,2063,569
+"1354","24510151200","Census Tract 1512"," Baltimore city"," Maryland","2020",1677,734,666
+"1355","24510151300","Census Tract 1513"," Baltimore city"," Maryland","2020",1671,1186,308
+"1356","24510160100","Census Tract 1601"," Baltimore city"," Maryland","2020",1094,697,378
+"1357","24510160200","Census Tract 1602"," Baltimore city"," Maryland","2020",873,638,234
+"1358","24510160300","Census Tract 1603"," Baltimore city"," Maryland","2020",503,216,287
+"1359","24510160400","Census Tract 1604"," Baltimore city"," Maryland","2020",666,355,295
+"1360","24510160500","Census Tract 1605"," Baltimore city"," Maryland","2020",1445,642,734
+"1361","24510160600","Census Tract 1606"," Baltimore city"," Maryland","2020",1079,653,380
+"1362","24510160700","Census Tract 1607"," Baltimore city"," Maryland","2020",1507,922,458
+"1363","24510160801","Census Tract 1608.01"," Baltimore city"," Maryland","2020",1220,923,265
+"1364","24510160802","Census Tract 1608.02"," Baltimore city"," Maryland","2020",1049,760,271
+"1365","24510170100","Census Tract 1701"," Baltimore city"," Maryland","2020",879,712,88
+"1366","24510170200","Census Tract 1702"," Baltimore city"," Maryland","2020",1124,714,309
+"1367","24510170300","Census Tract 1703"," Baltimore city"," Maryland","2020",922,640,253
+"1368","24510180300","Census Tract 1803"," Baltimore city"," Maryland","2020",953,813,136
+"1369","24510190100","Census Tract 1901"," Baltimore city"," Maryland","2020",860,666,186
+"1370","24510190200","Census Tract 1902"," Baltimore city"," Maryland","2020",720,597,116
+"1371","24510190300","Census Tract 1903"," Baltimore city"," Maryland","2020",791,428,337
+"1372","24510200100","Census Tract 2001"," Baltimore city"," Maryland","2020",625,512,100
+"1373","24510200200","Census Tract 2002"," Baltimore city"," Maryland","2020",768,447,283
+"1374","24510200300","Census Tract 2003"," Baltimore city"," Maryland","2020",393,259,131
+"1375","24510200400","Census Tract 2004"," Baltimore city"," Maryland","2020",471,299,167
+"1376","24510200500","Census Tract 2005"," Baltimore city"," Maryland","2020",962,726,224
+"1377","24510200600","Census Tract 2006"," Baltimore city"," Maryland","2020",937,804,117
+"1378","24510200701","Census Tract 2007.01"," Baltimore city"," Maryland","2020",1782,1119,631
+"1379","24510200702","Census Tract 2007.02"," Baltimore city"," Maryland","2020",530,358,164
+"1380","24510200800","Census Tract 2008"," Baltimore city"," Maryland","2020",771,581,163
+"1381","24510210100","Census Tract 2101"," Baltimore city"," Maryland","2020",983,883,73
+"1382","24510210200","Census Tract 2102"," Baltimore city"," Maryland","2020",1587,1400,157
+"1383","24510220100","Census Tract 2201"," Baltimore city"," Maryland","2020",2361,1973,337
+"1384","24510230100","Census Tract 2301"," Baltimore city"," Maryland","2020",1059,928,77
+"1385","24510230200","Census Tract 2302"," Baltimore city"," Maryland","2020",865,793,60
+"1386","24510230300","Census Tract 2303"," Baltimore city"," Maryland","2020",727,695,32
+"1387","24510240100","Census Tract 2401"," Baltimore city"," Maryland","2020",1649,1585,45
+"1388","24510240200","Census Tract 2402"," Baltimore city"," Maryland","2020",1394,1345,38
+"1389","24510240300","Census Tract 2403"," Baltimore city"," Maryland","2020",929,879,13
+"1390","24510240400","Census Tract 2404"," Baltimore city"," Maryland","2020",1251,1202,49
+"1391","24510250101","Census Tract 2501.01"," Baltimore city"," Maryland","2020",1691,1448,209
+"1392","24510250102","Census Tract 2501.02"," Baltimore city"," Maryland","2020",1235,1108,127
+"1393","24510250103","Census Tract 2501.03"," Baltimore city"," Maryland","2020",1655,995,563
+"1394","24510250203","Census Tract 2502.03"," Baltimore city"," Maryland","2020",730,560,115
+"1395","24510250204","Census Tract 2502.04"," Baltimore city"," Maryland","2020",1590,909,644
+"1396","24510250205","Census Tract 2502.05"," Baltimore city"," Maryland","2020",1261,997,263
+"1397","24510250206","Census Tract 2502.06"," Baltimore city"," Maryland","2020",822,658,136
+"1398","24510250207","Census Tract 2502.07"," Baltimore city"," Maryland","2020",758,498,187
+"1399","24510250301","Census Tract 2503.01"," Baltimore city"," Maryland","2020",802,605,185
+"1400","24510250303","Census Tract 2503.03"," Baltimore city"," Maryland","2020",779,573,194
+"1401","24510250401","Census Tract 2504.01"," Baltimore city"," Maryland","2020",1417,1021,339
+"1402","24510250402","Census Tract 2504.02"," Baltimore city"," Maryland","2020",1510,986,370
+"1403","24510250500","Census Tract 2505"," Baltimore city"," Maryland","2020",2068,1206,808
+"1404","24510250600","Census Tract 2506"," Baltimore city"," Maryland","2020",0,0,0
+"1405","24510260101","Census Tract 2601.01"," Baltimore city"," Maryland","2020",1845,1678,150
+"1406","24510260102","Census Tract 2601.02"," Baltimore city"," Maryland","2020",1838,1499,249
+"1407","24510260201","Census Tract 2602.01"," Baltimore city"," Maryland","2020",2411,1937,319
+"1408","24510260202","Census Tract 2602.02"," Baltimore city"," Maryland","2020",2599,2110,431
+"1409","24510260203","Census Tract 2602.03"," Baltimore city"," Maryland","2020",1034,851,183
+"1410","24510260301","Census Tract 2603.01"," Baltimore city"," Maryland","2020",1369,1152,217
+"1411","24510260302","Census Tract 2603.02"," Baltimore city"," Maryland","2020",2504,2083,379
+"1412","24510260303","Census Tract 2603.03"," Baltimore city"," Maryland","2020",643,541,95
+"1413","24510260401","Census Tract 2604.01"," Baltimore city"," Maryland","2020",1111,684,399
+"1414","24510260402","Census Tract 2604.02"," Baltimore city"," Maryland","2020",1194,931,206
+"1415","24510260403","Census Tract 2604.03"," Baltimore city"," Maryland","2020",737,582,155
+"1416","24510260404","Census Tract 2604.04"," Baltimore city"," Maryland","2020",425,343,62
+"1417","24510260501","Census Tract 2605.01"," Baltimore city"," Maryland","2020",1502,1189,289
+"1418","24510260604","Census Tract 2606.04"," Baltimore city"," Maryland","2020",526,440,86
+"1419","24510260605","Census Tract 2606.05"," Baltimore city"," Maryland","2020",1911,1591,314
+"1420","24510260700","Census Tract 2607"," Baltimore city"," Maryland","2020",964,863,89
+"1421","24510260800","Census Tract 2608"," Baltimore city"," Maryland","2020",967,656,248
+"1422","24510260900","Census Tract 2609"," Baltimore city"," Maryland","2020",1837,1735,102
+"1423","24510261000","Census Tract 2610"," Baltimore city"," Maryland","2020",869,760,109
+"1424","24510261100","Census Tract 2611"," Baltimore city"," Maryland","2020",920,866,45
+"1425","24510270101","Census Tract 2701.01"," Baltimore city"," Maryland","2020",527,463,56
+"1426","24510270102","Census Tract 2701.02"," Baltimore city"," Maryland","2020",1363,1190,113
+"1427","24510270200","Census Tract 2702"," Baltimore city"," Maryland","2020",687,666,14
+"1428","24510270301","Census Tract 2703.01"," Baltimore city"," Maryland","2020",1117,1022,48
+"1429","24510270302","Census Tract 2703.02"," Baltimore city"," Maryland","2020",718,681,32
+"1430","24510270401","Census Tract 2704.01"," Baltimore city"," Maryland","2020",1792,1602,151
+"1431","24510270402","Census Tract 2704.02"," Baltimore city"," Maryland","2020",1222,1116,83
+"1432","24510270501","Census Tract 2705.01"," Baltimore city"," Maryland","2020",1647,1483,164
+"1433","24510270502","Census Tract 2705.02"," Baltimore city"," Maryland","2020",1847,1674,153
+"1434","24510270600","Census Tract 2706"," Baltimore city"," Maryland","2020",1773,1601,115
+"1435","24510270701","Census Tract 2707.01"," Baltimore city"," Maryland","2020",997,781,168
+"1436","24510270702","Census Tract 2707.02"," Baltimore city"," Maryland","2020",1017,887,112
+"1437","24510270703","Census Tract 2707.03"," Baltimore city"," Maryland","2020",1332,1186,132
+"1438","24510270801","Census Tract 2708.01"," Baltimore city"," Maryland","2020",1391,1251,127
+"1439","24510270802","Census Tract 2708.02"," Baltimore city"," Maryland","2020",2363,1948,341
+"1440","24510270803","Census Tract 2708.03"," Baltimore city"," Maryland","2020",2835,2274,517
+"1441","24510270804","Census Tract 2708.04"," Baltimore city"," Maryland","2020",1385,1168,200
+"1442","24510270805","Census Tract 2708.05"," Baltimore city"," Maryland","2020",1861,1802,43
+"1443","24510270901","Census Tract 2709.01"," Baltimore city"," Maryland","2020",1722,1422,242
+"1444","24510270902","Census Tract 2709.02"," Baltimore city"," Maryland","2020",1352,1153,199
+"1445","24510270903","Census Tract 2709.03"," Baltimore city"," Maryland","2020",1330,1049,238
+"1446","24510271001","Census Tract 2710.01"," Baltimore city"," Maryland","2020",829,690,130
+"1447","24510271002","Census Tract 2710.02"," Baltimore city"," Maryland","2020",1482,1178,290
+"1448","24510271101","Census Tract 2711.01"," Baltimore city"," Maryland","2020",835,648,168
+"1449","24510271102","Census Tract 2711.02"," Baltimore city"," Maryland","2020",497,480,17
+"1450","24510271200","Census Tract 2712"," Baltimore city"," Maryland","2020",2119,2056,63
+"1451","24510271300","Census Tract 2713"," Baltimore city"," Maryland","2020",1065,1043,10
+"1452","24510271400","Census Tract 2714"," Baltimore city"," Maryland","2020",1462,1381,41
+"1453","24510271501","Census Tract 2715.01"," Baltimore city"," Maryland","2020",1722,1622,58
+"1454","24510271503","Census Tract 2715.03"," Baltimore city"," Maryland","2020",620,546,57
+"1455","24510271600","Census Tract 2716"," Baltimore city"," Maryland","2020",1357,937,324
+"1456","24510271700","Census Tract 2717"," Baltimore city"," Maryland","2020",1740,1109,532
+"1457","24510271801","Census Tract 2718.01"," Baltimore city"," Maryland","2020",1164,698,406
+"1458","24510271802","Census Tract 2718.02"," Baltimore city"," Maryland","2020",764,329,257
+"1459","24510271900","Census Tract 2719"," Baltimore city"," Maryland","2020",1443,1104,232
+"1460","24510272003","Census Tract 2720.03"," Baltimore city"," Maryland","2020",1966,1587,268
+"1461","24510272004","Census Tract 2720.04"," Baltimore city"," Maryland","2020",1715,1359,181
+"1462","24510272005","Census Tract 2720.05"," Baltimore city"," Maryland","2020",1212,931,161
+"1463","24510272006","Census Tract 2720.06"," Baltimore city"," Maryland","2020",1522,822,603
+"1464","24510272007","Census Tract 2720.07"," Baltimore city"," Maryland","2020",1575,1268,245
+"1465","24510280101","Census Tract 2801.01"," Baltimore city"," Maryland","2020",1249,749,228
+"1466","24510280102","Census Tract 2801.02"," Baltimore city"," Maryland","2020",2516,1526,768
+"1467","24510280200","Census Tract 2802"," Baltimore city"," Maryland","2020",1741,1300,299
+"1468","24510280301","Census Tract 2803.01"," Baltimore city"," Maryland","2020",1987,1080,532
+"1469","24510280302","Census Tract 2803.02"," Baltimore city"," Maryland","2020",1341,733,445
+"1470","24510280401","Census Tract 2804.01"," Baltimore city"," Maryland","2020",1482,1258,196
+"1471","24510280402","Census Tract 2804.02"," Baltimore city"," Maryland","2020",523,413,107
+"1472","24510280403","Census Tract 2804.03"," Baltimore city"," Maryland","2020",1866,1504,351
+"1473","24510280404","Census Tract 2804.04"," Baltimore city"," Maryland","2020",1070,828,217
+"1474","24510280500","Census Tract 2805"," Baltimore city"," Maryland","2020",932,647,245
+"1475","24510280600","Census Tract 2806"," Baltimore city"," Maryland","2020",1381,874,451

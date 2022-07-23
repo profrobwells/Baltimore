@@ -1,0 +1,537 @@
+"","GEOID","Place","State","year","total","yes_internet","no_internet"
+"1","2400125","Aberdeen city"," Maryland","2020",6412,5403,892
+"2","2400175","Aberdeen Proving Ground CDP"," Maryland","2020",731,699,18
+"3","2400200","Abingdon CDP"," Maryland","2020",1801,1781,20
+"4","2400225","Accident town"," Maryland","2020",167,115,22
+"5","2400250","Accokeek CDP"," Maryland","2020",4027,3761,224
+"6","2400350","Adamstown CDP"," Maryland","2020",678,653,25
+"7","2400400","Adelphi CDP"," Maryland","2020",4884,4460,295
+"8","2400712","Algonquin CDP"," Maryland","2020",554,473,81
+"9","2400800","Allen CDP"," Maryland","2020",138,138,0
+"10","2401450","Andrews AFB CDP"," Maryland","2020",801,747,34
+"11","2401600","Annapolis city"," Maryland","2020",16291,14404,1312
+"12","2401635","Annapolis Neck CDP"," Maryland","2020",5304,4968,186
+"13","2401750","Antietam CDP"," Maryland","2020",27,27,0
+"14","2401925","Aquasco CDP"," Maryland","2020",287,171,86
+"15","2401975","Arbutus CDP"," Maryland","2020",7581,6463,881
+"16","2402025","Arden on the Severn CDP"," Maryland","2020",611,578,33
+"17","2402275","Arnold CDP"," Maryland","2020",8528,8189,213
+"18","2402762","Ashton-Sandy Spring CDP"," Maryland","2020",2065,1945,120
+"19","2402825","Aspen Hill CDP"," Maryland","2020",16890,15241,1346
+"20","2403500","Baden CDP"," Maryland","2020",565,534,29
+"21","2403514","Bagtown CDP"," Maryland","2020",151,135,16
+"22","2403575","Bakersville CDP"," Maryland","2020",0,0,0
+"23","2403800","Ballenger Creek CDP"," Maryland","2020",8270,7499,671
+"24","2404000","Baltimore city"," Maryland","2020",242499,189776,42661
+"25","2404050","Baltimore Highlands CDP"," Maryland","2020",2816,2072,389
+"26","2404250","Barclay town"," Maryland","2020",67,52,14
+"27","2404475","Barnesville town"," Maryland","2020",55,51,4
+"28","2404525","Barrelville CDP"," Maryland","2020",21,16,5
+"29","2404625","Barton town"," Maryland","2020",173,144,26
+"30","2404650","Bartonsville CDP"," Maryland","2020",568,548,14
+"31","2405250","Beaver Creek CDP"," Maryland","2020",151,151,0
+"32","2405525","Bel Air CDP"," Maryland","2020",680,513,70
+"33","2405550","Bel Air town"," Maryland","2020",4758,4117,491
+"34","2405825","Bel Air North CDP"," Maryland","2020",10699,10190,408
+"35","2405950","Bel Air South CDP"," Maryland","2020",21135,19695,1197
+"36","2406400","Beltsville CDP"," Maryland","2020",6103,4752,545
+"37","2406550","Benedict CDP"," Maryland","2020",118,80,38
+"38","2406662","Bensville CDP"," Maryland","2020",4441,4375,51
+"39","2406800","Berlin town"," Maryland","2020",1767,1575,171
+"40","2406925","Berwyn Heights town"," Maryland","2020",914,872,34
+"41","2407125","Bethesda CDP"," Maryland","2020",26040,24809,650
+"42","2407200","Betterton town"," Maryland","2020",180,144,20
+"43","2407285","Bier CDP"," Maryland","2020",129,129,0
+"44","2407375","Big Pool CDP"," Maryland","2020",34,25,9
+"45","2407400","Big Spring CDP"," Maryland","2020",22,22,0
+"46","2407625","Bishopville CDP"," Maryland","2020",210,191,19
+"47","2407675","Bivalve CDP"," Maryland","2020",67,32,35
+"48","2407850","Bladensburg town"," Maryland","2020",3660,2962,603
+"49","2408050","Bloomington CDP"," Maryland","2020",85,76,9
+"50","2408625","Boonsboro town"," Maryland","2020",1441,1077,267
+"51","2408775","Bowie city"," Maryland","2020",20822,19965,507
+"52","2408800","Bowleys Quarters CDP"," Maryland","2020",2493,2275,158
+"53","2408850","Bowling Green CDP"," Maryland","2020",597,541,42
+"54","2408862","Bowmans Addition CDP"," Maryland","2020",259,208,42
+"55","2409100","Braddock Heights CDP"," Maryland","2020",1124,1064,52
+"56","2409325","Brandywine CDP"," Maryland","2020",2910,2702,119
+"57","2409400","Breathedsville CDP"," Maryland","2020",93,93,0
+"58","2409500","Brentwood town"," Maryland","2020",1045,849,151
+"59","2410150","Brock Hall CDP"," Maryland","2020",3704,3599,41
+"60","2410225","Brookeville town"," Maryland","2020",51,46,2
+"61","2410475","Brooklyn Park CDP"," Maryland","2020",5241,4320,738
+"62","2410500","Brookmont CDP"," Maryland","2020",1347,1305,25
+"63","2410575","Brookview town"," Maryland","2020",22,13,9
+"64","2410650","Broomes Island CDP"," Maryland","2020",219,206,13
+"65","2410737","Brown Station CDP"," Maryland","2020",1228,1206,22
+"66","2410800","Brownsville CDP"," Maryland","2020",8,8,0
+"67","2410900","Brunswick city"," Maryland","2020",2411,2198,168
+"68","2410925","Bryans Road CDP"," Maryland","2020",2986,2454,518
+"69","2410950","Bryantown CDP"," Maryland","2020",178,161,17
+"70","2411050","Buckeystown CDP"," Maryland","2020",539,427,99
+"71","2411400","Burkittsville town"," Maryland","2020",82,70,10
+"72","2411550","Burnt Mills CDP"," Maryland","2020",1131,1075,43
+"73","2411750","Burtonsville CDP"," Maryland","2020",2801,2745,56
+"74","2411900","Butlertown CDP"," Maryland","2020",166,93,73
+"75","2412075","Cabin John CDP"," Maryland","2020",880,846,34
+"76","2412150","California CDP"," Maryland","2020",5490,5034,271
+"77","2412175","Callaway CDP"," Maryland","2020",566,411,81
+"78","2412300","Calvert Beach CDP"," Maryland","2020",275,267,8
+"79","2412350","Calverton CDP"," Maryland","2020",6051,5305,311
+"80","2412400","Cambridge city"," Maryland","2020",5364,4196,997
+"81","2412600","Camp Springs CDP"," Maryland","2020",7449,6782,590
+"82","2412912","Cape St. Claire CDP"," Maryland","2020",3252,3135,109
+"83","2413000","Capitol Heights town"," Maryland","2020",1448,1209,182
+"84","2413225","Carlos CDP"," Maryland","2020",22,22,0
+"85","2413325","Carney CDP"," Maryland","2020",13163,10585,1188
+"86","2414125","Catonsville CDP"," Maryland","2020",15566,13200,1214
+"87","2414225","Cavetown CDP"," Maryland","2020",446,344,102
+"88","2414300","Cearfoss CDP"," Maryland","2020",88,85,3
+"89","2414325","Cecilton town"," Maryland","2020",382,305,60
+"90","2414550","Cedar Heights CDP"," Maryland","2020",611,529,82
+"91","2414800","Cedarville CDP"," Maryland","2020",232,163,65
+"92","2414950","Centreville town"," Maryland","2020",1693,1557,96
+"93","2415075","Chance CDP"," Maryland","2020",162,104,52
+"94","2415400","Charlestown town"," Maryland","2020",611,538,59
+"95","2415475","Charlotte Hall CDP"," Maryland","2020",400,233,132
+"96","2415500","Charlton CDP"," Maryland","2020",112,112,0
+"97","2415925","Chesapeake Beach town"," Maryland","2020",2568,2086,482
+"98","2415950","Chesapeake City town"," Maryland","2020",347,309,18
+"99","2416025","Chesapeake Landing CDP"," Maryland","2020",57,57,0
+"100","2416050","Chesapeake Ranch Estates CDP"," Maryland","2020",3242,3035,194
+"101","2416125","Chester CDP"," Maryland","2020",1881,1645,154
+"102","2416225","Chestertown town"," Maryland","2020",2134,1426,586
+"103","2416550","Cheverly town"," Maryland","2020",2617,2465,152
+"104","2416620","Chevy Chase town"," Maryland","2020",1006,1006,0
+"105","2416625","Chevy Chase CDP"," Maryland","2020",3710,3507,196
+"106","2416720","Chevy Chase Section Five village"," Maryland","2020",237,224,11
+"107","2416730","Chevy Chase Section Three village"," Maryland","2020",270,266,4
+"108","2416775","Chevy Chase View town"," Maryland","2020",342,334,8
+"109","2416787","Chevy Chase Village town"," Maryland","2020",679,648,20
+"110","2416800","Chewsville CDP"," Maryland","2020",102,102,0
+"111","2416875","Chillum CDP"," Maryland","2020",10252,9002,1130
+"112","2417000","Choptank CDP"," Maryland","2020",22,14,8
+"113","2417050","Church Creek town"," Maryland","2020",46,30,16
+"114","2417100","Church Hill town"," Maryland","2020",339,248,45
+"115","2417350","Clarksburg CDP"," Maryland","2020",7851,7688,81
+"116","2417475","Clarysville CDP"," Maryland","2020",19,0,19
+"117","2417600","Clear Spring town"," Maryland","2020",188,131,50
+"118","2417900","Clinton CDP"," Maryland","2020",12473,11595,638
+"119","2418150","Cloverly CDP"," Maryland","2020",4848,4673,151
+"120","2418200","Cobb Island CDP"," Maryland","2020",474,427,35
+"121","2418250","Cockeysville CDP"," Maryland","2020",9671,8784,749
+"122","2418475","Colesville CDP"," Maryland","2020",4949,4670,227
+"123","2418750","College Park city"," Maryland","2020",7620,6559,461
+"124","2418850","Colmar Manor town"," Maryland","2020",422,388,32
+"125","2419125","Columbia CDP"," Maryland","2020",41261,38730,1966
+"126","2419825","Coral Hills CDP"," Maryland","2020",3483,2887,508
+"127","2419900","Cordova CDP"," Maryland","2020",205,180,25
+"128","2419975","Corriganville CDP"," Maryland","2020",278,135,143
+"129","2420050","Cottage City town"," Maryland","2020",433,333,73
+"130","2420500","Crellin CDP"," Maryland","2020",35,8,13
+"131","2420525","Cresaptown CDP"," Maryland","2020",972,774,153
+"132","2420775","Crisfield city"," Maryland","2020",1072,853,215
+"133","2420875","Crofton CDP"," Maryland","2020",10235,9991,133
+"134","2420925","Croom CDP"," Maryland","2020",908,804,94
+"135","2421075","Crownsville CDP"," Maryland","2020",591,504,87
+"136","2421150","Crumpton CDP"," Maryland","2020",164,144,20
+"137","2421325","Cumberland city"," Maryland","2020",8279,6398,1553
+"138","2421475","Damascus CDP"," Maryland","2020",5565,5192,184
+"139","2421550","Dames Quarter CDP"," Maryland","2020",38,33,5
+"140","2421675","Danville CDP"," Maryland","2020",274,274,0
+"141","2421750","Dargan CDP"," Maryland","2020",56,56,0
+"142","2421800","Darlington CDP"," Maryland","2020",213,177,36
+"143","2421825","Darnestown CDP"," Maryland","2020",2293,2277,16
+"144","2421925","Dawson CDP"," Maryland","2020",30,20,10
+"145","2422050","Deale CDP"," Maryland","2020",1779,1635,144
+"146","2422100","Deal Island CDP"," Maryland","2020",190,114,72
+"147","2422275","Deer Park town"," Maryland","2020",147,130,8
+"148","2422600","Delmar town"," Maryland","2020",1282,1141,141
+"149","2422725","Denton town"," Maryland","2020",1421,1301,91
+"150","2422775","Derwood CDP"," Maryland","2020",640,634,6
+"151","2422825","Detmold CDP"," Maryland","2020",187,170,17
+"152","2423025","District Heights city"," Maryland","2020",2039,1811,171
+"153","2423500","Downsville CDP"," Maryland","2020",316,279,37
+"154","2423700","Drum Point CDP"," Maryland","2020",917,885,15
+"155","2423975","Dundalk CDP"," Maryland","2020",23536,19770,3369
+"156","2424050","Dunkirk CDP"," Maryland","2020",715,678,37
+"157","2424200","Eagle Harbor town"," Maryland","2020",36,29,7
+"158","2424250","Eakles Mill CDP"," Maryland","2020",0,0,0
+"159","2424450","East New Market town"," Maryland","2020",134,87,46
+"160","2424475","Easton town"," Maryland","2020",7387,6353,938
+"161","2424650","East Riverdale CDP"," Maryland","2020",4317,3554,604
+"162","2424825","Eckhart Mines CDP"," Maryland","2020",216,201,15
+"163","2424850","Eden CDP"," Maryland","2020",388,205,183
+"164","2424925","Edesville CDP"," Maryland","2020",79,66,13
+"165","2424950","Edgemere CDP"," Maryland","2020",3334,2929,335
+"166","2425000","Edgemont CDP"," Maryland","2020",99,99,0
+"167","2425050","Edgewater CDP"," Maryland","2020",3643,3466,161
+"168","2425150","Edgewood CDP"," Maryland","2020",9047,7802,980
+"169","2425425","Edmonston town"," Maryland","2020",386,322,62
+"170","2425575","Eldersburg CDP"," Maryland","2020",10661,10067,495
+"171","2425600","Eldorado town"," Maryland","2020",30,27,1
+"172","2425750","Elkridge CDP"," Maryland","2020",7977,7702,151
+"173","2425800","Elkton town"," Maryland","2020",5601,4750,589
+"174","2425925","Ellerslie CDP"," Maryland","2020",254,198,32
+"175","2426000","Ellicott City CDP"," Maryland","2020",26364,24746,1291
+"176","2426025","Elliott CDP"," Maryland","2020",22,17,5
+"177","2426200","Emmitsburg town"," Maryland","2020",1157,912,240
+"178","2426550","Ernstville CDP"," Maryland","2020",12,12,0
+"179","2426600","Essex CDP"," Maryland","2020",14863,12600,2044
+"180","2427250","Fairland CDP"," Maryland","2020",8741,8343,318
+"181","2427325","Fairlee CDP"," Maryland","2020",192,149,43
+"182","2427375","Fairmount CDP"," Maryland","2020",171,166,5
+"183","2427400","Fairmount Heights town"," Maryland","2020",471,366,64
+"184","2427425","Fairplay CDP"," Maryland","2020",189,151,38
+"185","2427500","Fairview CDP"," Maryland","2020",8,0,8
+"186","2427580","Fairwood CDP"," Maryland","2020",2194,2194,0
+"187","2427700","Fallston CDP"," Maryland","2020",3146,2892,254
+"188","2427900","Federalsburg town"," Maryland","2020",1005,695,234
+"189","2428075","Ferndale CDP"," Maryland","2020",6361,5539,752
+"190","2428275","Finzel CDP"," Maryland","2020",305,283,4
+"191","2428300","Fishing Creek CDP"," Maryland","2020",104,104,0
+"192","2428425","Flintstone CDP"," Maryland","2020",65,65,0
+"193","2428512","Flower Hill CDP"," Maryland","2020",4505,4215,223
+"194","2428640","Forest Glen CDP"," Maryland","2020",2284,2025,202
+"195","2428725","Forest Heights town"," Maryland","2020",744,701,43
+"196","2429000","Forestville CDP"," Maryland","2020",4160,3322,649
+"197","2429400","Fort Meade CDP"," Maryland","2020",2905,2707,34
+"198","2429450","Fort Ritchie CDP"," Maryland","2020",19,19,0
+"199","2429525","Fort Washington CDP"," Maryland","2020",8105,7487,464
+"200","2429712","Fountainhead-Orchard Hills CDP"," Maryland","2020",2359,2051,264
+"201","2429790","Four Corners CDP"," Maryland","2020",2771,2617,154
+"202","2430100","Franklin CDP"," Maryland","2020",70,8,62
+"203","2430325","Frederick city"," Maryland","2020",28754,25901,2323
+"204","2430567","Frenchtown-Rumbly CDP"," Maryland","2020",8,0,8
+"205","2430575","Friendly CDP"," Maryland","2020",3277,3062,159
+"206","2430650","Friendship CDP"," Maryland","2020",117,117,0
+"207","2430800","Friendship Heights Village CDP"," Maryland","2020",2804,2519,241
+"208","2430850","Friendsville town"," Maryland","2020",212,151,56
+"209","2430900","Frostburg city"," Maryland","2020",2990,2614,362
+"210","2430950","Fruitland city"," Maryland","2020",1891,1677,210
+"211","2431025","Fulton CDP"," Maryland","2020",1410,1392,0
+"212","2431100","Funkstown town"," Maryland","2020",504,386,101
+"213","2431175","Gaithersburg city"," Maryland","2020",24713,22595,1601
+"214","2431225","Galena town"," Maryland","2020",343,299,42
+"215","2431250","Galestown town"," Maryland","2020",31,31,0
+"216","2431275","Galesville CDP"," Maryland","2020",430,399,31
+"217","2431350","Gambrills CDP"," Maryland","2020",976,879,87
+"218","2431400","Gapland CDP"," Maryland","2020",28,28,0
+"219","2431525","Garrett Park town"," Maryland","2020",330,325,0
+"220","2431575","Garretts Mill CDP"," Maryland","2020",162,97,65
+"221","2431625","Garrison CDP"," Maryland","2020",3440,3098,277
+"222","2431875","Georgetown CDP"," Maryland","2020",6,6,0
+"223","2432025","Germantown CDP"," Maryland","2020",30270,28758,1135
+"224","2432175","Gilmore CDP"," Maryland","2020",64,22,4
+"225","2432250","Girdletree CDP"," Maryland","2020",60,28,32
+"226","2432350","Glassmanor CDP"," Maryland","2020",6495,5360,919
+"227","2432500","Glenarden city"," Maryland","2020",2250,2132,118
+"228","2432650","Glen Burnie CDP"," Maryland","2020",27595,24550,2584
+"229","2432900","Glen Echo town"," Maryland","2020",109,103,4
+"230","2433250","Glenmont CDP"," Maryland","2020",4726,4377,273
+"231","2433400","Glenn Dale CDP"," Maryland","2020",4146,4020,44
+"232","2433850","Golden Beach CDP"," Maryland","2020",1348,1288,60
+"233","2433950","Goldsboro town"," Maryland","2020",71,61,10
+"234","2434150","Gorman CDP"," Maryland","2020",82,82,0
+"235","2434350","Graceham CDP"," Maryland","2020",100,100,0
+"236","2434425","Grahamtown CDP"," Maryland","2020",113,81,32
+"237","2434525","Grantsville town"," Maryland","2020",349,305,44
+"238","2434550","Grasonville CDP"," Maryland","2020",1237,1069,99
+"239","2434775","Greenbelt city"," Maryland","2020",9791,9177,565
+"240","2435200","Greensboro town"," Maryland","2020",883,732,131
+"241","2435225","Greensburg CDP"," Maryland","2020",69,45,18
+"242","2435412","Green Valley CDP"," Maryland","2020",3974,3841,95
+"243","2436075","Hagerstown city"," Maryland","2020",16669,13123,2984
+"244","2436125","Halfway CDP"," Maryland","2020",4487,3710,629
+"245","2436500","Hampstead town"," Maryland","2020",2590,2347,183
+"246","2436512","Hampton CDP"," Maryland","2020",1643,1604,30
+"247","2436600","Hancock town"," Maryland","2020",725,553,165
+"248","2437600","Havre de Grace city"," Maryland","2020",5811,5130,595
+"249","2437875","Hebron town"," Maryland","2020",409,343,66
+"250","2437925","Henderson town"," Maryland","2020",39,22,14
+"251","2438025","Herald Harbor CDP"," Maryland","2020",981,981,0
+"252","2438437","Highfield-Cascade CDP"," Maryland","2020",332,308,19
+"253","2438475","Highland CDP"," Maryland","2020",364,355,9
+"254","2438500","Highland Beach town"," Maryland","2020",56,56,0
+"255","2438850","Hillandale CDP"," Maryland","2020",1450,1375,61
+"256","2438975","Hillcrest Heights CDP"," Maryland","2020",6828,5837,716
+"257","2439175","Hillsboro town"," Maryland","2020",47,43,4
+"258","2440200","Honeygo CDP"," Maryland","2020",4035,3557,362
+"259","2440700","Hughesville CDP"," Maryland","2020",912,859,18
+"260","2441025","Huntingtown CDP"," Maryland","2020",896,867,15
+"261","2441125","Hurlock town"," Maryland","2020",877,731,131
+"262","2441175","Hutton CDP"," Maryland","2020",28,28,0
+"263","2441250","Hyattsville city"," Maryland","2020",6816,6239,537
+"264","2441475","Ilchester CDP"," Maryland","2020",9302,9082,179
+"265","2441500","Indian Head town"," Maryland","2020",1596,1313,231
+"266","2441700","Indian Springs CDP"," Maryland","2020",9,9,0
+"267","2442325","Jarrettsville CDP"," Maryland","2020",988,935,53
+"268","2442350","Jefferson CDP"," Maryland","2020",901,850,39
+"269","2442450","Jennings CDP"," Maryland","2020",60,21,39
+"270","2442550","Jessup CDP"," Maryland","2020",1558,1416,142
+"271","2442575","Jesterville CDP"," Maryland","2020",74,74,0
+"272","2442875","Joppatowne CDP"," Maryland","2020",5066,4514,520
+"273","2442950","Jugtown CDP"," Maryland","2020",49,42,7
+"274","2443100","Keedysville town"," Maryland","2020",370,346,18
+"275","2443200","Kemp Mill CDP"," Maryland","2020",4784,4629,115
+"276","2443280","Kemps Mill CDP"," Maryland","2020",0,0,0
+"277","2443475","Kennedyville CDP"," Maryland","2020",146,93,53
+"278","2443500","Kensington town"," Maryland","2020",823,788,28
+"279","2443725","Kent Narrows CDP"," Maryland","2020",289,255,34
+"280","2443900","Kettering CDP"," Maryland","2020",5624,5253,291
+"281","2444325","Kingstown CDP"," Maryland","2020",905,784,121
+"282","2444350","Kingsville CDP"," Maryland","2020",1652,1543,109
+"283","2444450","Kitzmiller town"," Maryland","2020",104,73,29
+"284","2444525","Klondike CDP"," Maryland","2020",49,45,4
+"285","2444715","Konterra CDP"," Maryland","2020",1110,1001,109
+"286","2444817","Lake Arbor CDP"," Maryland","2020",5506,5028,311
+"287","2444975","Lake Shore CDP"," Maryland","2020",6731,6239,380
+"288","2445325","Landover CDP"," Maryland","2020",8056,7008,904
+"289","2445400","Landover Hills town"," Maryland","2020",553,533,20
+"290","2445525","Langley Park CDP"," Maryland","2020",4732,4182,521
+"291","2445550","Lanham CDP"," Maryland","2020",2937,2617,268
+"292","2445650","Lansdowne CDP"," Maryland","2020",3360,2607,658
+"293","2445750","La Plata town"," Maryland","2020",3298,2805,430
+"294","2445825","Largo CDP"," Maryland","2020",4232,3917,273
+"295","2445900","Laurel city"," Maryland","2020",9647,8974,548
+"296","2446075","La Vale CDP"," Maryland","2020",1955,1734,202
+"297","2446150","Layhill CDP"," Maryland","2020",1579,1399,152
+"298","2446250","Laytonsville town"," Maryland","2020",158,153,4
+"299","2446375","Leisure World CDP"," Maryland","2020",6215,5155,826
+"300","2446400","Leitersburg CDP"," Maryland","2020",224,105,119
+"301","2446475","Leonardtown town"," Maryland","2020",1241,1047,169
+"302","2446650","Lewistown CDP"," Maryland","2020",179,157,22
+"303","2446725","Lexington Park CDP"," Maryland","2020",5501,4932,405
+"304","2446800","Libertytown CDP"," Maryland","2020",305,264,41
+"305","2447040","Linganore CDP"," Maryland","2020",3504,3453,51
+"306","2447125","Linthicum CDP"," Maryland","2020",3856,3397,282
+"307","2447250","Lisbon CDP"," Maryland","2020",19,19,0
+"308","2447275","Little Orleans CDP"," Maryland","2020",41,10,31
+"309","2447450","Lochearn CDP"," Maryland","2020",9900,7876,936
+"310","2447525","Loch Lynn Heights town"," Maryland","2020",187,134,50
+"311","2447875","Lonaconing town"," Maryland","2020",427,372,52
+"312","2448025","Long Beach CDP"," Maryland","2020",747,725,15
+"313","2448775","Luke town"," Maryland","2020",35,34,0
+"314","2448800","Lusby CDP"," Maryland","2020",930,739,191
+"315","2448875","Lutherville CDP"," Maryland","2020",2461,2210,211
+"316","2449325","McCoole CDP"," Maryland","2020",208,155,53
+"317","2449700","Madison CDP"," Maryland","2020",72,66,6
+"318","2449950","Manchester town"," Maryland","2020",1737,1542,180
+"319","2450375","Mapleville CDP"," Maryland","2020",111,111,0
+"320","2450525","Mardela Springs town"," Maryland","2020",159,133,15
+"321","2450680","Marlboro Meadows CDP"," Maryland","2020",1383,1280,98
+"322","2450685","Marlboro Village CDP"," Maryland","2020",3366,3163,134
+"323","2450750","Marlow Heights CDP"," Maryland","2020",2300,1972,299
+"324","2450775","Marlton CDP"," Maryland","2020",3516,3386,109
+"325","2450965","Martin's Additions village"," Maryland","2020",342,331,9
+"326","2451025","Marydel town"," Maryland","2020",60,42,13
+"327","2451075","Maryland City CDP"," Maryland","2020",6873,6439,385
+"328","2451125","Maryland Park CDP"," Maryland","2020",215,191,19
+"329","2451425","Maugansville CDP"," Maryland","2020",946,758,188
+"330","2451575","Mayo CDP"," Maryland","2020",2958,2764,88
+"331","2451587","Mays Chapel CDP"," Maryland","2020",4734,4519,190
+"332","2451800","Mechanicsville CDP"," Maryland","2020",628,516,71
+"333","2451940","Melwood CDP"," Maryland","2020",1588,1296,197
+"334","2451945","Mercersville CDP"," Maryland","2020",113,66,47
+"335","2452225","Middleburg CDP"," Maryland","2020",0,0,0
+"336","2452300","Middle River CDP"," Maryland","2020",11125,9400,1293
+"337","2452425","Middletown town"," Maryland","2020",1568,1494,62
+"338","2452475","Midland town"," Maryland","2020",255,197,39
+"339","2452525","Midlothian CDP"," Maryland","2020",191,126,65
+"340","2452562","Milford Mill CDP"," Maryland","2020",11512,10017,1071
+"341","2452825","Millington town"," Maryland","2020",215,153,42
+"342","2452975","Mitchellville CDP"," Maryland","2020",3813,3762,45
+"343","2453100","Monrovia CDP"," Maryland","2020",442,442,0
+"344","2453325","Montgomery Village CDP"," Maryland","2020",11850,10560,933
+"345","2453625","Morningside town"," Maryland","2020",420,281,134
+"346","2453700","Moscow CDP"," Maryland","2020",149,139,10
+"347","2453750","Mount Aetna CDP"," Maryland","2020",193,183,10
+"348","2453800","Mountain Lake Park town"," Maryland","2020",848,732,106
+"349","2453875","Mount Airy town"," Maryland","2020",3159,2869,193
+"350","2453925","Mount Briar CDP"," Maryland","2020",42,29,13
+"351","2454125","Mount Lena CDP"," Maryland","2020",128,109,19
+"352","2454275","Mount Rainier city"," Maryland","2020",3963,3483,435
+"353","2454325","Mount Savage CDP"," Maryland","2020",320,192,108
+"354","2454375","Mount Vernon CDP"," Maryland","2020",374,346,28
+"355","2454875","Myersville town"," Maryland","2020",626,587,39
+"356","2454925","Nanticoke CDP"," Maryland","2020",94,94,0
+"357","2454930","Nanticoke Acres CDP"," Maryland","2020",23,23,0
+"358","2455000","National CDP"," Maryland","2020",22,13,9
+"359","2455018","National Harbor CDP"," Maryland","2020",1880,1792,71
+"360","2455050","Naval Academy CDP"," Maryland","2020",257,241,16
+"361","2455325","Newark CDP"," Maryland","2020",168,168,0
+"362","2455400","New Carrollton city"," Maryland","2020",4250,3601,454
+"363","2455650","New Market town"," Maryland","2020",465,444,21
+"364","2455925","New Windsor town"," Maryland","2020",496,448,37
+"365","2455950","Nikep CDP"," Maryland","2020",0,0,0
+"366","2456300","North Beach town"," Maryland","2020",1114,980,100
+"367","2456337","North Bethesda CDP"," Maryland","2020",21218,20173,695
+"368","2456375","North Brentwood town"," Maryland","2020",209,184,23
+"369","2456400","North Chevy Chase village"," Maryland","2020",186,184,2
+"370","2456450","North East town"," Maryland","2020",1420,1213,108
+"371","2456712","North Kensington CDP"," Maryland","2020",3481,3168,233
+"372","2456725","North Laurel CDP"," Maryland","2020",8523,8154,281
+"373","2456875","North Potomac CDP"," Maryland","2020",8076,7906,141
+"374","2457650","Oakland town"," Maryland","2020",900,712,157
+"375","2458215","Ocean CDP"," Maryland","2020",0,0,0
+"376","2458225","Ocean City town"," Maryland","2020",3720,3213,402
+"377","2458275","Ocean Pines CDP"," Maryland","2020",5838,5274,522
+"378","2458300","Odenton CDP"," Maryland","2020",17119,15956,811
+"379","2458775","Oldtown CDP"," Maryland","2020",18,18,0
+"380","2458900","Olney CDP"," Maryland","2020",11727,11296,354
+"381","2459325","Overlea CDP"," Maryland","2020",5060,4375,573
+"382","2459375","Owings CDP"," Maryland","2020",932,896,24
+"383","2459425","Owings Mills CDP"," Maryland","2020",13705,12319,1298
+"384","2459450","Oxford town"," Maryland","2020",425,411,11
+"385","2459500","Oxon Hill CDP"," Maryland","2020",6900,6265,530
+"386","2459787","Paramount-Long Meadow CDP"," Maryland","2020",920,852,44
+"387","2460275","Parkville CDP"," Maryland","2020",12022,10604,1211
+"388","2460325","Parole CDP"," Maryland","2020",8995,8249,563
+"389","2460425","Parsonsburg CDP"," Maryland","2020",80,53,15
+"390","2460475","Pasadena CDP"," Maryland","2020",11309,10716,503
+"391","2460770","Pecktonville CDP"," Maryland","2020",66,66,0
+"392","2460950","Peppermill Village CDP"," Maryland","2020",1755,1601,109
+"393","2460975","Perry Hall CDP"," Maryland","2020",10408,9737,579
+"394","2461075","Perryman CDP"," Maryland","2020",971,810,118
+"395","2461150","Perryville town"," Maryland","2020",1748,1504,244
+"396","2461400","Pikesville CDP"," Maryland","2020",13342,11378,1505
+"397","2461700","Pinesburg CDP"," Maryland","2020",109,109,0
+"398","2461875","Piney Point CDP"," Maryland","2020",415,323,78
+"399","2462025","Pittsville town"," Maryland","2020",685,596,71
+"400","2462100","Pleasant Grove CDP"," Maryland","2020",119,105,14
+"401","2462175","Pleasant Hills CDP"," Maryland","2020",1404,1365,30
+"402","2462475","Pocomoke City city"," Maryland","2020",1786,1348,329
+"403","2462575","Point of Rocks CDP"," Maryland","2020",700,676,19
+"404","2462675","Pomfret CDP"," Maryland","2020",199,166,33
+"405","2462775","Pondsville CDP"," Maryland","2020",9,9,0
+"406","2462850","Poolesville town"," Maryland","2020",1640,1599,31
+"407","2463075","Port Deposit town"," Maryland","2020",258,221,35
+"408","2463225","Port Tobacco Village town"," Maryland","2020",2,2,0
+"409","2463300","Potomac CDP"," Maryland","2020",16131,15626,365
+"410","2463375","Potomac Heights CDP"," Maryland","2020",636,474,147
+"411","2463425","Potomac Park CDP"," Maryland","2020",336,251,78
+"412","2463725","Powellville CDP"," Maryland","2020",40,31,9
+"413","2463825","Preston town"," Maryland","2020",326,288,29
+"414","2463950","Prince Frederick CDP"," Maryland","2020",1158,882,243
+"415","2464000","Princess Anne town"," Maryland","2020",1440,1261,147
+"416","2464375","Pylesville CDP"," Maryland","2020",288,240,48
+"417","2464475","Quantico CDP"," Maryland","2020",49,49,0
+"418","2464495","Queen Anne CDP"," Maryland","2020",439,425,0
+"419","2464500","Queen Anne town"," Maryland","2020",94,76,14
+"420","2464568","Queensland CDP"," Maryland","2020",623,596,0
+"421","2464600","Queenstown town"," Maryland","2020",313,243,55
+"422","2464950","Randallstown CDP"," Maryland","2020",12970,11958,752
+"423","2465150","Rawlings CDP"," Maryland","2020",160,149,11
+"424","2465312","Redland CDP"," Maryland","2020",5356,5088,159
+"425","2465550","Reid CDP"," Maryland","2020",0,0,0
+"426","2465600","Reisterstown CDP"," Maryland","2020",10512,9714,738
+"427","2466000","Ridgely town"," Maryland","2020",753,588,145
+"428","2466150","Ringgold CDP"," Maryland","2020",45,40,5
+"429","2466275","Rising Sun town"," Maryland","2020",982,848,125
+"430","2466400","Riva CDP"," Maryland","2020",1588,1515,73
+"431","2466635","Riverdale Park town"," Maryland","2020",2096,1710,325
+"432","2466762","Riverside CDP"," Maryland","2020",2548,2445,56
+"433","2466850","Riviera Beach CDP"," Maryland","2020",4618,4232,345
+"434","2467000","Robinwood CDP"," Maryland","2020",2773,2437,281
+"435","2467400","Rock Hall town"," Maryland","2020",671,541,117
+"436","2467500","Rock Point CDP"," Maryland","2020",30,22,8
+"437","2467675","Rockville city"," Maryland","2020",26439,24726,1159
+"438","2467950","Rohrersville CDP"," Maryland","2020",106,73,20
+"439","2468265","Romancoke CDP"," Maryland","2020",702,595,44
+"440","2468300","Rosaryville CDP"," Maryland","2020",3367,3293,43
+"441","2468400","Rosedale CDP"," Maryland","2020",7165,6348,754
+"442","2468600","Rosemont village"," Maryland","2020",135,128,7
+"443","2468700","Rossville CDP"," Maryland","2020",5958,5521,292
+"444","2469200","Sabillasville CDP"," Maryland","2020",123,102,21
+"445","2469425","St. George Island CDP"," Maryland","2020",110,110,0
+"446","2469550","St. James CDP"," Maryland","2020",1347,1272,75
+"447","2469675","St. Leonard CDP"," Maryland","2020",197,197,0
+"448","2469825","St. Michaels town"," Maryland","2020",679,609,59
+"449","2469925","Salisbury city"," Maryland","2020",12705,10250,1822
+"450","2470175","Sandy Hook CDP"," Maryland","2020",117,77,40
+"451","2470300","San Mar CDP"," Maryland","2020",87,71,16
+"452","2470475","Savage CDP"," Maryland","2020",2736,2613,100
+"453","2470525","Scaggsville CDP"," Maryland","2020",3072,3031,23
+"454","2470775","Seabrook CDP"," Maryland","2020",5644,5165,405
+"455","2470850","Seat Pleasant city"," Maryland","2020",2074,1670,404
+"456","2470900","Secretary town"," Maryland","2020",215,198,14
+"457","2471150","Severn CDP"," Maryland","2020",19491,18829,500
+"458","2471200","Severna Park CDP"," Maryland","2020",13354,12695,527
+"459","2471450","Shady Side CDP"," Maryland","2020",1946,1899,47
+"460","2471460","Shaft CDP"," Maryland","2020",97,79,18
+"461","2471600","Sharpsburg town"," Maryland","2020",312,284,20
+"462","2471650","Sharptown town"," Maryland","2020",249,232,15
+"463","2472350","Silver Hill CDP"," Maryland","2020",2426,2004,314
+"464","2472450","Silver Spring CDP"," Maryland","2020",32114,29463,2129
+"465","2472887","Smith Island CDP"," Maryland","2020",138,72,62
+"466","2472900","Smithsburg town"," Maryland","2020",969,868,77
+"467","2473075","Snow Hill town"," Maryland","2020",895,662,229
+"468","2473325","Solomons CDP"," Maryland","2020",1044,916,107
+"469","2473350","Somerset town"," Maryland","2020",349,329,20
+"470","2473600","South Kensington CDP"," Maryland","2020",2904,2714,70
+"471","2473650","South Laurel CDP"," Maryland","2020",9888,9014,770
+"472","2474050","Spencerville CDP"," Maryland","2020",476,476,0
+"473","2474282","Springdale CDP"," Maryland","2020",1455,1422,8
+"474","2474350","Spring Gap CDP"," Maryland","2020",19,11,8
+"475","2474560","Spring Ridge CDP"," Maryland","2020",2059,1981,78
+"476","2475025","Stevensville CDP"," Maryland","2020",3144,2779,135
+"477","2475150","Still Pond CDP"," Maryland","2020",35,35,0
+"478","2475200","Stockton CDP"," Maryland","2020",27,27,0
+"479","2475650","Sudlersville town"," Maryland","2020",200,125,75
+"480","2475725","Suitland CDP"," Maryland","2020",9916,8361,1299
+"481","2475810","Summerfield CDP"," Maryland","2020",5451,5031,357
+"482","2476450","Swanton CDP"," Maryland","2020",0,0,0
+"483","2476550","Sykesville town"," Maryland","2020",1317,1259,44
+"484","2476650","Takoma Park city"," Maryland","2020",6619,6026,471
+"485","2476675","Tall Timbers CDP"," Maryland","2020",219,113,77
+"486","2476725","Taneytown city"," Maryland","2020",2639,2285,346
+"487","2476925","Taylors Island CDP"," Maryland","2020",46,32,14
+"488","2477100","Temple Hills CDP"," Maryland","2020",3158,2751,220
+"489","2477200","Templeville town"," Maryland","2020",49,42,2
+"490","2477262","Ten Mile Creek CDP"," Maryland","2020",194,194,0
+"491","2477825","Thurmont town"," Maryland","2020",2590,2260,285
+"492","2477912","Tilghman Island CDP"," Maryland","2020",365,318,47
+"493","2477925","Tilghmanton CDP"," Maryland","2020",141,61,80
+"494","2478050","Timonium CDP"," Maryland","2020",3954,3500,272
+"495","2478120","Tolchester CDP"," Maryland","2020",183,176,7
+"496","2478425","Towson CDP"," Maryland","2020",21013,19132,1198
+"497","2478575","Trappe town"," Maryland","2020",521,418,88
+"498","2478650","Travilah CDP"," Maryland","2020",3635,3525,86
+"499","2478705","Trego-Rohrersville Station CDP"," Maryland","2020",33,33,0
+"500","2479225","Tyaskin CDP"," Maryland","2020",69,69,0
+"501","2479350","Union Bridge town"," Maryland","2020",439,328,92
+"502","2479675","University Park town"," Maryland","2020",957,933,24
+"503","2479875","Upper Marlboro town"," Maryland","2020",276,264,9
+"504","2479900","Urbana CDP"," Maryland","2020",3693,3693,0
+"505","2480075","Vale Summit CDP"," Maryland","2020",65,65,0
+"506","2480600","Vienna town"," Maryland","2020",143,131,8
+"507","2481175","Waldorf CDP"," Maryland","2020",28360,25767,1860
+"508","2481250","Walker Mill CDP"," Maryland","2020",4171,3403,631
+"509","2481275","Walkersville town"," Maryland","2020",2468,2163,272
+"510","2481675","Washington Grove town"," Maryland","2020",283,271,6
+"511","2481925","Waterview CDP"," Maryland","2020",10,10,0
+"512","2482625","West Denton CDP"," Maryland","2020",8,8,0
+"513","2482750","Westernport town"," Maryland","2020",695,542,140
+"514","2483025","West Laurel CDP"," Maryland","2020",1412,1330,77
+"515","2483100","Westminster city"," Maryland","2020",7321,5869,1187
+"516","2483225","West Ocean City CDP"," Maryland","2020",1966,1798,112
+"517","2483290","Westphalia CDP"," Maryland","2020",3309,3111,174
+"518","2483337","West Pocomoke CDP"," Maryland","2020",227,172,46
+"519","2483746","Whaleyville CDP"," Maryland","2020",24,12,12
+"520","2483775","Wheaton CDP"," Maryland","2020",15864,14671,1006
+"521","2484225","Whitehaven CDP"," Maryland","2020",75,75,0
+"522","2484350","White Marsh CDP"," Maryland","2020",3658,3421,198
+"523","2484375","White Oak CDP"," Maryland","2020",5551,5076,333
+"524","2484784","Wildewood CDP"," Maryland","2020",2658,2522,70
+"525","2484950","Willards town"," Maryland","2020",407,289,112
+"526","2485100","Williamsport town"," Maryland","2020",869,684,161
+"527","2485175","Williston CDP"," Maryland","2020",68,68,0
+"528","2485395","Wilson-Conococheague CDP"," Maryland","2020",875,649,168
+"529","2486275","Woodland CDP"," Maryland","2020",24,7,17
+"530","2486475","Woodlawn CDP (Baltimore County)"," Maryland","2020",14753,12883,1244
+"531","2486525","Woodlawn CDP (Prince George's County)"," Maryland","2020",1875,1598,254
+"532","2486710","Woodmore CDP"," Maryland","2020",1642,1535,90
+"533","2486750","Woodsboro town"," Maryland","2020",416,368,48
+"534","2487000","Worton CDP"," Maryland","2020",57,57,0
+"535","2487150","Yarrowsburg CDP"," Maryland","2020",79,79,0
+"536","2487275","Zihlman CDP"," Maryland","2020",157,131,26

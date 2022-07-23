@@ -1,0 +1,88 @@
+---
+title: "Internet Access"
+author: "Rob Wells"
+date: '2022-07-23'
+output: html_document
+---
+```{r message=FALSE, warning=FALSE}
+#remotes::install_github("walkerke/tidycensus")
+library(tidyverse)
+library(tidycensus)
+#a = get_decennial(geography = "state", variables = "P1_001N", year = 2020)
+# head(a, 5)
+#install.packages("formattable")
+library(formattable)
+library(htmlwidgets)
+library(leaflet)
+library(sf)
+library(formattable)
+```
+
+Census API key.
+
+```{r message=FALSE}
+census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE)
+```
+
+```{r}
+#Calls variables for the 2020 decennial census
+v20_dec <- load_variables(2020, "pl", cache = TRUE)
+#Calls variables for the 2020 ACS census
+v20_acs <- load_variables(2020, "acs5", cache = TRUE)
+```
+
+```{r}
+#2020 Median Income By Census Tract ACS
+#2016-2020
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+#B19013_001 is the household median income
+md_income2020 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+
+ 
+md_income2020
+#B19013 defined: https://www.socialexplorer.com/data/ACS2010_5yr/metadata/?ds=ACS10_5yr&var=B19013001
+```
+
+```{r}
+internet_tracts <- get_acs(geography = "tract", 
+              variables = c(no_internet = "B28002_013", yes_internet = "B28002_002", total="B28002_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+
+internet_cities <- get_acs(geography = "place", 
+              variables = c(no_internet = "B28002_013", yes_internet = "B28002_002", total="B28002_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+#Total households in internet survey: B28002_001  PRESENCE AND TYPES OF INTERNET SUBSCRIPTIONS IN HOUSEHOLD block group
+#Households with Internet: B28002_002 - Estimate!!Total:!!With an Internet subscription
+#Households without Internet: B28002_013 - Estimate!!Total:!!No Internet access
+#https://www.socialexplorer.com/data/ACS2018_5yr/metadata/?ds=ACS18_5yr&table=B28002
+#Reality check - total households figure is correct: https://www.socialexplorer.com/data/ACS2018_5yr/metadata/?ds=ACS18_5yr&table=B11001
+```
+
+```{r}
+#reshape the table
+internet_tracts <- separate(data = internet_tracts, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right")
+
+internet_tracts <- internet_tracts %>% 
+  select(-moe) %>% 
+  pivot_wider(names_from = "variable", values_from = "estimate")
+
+#table with internet access by household in census tract, yes-no, total households, 2020
+write.csv(internet_tracts, "md_internet_tracts_2020.csv")
+
+```
+
+```{r}
+internet_cities <- separate(data = internet_cities, col = NAME, into = c("Place", "State"), sep = ",", extra = "merge", fill = "right")
+
+city_md_income <- city_md_income %>% 
+  select(-moe) %>% 
+  pivot_wider(names_from = "year", values_from = "estimate")
+```

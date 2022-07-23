@@ -82,7 +82,16 @@ write.csv(internet_tracts, "md_internet_tracts_2020.csv")
 ```{r}
 internet_cities <- separate(data = internet_cities, col = NAME, into = c("Place", "State"), sep = ",", extra = "merge", fill = "right")
 
-city_md_income <- city_md_income %>% 
+internet_cities <- internet_cities %>% 
   select(-moe) %>% 
-  pivot_wider(names_from = "year", values_from = "estimate")
+  pivot_wider(names_from = "variable", values_from = "estimate")
+#table with internet access by household by city, town, yes-no, total households, 2020
+write.csv(internet_cities, "md_internet_cities_2020.csv")
+```
+
+```{r}
+internet_cities2 <- internet_cities %>% 
+  mutate(pct_no = (no_internet / total)*100)
+#table with internet access by household by city, town, yes-no, total households, w pct, 2020
+write.csv(internet_cities2, "md_internet_cities2_2020.csv")
 ```

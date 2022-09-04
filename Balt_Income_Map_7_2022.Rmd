@@ -415,7 +415,7 @@ percap_income2010 <- get_acs(geography = "tract",
  
 ```
 
-## Create Baltimore city-county, city files
+Create Baltimore city-county, city files
 
 ```{r}
 #Bind together 2010, 2016, 2020 files
@@ -523,7 +523,21 @@ saveWidget(percapta_Map, "percapta_Map.html")
 percapta_Map
 ```
 
+## Commentary on Per Capita Income Map 
 
+I cranked out a new version of that income map that is based on per-capita income instead of median household income. 
+
+So this new map basically measures individual average income in a census tract. 
+The first version measured the median household income, so most everyone under one roof.
+
+I feel this addresses Sandy’s “WTF?” question about the boom of wealth in her neighborhood and a lot of other weirdness that didn’t make sense to me either. There is still some statistical mumbo-jumbo here that I will try to work through but this seems to tell a much more accurate story in my view.
+https://profrobwells.github.io/Baltimore/percapta_Map.html
+
+But look at the boom in South Baltimore! Locust Point! YOWZA.  
+
+And for reference, the first map of median household income.
+Median Income Map
+https://profrobwells.github.io/Baltimore/leafMap.html
 
 # Notes on Income Inequality
 

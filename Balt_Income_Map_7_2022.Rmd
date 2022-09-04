@@ -378,9 +378,200 @@ ggsave("top_md_city_summary.png",device = "png",width=9,height=6, dpi=800)
 
 ```
 
+# Per Capita Income
 
+```{r}
+#2020 Per Capita By Census Tract ACS
+#2016-2020
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+#B19301_001 is the per capita income "Per capita income in the past 12 months (in 2020 inflation-adjusted dollars"
+#Documentation: https://censusreporter.org/tables/B19301/
+percap_income2020 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+
+ 
+percap_income2020
+
+```
+
+```{r}
+#2016 & 2010 Per Capita Income By Census Tract ACS
+
+percap_income2016 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2016) %>% 
+  mutate(year=("2016"))
+ 
+#2010 Per Capita Income By Census Tract 2010
+percap_income2010 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2010) %>% 
+  mutate(year=("2010"))
+ 
+```
+
+## Create Baltimore city-county, city files
+
+```{r}
+#Bind together 2010, 2016, 2020 files
+
+percap_md_all <- rbind(percap_income2010, percap_income2016, percap_income2020)
+
+percap_md_all <- separate(data = percap_md_all, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right")
+
+#write.csv(md_income_all, "md_income_all.csv")
+
+#Subset Baltimore city-county, city files
+balt_income_all <- filter(percap_md_all, grepl ("Baltimore", County))
+#write.csv(balt_income_all, "balt_income_all.csv")
+
+#Baltimore city median income, 2010, 2016, 2020
+
+baltcity_percap_income <- filter(balt_income_all, grepl ("Baltimore city", County)) %>% 
+  filter(variable=="percap_income")
+
+```
+
+```{r}
+#reshape baltcity_income table
+
+baltcity_percap_income <- baltcity_percap_income %>% 
+  select(-moe) %>% 
+  pivot_wider(names_from = "year", values_from = "estimate")
+
+baltcity_percap_income <- janitor::clean_names(baltcity_percap_income)
+
+baltcity_percap_income <- baltcity_percap_income %>% 
+  mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
+  mutate(Diff_2020_2016 = (x2020-x2016))
+
+write.csv(baltcity_percap_income, "baltcity_percap_income.csv")
+# write_rds(baltcity_income, "baltcity_income.rds")
+```
+
+# Map Median Income by Census Tract
+
+```{r}
+#subset the geometry
+md_income2020_geo <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2020, geometry = TRUE) %>% 
+  mutate(year=("2020")) %>% 
+  select(GEOID, NAME)
+
+#join geocoordinates with baltcity
+baltcity_percap_income <- md_income2020_geo  %>% 
+ right_join(baltcity_percap_income, by=c("GEOID"="geoid")) %>% 
+  distinct()
+
+#join Community Statistical Area names
+#associates neighborhood names to Census Tracts using Community Statistical Areas, 2010 https://bniajfi.org/mapping-resources/
+#Baltimore has 56 neighborhoods as measured by Community Statistical Areas
+csa <- rio::import("https://raw.githubusercontent.com/profrobwells/Baltimore/main/CTA_CSA_2010.csv")
+
+csa$GEOID10 <- as.character(csa$GEOID10)
+
+baltcity_percap_income <- baltcity_percap_income  %>% 
+ right_join(csa, by=c("GEOID"="GEOID10")) %>% 
+  distinct()
+
+#Rename Columns
+baltcity_percap_income <- baltcity_percap_income %>% 
+  rename(Neighborhood = CSA2010,
+  Census = NAME10)
+
+#write_rds(baltcity_income, "baltcity_income.rds")
+write.csv(baltcity_percap_income, "baltcity_percap_income.csv")
+#Census Tracts 1801, 1802 have no data for 2020, but have data for 2010, 2016
+
+```
+
+
+```{r}
+#Map by Median Income Difference
+baltcity_percap_income <- baltcity_percap_income %>% 
+  sf::st_transform('+proj=longlat +datum=WGS84')
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = baltcity_percap_income$Diff_2020_2010
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+percapta_Map <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = baltcity_percap_income,
+              color = ~pal(Diff_2020_2010),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = paste("Change is:",(scales::dollar(baltcity_percap_income$Diff_2020_2010)), "for",baltcity_percap_income$Neighborhood)) %>% 
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = baltcity_percap_income$Diff_2020_2010,
+    title = "Per Capita Income Change<br>Per Census Tract <br> 2010 to 2020"
+  )
+
+saveWidget(percapta_Map, "percapta_Map.html")
+percapta_Map
+```
+
+
+
+# Notes on Income Inequality
+
+Shreya - I am starting to look at the differences between the Median Household Income, Per Capita Income and Aggregate Income. I am thinking the Aggregate Income might be the best measure of wealth in a neighborhood, so go ahead and pull the data for Table B19313 and map that.
+
+And then I'd like for you to explore tables that measure income inequality by quintile. 
+B19082 	Shares of Aggregate Household Income by Quintile
+B19083 	Gini Index of Income Inequality
+
+I havent looked at this and don't know it it would be something to map or not.
+
+All of these notes start at Line 426 in Balt_Income_Map_7_2022.rmd
+Thanks, Rob
+
+# Notes in income inequality
+From:  https://censusreporter.org/tables/B19301/
+https://censusreporter.org/topics/income/
+
+
+**Aggregate income**
+The various aggregate income tables provide the total amount of income, as well as broken down by income type, for the summary geography.
+**Table B19313** aggregates all income in the geography, which will produce a number somewhat higher than B19025 because it includes people who live in "group quarters."
+
+**Table B19301, "Per Capita income"**, is simply the value for B19313 "Aggregate Income" divided by the total population estimate for the summary geography. This statistic is more or less the 'average' income. Note the potential for misunderstanding: A) the aggregate income is divided among all people, not only those who actually had income, and B) as with any average, outliers (very big earners) can have a disproportionate effect on resulting figure.
+
+
+There are also some tables which are particularly applicable to understanding income inequality, including one, **B19083 which provides the Gini index** for a place as its only column. 
+
+Income is reported in a number of ways: 
+as a median value, 
+or as a series of medians for groups within a total population; 
+as a number of people or households earning in a certain bracket; 
+as well as a few other structures.
+
+**Income distribution and Inequality**
+
+A few tables in the American Community Survey can be used to understand how income is distributed in given geographies. Two of these tables divide the population of an area into five "quintiles," each with approximately the same number of households in it. For households in those quintiles, you can find the highest income for each quintile, the mean (average) income for each quintile, and the share (percentage) of total income taken in by each quintile.
+
+There is also a table reporting the Gini index for each geography, which summarizes the income distribution in that place. The Gini index is a number between 0 and 1, where lower numbers reflect more equality, and higher numbers indicate greater inequality. You can learn more about the Gini index on this page from the Census Bureau
+Code 	Title
+B19080 	Household Income Quintile Upper Limits
+B19081 	Mean Household Income of Quintiles
+B19082 	Shares of Aggregate Household Income by Quintile
+B19083 	Gini Index of Income Inequality
+
+# --------------------------------------
 # Work in Progress Below
-
+# --------------------------------------
 ```{r}
 #race by tract
 #join with map - white /nonwhite for tooltip

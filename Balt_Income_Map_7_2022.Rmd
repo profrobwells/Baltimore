@@ -649,15 +649,26 @@ redlining_maps <- st_read("Tracts_2020_HOLC/Tracts_2020_HOLC.shp")
 
 balt_redlining <- redlining_maps %>%
   clean_names() %>%
-  filter(max_city == "Baltimore") 
+  filter(max_city == "Baltimore") %>%
+  st_transform(crs = wgs)
+
 
 
 ## weird that polygons aren't showing up even though shapefile is read in --> will take a look at this later. 
 rlining_and_ag_income <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolygons(data = spatial_bmore_ag_differences,
+              color = ~ag_pal(diff_ag_income),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = paste("Change is:",(scales::dollar(spatial_bmore_ag_differences$diff_ag_income)), "for",spatial_bmore_ag_differences$neighborhood)) %>% 
   addPolygons(
-    data = balt_redlining
-  ) 
+    data = balt_redlining,
+    weight = 2.5,
+    smoothFactor = 0.2,
+    fillOpacity = 0.1,
+  )
 
 rlining_and_ag_income
 

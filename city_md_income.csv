@@ -100,7 +100,7 @@
 "99","2416625","Chevy Chase CDP"," Maryland","number_households",3742,3710,"median_income",143500,192273
 "100","2416720","Chevy Chase Section Five village"," Maryland","number_households",246,237,"median_income",250001,250001
 "101","2416730","Chevy Chase Section Three village"," Maryland","number_households",252,270,"median_income",201500,250001
-"102","2416775","Chevy Chase View town"," Maryland","number_households",332,342,"median_income",2e+05,250001
+"102","2416775","Chevy Chase View town"," Maryland","number_households",332,342,"median_income",200000,250001
 "103","2416787","Chevy Chase Village town"," Maryland","number_households",691,679,"median_income",250001,250001
 "104","2416800","Chewsville CDP"," Maryland","number_households",62,102,"median_income",22500,NA
 "105","2416875","Chillum CDP"," Maryland","number_households",10813,10252,"median_income",52457,62412
@@ -241,7 +241,7 @@
 "240","2437925","Henderson town"," Maryland","number_households",50,39,"median_income",42031,NA
 "241","2438025","Herald Harbor CDP"," Maryland","number_households",919,981,"median_income",82054,140493
 "242","2438437","Highfield-Cascade CDP"," Maryland","number_households",416,332,"median_income",75615,68333
-"243","2438475","Highland CDP"," Maryland","number_households",279,364,"median_income",118348,2e+05
+"243","2438475","Highland CDP"," Maryland","number_households",279,364,"median_income",118348,200000
 "244","2438500","Highland Beach town"," Maryland","number_households",28,56,"median_income",116250,138152
 "245","2438850","Hillandale CDP"," Maryland","number_households",2087,1450,"median_income",98546,118779
 "246","2438975","Hillcrest Heights CDP"," Maryland","number_households",6869,6828,"median_income",56394,66463

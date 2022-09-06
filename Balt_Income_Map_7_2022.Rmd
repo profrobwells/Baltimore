@@ -29,7 +29,7 @@ library(formattable)
 Census API key.
 
 ```{r message=FALSE}
-census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE)
+census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE, overwrite = TRUE)
 ```
 
 There are two major functions implemented in tidycensus: get_decennial,
@@ -47,6 +47,7 @@ v20_acs <- load_variables(2020, "acs5", cache = TRUE)
 # Census Tract Median Income Using ACS
 
 ## Question: The 2010 and 2016 Maryland files each have 2812 rows, but the 2020 state file has 2950 rows. Why?
+### this is probably because there are more census tracts recorded in 2020 because of population changes
 
 ```{r}
 #2020 Median Income By Census Tract ACS
@@ -114,7 +115,7 @@ baltcity_income <- filter(balt_income_all, grepl ("Baltimore city", County)) %>%
 #reshape baltcity_income table
 
 baltcity_income <- baltcity_income %>% 
-  select(-moe) %>% 
+  dplyr::select(-moe) %>% 
   pivot_wider(names_from = "year", values_from = "estimate")
 
 baltcity_income <- janitor::clean_names(baltcity_income)
@@ -136,7 +137,7 @@ md_income2020_geo <- get_acs(geography = "tract",
                state = "MD", 
                year = 2020, geometry = TRUE) %>% 
   mutate(year=("2020")) %>% 
-  select(GEOID, NAME)
+  dplyr::select(GEOID, NAME)
 
 #join geocoordinates with baltcity
 baltcity_income <- md_income2020_geo  %>% 
@@ -240,6 +241,7 @@ min$x2020 <- formattable::currency(min$x2020, "$", format = "d")
 min$Diff_2020_2010 <- formattable::currency(min$Diff_2020_2010, "$", format = "d")
 ```
 
+
 ```{r}
 library(knitr)
 library(kableExtra)
@@ -286,7 +288,7 @@ city_md_income2010 <- separate(data = city_md_income2010, col = NAME, into = c("
 city_md_income <- rbind(city_md_income2010, city_md_income2020)
 #reshape, pivot
 city_md_income <- city_md_income %>% 
-  select(-moe) %>% 
+  dplyr::select(-moe) %>% 
   pivot_wider(names_from = "year", values_from = "estimate")
 
 number <- city_md_income %>%
@@ -317,7 +319,7 @@ y <- city_md_income %>%
   mutate(Diff_Pop = (household_2020-household_2010)) %>% 
   mutate(Pct_Pop = (household_2020-household_2010)/household_2010) %>% 
   filter(household_2020 > 3512) %>% 
-  select(place, Diff_Income, Pct_Income_Chg, median_inc_2010, median_inc_2020) %>% 
+  dplyr::select(place, Diff_Income, Pct_Income_Chg, median_inc_2010, median_inc_2020) %>% 
   arrange(desc(Pct_Income_Chg))
 
 y$Diff_Income <- formattable::currency(y$Diff_Income, "$", format = "d")
@@ -472,6 +474,7 @@ baltcity_percap_income <- md_income2020_geo  %>%
 
 #join Community Statistical Area names
 #associates neighborhood names to Census Tracts using Community Statistical Areas, 2010 https://bniajfi.org/mapping-resources/
+
 #Baltimore has 56 neighborhoods as measured by Community Statistical Areas
 csa <- rio::import("https://raw.githubusercontent.com/profrobwells/Baltimore/main/CTA_CSA_2010.csv")
 
@@ -523,6 +526,121 @@ saveWidget(percapta_Map, "percapta_Map.html")
 percapta_Map
 ```
 
+## Aggregate Income Analysis + Map -- Shreya 
+```{r}
+acs_2020_vars <- load_variables(year = 2020,
+                      dataset = "acs5")
+
+## pulling aggregate income for MD in 2020 and 2010
+aggregate_income_2020 <- get_acs(
+  geography = "tract", 
+  state = "MD",
+  variables = c(aggregate_income = "B19313_001"),
+  year = 2020,
+  geometry = TRUE) %>% 
+  mutate(year=("2020")) %>%
+  clean_names() %>%
+  separate(name, into=c("tract","name","state"), sep=",") %>%
+  mutate(
+    state = str_trim(state,side="both"),
+    name = str_trim(name,side="both")
+      ) 
+
+aggregate_income_2010 <- get_acs(
+  geography = "tract", 
+  state = "MD",
+  variables = c(aggregate_income = "B19313_001"),
+  year = 2010,
+  geometry = TRUE) %>% 
+  mutate(year=("2010")) %>%
+  clean_names() %>%
+  separate(name, into=c("tract","name","state"), sep=",") %>%
+  mutate(
+    state = str_trim(state,side="both"),
+    name = str_trim(name,side="both")
+      ) 
+
+bmore_ag_income_2020 <- aggregate_income_2020 %>%
+  filter(name == "Baltimore city") %>%
+  rename(
+    ag_income_2020 = estimate
+  ) %>%
+  as.data.frame() 
+
+bmore_ag_income_2010 <- aggregate_income_2010 %>%
+  filter(name == "Baltimore city") %>%
+  rename(
+    ag_income_2010 = estimate
+  ) %>%
+  as.data.frame()
+
+### join together so 2010 and 2020 estimates are in the same df
+bmore_ag_differences <- bmore_ag_income_2020 %>%
+  left_join(bmore_ag_income_2010, by=c("geoid")) %>%
+  dplyr::select(geoid, tract.x, state.x, ag_income_2020, geometry.x, ag_income_2010) %>%
+  rename(
+    tract = tract.x,
+    state = state.x,
+    geometry = geometry.x 
+  ) %>%
+  mutate(
+    diff_ag_income = (ag_income_2020 - ag_income_2010)
+  )
+
+### incorporating community statistical areas into data 
+#Baltimore has 56 neighborhoods as measured by Community Statistical Areas
+csa <- rio::import("https://raw.githubusercontent.com/profrobwells/Baltimore/main/CTA_CSA_2010.csv") %>%
+  rename(
+    geoid = GEOID10
+  ) %>%
+  clean_names()
+
+csa$geoid <- as.character(csa$geoid)
+
+## wgs projection
+wgs <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
+
+## rename columns
+bmore_ag_differences_join <- bmore_ag_differences %>% 
+  right_join(csa, by=c("geoid")) %>% 
+  distinct() %>% 
+  rename(neighborhood = csa2010,
+  census_tract = name10) 
+
+## making spatial object for map 
+spatial_bmore_ag_differences <- bmore_ag_differences_join %>%
+  st_as_sf(crs = wgs)
+
+## ag_pal 
+
+ag_pal <- colorNumeric(
+      palette = "inferno",
+      domain = spatial_bmore_ag_differences$diff_ag_income
+    )
+
+## leaflet map here
+ag_map <- leaflet() %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolygons(data = spatial_bmore_ag_differences,
+              color = ~ag_pal(diff_ag_income),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = paste("Change is:",(scales::dollar(spatial_bmore_ag_differences$diff_ag_income)), "for",spatial_bmore_ag_differences$neighborhood)) %>% 
+  addLegend(
+    position = "bottomright",
+    pal = ag_pal,
+    values = spatial_bmore_ag_differences$diff_ag_income,
+    title = "Aggregate Income Change<br>Per Census Tract <br> 2010 to 2020"
+  )
+
+ag_map
+
+##saving widget!
+saveWidget(ag_map, "aggregate_income_map.html")
+
+
+```
 ## Commentary on Per Capita Income Map 
 
 I cranked out a new version of that income map that is based on per-capita income instead of median household income. 

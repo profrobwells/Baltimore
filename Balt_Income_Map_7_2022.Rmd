@@ -657,31 +657,32 @@ d_regions <- balt_redlining %>%
 
 rlining_pal <- colorNumeric(
       palette = "YlGnBu",
-      domain = baltcity_income$Diff_2020_2010
+      domain = baltcity_percap_income$Diff_2020_2010
     )
 
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_med_income <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
-   addPolygons(data = baltcity_income,
+  addPolygons(data = baltcity_percap_income,
               color = ~rlining_pal(Diff_2020_2010),
               weight = 2.5,
               smoothFactor = 0.2,
-              fillOpacity = 0.8,
-              label = paste("Change is:",(scales::dollar(baltcity_income$Diff_2020_2010)), "for",baltcity_income$Neighborhood)) %>% 
-  addLegend(
-    position = "bottomright",
-    pal = rlining_pal,
-    values = baltcity_income$Diff_2020_2010,
-    title = "Median Income Change<br>Per Census Tract <br> 2010 to 2020"
-  ) %>% 
-  addPolygons(
+              fillOpacity = 0.5,
+              label = paste("Change is:",(scales::dollar(baltcity_percap_income$Diff_2020_2010)), "for",baltcity_percap_income$Neighborhood)) %>% 
+   addPolygons(
     data = d_regions,
     color = "Red",
     weight = 3,
-    smoothFactor = 0.2,
+    smoothFactor = 1,
     fillOpacity = 0,
-  )
+  ) %>%
+  addLegend(
+    position = "bottomright",
+    pal = rlining_pal,
+    values = baltcity_percap_income$Diff_2020_2010,
+    title = "Per Capita Income Change<br>Per Census Tract <br> 2010 to 2020"
+  ) 
+ 
 
 rlining_and_med_income
 

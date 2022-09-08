@@ -654,23 +654,32 @@ balt_redlining <- redlining_maps %>%
 
 
 
-## weird that polygons aren't showing up even though shapefile is read in --> will take a look at this later. 
-rlining_and_ag_income <- leaflet() %>%
+## overlaying redlining shapefiles on top of leafMap (median household income)
+rlining_and_med_income <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
-  addPolygons(data = spatial_bmore_ag_differences,
-              color = ~ag_pal(diff_ag_income),
+   addPolygons(data = baltcity_income,
+              color = ~pal(Diff_2020_2010),
               weight = 2.5,
               smoothFactor = 0.2,
-              fillOpacity = 0.5,
-              label = paste("Change is:",(scales::dollar(spatial_bmore_ag_differences$diff_ag_income)), "for",spatial_bmore_ag_differences$neighborhood)) %>% 
+              fillOpacity = 0.6,
+              label = paste("Change is:",(scales::dollar(baltcity_income$Diff_2020_2010)), "for",baltcity_income$Neighborhood)) %>% 
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = baltcity_income$Diff_2020_2010,
+    title = "Median Income Change<br>Per Census Tract <br> 2010 to 2020"
+  ) %>% 
   addPolygons(
     data = balt_redlining,
-    weight = 2.5,
+    color = "black",
+    weight = 3,
     smoothFactor = 0.2,
-    fillOpacity = 0.1,
+    fillOpacity = 0,
   )
 
-rlining_and_ag_income
+rlining_and_med_income
+
+saveWidget(rlining_and_med_income, "redlining_and_med_income.html")
 
 ```
 

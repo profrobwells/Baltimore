@@ -655,18 +655,23 @@ balt_redlining <- redlining_maps %>%
 d_regions <- balt_redlining %>%
   filter(first_holc == "D")
 
+rlining_pal <- colorNumeric(
+      palette = "YlGnBu",
+      domain = baltcity_income$Diff_2020_2010
+    )
+
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_med_income <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
    addPolygons(data = baltcity_income,
-              color = ~pal(Diff_2020_2010),
+              color = ~rlining_pal(Diff_2020_2010),
               weight = 2.5,
               smoothFactor = 0.2,
-              fillOpacity = 0.6,
+              fillOpacity = 0.8,
               label = paste("Change is:",(scales::dollar(baltcity_income$Diff_2020_2010)), "for",baltcity_income$Neighborhood)) %>% 
   addLegend(
     position = "bottomright",
-    pal = pal,
+    pal = rlining_pal,
     values = baltcity_income$Diff_2020_2010,
     title = "Median Income Change<br>Per Census Tract <br> 2010 to 2020"
   ) %>% 

@@ -652,7 +652,8 @@ balt_redlining <- redlining_maps %>%
   filter(max_city == "Baltimore") %>%
   st_transform(crs = wgs)
 
-
+d_regions <- balt_redlining %>%
+  filter(first_holc == "D")
 
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_med_income <- leaflet() %>%
@@ -670,8 +671,8 @@ rlining_and_med_income <- leaflet() %>%
     title = "Median Income Change<br>Per Census Tract <br> 2010 to 2020"
   ) %>% 
   addPolygons(
-    data = balt_redlining,
-    color = "black",
+    data = d_regions,
+    color = "Red",
     weight = 3,
     smoothFactor = 0.2,
     fillOpacity = 0,

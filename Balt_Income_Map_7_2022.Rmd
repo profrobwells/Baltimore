@@ -713,9 +713,9 @@ balt_race_percentages <- race_2020 %>%
 ## incorporating CSAs
 ### incorporating community statistical areas into data 
 #Baltimore has 56 neighborhoods as measured by Community Statistical Areas
-csa <- rio::import("https://raw.githubusercontent.com/profrobwells/Baltimore/main/CTA_CSA_2010.csv") %>%
+csa <- read_csv("balt_census_crosswalks_2020.csv") %>%
   rename(
-    geoid = GEOID10
+    geoid = GEOID_Tract_2020
   ) %>%
   clean_names()
 
@@ -726,8 +726,8 @@ csa$geoid <- as.character(csa$geoid)
 balt_race_percentages_join <- balt_race_percentages %>% 
   right_join(csa, by=c("geoid")) %>% 
   distinct() %>% 
-  rename(neighborhood = csa2010,
-  census_tract = name10) 
+  rename(neighborhood = community_statistical_area_2020,
+  census_tract = tract_2020) 
   
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_demographics <- leaflet() %>%

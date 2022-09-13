@@ -730,7 +730,7 @@ balt_race_percentages_join <- balt_race_percentages %>%
   census_tract = name10) 
   
 ## overlaying redlining shapefiles on top of leafMap (median household income)
-rlining_and_med_income <- leaflet() %>%
+rlining_and_demographics <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolygons(group = "Per Capita Income",
               data = baltcity_percap_income,
@@ -789,9 +789,9 @@ rlining_and_med_income <- leaflet() %>%
   )
  
 
-rlining_and_med_income
+rlining_and_demographics 
 
-saveWidget(rlining_and_med_income, "redlining_and_med_income.html")
+saveWidget(rlining_and_demographics , "rlining_and_demographics.html")
 
 ```
 

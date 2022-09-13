@@ -669,7 +669,7 @@ rlining_and_med_income <- leaflet() %>%
               smoothFactor = 0.2,
               fillOpacity = 0.5,
               label = paste("Change is:",(scales::dollar(baltcity_percap_income$Diff_2020_2010)), "for",baltcity_percap_income$Neighborhood)) %>% 
-   addPolygons(
+  addPolylines(
     data = d_regions,
     color = "Red",
     weight = 3,

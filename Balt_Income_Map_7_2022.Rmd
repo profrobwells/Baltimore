@@ -669,32 +669,23 @@ race_2020 <- get_acs(
   geography = "tract", 
   state = "MD",
   variables = 
-    c("B03002_002",
-      "B03002_003",
-      "B03002_004",
-      "B03002_012",
-      "B03002_006"),
+    c(total_population = "B03002_001",
+      white_pop = "B03002_003",
+      black_pop = "B03002_004",
+      hisp_lat_pop = "B03002_012",
+      asian_pop = "B03002_006"),
   year = 2020,
-  geometry = TRUE) %>% 
-  mutate(year=("2020"))
-
-balt_race_2020 <- race_2020 %>%
+  geometry = TRUE,
+  output = "wide") %>% 
+  mutate(year=("2020")) %>%
   clean_names() %>%
-  group_by(name) %>%
-  pivot_wider(names_from=c("variable"), values_from=c("estimate", "moe")) %>%
-  rename(
-    total_population = estimate_B03002_001,
-    white_non_hispanic = estimate_B03002_003,
-    black_alone = estimate_B03002_004,
-    asian = estimate_B03002_006,
-    hispanic_latino = estimate_B03002_012
-  ) %>% 
   separate(name, into=c("tract","name","state"), sep=",") %>%
   mutate(
       state = str_trim(state,side="both"),
       name = str_trim(name,side="both")
-  ) 
-
+  ) %>%
+  filter(name == "Baltimore city")
+  
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_med_income <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%

@@ -1,6 +1,6 @@
 ---
 title: "Baltimore Income Map"
-author: "Rob Wells"
+author: "Rob Wells, Shreya Vuttaluru"
 date: "7/21/2022"
 output: html_document
 editor_options: 
@@ -24,6 +24,9 @@ library(htmlwidgets)
 library(leaflet)
 library(sf)
 library(formattable)
+library(dplyr)
+library(tidyr)
+library(janitor)
 ```
 
 Census API key.
@@ -137,7 +140,7 @@ md_income2020_geo <- get_acs(geography = "tract",
                state = "MD", 
                year = 2020, geometry = TRUE) %>% 
   mutate(year=("2020")) %>% 
-  dplyr::select(GEOID, NAME)
+  select(GEOID, NAME)
 
 #join geocoordinates with baltcity
 baltcity_income <- md_income2020_geo  %>% 
@@ -642,7 +645,7 @@ saveWidget(ag_map, "aggregate_income_map.html")
 ```
 
 
-Redlining Maps -- Shreya (Work in Progress right now)
+Redlining Maps w/ Race and Per Capita Income  -- Shreya (Work in Progress right now)
 ```{r}
 
 redlining_maps <- st_read("Tracts_2020_HOLC/Tracts_2020_HOLC.shp") 
@@ -660,16 +663,50 @@ rlining_pal <- colorNumeric(
       domain = baltcity_percap_income$Diff_2020_2010
     )
 
+
+## pulling race data from ACS
+race_2020 <- get_acs(
+  geography = "tract", 
+  state = "MD",
+  variables = 
+    c("B03002_002",
+      "B03002_003",
+      "B03002_004",
+      "B03002_012",
+      "B03002_006"),
+  year = 2020,
+  geometry = TRUE) %>% 
+  mutate(year=("2020"))
+
+balt_race_2020 <- race_2020 %>%
+  clean_names() %>%
+  group_by(name) %>%
+  pivot_wider(names_from=c("variable"), values_from=c("estimate", "moe")) %>%
+  rename(
+    total_population = estimate_B03002_001,
+    white_non_hispanic = estimate_B03002_003,
+    black_alone = estimate_B03002_004,
+    asian = estimate_B03002_006,
+    hispanic_latino = estimate_B03002_012
+  ) %>% 
+  separate(name, into=c("tract","name","state"), sep=",") %>%
+  mutate(
+      state = str_trim(state,side="both"),
+      name = str_trim(name,side="both")
+  ) 
+
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_med_income <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
-  addPolygons(data = baltcity_percap_income,
+  addPolygons(group = "Per Capita Income",
+              data = baltcity_percap_income,
               color = ~rlining_pal(Diff_2020_2010),
               weight = 2.5,
               smoothFactor = 0.2,
               fillOpacity = 0.5,
               label = paste("Change is:",(scales::dollar(baltcity_percap_income$Diff_2020_2010)), "for",baltcity_percap_income$Neighborhood)) %>% 
   addPolylines(
+    group = "Redlining Zones",
     data = d_regions,
     color = "Red",
     weight = 3,
@@ -681,7 +718,12 @@ rlining_and_med_income <- leaflet() %>%
     pal = rlining_pal,
     values = baltcity_percap_income$Diff_2020_2010,
     title = "Per Capita Income Change<br>Per Census Tract <br> 2010 to 2020"
-  ) 
+  ) %>% 
+  addLayersControl(
+    baseGroups = c("OSM (default)", "Toner", "Toner Lite"),
+    overlayGroups = c("Quakes", "Outline"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
  
 
 rlining_and_med_income

@@ -762,6 +762,13 @@ rlining_and_demographics <- leaflet() %>%
     fillOpacity = 0,
   ) %>%
   addLegend(
+    group = "White Population",
+    position = "bottomright",
+    pal = white_pal,
+    values = balt_race_percentages_join$percent_white,
+    title = "Percentage White in 2020"
+  ) %>% 
+  addLegend(
     group = "Per Capita Income",
     position = "bottomright",
     pal = rlining_pal,
@@ -774,14 +781,7 @@ rlining_and_demographics <- leaflet() %>%
     pal = black_pal,
     values = balt_race_percentages_join$percent_black,
     title = "Percentage Black in 2020"
-  ) %>% 
-  addLegend(
-    group = "White Population",
-    position = "bottomright",
-    pal = white_pal,
-    values = balt_race_percentages_join$percent_white,
-    title = "Percentage White in 2020"
-  ) %>% 
+  ) %>%
   addLayersControl(
     overlayGroups = c("Redlining Zones", "Per Capita Income", "Black Population", "White Population"),
     position = "topleft", 

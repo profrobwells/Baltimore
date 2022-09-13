@@ -658,9 +658,21 @@ balt_redlining <- redlining_maps %>%
 d_regions <- balt_redlining %>%
   filter(first_holc == "D")
 
+
+#palettes 
 rlining_pal <- colorNumeric(
       palette = "YlGnBu",
       domain = baltcity_percap_income$Diff_2020_2010
+    )
+
+black_pal <- colorNumeric(
+      palette = "YlGnBu",
+      domain = balt_race_percentages_join$percent_black
+    )
+
+white_pal <- colorNumeric(
+      palette = "YlGnBu",
+      domain = balt_race_percentages_join$percent_white
     )
 
 
@@ -676,7 +688,8 @@ race_2020 <- get_acs(
       asian_pop = "B03002_006"),
   year = 2020,
   geometry = TRUE,
-  output = "wide") %>% 
+  output = "wide"
+  ) %>% 
   mutate(year=("2020")) %>%
   clean_names() %>%
   separate(name, into=c("tract","name","state"), sep=",") %>%
@@ -685,6 +698,36 @@ race_2020 <- get_acs(
       name = str_trim(name,side="both")
   ) %>%
   filter(name == "Baltimore city")
+
+balt_race_percentages <- race_2020 %>%
+  mutate(
+    percent_white = round((white_pop_e/total_population_e) * 100, 2),
+    percent_black = round((black_pop_e/total_population_e) * 100, 2),
+    percent_hisp_lat = round((hisp_lat_pop_e/total_population_e) * 100, 2),
+    percent_asian = round((asian_pop_e/total_population_e) * 100, 2) 
+    ) %>%
+  select(geoid, tract, name, state, percent_white, percent_black, percent_hisp_lat, percent_asian, total_population_e) %>%
+  rename(total_population = total_population_e)
+
+
+## incorporating CSAs
+### incorporating community statistical areas into data 
+#Baltimore has 56 neighborhoods as measured by Community Statistical Areas
+csa <- rio::import("https://raw.githubusercontent.com/profrobwells/Baltimore/main/CTA_CSA_2010.csv") %>%
+  rename(
+    geoid = GEOID10
+  ) %>%
+  clean_names()
+
+csa$geoid <- as.character(csa$geoid)
+
+## joining race percentages to CSAs
+
+balt_race_percentages_join <- balt_race_percentages %>% 
+  right_join(csa, by=c("geoid")) %>% 
+  distinct() %>% 
+  rename(neighborhood = csa2010,
+  census_tract = name10) 
   
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_med_income <- leaflet() %>%
@@ -696,6 +739,20 @@ rlining_and_med_income <- leaflet() %>%
               smoothFactor = 0.2,
               fillOpacity = 0.5,
               label = paste("Change is:",(scales::dollar(baltcity_percap_income$Diff_2020_2010)), "for",baltcity_percap_income$Neighborhood)) %>% 
+  addPolygons(group = "Black Population",
+              data = balt_race_percentages_join,
+              color = ~black_pal(percent_black),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = paste("Percent Black:",(balt_race_percentages_join$percent_black), "for",baltcity_percap_income$Neighborhood)) %>%
+  addPolygons(group = "White Population",
+              data = balt_race_percentages_join,
+              color = ~white_pal(percent_white),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = paste("Percent White:",(balt_race_percentages_join$percent_white), "for",baltcity_percap_income$Neighborhood)) %>%
   addPolylines(
     group = "Redlining Zones",
     data = d_regions,
@@ -705,14 +762,29 @@ rlining_and_med_income <- leaflet() %>%
     fillOpacity = 0,
   ) %>%
   addLegend(
+    group = "Per Capita Income",
     position = "bottomright",
     pal = rlining_pal,
     values = baltcity_percap_income$Diff_2020_2010,
     title = "Per Capita Income Change<br>Per Census Tract <br> 2010 to 2020"
   ) %>% 
+  addLegend(
+    group = "Black Population",
+    position = "bottomright",
+    pal = black_pal,
+    values = balt_race_percentages_join$percent_black,
+    title = "Percentage Black in 2020"
+  ) %>% 
+  addLegend(
+    group = "White Population",
+    position = "bottomright",
+    pal = white_pal,
+    values = balt_race_percentages_join$percent_white,
+    title = "Percentage White in 2020"
+  ) %>% 
   addLayersControl(
-    baseGroups = c("OSM (default)", "Toner", "Toner Lite"),
-    overlayGroups = c("Quakes", "Outline"),
+    overlayGroups = c("Redlining Zones", "Per Capita Income", "Black Population", "White Population"),
+    position = "topleft", 
     options = layersControlOptions(collapsed = FALSE)
   )
  

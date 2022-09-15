@@ -532,6 +532,7 @@ percapta_Map <- leaflet() %>%
     title = "Per Capita Income Change<br>Per Census Tract <br> 2010 to 2020"
   )
 
+library(htmlwidgets)
 saveWidget(percapta_Map, "percapta_Map.html")
 percapta_Map
 ```
@@ -652,7 +653,7 @@ saveWidget(ag_map, "aggregate_income_map.html")
 ```
 
 
-Redlining Maps w/ Race and Per Capita Income  -- Shreya (Work in Progress right now)
+Redlining Maps w/ Race and Per Capita Income  -- Shreya 
 ```{r}
 
 redlining_maps <- st_read("Tracts_2020_HOLC/Tracts_2020_HOLC.shp") 
@@ -669,7 +670,7 @@ d_regions <- balt_redlining %>%
 #palettes 
 rlining_pal <- colorNumeric(
       palette = "YlGnBu",
-      domain = baltcity_percap_income$Diff_2020_2010
+      domain = baltcity_percap_income$diff_2020_2010
     )
 
 black_pal <- colorNumeric(
@@ -741,11 +742,11 @@ rlining_and_demographics <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
   addPolygons(group = "Per Capita Income",
               data = baltcity_percap_income,
-              color = ~rlining_pal(Diff_2020_2010),
+              color = ~rlining_pal(diff_2020_2010),
               weight = 2.5,
               smoothFactor = 0.2,
               fillOpacity = 0.5,
-              label = paste("Change is:",(scales::dollar(baltcity_percap_income$Diff_2020_2010)), "for",baltcity_percap_income$Neighborhood)) %>% 
+              label = paste("Change is:",(scales::dollar(baltcity_percap_income$diff_2020_2010)), "for",baltcity_percap_income$Neighborhood)) %>% 
   addPolygons(group = "Black Population",
               data = balt_race_percentages_join,
               color = ~black_pal(percent_black),
@@ -779,7 +780,7 @@ rlining_and_demographics <- leaflet() %>%
     group = "Per Capita Income",
     position = "bottomright",
     pal = rlining_pal,
-    values = baltcity_percap_income$Diff_2020_2010,
+    values = baltcity_percap_income$diff_2020_2010,
     title = "Per Capita Income Change<br>Per Census Tract <br> 2010 to 2020"
   ) %>% 
   addLegend(

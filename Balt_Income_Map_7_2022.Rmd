@@ -746,21 +746,21 @@ rlining_and_demographics <- leaflet() %>%
               weight = 2.5,
               smoothFactor = 0.2,
               fillOpacity = 0.5,
-              label = paste("Change is:",(scales::dollar(baltcity_percap_income$diff_2020_2010)), "for",baltcity_percap_income$Neighborhood)) %>% 
+              label = paste("Change is:",(scales::dollar(baltcity_percap_income$diff_2020_2010)), "for",balt_race_percentages_join$neighborhood)) %>% 
   addPolygons(group = "Black Population",
               data = balt_race_percentages_join,
               color = ~black_pal(percent_black),
               weight = 2.5,
               smoothFactor = 0.2,
               fillOpacity = 0.5,
-              label = paste("Percent Black:",(balt_race_percentages_join$percent_black), "for",baltcity_percap_income$Neighborhood)) %>%
+              label = paste("Percent Black:",(balt_race_percentages_join$percent_black), "for",balt_race_percentages_join$neighborhood)) %>%
   addPolygons(group = "White Population",
               data = balt_race_percentages_join,
               color = ~white_pal(percent_white),
               weight = 2.5,
               smoothFactor = 0.2,
               fillOpacity = 0.5,
-              label = paste("Percent White:",(balt_race_percentages_join$percent_white), "for",baltcity_percap_income$Neighborhood)) %>%
+              label = paste("Percent White:",(balt_race_percentages_join$percent_white), "for",balt_race_percentages_join$neighborhood)) %>%
   addPolylines(
     group = "Redlining Zones",
     data = d_regions,

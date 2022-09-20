@@ -723,7 +723,9 @@ balt_race_percentages_join <- balt_race_percentages %>%
 #palettes 
 rlining_pal <- colorQuantile(
       palette = "YlGnBu",
-      domain = baltcity_percap_income$diff_2020_2010
+      domain = baltcity_percap_income$diff_2020_2010,
+      10,
+      reverse = TRUE
     )
 
 black_pal <- colorBin(
@@ -733,13 +735,11 @@ black_pal <- colorBin(
 
 white_pal <- colorBin(
       palette = "YlGnBu",
-      domain = balt_race_percentages_join$percent_white
+      domain = balt_race_percentages_join$percent_white,
+      5
     )
 
 ### this supposedly helps to bring things to the front?
-marker_options <- markerOptions(
-  zIndexOffset = as.integer(d_regions$first_holc) 
-)
   
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_demographics <- leaflet() %>%

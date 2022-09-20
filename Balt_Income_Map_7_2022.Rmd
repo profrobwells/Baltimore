@@ -667,23 +667,6 @@ d_regions <- balt_redlining %>%
   filter(first_holc == "D")
 
 
-#palettes 
-rlining_pal <- colorNumeric(
-      palette = "YlGnBu",
-      domain = baltcity_percap_income$diff_2020_2010
-    )
-
-black_pal <- colorNumeric(
-      palette = "YlGnBu",
-      domain = balt_race_percentages_join$percent_black
-    )
-
-white_pal <- colorNumeric(
-      palette = "YlGnBu",
-      domain = balt_race_percentages_join$percent_white
-    )
-
-
 ## pulling race data from ACS
 race_2020 <- get_acs(
   geography = "tract", 
@@ -736,6 +719,27 @@ balt_race_percentages_join <- balt_race_percentages %>%
   distinct() %>% 
   rename(neighborhood = community_statistical_area_2020,
   census_tract = tract_2020) 
+
+#palettes 
+rlining_pal <- colorQuantile(
+      palette = "YlGnBu",
+      domain = baltcity_percap_income$diff_2020_2010
+    )
+
+black_pal <- colorBin(
+      palette = "YlGnBu",
+      domain = balt_race_percentages_join$percent_black
+    )
+
+white_pal <- colorBin(
+      palette = "YlGnBu",
+      domain = balt_race_percentages_join$percent_white
+    )
+
+### this supposedly helps to bring things to the front?
+marker_options <- markerOptions(
+  zIndexOffset = as.integer(d_regions$first_holc) 
+)
   
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_demographics <- leaflet() %>%
@@ -745,29 +749,29 @@ rlining_and_demographics <- leaflet() %>%
               color = ~rlining_pal(diff_2020_2010),
               weight = 2.5,
               smoothFactor = 0.2,
-              fillOpacity = 0.5,
+              fillOpacity = 0.7,
               label = paste("Change is:",(scales::dollar(baltcity_percap_income$diff_2020_2010)), "for",balt_race_percentages_join$neighborhood)) %>% 
   addPolygons(group = "Black Population",
               data = balt_race_percentages_join,
               color = ~black_pal(percent_black),
               weight = 2.5,
               smoothFactor = 0.2,
-              fillOpacity = 0.5,
-              label = paste("Percent Black:",(balt_race_percentages_join$percent_black), "for",balt_race_percentages_join$neighborhood)) %>%
+              fillOpacity = 0.7,
+              label = paste("Percent Black:",(balt_race_percentages_join$percent_black), "for",balt_race_percentages_join$neighborhood, "|", "Percap $ Change is:",(scales::dollar(baltcity_percap_income$diff_2020_2010)), "for",balt_race_percentages_join$neighborhood)) %>%
   addPolygons(group = "White Population",
               data = balt_race_percentages_join,
               color = ~white_pal(percent_white),
               weight = 2.5,
               smoothFactor = 0.2,
-              fillOpacity = 0.5,
-              label = paste("Percent White:",(balt_race_percentages_join$percent_white), "for",balt_race_percentages_join$neighborhood)) %>%
+              fillOpacity = 0.7,
+              label = paste("Percent White:",(balt_race_percentages_join$percent_white), "for",balt_race_percentages_join$neighborhood, "|", "Percap $ Change is:",(scales::dollar(baltcity_percap_income$diff_2020_2010)), "for",balt_race_percentages_join$neighborhood)) %>%
   addPolylines(
     group = "Redlining Zones",
     data = d_regions,
     color = "Red",
-    weight = 3,
+    weight = 5,
     smoothFactor = 1,
-    fillOpacity = 0,
+    options = marker_options
   ) %>%
   addLegend(
     group = "White Population",
@@ -791,15 +795,28 @@ rlining_and_demographics <- leaflet() %>%
     title = "Percentage Black in 2020"
   ) %>%
   addLayersControl(
-    overlayGroups = c("Redlining Zones", "Per Capita Income", "Black Population", "White Population"),
+    baseGroups = c("Per Capita Income", "Black Population", "White Population"),
     position = "topleft", 
     options = layersControlOptions(collapsed = FALSE)
-  )
+  ) %>%
+   onRender("
+    function(el, x) {
+      this.on('baselayerchange', function(e) {
+        e.layer.bringToBack();
+      })
+    }
+  ")
  
 
 rlining_and_demographics 
 
 saveWidget(rlining_and_demographics , "rlining_and_demographics.html")
+
+## NOTES 
+## - switching polygons to polylines makes it so you can't hover
+## - make seperate colornumeric with defined values? 
+## - any updates on whether to include C vs D regions?
+
 
 ```
 

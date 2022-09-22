@@ -460,7 +460,7 @@ baltcity_percap_income <- baltcity_percap_income %>%
   mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
   mutate(Diff_2020_2016 = (x2020-x2016))
 
-write.csv(baltcity_percap_income, "baltcity_percap_income.csv")
+#write.csv(baltcity_percap_income, "baltcity_percap_income.csv")
 # write_rds(baltcity_income, "baltcity_income.rds")
 ```
 
@@ -999,4 +999,252 @@ holc2 <- holc1@data %>%
 #Put population and %white in popup
 #Get more details on how to format popups
 
+```
+
+
+## Population and Income Analysis
+```{r}
+race_2020 <- get_acs(
+  geography = "tract", 
+  state = "MD",
+  variables = 
+    c(x2020_total_population = "B03002_001",
+      white_pop = "B03002_003",
+      black_pop = "B03002_004",
+      hisp_lat_pop = "B03002_012",
+      asian_pop = "B03002_006"),
+  year = 2020,
+  geometry = TRUE,
+  output = "wide"
+  ) %>% 
+  mutate(year=("2020")) %>%
+  clean_names() %>%
+  separate(name, into=c("tract","name","state"), sep=",") %>%
+  mutate(
+      state = str_trim(state,side="both"),
+      name = str_trim(name,side="both")
+  ) %>%
+  filter(name == "Baltimore city")
+
+```
+
+2010 population
+```{r}
+race_2010 <- get_acs(
+  geography = "tract", 
+  state = "MD",
+  variables = 
+    c(x2010_total_population = "B03002_001",
+      white_pop = "B03002_003",
+      black_pop = "B03002_004",
+      hisp_lat_pop = "B03002_012",
+      asian_pop = "B03002_006"),
+  year = 2010,
+  geometry = TRUE,
+  output = "wide"
+  ) %>% 
+  mutate(year=("2010")) %>%
+  clean_names() %>%
+  separate(name, into=c("tract","name","state"), sep=",") %>%
+  mutate(
+      state = str_trim(state,side="both"),
+      name = str_trim(name,side="both")
+  ) %>%
+  filter(name == "Baltimore city")
+
+
+```
+
+
+# Per Capita Income
+
+2020 
+```{r}
+#2020 Per Capita By Census Tract ACS
+#2016-2020
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+#B19301_001 is the per capita income "Per capita income in the past 12 months (in 2020 inflation-adjusted dollars"
+#Documentation: https://censusreporter.org/tables/B19301/
+percap_income2020 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+
+ 
+percap_income2020
+
+```
+
+```{r}
+race_2010 <- race_2010 %>% 
+  as.data.frame()
+race_2020 <- race_2020 %>% 
+  as.data.frame()
+
+race_all <- race_2010 %>% 
+  inner_join(race_2020, by=c("geoid"))
+
+race_all <- race_all %>% 
+  select(geoid, tract.x, name.x, x2010_total_population_e, x2020_total_population_e, geometry.x)
+
+```
+
+
+```{r}
+#2016 & 2010 Per Capita Income By Census Tract ACS
+
+percap_income2016 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2016) %>% 
+  mutate(year=("2016"))
+ 
+#2010 Per Capita Income By Census Tract 2010
+percap_income2010 <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2010) %>% 
+  mutate(year=("2010"))
+ 
+```
+
+Create Baltimore city-county, city files
+
+```{r}
+#Bind together 2010, 2016, 2020 files
+
+percap_md_all <- rbind(percap_income2010, percap_income2016, percap_income2020)
+
+percap_md_all <- separate(data = percap_md_all, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right")
+
+#write.csv(md_income_all, "md_income_all.csv")
+
+#Subset Baltimore city-county, city files
+balt_income_all <- filter(percap_md_all, grepl ("Baltimore", County))
+#write.csv(balt_income_all, "balt_income_all.csv")
+
+#Baltimore city median income, 2010, 2016, 2020
+
+baltcity_percap_income <- filter(balt_income_all, grepl ("Baltimore city", County)) %>% 
+  filter(variable=="percap_income")
+
+```
+
+```{r}
+#reshape baltcity_income table
+
+baltcity_percap_income <- baltcity_percap_income %>% 
+  select(-moe) %>% 
+  pivot_wider(names_from = "year", values_from = "estimate")
+
+baltcity_percap_income <- janitor::clean_names(baltcity_percap_income)
+
+baltcity_percap_income <- baltcity_percap_income %>% 
+  mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
+  mutate(Diff_2020_2016 = (x2020-x2016))
+
+# write.csv(baltcity_percap_income, "baltcity_percap_income.csv")
+# write_rds(baltcity_income, "baltcity_income.rds")
+```
+
+## join per capita and percap income
+
+```{r}
+joined <- baltcity_percap_income %>% 
+  inner_join(race_all, by=c("geoid"))
+
+joined <- joined %>% 
+  select(geoid, census_tract, x2010, x2016, x2020, Diff_2020_2010, x2010_total_population_e, x2020_total_population_e, geometry.x)
+
+joined <- joined %>% 
+  mutate(pop_diff_2020 = (x2020_total_population_e - x2010_total_population_e)) %>% 
+  mutate(pct_chg_pop_2020 = (x2020_total_population_e - x2010_total_population_e)/x2010_total_population_e)
+  
+joined$pct_chg_pop_2020 <- formattable::percent(joined$pct_chg_pop_2020)
+
+
+joined <- joined %>% 
+  mutate(pct_chg_income_2020 = (x2020-x2010)/x2010)
+
+joined$pct_chg_income_2020  <- formattable::percent(joined$pct_chg_income_2020)
+
+#write.csv(joined, "balt_income_pop.csv")
+```
+
+On average, a Baltimore census tract lost 92 residents from 2010 to 2020. The biggest loss was 1838 residents.
+
+
+```{r}
+summary(joined$pop_diff_2020)
+sum(joined$pop_diff_2020)
+```
+
+```{r}
+
+csa <- read_csv("balt_census_crosswalks_2020.csv") %>%
+  rename(
+    geoid = GEOID_Tract_2020
+  ) %>%
+  clean_names()
+
+csa$geoid <- as.character(csa$geoid)
+
+joined <- joined  %>% 
+  clean_names() %>%
+  right_join(csa, by=c("geoid")) %>% 
+  distinct() 
+
+joined <- joined %>% 
+  select(community_statistical_area_2020, x2010, x2016, x2020, diff_2020_2010, pct_chg_income_2020, x2010_total_population_e, x2020_total_population_e, pop_diff_2020, pct_chg_pop_2020, census_tract, geometry_x)
+```
+
+The typical Baltimore Census tract saw a 35% increase in per capita income from 2010 to 2020. 
+The top quarter neighborhoods saw a 58% or better increase
+The top 10% neighborhoods saw a 85% or better increase
+```{r}
+summary(joined$pct_chg_income_2020)
+quantile(joined$pct_chg_income_2020, c(0.25, 0.50, 0.75, 0.9, 0.99), na.rm=TRUE)
+
+```
+
+The 49 neighborhoods that saw incomes rise 58% or more
+```{r}
+joined %>% 
+  select(community_statistical_area_2020, pct_chg_income_2020, pct_chg_pop_2020) %>% 
+  filter(pct_chg_income_2020 > 0.5836) %>% 
+  arrange(desc(pct_chg_income_2020))
+
+```
+
+The 49 neighborhoods that saw incomes rise 58% or more had a population loss that averaged 4%.
+```{r}
+joined %>% 
+  select(community_statistical_area_2020, pct_chg_income_2020, pct_chg_pop_2020) %>% 
+  filter(pct_chg_income_2020 > 0.5836) %>% 
+  summarize(mean(pct_chg_pop_2020))
+```
+
+The 151 neighborhoods that saw incomes rise less than 58% or more had a population gain of a little less than 1%
+```{r}
+joined %>% 
+  select(community_statistical_area_2020, pct_chg_income_2020, pct_chg_pop_2020) %>% 
+  filter(pct_chg_income_2020 < 0.5836) %>% 
+  summarize(mean(pct_chg_pop_2020))
+```
+
+The 50 neighborhoods that saw incomes rise less than 15% or more had a population gained 3%
+```{r}
+joined %>% 
+  select(community_statistical_area_2020, pct_chg_income_2020, pct_chg_pop_2020) %>% 
+  filter(pct_chg_income_2020 < 0.1490 ) %>% 
+  summarize(mean(pct_chg_pop_2020))
+```
+
+The 50 neighborhoods that saw incomes rise less than 15% 
+```{r}
+joined %>% 
+  select(community_statistical_area_2020, pct_chg_income_2020, pct_chg_pop_2020) %>% 
+  filter(pct_chg_income_2020 < 0.1490) %>% 
+  arrange(desc(pct_chg_income_2020))
 ```

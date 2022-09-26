@@ -1002,7 +1002,7 @@ holc2 <- holc1@data %>%
 ```
 
 
-## Population and Income Analysis
+# Population and Income Analysis
 ```{r}
 race_2020 <- get_acs(
   geography = "tract", 
@@ -1056,7 +1056,7 @@ race_2010 <- get_acs(
 ```
 
 
-# Per Capita Income
+## Per Capita Income
 
 2020 
 ```{r}
@@ -1148,7 +1148,7 @@ baltcity_percap_income <- baltcity_percap_income %>%
 # write_rds(baltcity_income, "baltcity_income.rds")
 ```
 
-## join per capita and percap income
+## Join per capita and percap income
 
 ```{r}
 joined <- baltcity_percap_income %>% 

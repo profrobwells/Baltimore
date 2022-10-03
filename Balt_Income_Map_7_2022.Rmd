@@ -27,6 +27,7 @@ library(formattable)
 library(dplyr)
 library(tidyr)
 library(janitor)
+library(leaflet.extras)
 ```
 
 Census API key.
@@ -211,13 +212,13 @@ leafMap
 #Census tracts: generally 1,200 and 8,000 people, optimum size of 4,000
 x <- baltcity_income %>% 
   as.data.frame() %>% 
-  select(Neighborhood, x2020, x2010, Diff_2020_2010, Census) %>% 
-  top_n(10, Diff_2020_2010) %>%
-  arrange(desc(Diff_2020_2010))
+  select(neighborhood, x2020, x2010, diff_2020_2010, census) %>% 
+  top_n(10, diff_2020_2010) %>%
+  arrange(desc(diff_2020_2010))
 
 x$x2010 <- formattable::currency(x$x2010, "$", format = "d")
 x$x2020 <- formattable::currency(x$x2020, "$", format = "d")
-x$Diff_2020_2010 <- formattable::currency(x$Diff_2020_2010, "$", format = "d")
+x$diff_2020_2010 <- formattable::currency(x$diff_2020_2010, "$", format = "d")
 ```
 
 ```{r}
@@ -700,6 +701,11 @@ balt_race_percentages <- race_2020 %>%
   select(geoid, tract, name, state, percent_white, percent_black, percent_hisp_lat, percent_asian, total_population_e) %>%
   rename(total_population = total_population_e)
 
+## call in percap income csv from folder
+# baltcity_percap_income <- read_csv("baltcity_percap_income.csv") %>%
+#   clean_names() %>%
+#   as_data_frame()
+
 
 ## incorporating CSAs
 ### incorporating community statistical areas into data 
@@ -714,11 +720,17 @@ csa$geoid <- as.character(csa$geoid)
 
 ## joining race percentages to CSAs
 
-balt_race_percentages_join <- balt_race_percentages %>% 
-  right_join(csa, by=c("geoid")) %>% 
-  distinct() %>% 
+balt_race_percentages_join <- balt_race_percentages %>%
+  right_join(csa, by=c("geoid")) %>%
+  distinct() %>%
   rename(neighborhood = community_statistical_area_2020,
-  census_tract = tract_2020) 
+  census_tract = tract_2020)
+
+### 
+baltcity_percap_income <- baltcity_percap_income %>%
+  mutate(diff_2020_2010 = as.numeric(diff_2020_2010)) %>%
+  st_as_sf(crs = wgs,
+           coords = geometry)
 
 #palettes 
 rlining_pal <- colorQuantile(
@@ -770,8 +782,8 @@ rlining_and_demographics <- leaflet() %>%
     data = d_regions,
     color = "Red",
     weight = 5,
-    smoothFactor = 1,
-    options = marker_options
+    smoothFactor = 1
+    #options = marker_options
   ) %>%
   addLegend(
     group = "White Population",
@@ -799,6 +811,9 @@ rlining_and_demographics <- leaflet() %>%
     position = "topleft", 
     options = layersControlOptions(collapsed = FALSE)
   ) %>%
+   addSearchFeatures(
+        targetGroups  = "neighborhood",
+        options = searchFeaturesOptions(zoom = 5, openPopup = TRUE)) %>%
    onRender("
     function(el, x) {
       this.on('baselayerchange', function(e) {

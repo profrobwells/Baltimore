@@ -125,8 +125,8 @@ baltcity_income <- baltcity_income %>%
 baltcity_income <- janitor::clean_names(baltcity_income)
 
 baltcity_income <- baltcity_income %>% 
-  mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
-  mutate(Diff_2020_2016 = (x2020-x2016))
+  mutate(diff_2020_2010 = (x2020-x2010)) %>% 
+  mutate(diff_2020_2016 = (x2020-x2016))
 
 # write.csv(baltcity_income, "baltcity_income.csv")
 # write_rds(baltcity_income, "baltcity_income.rds")
@@ -242,12 +242,12 @@ x %>%
 #Census tracts: generally 1,200 and 8,000 people, optimum size of 4,000
 min <- baltcity_income %>% 
   as.data.frame() %>% 
-  select(Neighborhood, x2020, x2010, Diff_2020_2010, Census) %>% 
-  slice_min(Diff_2020_2010, n=10) 
+  select(neighborhood, x2020, x2010, diff_2020_2010, census) %>% 
+  slice_min(diff_2020_2010, n=10) 
 
 min$x2010 <- formattable::currency(min$x2010, "$", format = "d")
 min$x2020 <- formattable::currency(min$x2020, "$", format = "d")
-min$Diff_2020_2010 <- formattable::currency(min$Diff_2020_2010, "$", format = "d")
+min$diff_2020_2010 <- formattable::currency(min$diff_2020_2010, "$", format = "d")
 ```
 
 
@@ -323,18 +323,18 @@ write.csv(city_md_income, "city_md_income.csv")
 
 
 y <- city_md_income %>% 
-  mutate(Diff_Income = (median_inc_2020-median_inc_2010)) %>% 
-  mutate(Pct_Income_Chg = (median_inc_2020-median_inc_2010)/median_inc_2010) %>% 
-  mutate(Diff_Pop = (household_2020-household_2010)) %>% 
-  mutate(Pct_Pop = (household_2020-household_2010)/household_2010) %>% 
+  mutate(diff_income = (median_inc_2020-median_inc_2010)) %>% 
+  mutate(pct_income_chg = (median_inc_2020-median_inc_2010)/median_inc_2010) %>% 
+  mutate(diff_pop = (household_2020-household_2010)) %>% 
+  mutate(pct_pop = (household_2020-household_2010)/household_2010) %>% 
   filter(household_2020 > 3512) %>% 
-  dplyr::select(place, Diff_Income, Pct_Income_Chg, median_inc_2010, median_inc_2020) %>% 
-  arrange(desc(Pct_Income_Chg))
+  dplyr::select(place, diff_income, pct_income_chg, median_inc_2010, median_inc_2020) %>% 
+  arrange(desc(pct_income_chg))
 
-y$Diff_Income <- formattable::currency(y$Diff_Income, "$", format = "d")
+y$diff_income <- formattable::currency(y$diff_income, "$", format = "d")
 y$median_inc_2010 <- formattable::currency(y$median_inc_2010, "$", format = "d")
 y$median_inc_2020 <- formattable::currency(y$median_inc_2020, "$", format = "d")
-y$Pct_Income_Chg <- formattable::percent(y$Pct_Income_Chg, 1)
+y$pct_income_chg <- formattable::percent(y$pct_income_chg, 1)
 
 md_city_summary <- y
 
@@ -350,8 +350,8 @@ write.csv(md_city_summary, "md_city_summary.csv")
 
 ```{r}
 #Chart of cities
-ggplot(md_city_summary,aes(x = reorder(place, -Pct_Income_Chg), y = Pct_Income_Chg,
-             fill = Pct_Income_Chg)) +
+ggplot(md_city_summary,aes(x = reorder(place, -pct_income_chg), y = pct_income_chg,
+             fill = pct_income_chg)) +
   geom_col(position = "dodge") + 
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=3))+
@@ -458,8 +458,8 @@ baltcity_percap_income <- baltcity_percap_income %>%
 baltcity_percap_income <- janitor::clean_names(baltcity_percap_income)
 
 baltcity_percap_income <- baltcity_percap_income %>% 
-  mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
-  mutate(Diff_2020_2016 = (x2020-x2016))
+  mutate(diff_2020_2010 = (x2020-x2010)) %>% 
+  mutate(diff_2020_2016 = (x2020-x2016))
 
 #write.csv(baltcity_percap_income, "baltcity_percap_income.csv")
 # write_rds(baltcity_income, "baltcity_income.rds")
@@ -756,6 +756,16 @@ white_pal <- colorBin(
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_demographics <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
+  ##this chunk below is just so we can search by neighborhood later
+  addPolylines(
+    group = "Neighborhood",
+    data = baltcity_percap_income,
+    color = "Gray",
+    weight = 1,
+    label = baltcity_percap_income$community_statistical_area_2020,
+    fillOpacity = 0.75,
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
   addPolygons(group = "Per Capita Income",
               data = baltcity_percap_income,
               color = ~rlining_pal(diff_2020_2010),
@@ -811,16 +821,18 @@ rlining_and_demographics <- leaflet() %>%
     position = "topleft", 
     options = layersControlOptions(collapsed = FALSE)
   ) %>%
-   addSearchFeatures(
-        targetGroups  = "neighborhood",
-        options = searchFeaturesOptions(zoom = 5, openPopup = TRUE)) %>%
+   # addSearchFeatures(
+   #      targetGroups  = "neighborhood",
+   #      options = searchFeaturesOptions(zoom = 5, openPopup = TRUE)) %>%
    onRender("
     function(el, x) {
       this.on('baselayerchange', function(e) {
         e.layer.bringToBack();
       })
     }
-  ")
+  ") %>%
+  addSearchFeatures(targetGroups = c("Neighborhood"), 
+                    options = searchFeaturesOptions())
  
 
 rlining_and_demographics 

@@ -1,0 +1,143 @@
+#Baltimore Life Expectancy
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Load Life Expectancy Data
+
+You'll need to load :
+
+CDC_Life_Census_Tract_2010_2015.csv
+
+About the data: 
+Life Expectancy at Birth for U.S. States and [Census Tracts, 2010-2015](https://www.cdc.gov/nchs/data-visualization/life-expectancy/index.html)
+
+CDC_Life_Census_Tract_2010_2015.csv contains all of the life expectancy data for the United States.
+
+It shows estimates of U.S. life expectancy at birth by state and census tract for the period 2010-2015. Estimates were produced for 67,148 census tracts, covering all states and the District of Columbia (D.C.). These estimates come from the National Center for Health Statistics (NCHS), the National Association for Public Health Statistics and Information Systems (NAPHSIS), and the Robert Wood Johnson Foundation (RWJF).
+
+Below, we examine this data and learn the range of death rates in Baltimore and then in Maryland in general.
+
+
+```{r}
+#KEY
+library(tidyverse)
+library(janitor)
+us_death <- read_csv('/Users/robwells/Code/data_journalism_interactive_textbook/04_labs/lab_05/CDC_Life_Census_Tract_2010_2015.csv') %>% 
+  clean_names()
+
+nrow(us_death)
+#73121
+names(us_death)
+#
+md_death <- us_death %>% 
+  filter(state == "Maryland")
+nrow(md_death)
+#1407
+balt_death <- md_death %>% 
+  filter(county == "Baltimore city, MD")
+nrow(balt_death)
+#200
+
+```
+
+Here we load balt_death_census.csv and show the neighborhoods with a life expectancy rate below the 1st quartile, arranged in ascending order. 
+
+```{r}
+#KEY
+balt_death2 <- read_csv('/Users/robwells/Code/data_journalism_interactive_textbook/04_labs/lab_05/balt_death_census.csv')
+
+summary(balt_death2$life_expectancy, na.m=TRUE)
+#Show in New Window
+  #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  # 62.60   69.58   72.70   73.04   76.03   87.30      20 
+
+balt_death2 %>% 
+  select(neighborhood, life_expectancy) %>% 
+  filter(life_expectancy <= 69.58) %>% 
+  arrange(life_expectancy)
+  
+
+
+```
+
+Using md_death, the Maryland life expectancy rates, we produce summary statistics of the state of Maryland life expectancy rate, a table with the 20 communities with the lowest life expectancy, a table with the 20 communities with the highest life expectancy. 
+
+Then use us_death, and determine the average life expectancy nationwide.
+
+
+```{r}
+#KEY
+
+summary(md_death$life_expectancy, na.m=TRUE)
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#   62.6    76.4    79.1    78.7    81.4    96.1     104 
+
+md_death %>% 
+  slice_min(life_expectancy, n=20)
+
+md_death %>% 
+  slice_max(life_expectancy, n=20)
+
+```
+
+Use balt_death. Use the case_when command in mutate to categorize all Baltimore City Census tracts as being above or below the city's average life expectancy rate. 
+Then produce a short table that summarizes the number of Census tracts above or below the average life expectancy rate. Write two sentences summarizing your findings.
+
+
+```{r}
+#KEY
+balt_death <- balt_death %>%
+  mutate(
+    above_below_avg = case_when(
+        life_expectancy >= '73.04' ~ "Above",
+        life_expectancy <= '73.04' ~ "Below"
+      )
+  )
+
+balt_death %>% 
+  count(above_below_avg)
+
+```
+#Charts
+
+
+```{r}
+md_death2 <- md_death %>% 
+  filter(life_expectancy >0) %>% 
+   group_by(county) %>% 
+  summarize(mean(life_expectancy,na.rm=TRUE)) %>% 
+  rename(avg_life = 'mean(life_expectancy, na.rm = TRUE)') 
+
+md_death2$avg_life <- round(md_death2$avg_life, 2)
+
+
+md_death2$county <- gsub("Baltimore city, MD", "BaltimoreCity", md_death2$county)
+md_death2$county <- gsub("Baltimore County, MD", "BaltimoreCounty", md_death2$county)
+md_death2$county <- gsub("County, MD", "", md_death2$county)
+
+
+
+md_death2 <- md_death2 %>% 
+  filter(!(md_death2$county == "(blank)"))
+
+
+# md_death2<-  separate(data = md_death2, col = county, into = c("county1", "county2"), sep = " ", extra = "merge", fill = "right")
+
+
+ # slice_min(life_expectancy, n=20) %>% 
+  ggplot(md_death2, aes(x = reorder(county, -avg_life), y = avg_life, fill = avg_life)) +
+  geom_col(position = "dodge") + 
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  # scale_x_continuous(breaks=c(1:15)) +
+  # scale_y_continuous(labels = scales::percent) +
+  geom_text(aes(label= avg_life), hjust=.5, vjust=0, size = 2.4) +
+  labs(title = "Life Expectancy Rates in Maryland", 
+      caption = "Source: CDC data. Graphic by Rob Wells, 10/2/2022",
+       y="Life Expectancy, Years", x="")
+
+ggsave("life_expectancy.png",device = "png",width=9,height=6, dpi=800) 
+```
+

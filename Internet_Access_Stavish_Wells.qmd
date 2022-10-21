@@ -1,0 +1,252 @@
+---
+title: "Internet Access and Income in Baltimore"
+name: Victoria Stavish
+date: Oct 20, 2022
+format: html
+editor: visual
+---
+
+```{r message=TRUE, warning=FALSE}
+# load libraries 
+
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(dplyr)
+library(ggthemes)
+
+```
+
+# Internet Access and Income in Baltimore:
+
+The goal of this notebook is to analyze the correlation between average incomes and internet access in Baltimore City neighborhoods. To do this I am using a dataset that includes the median income in Baltimore City neighborhoods based on 2020 Census data. I am also using an open source dataset from the City of Baltimore that details how many homes do not have internet subscriptions in each Baltimore City neighborhood.
+
+## Questions I am asking the data
+
+-   Do high income areas have high internet access?
+
+-   Do low income areas have poor internet access?
+
+-   Does internet access improve/get worse for places whose median income increased/decreased 2016-2020?
+
+## Findings
+
+While neighborhoods with good internet access usually have higher median incomes and neighborhoods with low median incomes usually have poor internet access, there does not seem to be a significant association between decreasing median incomes and lower internet access overtime. Most neighborhoods increase internet access even when they saw negative percent change in median income.
+
+**Caveats in the data**
+
+In both datasets, some neighborhoods are repeated multiple times with different numbers in the same year, so it is unclear which number is the most accurate representation of the neighborhood. The internet subscription dataset also does not detail how they define an internet subscription(ie. broadband or wireless).
+
+```{r message=FALSE, warning=FALSE}
+# load income data
+
+balt_income <- read_csv("baltcity_income_clean.csv")%>%
+clean_names()
+
+## Data dictionary
+# This dataset has 6 columns. The first column is the names of Baltimore City neighborhoods (chr), the following three columns show the median income in each neighborhood in 2010 (dbl), 2016 (dbl) and 2020 (dbl). The fourth column shows the census id for each neighborhood (dbl) and the fifth column shows the geography id of each neighborhood (dbl). 
+
+# load internet data
+
+balt_internet <- read_csv("balt_internet.csv") %>%
+  clean_names()
+
+## Data dictionary
+# This dataset has 9 columns. The first column gives an object id (dbl) to each row. The second column gives the Baltimore City neighborhood name as of the 2010 census data (chr). The following three columns give the percentage of households in each neighborhood that do not have an internet subscription for the years 2017 (dbl), 2018 (dbl) and 2019 (dbl). The sixth column gives the Baltimore City neighborhood name as of the 2020 census data (chr). The seventh column gives the percentage of households in each neighborhood that do not have an internet subscription for the year 2020 (dbl). The eighth and ninth columns give the neighborhood shape (dbl) and length (dbl), neither of which are relevant for our analyses. 
+
+```
+
+**Do low income neighborhoods have low percentage of internet access?**
+
+**The ten neighborhoods with highest percentage of homes with no internet access, what is the median income?**
+
+```{r}
+
+# 10 neighborhoods with lowest internet access
+
+balt_internet_b10 <- balt_internet %>%
+  as.data.frame() %>%
+  clean_names() %>%
+ dplyr::: select(csa2020, nohhint20) %>%
+  arrange(desc(nohhint20)) %>%
+  slice_max(nohhint20, n=10)
+
+# median percentage of homes without internet access among the 10 neighborhoods with the lowest internet access = 31.66%
+summary(balt_internet_b10)
+```
+
+
+```{r}
+#Wells addition
+# New DF combining the income and internet by the csa2010 names. The csa2020 names dont match. This produces 199 matches. It leaves out 	
+# Unassigned--Jail, which is junk anyway
+
+internet_income_all <- balt_income %>% 
+  inner_join(balt_internet, by=c("neighborhood"="csa2010")) %>% 
+  select(neighborhood, x2010, x2016, x2020, nohhint17, nohhint20)
+
+
+internet_income2 <- balt_income %>% 
+  inner_join(balt_internet, by=c("neighborhood"="csa2010")) %>% 
+  select(neighborhood, x2010, x2020, nohhint17, nohhint20) %>% 
+  group_by(neighborhood) %>% 
+  summarize(internet2020 =mean(nohhint20))
+
+#How we figured out what wasn't joined:
+# internet2_income <- balt_income %>% 
+#   anti_join(balt_internet, by=c("neighborhood"="csa2010"))
+
+internet_income <- balt_income %>% 
+  inner_join(balt_internet, by=c("neighborhood"="csa2010")) %>% 
+  select(neighborhood, x2010, x2020, nohhint17, nohhint20) %>% 
+  group_by(neighborhood) %>% 
+  summarize(income2020 =mean(x2020, na.rm=TRUE)) %>% 
+  inner_join(internet_income2, by=c("neighborhood"))
+
+
+```
+
+**In neighborhoods with lowest percentage of internet access, what is the median salary?**
+```{r}
+summary(internet_income$internet2020)
+  #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  # 3.432   9.941  16.414  18.299  25.492  38.596 
+
+b10_income <- internet_income %>% 
+  filter(internet2020 > 25.492) %>% 
+  arrange(desc(internet2020))
+
+b10_income %>% 
+  summarize(mean(income2020))
+
+# median income in neighborhoods with lowest percentage of internet access (the lowest quartile for internet access, 26% and above) = $36,736.62				
+
+```
+
+### Do high income neighborhoods have high percentage of internet access?
+
+The ten neighborhoods with highest percentage of homes with internet access, what is the median income?
+
+```{r}
+
+# 14 neighborhoods with high internet access, or those in the upper quartile of access (less than 10% of the households lack access)
+
+t10_balt_internet <- internet_income %>% 
+  filter(internet2020 < 9.941) %>% 
+  arrange(internet2020)
+
+t10_balt_internet %>% 
+  summarize(mean(income2020))
+
+# median income in neighborhoods with highest percentage of internet access = $88,127.8
+
+```
+
+# Does internet access improve/get worse for places whose median income increased/decreased 2016-2020?
+
+```{r}
+# top 10 neighborhoods with greatest growth in median income 2016-2020
+
+internet_income_all <- internet_income_all %>% 
+  mutate(income_pct_chg = (x2020 - x2016)/x2016*100) %>%
+  mutate(internet_pct_chg = (nohhint20-nohhint17/nohhint17*100)) %>% 
+  mutate(internet_chg = (nohhint20-nohhint17))
+
+
+# poschange_income <- balt_income %>%
+#   select(neighborhood, x2016, x2020) %>%
+#   mutate(pct_change = ((x2020 - x2016)/x2016*100)) %>%
+#   arrange(desc(pct_change)) %>%
+#   slice_max(pct_change, n=10)
+
+# Those 10 neighborhoods, how did their internet access change between 2017-2020
+
+poschange_income <- internet_income_all %>% 
+  slice_max(income_pct_chg, n=10)
+#The larger the negative percentage change, the better the improvement in Internet access. For example, the -89.11368 for 	Greater Charles Village/Barclay meant it went from 81% to 91% of households with Internet access in four years
+
+```
+
+# A general look at changes in internet access compared to changes in median income in Baltimore City neighborhoods 2016-2020.
+
+```{r}
+income_change <- balt_income %>%
+  dplyr:::select(neighborhood, x2016, x2020) %>%
+  mutate(income_pct_change = ((x2020 - x2016)/x2016*100)) 
+
+
+# mutate the internet data to see percent change over time
+
+internet_change <- balt_internet %>%
+  clean_names() %>%
+  dplyr:::select(csa2020, nohhint17, nohhint20) %>%
+  mutate(internet_pct_change = ((nohhint20 - nohhint17)/nohhint17*100)) 
+  
+# join the change in internet dataframe with the change in income dataframe
+  
+change_join <- internet_change %>%
+  inner_join(income_change, c("csa2020" = "neighborhood"))
+
+
+```
+
+# Does internet access improve/get worse for places whose median income increased/decreased 2016-2020?
+
+```{r}
+
+# 10 neighborhoods with greatest decrease in median income 2016-2020
+
+negchange_income <- internet_income_all %>% 
+  slice_min(income_pct_chg, n=10)
+#All of these neighborhoods that saw a drop in income still saw improvement in internet access, except for one part of Sandtown-Winchester/Harlem Park
+
+```
+
+# Scatterplot of internet access and income in neighborhoods in 2020
+
+```{r}
+# Join the dataframes for Baltimore City income and Baltimore City internet
+
+income_internet_join <- balt_income %>%
+  clean_names() %>%
+  group_by(neighborhood, x2020) %>%
+  inner_join(balt_internet, c("neighborhood" = "csa2020")) %>%
+  select(neighborhood, x2020, nohhint20)
+
+# Create a scatterplot to show the relationship between income and internet access in Baltimore City neighborhoods
+
+ggplot(income_internet_join, aes(y=nohhint20, x=x2020, fill=nohhint20)) +
+geom_point() +
+theme(legend.position = "none") +
+
+  labs(
+    title="Internet access, income in Baltimore",
+    subtitle = "Each point represents a neighborhood in Baltimore City,",
+    x = "Median income",
+    y = "Pct homes w/o internet access",
+    caption = "Source: The U.S. Census Bureau  By: Victoria Stavish")
+#In 2020 Baltimore City neighborhoods with higher median incomes generally had more home with internet subscriptions than neighborhoods with low median incomes.
+```
+
+# story memo
+
+```{r}
+## Armed with your data analysis, write a 300 word reporting memo and story pitch citing your data findings and any relevant background research to provide context. Interviews are not necessary for this assignment but you're welcome to conduct them.
+
+# I am pitching a story on how even though some Baltimore City neighborhood's median income are decreasing, internet access continues to improve among all Baltimore City neighborhoods. For example, the ten Baltimore neighborhoods with the no gains or the smallest gains in median income between 2016 and 2020, all but one saw significant decreases in the percentage of homes without internet access. For example, even though Southwest Baltimore saw a 38% decrease in median income, their percent of households without internet subscriptions decreased by 9% between 2017 and 2020. Upton/Druid Heights also saw their median income decrease by 17% between 2016 and 2020, but their percent of homes without internet also decreased by nearly 17% between 2017 and 2020. While income clearly has an affect, given the scatterplot in this notebook, why does a decrease in median income not necessarily mean a decrease in internet access? Are we seeing a shift towards low income correlating less and less with internet access?
+
+# It is notable that there are some places where both median income increased and the number of households that do not have internet access increased, however, the changes in those numbers are not as drastic and there are not many examples of that, making it less noteworthy than neighborhoods in which internet access increased while median income decreased. 
+
+# However, the general theme of internet access and income having a strong correlation is still true. In 2020, of the 10 neighborhoods in Baltimore City with the best internet access, the median income was about $100,000, while in the neighborhoods in Baltimore City with the worst internet access, the median income was about $34,000. 
+
+
+
+## Draft two Tweets and include images (R graphics) to accompany the story.
+
+# tweet 1: While there is a high correlation between internet access and income (as seen in the chart below) we found that some neighborhoods in Baltimore City are seeing gains in internet access even as median income decreases. Read more here: *story link*
+
+# tweet 2: Internet access is improving in some Baltimore City neighborhoods, despite a decreasing median income. We looked at why this is and what it means for the future of internet access in Baltimore. *story link*
+
+
+
+```

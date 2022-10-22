@@ -1,0 +1,937 @@
+LocationType,Location,TimeFrame,DataFormat,Statistics
+State,Maryland,2003,Number,159414
+State,Maryland,2003,Percent,0.115
+State,Maryland,2004,Number,156087
+State,Maryland,2004,Percent,0.111
+State,Maryland,2005,Number,149712
+State,Maryland,2005,Percent,0.109
+State,Maryland,2006,Number,134767
+State,Maryland,2006,Percent,0.101
+State,Maryland,2007,Number,141532
+State,Maryland,2007,Percent,0.106
+State,Maryland,2008,Number,137831
+State,Maryland,2008,Percent,0.104
+State,Maryland,2009,Number,157164
+State,Maryland,2009,Percent,0.118
+State,Maryland,2010,Number,174469
+State,Maryland,2010,Percent,0.131
+State,Maryland,2011,Number,184238
+State,Maryland,2011,Percent,0.139
+State,Maryland,2012,Number,187400
+State,Maryland,2012,Percent,0.141
+State,Maryland,2013,Number,184220
+State,Maryland,2013,Percent,0.139
+State,Maryland,2014,Number,183531
+State,Maryland,2014,Percent,0.138
+State,Maryland,2015,Number,184229
+State,Maryland,2015,Percent,0.139
+State,Maryland,2016,Number,172868
+State,Maryland,2016,Percent,0.13
+State,Maryland,2017,Number,165365
+State,Maryland,2017,Percent,0.124
+State,Maryland,2018,Number,159872
+State,Maryland,2018,Percent,0.121
+State,Maryland,2019,Number,160600
+State,Maryland,2019,Percent,0.123
+State,Maryland,2020,Number,146629
+State,Maryland,2020,Percent,0.112
+City,Baltimore,2003,Number,42584
+City,Baltimore,2003,Percent,0.27
+City,Baltimore,2004,Number,42335
+City,Baltimore,2004,Percent,0.266
+City,Baltimore,2005,Number,48261
+City,Baltimore,2005,Percent,0.309
+City,Baltimore,2006,Number,38792
+City,Baltimore,2006,Percent,0.255
+City,Baltimore,2007,Number,40775
+City,Baltimore,2007,Percent,0.27
+City,Baltimore,2008,Number,36563
+City,Baltimore,2008,Percent,0.245
+City,Baltimore,2009,Number,39342
+City,Baltimore,2009,Percent,0.282
+City,Baltimore,2010,Number,44646
+City,Baltimore,2010,Percent,0.343
+City,Baltimore,2011,Number,46393
+City,Baltimore,2011,Percent,0.356
+City,Baltimore,2012,Number,43892
+City,Baltimore,2012,Percent,0.334
+City,Baltimore,2013,Number,41957
+City,Baltimore,2013,Percent,0.326
+City,Baltimore,2014,Number,41670
+City,Baltimore,2014,Percent,0.322
+City,Baltimore,2015,Number,43515
+City,Baltimore,2015,Percent,0.339
+City,Baltimore,2016,Number,39682
+City,Baltimore,2016,Percent,0.313
+City,Baltimore,2017,Number,39518
+City,Baltimore,2017,Percent,0.318
+City,Baltimore,2018,Number,31447
+City,Baltimore,2018,Percent,0.261
+City,Baltimore,2019,Number,35693
+City,Baltimore,2019,Percent,0.306
+City,Baltimore,2020,Number,30709
+City,Baltimore,2020,Percent,0.268
+County,Allegany,2003,Number,2781
+County,Allegany,2003,Percent,0.195
+County,Allegany,2004,Number,2482
+County,Allegany,2004,Percent,0.178
+County,Allegany,2005,Number,2692
+County,Allegany,2005,Percent,0.196
+County,Allegany,2006,Number,2302
+County,Allegany,2006,Percent,0.175
+County,Allegany,2007,Number,2310
+County,Allegany,2007,Percent,0.175
+County,Allegany,2008,Number,2459
+County,Allegany,2008,Percent,0.19
+County,Allegany,2009,Number,2885
+County,Allegany,2009,Percent,0.224
+County,Allegany,2010,Number,3144
+County,Allegany,2010,Percent,0.239
+County,Allegany,2011,Number,3209
+County,Allegany,2011,Percent,0.251
+County,Allegany,2012,Number,3253
+County,Allegany,2012,Percent,0.256
+County,Allegany,2013,Number,3107
+County,Allegany,2013,Percent,0.247
+County,Allegany,2014,Number,2868
+County,Allegany,2014,Percent,0.229
+County,Allegany,2015,Number,3363
+County,Allegany,2015,Percent,0.271
+County,Allegany,2016,Number,2730
+County,Allegany,2016,Percent,0.221
+County,Allegany,2017,Number,2793
+County,Allegany,2017,Percent,0.228
+County,Allegany,2018,Number,2557
+County,Allegany,2018,Percent,0.213
+County,Allegany,2019,Number,2456
+County,Allegany,2019,Percent,0.208
+County,Allegany,2020,Number,2186
+County,Allegany,2020,Percent,0.186
+County,Anne Arundel,2003,Number,9239
+County,Anne Arundel,2003,Percent,0.074
+County,Anne Arundel,2004,Number,9611
+County,Anne Arundel,2004,Percent,0.076
+County,Anne Arundel,2005,Number,8886
+County,Anne Arundel,2005,Percent,0.071
+County,Anne Arundel,2006,Number,6951
+County,Anne Arundel,2006,Percent,0.058
+County,Anne Arundel,2007,Number,7752
+County,Anne Arundel,2007,Percent,0.063
+County,Anne Arundel,2008,Number,8449
+County,Anne Arundel,2008,Percent,0.07
+County,Anne Arundel,2009,Number,10873
+County,Anne Arundel,2009,Percent,0.07
+County,Anne Arundel,2010,Number,10846
+County,Anne Arundel,2010,Percent,0.088
+County,Anne Arundel,2011,Number,11306
+County,Anne Arundel,2011,Percent,0.092
+County,Anne Arundel,2012,Number,11281
+County,Anne Arundel,2012,Percent,0.091
+County,Anne Arundel,2013,Number,11693
+County,Anne Arundel,2013,Percent,0.093
+County,Anne Arundel,2014,Number,11567
+County,Anne Arundel,2014,Percent,0.092
+County,Anne Arundel,2015,Number,10107
+County,Anne Arundel,2015,Percent,0.081
+County,Anne Arundel,2016,Number,11699
+County,Anne Arundel,2016,Percent,0.093
+County,Anne Arundel,2017,Number,10158
+County,Anne Arundel,2017,Percent,0.08
+County,Anne Arundel,2018,Number,12144
+County,Anne Arundel,2018,Percent,0.096
+County,Anne Arundel,2019,Number,10206
+County,Anne Arundel,2019,Percent,0.081
+County,Anne Arundel,2020,Number,8048
+County,Anne Arundel,2020,Percent,0.063
+County,Baltimore City,2003,Number,42584
+County,Baltimore City,2003,Percent,0.27
+County,Baltimore City,2004,Number,42335
+County,Baltimore City,2004,Percent,0.266
+County,Baltimore City,2005,Number,48261
+County,Baltimore City,2005,Percent,0.309
+County,Baltimore City,2006,Number,38792
+County,Baltimore City,2006,Percent,0.255
+County,Baltimore City,2007,Number,40775
+County,Baltimore City,2007,Percent,0.27
+County,Baltimore City,2008,Number,36563
+County,Baltimore City,2008,Percent,0.245
+County,Baltimore City,2009,Number,39342
+County,Baltimore City,2009,Percent,0.282
+County,Baltimore City,2010,Number,44646
+County,Baltimore City,2010,Percent,0.343
+County,Baltimore City,2011,Number,46393
+County,Baltimore City,2011,Percent,0.356
+County,Baltimore City,2012,Number,43892
+County,Baltimore City,2012,Percent,0.334
+County,Baltimore City,2013,Number,41957
+County,Baltimore City,2013,Percent,0.326
+County,Baltimore City,2014,Number,41670
+County,Baltimore City,2014,Percent,0.322
+County,Baltimore City,2015,Number,43515
+County,Baltimore City,2015,Percent,0.339
+County,Baltimore City,2016,Number,39682
+County,Baltimore City,2016,Percent,0.313
+County,Baltimore City,2017,Number,39518
+County,Baltimore City,2017,Percent,0.318
+County,Baltimore City,2018,Number,31447
+County,Baltimore City,2018,Percent,0.261
+County,Baltimore City,2019,Number,35693
+County,Baltimore City,2019,Percent,0.306
+County,Baltimore City,2020,Number,30709
+County,Baltimore City,2020,Percent,0.268
+County,Baltimore County,2003,Number,17729
+County,Baltimore County,2003,Percent,0.099
+County,Baltimore County,2004,Number,18036
+County,Baltimore County,2004,Percent,0.1
+County,Baltimore County,2005,Number,15603
+County,Baltimore County,2005,Percent,0.088
+County,Baltimore County,2006,Number,16661
+County,Baltimore County,2006,Percent,0.096
+County,Baltimore County,2007,Number,16116
+County,Baltimore County,2007,Percent,0.092
+County,Baltimore County,2008,Number,16597
+County,Baltimore County,2008,Percent,0.097
+County,Baltimore County,2009,Number,17359
+County,Baltimore County,2009,Percent,0.102
+County,Baltimore County,2010,Number,18970
+County,Baltimore County,2010,Percent,0.11
+County,Baltimore County,2011,Number,21674
+County,Baltimore County,2011,Percent,0.125
+County,Baltimore County,2012,Number,22765
+County,Baltimore County,2012,Percent,0.13
+County,Baltimore County,2013,Number,22685
+County,Baltimore County,2013,Percent,0.129
+County,Baltimore County,2014,Number,22777
+County,Baltimore County,2014,Percent,0.13
+County,Baltimore County,2015,Number,21024
+County,Baltimore County,2015,Percent,0.119
+County,Baltimore County,2016,Number,20966
+County,Baltimore County,2016,Percent,0.119
+County,Baltimore County,2017,Number,18533
+County,Baltimore County,2017,Percent,0.104
+County,Baltimore County,2018,Number,22854
+County,Baltimore County,2018,Percent,0.13
+County,Baltimore County,2019,Number,19181
+County,Baltimore County,2019,Percent,0.11
+County,Baltimore County,2020,Number,19540
+County,Baltimore County,2020,Percent,0.112
+County,Calvert,2003,Number,1602
+County,Calvert,2003,Percent,0.07
+County,Calvert,2004,Number,1485
+County,Calvert,2004,Percent,0.065
+County,Calvert,2005,Number,1374
+County,Calvert,2005,Percent,0.061
+County,Calvert,2006,Number,1277
+County,Calvert,2006,Percent,0.059
+County,Calvert,2007,Number,1377
+County,Calvert,2007,Percent,0.062
+County,Calvert,2008,Number,1431
+County,Calvert,2008,Percent,0.066
+County,Calvert,2009,Number,1701
+County,Calvert,2009,Percent,0.075
+County,Calvert,2010,Number,1810
+County,Calvert,2010,Percent,0.079
+County,Calvert,2011,Number,1970
+County,Calvert,2011,Percent,0.088
+County,Calvert,2012,Number,2007
+County,Calvert,2012,Percent,0.091
+County,Calvert,2013,Number,1895
+County,Calvert,2013,Percent,0.086
+County,Calvert,2014,Number,1669
+County,Calvert,2014,Percent,0.077
+County,Calvert,2015,Number,1709
+County,Calvert,2015,Percent,0.081
+County,Calvert,2016,Number,1570
+County,Calvert,2016,Percent,0.074
+County,Calvert,2017,Number,1493
+County,Calvert,2017,Percent,0.07
+County,Calvert,2018,Number,1394
+County,Calvert,2018,Percent,0.066
+County,Calvert,2019,Number,1489
+County,Calvert,2019,Percent,0.071
+County,Calvert,2020,Number,1110
+County,Calvert,2020,Percent,0.053
+County,Caroline,2003,Number,1212
+County,Caroline,2003,Percent,0.157
+County,Caroline,2004,Number,1118
+County,Caroline,2004,Percent,0.141
+County,Caroline,2005,Number,1274
+County,Caroline,2005,Percent,0.163
+County,Caroline,2006,Number,1203
+County,Caroline,2006,Percent,0.155
+County,Caroline,2007,Number,1289
+County,Caroline,2007,Percent,0.162
+County,Caroline,2008,Number,1185
+County,Caroline,2008,Percent,0.149
+County,Caroline,2009,Number,1525
+County,Caroline,2009,Percent,0.188
+County,Caroline,2010,Number,1556
+County,Caroline,2010,Percent,0.192
+County,Caroline,2011,Number,1643
+County,Caroline,2011,Percent,0.208
+County,Caroline,2012,Number,1813
+County,Caroline,2012,Percent,0.234
+County,Caroline,2013,Number,1848
+County,Caroline,2013,Percent,0.242
+County,Caroline,2014,Number,1800
+County,Caroline,2014,Percent,0.237
+County,Caroline,2015,Number,1715
+County,Caroline,2015,Percent,0.229
+County,Caroline,2016,Number,1662
+County,Caroline,2016,Percent,0.221
+County,Caroline,2017,Number,1576
+County,Caroline,2017,Percent,0.205
+County,Caroline,2018,Number,1529
+County,Caroline,2018,Percent,0.199
+County,Caroline,2019,Number,1497
+County,Caroline,2019,Percent,0.196
+County,Caroline,2020,Number,1374
+County,Caroline,2020,Percent,0.179
+County,Carroll,2003,Number,2339
+County,Carroll,2003,Percent,0.056
+County,Carroll,2004,Number,2315
+County,Carroll,2004,Percent,0.055
+County,Carroll,2005,Number,1903
+County,Carroll,2005,Percent,0.046
+County,Carroll,2006,Number,1841
+County,Carroll,2006,Percent,0.045
+County,Carroll,2007,Number,2127
+County,Carroll,2007,Percent,0.052
+County,Carroll,2008,Number,2556
+County,Carroll,2008,Percent,0.064
+County,Carroll,2009,Number,2708
+County,Carroll,2009,Percent,0.065
+County,Carroll,2010,Number,2827
+County,Carroll,2010,Percent,0.069
+County,Carroll,2011,Number,2881
+County,Carroll,2011,Percent,0.073
+County,Carroll,2012,Number,3034
+County,Carroll,2012,Percent,0.078
+County,Carroll,2013,Number,2956
+County,Carroll,2013,Percent,0.078
+County,Carroll,2014,Number,2759
+County,Carroll,2014,Percent,0.074
+County,Carroll,2015,Number,2644
+County,Carroll,2015,Percent,0.072
+County,Carroll,2016,Number,2360
+County,Carroll,2016,Percent,0.065
+County,Carroll,2017,Number,2015
+County,Carroll,2017,Percent,0.055
+County,Carroll,2018,Number,2197
+County,Carroll,2018,Percent,0.061
+County,Carroll,2019,Number,2038
+County,Carroll,2019,Percent,0.057
+County,Carroll,2020,Number,2011
+County,Carroll,2020,Percent,0.056
+County,Cecil,2003,Number,2832
+County,Cecil,2003,Percent,0.116
+County,Cecil,2004,Number,2735
+County,Cecil,2004,Percent,0.11
+County,Cecil,2005,Number,2799
+County,Cecil,2005,Percent,0.115
+County,Cecil,2006,Number,2476
+County,Cecil,2006,Percent,0.105
+County,Cecil,2007,Number,3112
+County,Cecil,2007,Percent,0.128
+County,Cecil,2008,Number,2595
+County,Cecil,2008,Percent,0.108
+County,Cecil,2009,Number,3093
+County,Cecil,2009,Percent,0.126
+County,Cecil,2010,Number,3627
+County,Cecil,2010,Percent,0.146
+County,Cecil,2011,Number,3665
+County,Cecil,2011,Percent,0.15
+County,Cecil,2012,Number,3897
+County,Cecil,2012,Percent,0.162
+County,Cecil,2013,Number,3504
+County,Cecil,2013,Percent,0.147
+County,Cecil,2014,Number,3520
+County,Cecil,2014,Percent,0.148
+County,Cecil,2015,Number,3450
+County,Cecil,2015,Percent,0.148
+County,Cecil,2016,Number,3459
+County,Cecil,2016,Percent,0.149
+County,Cecil,2017,Number,3057
+County,Cecil,2017,Percent,0.132
+County,Cecil,2018,Number,2914
+County,Cecil,2018,Percent,0.128
+County,Cecil,2019,Number,3070
+County,Cecil,2019,Percent,0.136
+County,Cecil,2020,Number,2791
+County,Cecil,2020,Percent,0.124
+County,Charles,2003,Number,3588
+County,Charles,2003,Percent,0.098
+County,Charles,2004,Number,3379
+County,Charles,2004,Percent,0.089
+County,Charles,2005,Number,2798
+County,Charles,2005,Percent,0.075
+County,Charles,2006,Number,2743
+County,Charles,2006,Percent,0.076
+County,Charles,2007,Number,2789
+County,Charles,2007,Percent,0.075
+County,Charles,2008,Number,2993
+County,Charles,2008,Percent,0.082
+County,Charles,2009,Number,3223
+County,Charles,2009,Percent,0.086
+County,Charles,2010,Number,3258
+County,Charles,2010,Percent,0.085
+County,Charles,2011,Number,4065
+County,Charles,2011,Percent,0.107
+County,Charles,2012,Number,4421
+County,Charles,2012,Percent,0.118
+County,Charles,2013,Number,4104
+County,Charles,2013,Percent,0.108
+County,Charles,2014,Number,3906
+County,Charles,2014,Percent,0.103
+County,Charles,2015,Number,3937
+County,Charles,2015,Percent,0.104
+County,Charles,2016,Number,3816
+County,Charles,2016,Percent,0.101
+County,Charles,2017,Number,3731
+County,Charles,2017,Percent,0.098
+County,Charles,2018,Number,3559
+County,Charles,2018,Percent,0.093
+County,Charles,2019,Number,3514
+County,Charles,2019,Percent,0.092
+County,Charles,2020,Number,3578
+County,Charles,2020,Percent,0.093
+County,Dorchester,2003,Number,1432
+County,Dorchester,2003,Percent,0.211
+County,Dorchester,2004,Number,1318
+County,Dorchester,2004,Percent,0.19
+County,Dorchester,2005,Number,1497
+County,Dorchester,2005,Percent,0.221
+County,Dorchester,2006,Number,1413
+County,Dorchester,2006,Percent,0.213
+County,Dorchester,2007,Number,1314
+County,Dorchester,2007,Percent,0.195
+County,Dorchester,2008,Number,1469
+County,Dorchester,2008,Percent,0.221
+County,Dorchester,2009,Number,1683
+County,Dorchester,2009,Percent,0.252
+County,Dorchester,2010,Number,1784
+County,Dorchester,2010,Percent,0.258
+County,Dorchester,2011,Number,2060
+County,Dorchester,2011,Percent,0.299
+County,Dorchester,2012,Number,2141
+County,Dorchester,2012,Percent,0.314
+County,Dorchester,2013,Number,1942
+County,Dorchester,2013,Percent,0.288
+County,Dorchester,2014,Number,2002
+County,Dorchester,2014,Percent,0.294
+County,Dorchester,2015,Number,2006
+County,Dorchester,2015,Percent,0.298
+County,Dorchester,2016,Number,1956
+County,Dorchester,2016,Percent,0.291
+County,Dorchester,2017,Number,1794
+County,Dorchester,2017,Percent,0.269
+County,Dorchester,2018,Number,1779
+County,Dorchester,2018,Percent,0.27
+County,Dorchester,2019,Number,1581
+County,Dorchester,2019,Percent,0.242
+County,Dorchester,2020,Number,1530
+County,Dorchester,2020,Percent,0.238
+County,Frederick,2003,Number,3789
+County,Frederick,2003,Percent,0.066
+County,Frederick,2004,Number,3790
+County,Frederick,2004,Percent,0.065
+County,Frederick,2005,Number,3236
+County,Frederick,2005,Percent,0.057
+County,Frederick,2006,Number,2992
+County,Frederick,2006,Percent,0.054
+County,Frederick,2007,Number,3660
+County,Frederick,2007,Percent,0.064
+County,Frederick,2008,Number,3692
+County,Frederick,2008,Percent,0.065
+County,Frederick,2009,Number,4040
+County,Frederick,2009,Percent,0.07
+County,Frederick,2010,Number,4493
+County,Frederick,2010,Percent,0.077
+County,Frederick,2011,Number,5091
+County,Frederick,2011,Percent,0.088
+County,Frederick,2012,Number,5219
+County,Frederick,2012,Percent,0.09
+County,Frederick,2013,Number,4983
+County,Frederick,2013,Percent,0.086
+County,Frederick,2014,Number,4789
+County,Frederick,2014,Percent,0.083
+County,Frederick,2015,Number,5196
+County,Frederick,2015,Percent,0.09
+County,Frederick,2016,Number,4283
+County,Frederick,2016,Percent,0.074
+County,Frederick,2017,Number,4422
+County,Frederick,2017,Percent,0.076
+County,Frederick,2018,Number,4320
+County,Frederick,2018,Percent,0.074
+County,Frederick,2019,Number,3920
+County,Frederick,2019,Percent,0.066
+County,Frederick,2020,Number,4329
+County,Frederick,2020,Percent,0.072
+County,Garrett,2003,Number,1270
+County,Garrett,2003,Percent,0.188
+County,Garrett,2004,Number,1164
+County,Garrett,2004,Percent,0.169
+County,Garrett,2005,Number,1349
+County,Garrett,2005,Percent,0.2
+County,Garrett,2006,Number,1087
+County,Garrett,2006,Percent,0.169
+County,Garrett,2007,Number,1206
+County,Garrett,2007,Percent,0.189
+County,Garrett,2008,Number,1309
+County,Garrett,2008,Percent,0.209
+County,Garrett,2009,Number,1154
+County,Garrett,2009,Percent,0.185
+County,Garrett,2010,Number,1572
+County,Garrett,2010,Percent,0.244
+County,Garrett,2011,Number,1330
+County,Garrett,2011,Percent,0.211
+County,Garrett,2012,Number,1310
+County,Garrett,2012,Percent,0.214
+County,Garrett,2013,Number,1406
+County,Garrett,2013,Percent,0.239
+County,Garrett,2014,Number,1124
+County,Garrett,2014,Percent,0.197
+County,Garrett,2015,Number,1071
+County,Garrett,2015,Percent,0.193
+County,Garrett,2016,Number,1049
+County,Garrett,2016,Percent,0.193
+County,Garrett,2017,Number,1002
+County,Garrett,2017,Percent,0.187
+County,Garrett,2018,Number,969
+County,Garrett,2018,Percent,0.184
+County,Garrett,2019,Number,911
+County,Garrett,2019,Percent,0.177
+County,Garrett,2020,Number,838
+County,Garrett,2020,Percent,0.167
+County,Harford,2003,Number,5018
+County,Harford,2003,Percent,0.081
+County,Harford,2004,Number,4881
+County,Harford,2004,Percent,0.078
+County,Harford,2005,Number,4701
+County,Harford,2005,Percent,0.077
+County,Harford,2006,Number,3943
+County,Harford,2006,Percent,0.066
+County,Harford,2007,Number,4230
+County,Harford,2007,Percent,0.071
+County,Harford,2008,Number,4291
+County,Harford,2008,Percent,0.073
+County,Harford,2009,Number,4634
+County,Harford,2009,Percent,0.078
+County,Harford,2010,Number,5533
+County,Harford,2010,Percent,0.093
+County,Harford,2011,Number,7182
+County,Harford,2011,Percent,0.123
+County,Harford,2012,Number,6168
+County,Harford,2012,Percent,0.106
+County,Harford,2013,Number,5508
+County,Harford,2013,Percent,0.096
+County,Harford,2014,Number,5596
+County,Harford,2014,Percent,0.098
+County,Harford,2015,Number,5795
+County,Harford,2015,Percent,0.103
+County,Harford,2016,Number,4752
+County,Harford,2016,Percent,0.085
+County,Harford,2017,Number,4766
+County,Harford,2017,Percent,0.085
+County,Harford,2018,Number,5404
+County,Harford,2018,Percent,0.097
+County,Harford,2019,Number,4928
+County,Harford,2019,Percent,0.088
+County,Harford,2020,Number,4023
+County,Harford,2020,Percent,0.072
+County,Howard,2003,Number,3808
+County,Howard,2003,Percent,0.053
+County,Howard,2004,Number,3833
+County,Howard,2004,Percent,0.053
+County,Howard,2005,Number,2996
+County,Howard,2005,Percent,0.042
+County,Howard,2006,Number,3160
+County,Howard,2006,Percent,0.045
+County,Howard,2007,Number,3280
+County,Howard,2007,Percent,0.047
+County,Howard,2008,Number,3369
+County,Howard,2008,Percent,0.049
+County,Howard,2009,Number,4067
+County,Howard,2009,Percent,0.056
+County,Howard,2010,Number,4457
+County,Howard,2010,Percent,0.06
+County,Howard,2011,Number,5543
+County,Howard,2011,Percent,0.075
+County,Howard,2012,Number,5099
+County,Howard,2012,Percent,0.069
+County,Howard,2013,Number,5021
+County,Howard,2013,Percent,0.067
+County,Howard,2014,Number,5373
+County,Howard,2014,Percent,0.071
+County,Howard,2015,Number,4911
+County,Howard,2015,Percent,0.065
+County,Howard,2016,Number,4908
+County,Howard,2016,Percent,0.063
+County,Howard,2017,Number,5049
+County,Howard,2017,Percent,0.064
+County,Howard,2018,Number,4871
+County,Howard,2018,Percent,0.062
+County,Howard,2019,Number,4352
+County,Howard,2019,Percent,0.056
+County,Howard,2020,Number,4502
+County,Howard,2020,Percent,0.058
+County,Kent,2003,Number,575
+County,Kent,2003,Percent,0.157
+County,Kent,2004,Number,550
+County,Kent,2004,Percent,0.15
+County,Kent,2005,Number,600
+County,Kent,2005,Percent,0.167
+County,Kent,2006,Number,561
+County,Kent,2006,Percent,0.158
+County,Kent,2007,Number,568
+County,Kent,2007,Percent,0.156
+County,Kent,2008,Number,604
+County,Kent,2008,Percent,0.165
+County,Kent,2009,Number,691
+County,Kent,2009,Percent,0.194
+County,Kent,2010,Number,705
+County,Kent,2010,Percent,0.204
+County,Kent,2011,Number,755
+County,Kent,2011,Percent,0.22
+County,Kent,2012,Number,741
+County,Kent,2012,Percent,0.219
+County,Kent,2013,Number,716
+County,Kent,2013,Percent,0.219
+County,Kent,2014,Number,689
+County,Kent,2014,Percent,0.21
+County,Kent,2015,Number,695
+County,Kent,2015,Percent,0.216
+County,Kent,2016,Number,628
+County,Kent,2016,Percent,0.199
+County,Kent,2017,Number,616
+County,Kent,2017,Percent,0.204
+County,Kent,2018,Number,574
+County,Kent,2018,Percent,0.192
+County,Kent,2019,Number,531
+County,Kent,2019,Percent,0.182
+County,Kent,2020,Number,490
+County,Kent,2020,Percent,0.172
+County,Montgomery,2003,Number,19275
+County,Montgomery,2003,Percent,0.083
+County,Montgomery,2004,Number,18853
+County,Montgomery,2004,Percent,0.08
+County,Montgomery,2005,Number,13145
+County,Montgomery,2005,Percent,0.057
+County,Montgomery,2006,Number,12585
+County,Montgomery,2006,Percent,0.055
+County,Montgomery,2007,Number,13253
+County,Montgomery,2007,Percent,0.059
+County,Montgomery,2008,Number,16589
+County,Montgomery,2008,Percent,0.073
+County,Montgomery,2009,Number,19496
+County,Montgomery,2009,Percent,0.083
+County,Montgomery,2010,Number,21615
+County,Montgomery,2010,Percent,0.094
+County,Montgomery,2011,Number,20330
+County,Montgomery,2011,Percent,0.088
+County,Montgomery,2012,Number,19425
+County,Montgomery,2012,Percent,0.083
+County,Montgomery,2013,Number,23094
+County,Montgomery,2013,Percent,0.097
+County,Montgomery,2014,Number,21427
+County,Montgomery,2014,Percent,0.089
+County,Montgomery,2015,Number,25167
+County,Montgomery,2015,Percent,0.105
+County,Montgomery,2016,Number,21777
+County,Montgomery,2016,Percent,0.09
+County,Montgomery,2017,Number,22623
+County,Montgomery,2017,Percent,0.093
+County,Montgomery,2018,Number,20168
+County,Montgomery,2018,Percent,0.084
+County,Montgomery,2019,Number,22065
+County,Montgomery,2019,Percent,0.093
+County,Montgomery,2020,Number,17976
+County,Montgomery,2020,Percent,0.076
+County,Prince George's,2003,Number,25124
+County,Prince George's,2003,Percent,0.113
+County,Prince George's,2004,Number,23641
+County,Prince George's,2004,Percent,0.105
+County,Prince George's,2005,Number,21446
+County,Prince George's,2005,Percent,0.097
+County,Prince George's,2006,Number,21000
+County,Prince George's,2006,Percent,0.099
+County,Prince George's,2007,Number,21410
+County,Prince George's,2007,Percent,0.105
+County,Prince George's,2008,Number,16676
+County,Prince George's,2008,Percent,0.084
+County,Prince George's,2009,Number,21310
+County,Prince George's,2009,Percent,0.105
+County,Prince George's,2010,Number,24700
+County,Prince George's,2010,Percent,0.123
+County,Prince George's,2011,Number,24886
+County,Prince George's,2011,Percent,0.124
+County,Prince George's,2012,Number,29845
+County,Prince George's,2012,Percent,0.15
+County,Prince George's,2013,Number,27958
+County,Prince George's,2013,Percent,0.141
+County,Prince George's,2014,Number,29365
+County,Prince George's,2014,Percent,0.146
+County,Prince George's,2015,Number,28371
+County,Prince George's,2015,Percent,0.142
+County,Prince George's,2016,Number,26082
+County,Prince George's,2016,Percent,0.13
+County,Prince George's,2017,Number,23522
+County,Prince George's,2017,Percent,0.118
+County,Prince George's,2018,Number,23778
+County,Prince George's,2018,Percent,0.12
+County,Prince George's,2019,Number,25414
+County,Prince George's,2019,Percent,0.13
+County,Prince George's,2020,Number,24950
+County,Prince George's,2020,Percent,0.127
+County,Queen Anne's,2003,Number,905
+County,Queen Anne's,2003,Percent,0.084
+County,Queen Anne's,2004,Number,857
+County,Queen Anne's,2004,Percent,0.079
+County,Queen Anne's,2005,Number,845
+County,Queen Anne's,2005,Percent,0.079
+County,Queen Anne's,2006,Number,776
+County,Queen Anne's,2006,Percent,0.074
+County,Queen Anne's,2007,Number,845
+County,Queen Anne's,2007,Percent,0.078
+County,Queen Anne's,2008,Number,837
+County,Queen Anne's,2008,Percent,0.078
+County,Queen Anne's,2009,Number,1035
+County,Queen Anne's,2009,Percent,0.093
+County,Queen Anne's,2010,Number,1135
+County,Queen Anne's,2010,Percent,0.101
+County,Queen Anne's,2011,Number,1307
+County,Queen Anne's,2011,Percent,0.118
+County,Queen Anne's,2012,Number,1228
+County,Queen Anne's,2012,Percent,0.111
+County,Queen Anne's,2013,Number,1179
+County,Queen Anne's,2013,Percent,0.108
+County,Queen Anne's,2014,Number,1178
+County,Queen Anne's,2014,Percent,0.109
+County,Queen Anne's,2015,Number,1112
+County,Queen Anne's,2015,Percent,0.105
+County,Queen Anne's,2016,Number,986
+County,Queen Anne's,2016,Percent,0.094
+County,Queen Anne's,2017,Number,1011
+County,Queen Anne's,2017,Percent,0.095
+County,Queen Anne's,2018,Number,923
+County,Queen Anne's,2018,Percent,0.086
+County,Queen Anne's,2019,Number,783
+County,Queen Anne's,2019,Percent,0.074
+County,Queen Anne's,2020,Number,841
+County,Queen Anne's,2020,Percent,0.079
+County,Saint Mary's,2003,Number,2666
+County,Saint Mary's,2003,Percent,0.106
+County,Saint Mary's,2004,Number,2546
+County,Saint Mary's,2004,Percent,0.1
+County,Saint Mary's,2005,Number,2619
+County,Saint Mary's,2005,Percent,0.105
+County,Saint Mary's,2006,Number,2272
+County,Saint Mary's,2006,Percent,0.092
+County,Saint Mary's,2007,Number,2436
+County,Saint Mary's,2007,Percent,0.094
+County,Saint Mary's,2008,Number,2591
+County,Saint Mary's,2008,Percent,0.1
+County,Saint Mary's,2009,Number,2941
+County,Saint Mary's,2009,Percent,0.113
+County,Saint Mary's,2010,Number,3018
+County,Saint Mary's,2010,Percent,0.11
+County,Saint Mary's,2011,Number,3362
+County,Saint Mary's,2011,Percent,0.123
+County,Saint Mary's,2012,Number,3333
+County,Saint Mary's,2012,Percent,0.121
+County,Saint Mary's,2013,Number,3188
+County,Saint Mary's,2013,Percent,0.117
+County,Saint Mary's,2014,Number,3362
+County,Saint Mary's,2014,Percent,0.124
+County,Saint Mary's,2015,Number,3439
+County,Saint Mary's,2015,Percent,0.127
+County,Saint Mary's,2016,Number,3150
+County,Saint Mary's,2016,Percent,0.115
+County,Saint Mary's,2017,Number,3136
+County,Saint Mary's,2017,Percent,0.114
+County,Saint Mary's,2018,Number,2847
+County,Saint Mary's,2018,Percent,0.106
+County,Saint Mary's,2019,Number,2832
+County,Saint Mary's,2019,Percent,0.106
+County,Saint Mary's,2020,Number,2470
+County,Saint Mary's,2020,Percent,0.092
+County,Somerset,2003,Number,1203
+County,Somerset,2003,Percent,0.257
+County,Somerset,2004,Number,1127
+County,Somerset,2004,Percent,0.24
+County,Somerset,2005,Number,1228
+County,Somerset,2005,Percent,0.266
+County,Somerset,2006,Number,1195
+County,Somerset,2006,Percent,0.265
+County,Somerset,2007,Number,1284
+County,Somerset,2007,Percent,0.279
+County,Somerset,2008,Number,1272
+County,Somerset,2008,Percent,0.279
+County,Somerset,2009,Number,1367
+County,Somerset,2009,Percent,0.298
+County,Somerset,2010,Number,1273
+County,Somerset,2010,Percent,0.293
+County,Somerset,2011,Number,1388
+County,Somerset,2011,Percent,0.321
+County,Somerset,2012,Number,1507
+County,Somerset,2012,Percent,0.352
+County,Somerset,2013,Number,1632
+County,Somerset,2013,Percent,0.381
+County,Somerset,2014,Number,1377
+County,Somerset,2014,Percent,0.326
+County,Somerset,2015,Number,1520
+County,Somerset,2015,Percent,0.359
+County,Somerset,2016,Number,1386
+County,Somerset,2016,Percent,0.319
+County,Somerset,2017,Number,1420
+County,Somerset,2017,Percent,0.326
+County,Somerset,2018,Number,1339
+County,Somerset,2018,Percent,0.314
+County,Somerset,2019,Number,1372
+County,Somerset,2019,Percent,0.327
+County,Somerset,2020,Number,1108
+County,Somerset,2020,Percent,0.266
+County,Talbot,2003,Number,857
+County,Talbot,2003,Percent,0.12
+County,Talbot,2004,Number,816
+County,Talbot,2004,Percent,0.114
+County,Talbot,2005,Number,811
+County,Talbot,2005,Percent,0.116
+County,Talbot,2006,Number,819
+County,Talbot,2006,Percent,0.117
+County,Talbot,2007,Number,866
+County,Talbot,2007,Percent,0.122
+County,Talbot,2008,Number,875
+County,Talbot,2008,Percent,0.125
+County,Talbot,2009,Number,997
+County,Talbot,2009,Percent,0.141
+County,Talbot,2010,Number,1083
+County,Talbot,2010,Percent,0.149
+County,Talbot,2011,Number,1221
+County,Talbot,2011,Percent,0.171
+County,Talbot,2012,Number,1110
+County,Talbot,2012,Percent,0.155
+County,Talbot,2013,Number,1173
+County,Talbot,2013,Percent,0.167
+County,Talbot,2014,Number,1238
+County,Talbot,2014,Percent,0.179
+County,Talbot,2015,Number,1093
+County,Talbot,2015,Percent,0.159
+County,Talbot,2016,Number,1092
+County,Talbot,2016,Percent,0.16
+County,Talbot,2017,Number,994
+County,Talbot,2017,Percent,0.148
+County,Talbot,2018,Number,967
+County,Talbot,2018,Percent,0.146
+County,Talbot,2019,Number,872
+County,Talbot,2019,Percent,0.131
+County,Talbot,2020,Number,957
+County,Talbot,2020,Percent,0.147
+County,Washington,2003,Number,4428
+County,Washington,2003,Percent,0.141
+County,Washington,2004,Number,4298
+County,Washington,2004,Percent,0.134
+County,Washington,2005,Number,3907
+County,Washington,2005,Percent,0.124
+County,Washington,2006,Number,3740
+County,Washington,2006,Percent,0.121
+County,Washington,2007,Number,4315
+County,Washington,2007,Percent,0.133
+County,Washington,2008,Number,4162
+County,Washington,2008,Percent,0.129
+County,Washington,2009,Number,5243
+County,Washington,2009,Percent,0.16
+County,Washington,2010,Number,5536
+County,Washington,2010,Percent,0.168
+County,Washington,2011,Number,5796
+County,Washington,2011,Percent,0.177
+County,Washington,2012,Number,6627
+County,Washington,2012,Percent,0.203
+County,Washington,2013,Number,5613
+County,Washington,2013,Percent,0.172
+County,Washington,2014,Number,6460
+County,Washington,2014,Percent,0.199
+County,Washington,2015,Number,5769
+County,Washington,2015,Percent,0.178
+County,Washington,2016,Number,5740
+County,Washington,2016,Percent,0.176
+County,Washington,2017,Number,6098
+County,Washington,2017,Percent,0.187
+County,Washington,2018,Number,5304
+County,Washington,2018,Percent,0.165
+County,Washington,2019,Number,5407
+County,Washington,2019,Percent,0.17
+County,Washington,2020,Number,5383
+County,Washington,2020,Percent,0.169
+County,Wicomico,2003,Number,3633
+County,Wicomico,2003,Percent,0.173
+County,Wicomico,2004,Number,3484
+County,Wicomico,2004,Percent,0.163
+County,Wicomico,2005,Number,4167
+County,Wicomico,2005,Percent,0.198
+County,Wicomico,2006,Number,3568
+County,Wicomico,2006,Percent,0.172
+County,Wicomico,2007,Number,3695
+County,Wicomico,2007,Percent,0.172
+County,Wicomico,2008,Number,3665
+County,Wicomico,2008,Percent,0.171
+County,Wicomico,2009,Number,3984
+County,Wicomico,2009,Percent,0.184
+County,Wicomico,2010,Number,5000
+County,Wicomico,2010,Percent,0.231
+County,Wicomico,2011,Number,5110
+County,Wicomico,2011,Percent,0.237
+County,Wicomico,2012,Number,5347
+County,Wicomico,2012,Percent,0.245
+County,Wicomico,2013,Number,5044
+County,Wicomico,2013,Percent,0.232
+County,Wicomico,2014,Number,5143
+County,Wicomico,2014,Percent,0.235
+County,Wicomico,2015,Number,4764
+County,Wicomico,2015,Percent,0.217
+County,Wicomico,2016,Number,5350
+County,Wicomico,2016,Percent,0.241
+County,Wicomico,2017,Number,4597
+County,Wicomico,2017,Percent,0.205
+County,Wicomico,2018,Number,4484
+County,Wicomico,2018,Percent,0.201
+County,Wicomico,2019,Number,5133
+County,Wicomico,2019,Percent,0.231
+County,Wicomico,2020,Number,4256
+County,Wicomico,2020,Percent,0.192
+County,Worcester,2003,Number,1526
+County,Worcester,2003,Percent,0.161
+County,Worcester,2004,Number,1435
+County,Worcester,2004,Percent,0.153
+County,Worcester,2005,Number,1576
+County,Worcester,2005,Percent,0.171
+County,Worcester,2006,Number,1407
+County,Worcester,2006,Percent,0.158
+County,Worcester,2007,Number,1523
+County,Worcester,2007,Percent,0.165
+County,Worcester,2008,Number,1602
+County,Worcester,2008,Percent,0.177
+County,Worcester,2009,Number,1814
+County,Worcester,2009,Percent,0.282
+County,Worcester,2010,Number,1881
+County,Worcester,2010,Percent,0.203
+County,Worcester,2011,Number,2072
+County,Worcester,2011,Percent,0.228
+County,Worcester,2012,Number,1936
+County,Worcester,2012,Percent,0.213
+County,Worcester,2013,Number,2012
+County,Worcester,2013,Percent,0.22
+County,Worcester,2014,Number,1873
+County,Worcester,2014,Percent,0.205
+County,Worcester,2015,Number,1856
+County,Worcester,2015,Percent,0.207
+County,Worcester,2016,Number,1782
+County,Worcester,2016,Percent,0.199
+County,Worcester,2017,Number,1440
+County,Worcester,2017,Percent,0.161
+County,Worcester,2018,Number,1552
+County,Worcester,2018,Percent,0.177
+County,Worcester,2019,Number,1355
+County,Worcester,2019,Percent,0.155
+County,Worcester,2020,Number,1631
+County,Worcester,2020,Percent,0.186

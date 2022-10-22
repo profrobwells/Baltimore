@@ -1,0 +1,216 @@
+---
+title: "Child Poverty"
+author: "Eric Neugeboren"
+date: "10/21/2022"
+output: html_document
+---
+
+## Child Poverty Improving in Baltimore, Yet Still at Alarming Highs
+
+-   In 2020, #Baltimore City had a child poverty rate of 26.8%. That's the highest rate in all of Maryland and is more than double the statewide and nationwide child poverty averages.
+
+-   40 out of 55 #Baltimore City neighborhoods saw their child poverty rates decrease from 2014 to 2020, with the biggest decrease in Southern Park Heights. But the rates remain high, with more than half of all children in seven neighborhoods living in poverty.
+
+Baltimore City's child poverty rate is improving, but it still far outpaces other Maryland counties and the rest of the country.
+
+The child poverty rate in 2020 was 26.8%, **MORE THAN DOUBLE** significantly higher than the statewide average of 11.2% and **NEARLY TRIPLE** nationwide rate of 9.7%.
+
+Baltimore City was one of three counties in Maryland to exceed a child poverty rate of 20% (see graphic below for a breakdown by county). Ten of 24 counties in Maryland had child poverty rates below 10% in 2020. As previously mentioned, the citywide poverty rate is improving.
+
+From 2014 to 2020, 40 out of 55 neighborhoods in the city saw decreases in their child poverty rate. The biggest decreases were in the Southern Park Heights and Southeastern areas, which both saw more than a 25 percentage point decrease in child poverty rate.
+
+However, the rates still increased in many areas, especially The Waverlies, Greenmount East and Upton/Druid Heights. These three areas saw child poverty increases of more than 10 percentage points between 2014 and 2020.
+
+Upton/Druid Heights had the highest child poverty rate in the city in 2020 at 69.8% (see the line graph below that shows the increase in child poverty in Upton/Druid Heights over time).
+
+For a story about this data, it would be interesting to dive deeper into specific neighborhoods that have seen immense decreases and consistent increases in child poverty data.
+
+-   What are the factors that are driving these changes?
+
+-   Have the neighborhoods with decreases instituted programs to improve child poverty?
+
+-   Are there any of these efforts in the neighborhoods that saw increases in child poverty rate?
+
+    This story could involve speaking with residents and community leaders in these specific neighborhoods to not only hear their thoughts on this data, but also to learn about what is happening on the ground in those areas.
+
+--Eric Neugeboren
+
+## Analysis
+
+1.  How has the child poverty rate in Baltimore City neighborhoods changed from 2014 to 2020?
+
+```{r include=FALSE}
+#install.packages("DT")
+library(tidyverse)
+library(janitor)
+library(DT)
+balt_poverty <- read.csv("Child_Poverty_Baltimore_Neighborhoods.csv") %>% 
+  clean_names()
+```
+
+This dataset is from the Baltimore Neighborhood Indicators Alliance and tracks child poverty rates in Baltimore neighborhoods from 2014 to 2020 using data from the American Community Survey.
+
+Variables such as hhchpov2014 represents the percent of children living in a household that fell below the poverty line in 2014. Thus hhchpov2015 represents that data in 2015, and so on. The variables csa2010 and csa2020 represent "combined statistical areas," a tool used by the U.S. Office of Management and Budget to measure, in both 2010 and 2020.
+
+```{r}
+#These two summary tables show how child poverty rates have changed from 2014 to 2020. There were decreases across the board, with the mean child poverty rate decreasing by more than six percentage points and the median rate decreasing by about five percentage points.
+
+summary(balt_poverty$hhchpov14)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 5.125  19.096  31.415  33.274  46.130  71.597 
+summary(balt_poverty$hhchpov20)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 0.00   12.93   26.28   26.89   35.32   69.82 
+
+```
+
+Data analysis of how child poverty in specific neighborhoods changed from 2014 to 2020.
+
+```{r}
+balt_poverty <- balt_poverty %>% 
+    mutate(diff_2014_2020 = (hhchpov20-hhchpov14))
+#This created a new column of the difference in percent of children living in poverty between 2014 and 2020.
+
+balt_poverty <- balt_poverty %>% 
+  mutate(Decrease_Increase = case_when(
+        diff_2014_2020 > 0 ~ "Increase",
+        diff_2014_2020 < 0 ~ "Decrease"))
+
+#This summary table was created to analyze whether neighborhoods saw their child poverty rate increase or decrease from 2014. It showed that the rate decreased in 40 neighborhoods and increased in 15 neighborhoods.
+
+balt_poverty %>% 
+  count(Decrease_Increase)
+
+#Decrease_Increase
+#Decrease	40			
+#Increase	15	
+
+
+```
+
+What percentage of Baltimore neighborhoods exceed the state and nationwide averages for child poverty rate?
+
+The nationwide child poverty rate in 2020 was 9.7% (<https://www.census.gov/library/stories/2022/09/record-drop-in-child-poverty.html>). Note that I'm using 2020 instead of 2021 because that is when the data in the Baltimore data set is from. The child poverty rate in Maryland in 2020 was 11.2% (<https://data.ers.usda.gov/reports.aspx?ID=17826>).
+
+```{r}
+#These two summary tables show how child poverty rates in Baltimore neighborhoods compare to the nationwide and Maryland child poverty rates. Both tables yielded the same results: that 43 Baltimore neighborhoods have a higher child poverty rate than the state and country and 12 neighborhoods have a lower child poverty rate. This means that in 2020, 78% of Baltimore neighborhoods exceeded the state and nationwide child poverty rates.
+
+balt_poverty <- balt_poverty %>% 
+  mutate(Maryland_Compare = case_when(
+    hhchpov20 > 11.2 ~ "WORSE",
+    hhchpov20 < 11.2 ~ "BETTER"))
+
+balt_poverty %>% 
+  count(Maryland_Compare)
+
+
+# Maryland_Compare
+# BETTER	12			
+# WORSE	43	
+
+balt_poverty <- balt_poverty %>% 
+  mutate(USA_Compare = case_when(
+    hhchpov20 > 9.7 ~ "WORSE",
+    hhchpov20 < 9.7 ~ "BETTER"))
+
+balt_poverty %>% 
+  count(USA_Compare)
+
+
+# USA_Compare
+# BETTER	12			
+# WORSE	43	
+
+
+```
+
+How does the child poverty rate in Baltimore City compare to other counties in Maryland?
+
+```{r}
+#This is a new dataset that includes poverty rates of all Maryland counties from 2013 to 2020. The source of the data is the U.S. Census Bureau's Small Area Income and Poverty Estimates
+
+maryland_poverty <- read.csv("Child_Poverty_Maryland_Counties.csv") %>% 
+  clean_names()
+
+#I applied three filters to the dataset. I filtered to only include 2020 since that is the year I will be using to compare child poverty between Baltimore City and other counties. I also only want to include the percent data format, rather than the raw number of children living in poverty. I am also only interested in counties, so I filtered the location type to reflect that.
+
+maryland_poverty <- maryland_poverty %>% 
+  filter(time_frame==2020,data_format=="Percent", location_type=="County")
+
+
+maryland_poverty <- maryland_poverty %>% 
+  mutate(pct_poverty = formattable::percent(statistics, 1))
+         
+maryland_poverty %>% 
+  select(location, pct_poverty) %>% 
+  slice_max(pct_poverty, n=5)
+
+#This shows that Baltimore City had the highest child poverty rate of all Maryland counties in 2020.
+
+# location   pct_poverty
+# Baltimore City	26.8%			
+# Somerset	26.6%			
+# Dorchester	23.8%			
+# Wicomico	19.2%			
+# Allegany	18.6%			
+# Worcester	18.6%	
+
+#This is a summary table of the percent of children living in poverty in all Maryland counties. The maximum represents Baltimore City, which had a child poverty rate of 26.8% in this dataset. The table shows that child poverty is more than twice as worse in Baltimore City than the average Maryland county.
+
+summary(maryland_poverty$statistics)
+
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 0.0530  0.0750  0.1255  0.1353  0.1807  0.2680 
+```
+
+```{r}
+#This plot reflects the distribution of child poverty rates across Maryland counties. It shows Baltimore City with the highest rate.
+
+maryland_poverty %>% 
+  ggplot() +
+  geom_bar(aes(x=reorder(location, pct_poverty), weight = pct_poverty, fill=pct_poverty)) +
+  theme(legend.position = "none") +
+  scale_y_continuous(limits=c(0, .3),labels = scales::percent) +
+  labs(title = "Child Poverty Rate in 2020 By Maryland County", 
+       caption = "Source: U.S. Census Small Area Income and Poverty Estimates 
+       Graphic by Eric Neugeboren + Rob Wells",
+       y="Child Poverty Rate",
+       x="") +
+  coord_flip()
+```
+
+**Line Graph for Upton/Druid Heights**
+
+```{r}
+upton_druid <- balt_poverty %>% 
+  filter(csa2010=="Upton/Druid Heights") %>% 
+  select(hhchpov14, hhchpov15, hhchpov16, hhchpov17, hhchpov18, hhchpov19, hhchpov20)  
+colnames(upton_druid) <- c(2014, 2015, 2016, 2017, 2018, 2019, 2020)
+upton_druid <- t(upton_druid)
+upton_druid <- as.data.frame(upton_druid)
+upton_druid$year <- rownames(upton_druid)
+
+#These commands all cleaned up the data so that R could easily turn the data into a line graph.
+
+ggplot() +
+  geom_line(data=upton_druid, aes(x=year, y=V1, group=1)) +
+  labs(title = "Child Poverty Rate in Upton/Druid Heights, 2014 to 2020", 
+       subtitle = "Baltimore Neighborhood Indicators Alliance",
+       caption = "Graphic by Eric Neugeboren",
+       y="Child Poverty Rate",
+       x="year")
+  
+```
+
+Data table for Baltimore poverty
+
+```{r}
+balt_poverty %>% 
+  select(csa2010, hhchpov14, hhchpov20,diff_2014_2020, Decrease_Increase, Maryland_Compare) %>% 
+  datatable(options = list(
+  autoWidth = TRUE,
+  columnDefs = list(list(width = '10px', targets = c(1, 2)))
+))
+
+
+```

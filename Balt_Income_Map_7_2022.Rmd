@@ -1275,3 +1275,47 @@ joined %>%
   filter(pct_chg_income_2020 < 0.1490) %>% 
   arrange(desc(pct_chg_income_2020))
 ```
+
+# Md Cities Per Cap
+```{r}
+percap2_income2020 <- get_acs(geography = "place", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2020) %>% 
+  mutate(year=("2020"))
+
+ percap2_income2010 <- get_acs(geography = "place", 
+              variables = c(number_households = "B19001_001", percap_income = "B19301_001"), 
+               state = "MD", 
+               year = 2010) %>% 
+  mutate(year=("2010"))
+
+ percap2_income <- rbind(percap2_income2020, percap2_income2010)
+
+
+```
+
+```{r}
+#reshape percap_md_all table
+
+ percap2_income <-  percap2_income %>% 
+  select(-moe) %>% 
+  pivot_wider(names_from = "year", values_from = "estimate")
+
+ percap2_income <- janitor::clean_names( percap2_income)
+
+ percap2_income <-  percap2_income %>% 
+  mutate(diff_2020_2010 = (x2020-x2010)) 
+
+#write.csv(baltcity_percap_income, "baltcity_percap_income.csv")
+# write_rds(baltcity_income, "baltcity_income.rds")
+```
+
+
+```{r}
+percap2_income %>% 
+  filter(variable=="percap_income") %>% 
+  summarize(mean(x2020, na.rm=TRUE))
+
+
+```

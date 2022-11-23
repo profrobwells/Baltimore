@@ -1,0 +1,51 @@
+---
+title: "Data Prep for Visualizations"
+author: "Shreya Vuttaluru"
+date: "2022-11-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(tidycensus)
+library(formattable)
+library(htmlwidgets)
+library(leaflet)
+library(sf)
+library(rgdal)
+library(formattable)
+library(dplyr)
+library(tidyr)
+library(janitor)
+library(leaflet.extras)
+library(googlesheets4)
+```
+
+## R Markdown
+
+# Bel Air Midway
+```{r cars}
+### filter data for belair/midway
+
+race_and_income_stats <- readRDS("shiny_app/data/race_and_income_combined.rds")
+
+
+### all rds
+all_income <- read_csv("baltcity_percap_income.csv")
+
+belair_midway <- race_and_income_stats %>%
+  filter(Neighborhood == "Belair-Edison" | 
+        Neighborhood == "Midway/Coldstream") %>%
+  st_drop_geometry()
+
+sheet_write(belair_midway, "https://docs.google.com/spreadsheets/d/1z4lPLZ2GNOyiMB3GVNDYVjpM3Ggnp3PEuVIwwvnSrGA/", sheet="Sheet1")
+  
+st_write(belair_midway, "data_for_viz/belair_midway.geojson")
+
+st_write(race_and_income_stats, "data_for_viz/race_and_income_stats.geojson")
+
+
+
+```
+
+

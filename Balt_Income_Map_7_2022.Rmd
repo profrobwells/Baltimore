@@ -653,21 +653,18 @@ saveWidget(ag_map, "aggregate_income_map.html")
 
 ```
 
-
-Redlining Maps w/ Race and Per Capita Income  -- Shreya 
 ```{r}
 
+
+### reading in redlining map shapefiles
 redlining_maps <- st_read("Tracts_2020_HOLC/Tracts_2020_HOLC.shp") 
 
 balt_redlining <- redlining_maps %>%
   clean_names() %>%
   filter(max_city == "Baltimore") %>%
   st_transform(crs = wgs)
-
 d_regions <- balt_redlining %>%
   filter(first_holc == "D")
-
-
 ## pulling race data from ACS
 race_2020 <- get_acs(
   geography = "tract", 
@@ -690,7 +687,6 @@ race_2020 <- get_acs(
       name = str_trim(name,side="both")
   ) %>%
   filter(name == "Baltimore city")
-
 balt_race_percentages <- race_2020 %>%
   mutate(
     percent_white = round((white_pop_e/total_population_e) * 100, 2),
@@ -700,12 +696,6 @@ balt_race_percentages <- race_2020 %>%
     ) %>%
   select(geoid, tract, name, state, percent_white, percent_black, percent_hisp_lat, percent_asian, total_population_e) %>%
   rename(total_population = total_population_e)
-
-## call in percap income csv from folder
-# baltcity_percap_income <- read_csv("baltcity_percap_income.csv") %>%
-#   clean_names() %>%
-#   as_data_frame()
-
 
 ## incorporating CSAs
 ### incorporating community statistical areas into data 
@@ -719,18 +709,11 @@ csa <- read_csv("balt_census_crosswalks_2020.csv") %>%
 csa$geoid <- as.character(csa$geoid)
 
 ## joining race percentages to CSAs
-
-balt_race_percentages_join <- balt_race_percentages %>%
-  right_join(csa, by=c("geoid")) %>%
-  distinct() %>%
+balt_race_percentages_join <- balt_race_percentages %>% 
+  right_join(csa, by=c("geoid")) %>% 
+  distinct() %>% 
   rename(neighborhood = community_statistical_area_2020,
-  census_tract = tract_2020)
-
-### 
-baltcity_percap_income <- baltcity_percap_income %>%
-  mutate(diff_2020_2010 = as.numeric(diff_2020_2010)) %>%
-  st_as_sf(crs = wgs,
-           coords = geometry)
+  census_tract = tract_2020) 
 
 #palettes 
 rlining_pal <- colorQuantile(
@@ -751,21 +734,10 @@ white_pal <- colorBin(
       5
     )
 
-### this supposedly helps to bring things to the front?
   
 ## overlaying redlining shapefiles on top of leafMap (median household income)
 rlining_and_demographics <- leaflet() %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
-  ##this chunk below is just so we can search by neighborhood later
-  addPolylines(
-    group = "Neighborhood",
-    data = baltcity_percap_income,
-    color = "Gray",
-    weight = 1,
-    label = baltcity_percap_income$community_statistical_area_2020,
-    fillOpacity = 0.75,
-    options = layersControlOptions(collapsed = FALSE)
-  ) %>%
   addPolygons(group = "Per Capita Income",
               data = baltcity_percap_income,
               color = ~rlining_pal(diff_2020_2010),
@@ -787,13 +759,13 @@ rlining_and_demographics <- leaflet() %>%
               smoothFactor = 0.2,
               fillOpacity = 0.7,
               label = paste("Percent White:",(balt_race_percentages_join$percent_white), "for",balt_race_percentages_join$neighborhood, "|", "Percap $ Change is:",(scales::dollar(baltcity_percap_income$diff_2020_2010)), "for",balt_race_percentages_join$neighborhood)) %>%
+  ### needs to be polylines because otherwise hover gets messed up
   addPolylines(
     group = "Redlining Zones",
     data = d_regions,
     color = "Red",
     weight = 5,
     smoothFactor = 1
-    #options = marker_options
   ) %>%
   addLegend(
     group = "White Population",
@@ -816,34 +788,41 @@ rlining_and_demographics <- leaflet() %>%
     values = balt_race_percentages_join$percent_black,
     title = "Percentage Black in 2020"
   ) %>%
+  ### controls layers for toggle
   addLayersControl(
     baseGroups = c("Per Capita Income", "Black Population", "White Population"),
     position = "topleft", 
     options = layersControlOptions(collapsed = FALSE)
   ) %>%
-   # addSearchFeatures(
-   #      targetGroups  = "neighborhood",
-   #      options = searchFeaturesOptions(zoom = 5, openPopup = TRUE)) %>%
+  ### extra Javascript so that redlining layers stay as a top layer
    onRender("
     function(el, x) {
       this.on('baselayerchange', function(e) {
         e.layer.bringToBack();
       })
     }
-  ") %>%
-  addSearchFeatures(targetGroups = c("Neighborhood"), 
-                    options = searchFeaturesOptions())
+  ")
  
-
 rlining_and_demographics 
-
 saveWidget(rlining_and_demographics , "rlining_and_demographics.html")
 
-## NOTES 
-## - switching polygons to polylines makes it so you can't hover
-## - make seperate colornumeric with defined values? 
-## - any updates on whether to include C vs D regions?
 
+```
+
+
+Redlining Maps w/ Race and Per Capita Income  -- Shreya 
+```{r}
+
+##write out these dataframes to shiny_app data folder in rds format (easier to read by shiny)
+
+#race df
+write_rds(balt_race_percentages_join, "shiny_app/data/balt_race_percentages_join.rds")
+
+#income df
+write_rds(baltcity_percap_income, "shiny_app/data/baltcity_percap_income.rds" )
+
+#redliningdf
+write_rds(d_regions, "shiny_app/data/d_regions.rds")
 
 ```
 

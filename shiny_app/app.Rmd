@@ -1,0 +1,65 @@
+---
+title: "Shiny Application"
+author: "Shreya Vuttaluru"
+date: '2022-10-18'
+output: html_document
+runtime: shiny
+---
+
+# Load Libraries here
+```{r setup, include=FALSE}
+library(tidyverse)
+library(tidycensus)
+library(shiny)
+library(janitor)
+library(lubridate)
+library(leaflet)
+library(leaflet.extras)
+```
+
+# Load data here
+
+```{r cars}
+### load crs 
+wgs <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
+
+### individual data to load in later 
+race_table <- readRDS("data/balt_race_percentages_join.rds") %>%
+  st_transform(crs = wgs)
+
+percap_income_table <- readRDS("data/baltcity_percap_income.rds") %>%
+  st_transform(crs = wgs)
+
+redlining <- readRDS("data/d_regions.rds")  %>%
+  st_transform(crs = wgs)
+```
+
+
+# Quick Jointo put race and income all in one table
+```{r}
+
+## prep
+income_only_columns <- percap_income_table %>%
+  dplyr::select(geoid, diff_2020_2010) %>%
+  st_drop_geometry(income_only_columns)
+
+## join
+race_and_income_combined <- race_table %>%
+  left_join(income_only_columns) %>%
+  rename(
+    'Census Tract'= tract,
+    'Neighborhood' = neighborhood,
+    "Percent White" = "percent_white",
+    "Percent Black" = "percent_black",
+    "Percent Hispanic/Latino" = "percent_hisp_lat",
+    "Percent Asian" = "percent_asian",
+    "Change in Per Capita Income" = "diff_2020_2010"
+) 
+
+write_rds(race_and_income_combined, "data/race_and_income_combined.rds")
+
+```
+
+
+
+

@@ -6,6 +6,7 @@ library(shinyWidgets)
 library(janitor)
 library(lubridate)
 library(leaflet)
+library(shinyjs)
 library(leaflet.extras)
 
 

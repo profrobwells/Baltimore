@@ -27,22 +27,20 @@ library(googlesheets4)
 ```{r cars}
 ### filter data for belair/midway
 
-race_and_income_stats <- readRDS("shiny_app/data/race_and_income_combined.rds")
+income_stats <- readRDS("shiny_app/data/baltcity_percap_income.rds")
 
-
-### all rds
-all_income <- read_csv("baltcity_percap_income.csv")
-
-belair_midway <- race_and_income_stats %>%
-  filter(Neighborhood == "Belair-Edison" | 
-        Neighborhood == "Midway/Coldstream") %>%
-  st_drop_geometry()
+belair_midway <- income_stats %>%
+  rename(
+    neighborhood = community_statistical_area_2020
+  ) %>%
+  filter(neighborhood == "Belair-Edison" | 
+        neighborhood == "Midway/Coldstream") 
 
 sheet_write(belair_midway, "https://docs.google.com/spreadsheets/d/1z4lPLZ2GNOyiMB3GVNDYVjpM3Ggnp3PEuVIwwvnSrGA/", sheet="Sheet1")
   
 st_write(belair_midway, "data_for_viz/belair_midway.geojson")
 
-st_write(race_and_income_stats, "data_for_viz/race_and_income_stats.geojson")
+st_write(income_stats, "data_for_viz/income_stats.geojson")
 
 
 

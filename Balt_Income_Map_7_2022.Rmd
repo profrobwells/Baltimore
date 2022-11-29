@@ -810,7 +810,7 @@ saveWidget(rlining_and_demographics , "rlining_and_demographics.html")
 ```
 
 
-Redlining Maps w/ Race and Per Capita Income  -- Shreya 
+Writing out data
 ```{r}
 
 ##write out these dataframes to shiny_app data folder in rds format (easier to read by shiny)

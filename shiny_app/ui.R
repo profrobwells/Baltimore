@@ -57,6 +57,7 @@ ui <- fluidPage(
       
       
       leafletOutput("mymap", height="100%", width="100%" ),
+      actionButton("reset_button", "Reset view"),
       
       absolutePanel(id = "controls", class = "panel panel-default", fixed = FALSE,
                     draggable = FALSE, top = 20, left = "auto", right = 20, bottom = "auto",

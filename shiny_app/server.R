@@ -14,12 +14,6 @@ library(scales)
 library(shinyjs)
 library(htmlwidgets)
 
-### zoom less on search
-### drop opacity on income map 
-### redlining legend
-### move around columns on table, neighborhood + income + population + demographics, census tract at end 
-## by neighborhood, income and population for visualizations
-
 
 race_table <- readRDS("data/balt_race_percentages_join.rds") %>%
   filter(!is.na(percent_white))
@@ -34,12 +28,14 @@ percap_income_table <- readRDS("data/baltcity_percap_income.rds")
 
 race_and_income_table <- readRDS("data/race_and_income_combined.rds") 
   
+#redlining_pal <- colorQuantile("red")
 
 ## maybe session later
 server <- function(input, output, session){
   
   showLog()
   logjs("App started")
+  
   
     group_to_map <- reactive({
       input$race
@@ -56,7 +52,8 @@ server <- function(input, output, session){
     observeEvent(input$race, {
       
       mymap <- leafletProxy("mymap") %>%
-        clearControls()
+        clearControls() 
+        
       
       if (input$race == 'Change in Per Capita Income') {
        # Color and palette are treated specially in the "superzip" case, because the values are categorical instead of continuous.
@@ -73,8 +70,7 @@ server <- function(input, output, session){
             color = ~pal(race_and_income_table[[group_to_map()]]),
             weight = 2.5,
             smoothFactor = 0.2,
-            fillOpacity = 0.7,
-            ### add percent sign 
+            fillOpacity = 0.6,
             label = paste0(" Per capita income change is: ",(scales::dollar(race_and_income_table$'Change in Per Capita Income')))
           ) %>%
           clearControls %>%
@@ -99,7 +95,14 @@ server <- function(input, output, session){
             position = "bottomleft",
             values = race_and_income_table[[group_to_map()]],
             title =  group_to_map() 
-          ) 
+          ) %>%
+          addLegend(
+            position = "bottomleft", 
+            colors= "red", 
+            labels=c("Redlined areas"), 
+            title="Historic Redlining"
+          )
+          
         
        } else {
 
@@ -145,7 +148,15 @@ server <- function(input, output, session){
         values = race_and_income_table[[group_to_map()]],
         title =  group_to_map()
         ) %>%
-      addSearchFeatures(targetGroups = c("Neighborhood")
+        addLegend(
+          position = "bottomleft", 
+          colors= "red", 
+          labels=c("Redlined areas"), 
+          title="Historic Redlining"
+          
+        ) %>%
+      addSearchFeatures(targetGroups = c("Neighborhood"),
+                        options = searchFeaturesOptions(zoom = 14)
                           ) 
       
        }
@@ -159,7 +170,8 @@ server <- function(input, output, session){
       df <- race_and_income_table  %>%
         st_drop_geometry(race_and_income_table) %>%
         ## add 2020 per capita income
-        dplyr::select(-geoid, - name, -state, -census_tract, -object_id) %>%
+        #dplyr::select(-geoid, - name, -state, -census_tract, -object_id) %>%
+        dplyr::select("Neighborhood", total_population, "Change in Per Capita Income", "Percent White", "Percent Black", "Percent Hispanic/Latino", "Percent Asian", "Census Tract", -geoid, - name, -state, -census_tract, -object_id) %>%
         rename(
           'Total Population' = total_population,
         )
@@ -169,7 +181,7 @@ server <- function(input, output, session){
         #   'Neighborhood' = neighborhood,
         #   "Percent White" = percent_white,
         #   "Percent Black" = percent_black,
-        #   "Percent Hispanic/Latino" = percent_hisp_lat,
+        #   "ercent White" = percent_hisp_lat,
         #   "Percent Asian" = percent_asian,
         #   "Change in Per Capita Income" = diff_2020_2010
         # )

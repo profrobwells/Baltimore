@@ -23,7 +23,7 @@ library(googlesheets4)
 
 ## R Markdown
 
-# Bel Air Midway
+# Neighborhood Per Capita Income
 ```{r cars}
 ### filter data for belair/midway
 
@@ -42,8 +42,163 @@ st_write(belair_midway, "data_for_viz/belair_midway.geojson")
 
 st_write(income_stats, "data_for_viz/income_stats.geojson")
 
+```
+
+# Population Change
+```{r}
+
+### ACS Data for every year
+
+#2016 Per Capita Income By Census Tract 2010
+pop_2016 <- get_acs(geography = "tract", 
+              variables = c(population = "B03002_001"), 
+               state = "MD", 
+               year = 2016,
+               geometry = TRUE,
+               output = "wide") %>% 
+  mutate(year=("2016")) %>% 
+  clean_names() %>%
+    separate(name, into=c("tract","name","state"), sep=",") %>%
+    mutate(
+      state = str_trim(state,side="both"),
+      name = str_trim(name,side="both")
+      ) 
+
+#2010 Per Capita Income By Census Tract 2010
+pop_2010 <- get_acs(geography = "tract", 
+              variables = c(population = "B03002_001"), 
+               state = "MD", 
+               year = 2010,
+               geometry = TRUE, 
+               output = "wide") %>% 
+  mutate(year=("2010")) %>% 
+   clean_names() %>%
+    separate(name, into=c("tract","name","state"), sep=",") %>%
+    mutate(
+      state = str_trim(state,side="both"),
+      name = str_trim(name,side="both")
+      )
+
+#2020 Per Capita Income By Census Tract 2010
+pop_2020 <- get_acs(geography = "tract", 
+              variables = c(population = "B03002_001"), 
+               state = "MD", 
+               year = 2020,
+               geometry = TRUE,
+               output = "wide") %>% 
+  mutate(year=("2020")) %>% 
+   clean_names() %>%
+    separate(name, into=c("tract","name","state"), sep=",") %>%
+    mutate(
+      state = str_trim(state,side="both"),
+      name = str_trim(name,side="both")
+      ) 
+
+
+### binding together all 3 
+pop_all <- rbind(pop_2010, pop_2016, pop_2020) %>%
+  filter(name == "Baltimore city") 
+
+pivoted_pop <- pop_all %>%
+  st_drop_geometry() %>%
+  dplyr::select(-population_m) %>%
+  pivot_wider(names_from= year, values_from=c("population_e"))
+
+
+## incorporating CSAs
+csa <- read_csv("balt_census_crosswalks_2020.csv") %>%
+  rename(
+    geoid = GEOID_Tract_2020
+  ) %>%
+  clean_names()
+
+csa$geoid <- as.character(csa$geoid)
+
+## 2020 geoms
+geoms_2020 <- pop_all %>%
+  filter(year == "2020")
+
+wgs <- "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"
+
+
+balt_neighborhood_pop <- pivoted_pop %>% 
+  clean_names() %>%
+  right_join(csa, by=c("geoid")) %>% 
+  distinct()%>% 
+  rename(neighborhood = community_statistical_area_2020,
+  census = tract_2020) %>%
+  left_join(geoms_2020) %>%
+  st_as_sf(crs = wgs)
+  
+
+st_write(balt_neighborhood_pop, "data_for_viz/balt_neighborhood_pop.geojson")
 
 
 ```
 
+# Small multiples 
+```{r}
 
+## race by neighborhood 2010 
+race_2010 <- get_acs(geography = "tract", 
+              variables = c(population = "B03002_001",
+                            white_pop = "B03002_003",
+                            black_pop = "B03002_004",
+                            hisp_lat_pop = "B03002_012",
+                             asian_pop = "B03002_006"), 
+               state = "MD", 
+               year = 2010,
+               geometry = TRUE,
+               output = "wide") %>% 
+  mutate(year=("2010")) %>% 
+  clean_names() %>%
+    separate(name, into=c("tract","name","state"), sep=",") %>%
+    mutate(
+      state = str_trim(state,side="both"),
+      name = str_trim(name,side="both")
+      ) 
+
+## race by neighborhood 2020 
+race_2020 <- get_acs(geography = "tract", 
+              variables = c(population = "B03002_001",
+                            white_pop = "B03002_003",
+                            black_pop = "B03002_004",
+                            hisp_lat_pop = "B03002_012",
+                             asian_pop = "B03002_006"), 
+               state = "MD", 
+               year = 2020,
+               geometry = TRUE,
+               output = "wide") %>% 
+  mutate(year=("2020")) %>% 
+  clean_names() %>%
+    separate(name, into=c("tract","name","state"), sep=",") %>%
+    mutate(
+      state = str_trim(state,side="both"),
+      name = str_trim(name,side="both")
+      ) 
+
+binded <- pop_all <- rbind(race_2010, race_2020) %>%
+  filter(name == "Baltimore city") 
+
+pivoted_demos <- binded %>%
+  st_drop_geometry() %>%
+  dplyr::select(-population_m, -white_pop_m, -black_pop_m, -hisp_lat_pop_m, -asian_pop_m) %>%
+  pivot_wider(names_from= year, values_from=c("population_e", "white_pop_e", "black_pop_e", "hisp_lat_pop_e", "asian_pop_e")) %>%
+  mutate(
+    pop_change = (population_e_2020 - population_e_2010)
+  )
+
+pivoted_demos_w_neighborhoods <- pivoted_demos %>% 
+  clean_names() %>%
+  right_join(csa, by=c("geoid")) %>% 
+  distinct()%>% 
+  rename(neighborhood = community_statistical_area_2020,
+  census = tract_2020) %>%
+  left_join(geoms_2020) %>%
+  st_as_sf(crs = wgs) %>% 
+  dplyr::select(-population_e, -population_m, -year)
+
+st_write(pivoted_demos_w_neighborhoods, "data_for_viz/balt_demos.geojson")
+
+
+```

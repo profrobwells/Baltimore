@@ -1,0 +1,11 @@
+name: shiny_app
+title:
+username:
+account: shreyavut
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7799163
+bundleId: 6583632
+url: https://shreyavut.shinyapps.io/shiny_app/
+when: 1670014551.74457
+lastSyncTime: 1670014551.74458

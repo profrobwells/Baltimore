@@ -78,7 +78,7 @@ server <- function(input, output, session){
               group = "Neighborhood",
               data = percap_income_table,
               color = "Gray",
-              weight = 1,
+              weight = 1.5,
               label = percap_income_table$community_statistical_area_2020,
               fillOpacity = 0.75,
               #options = layersControlOptions(collapsed = FALSE)
@@ -86,8 +86,8 @@ server <- function(input, output, session){
           addPolylines(
               group = "Redlining Zones",
               data = redlining,
-              color = "Red",
-              weight = 5,
+              color = "#FF7F7F",
+              weight = 3,
               smoothFactor = 1
             ) %>%
           addLegend(
@@ -128,18 +128,18 @@ server <- function(input, output, session){
           group = "Neighborhood",
           data = percap_income_table,
           color = "Gray",
-          weight = 1,
+          weight = 1.5,
           label = percap_income_table$community_statistical_area_2020,
           fillOpacity = 0.75,
-          options = layersControlOptions(collapsed = FALSE)
-        ) %>% 
+          #options = layersControlOptions(collapsed = FALSE)
+        ) %>%
         addPolylines(
           group = "Redlining Zones",
           data = redlining,
-          color = "Red",
-          weight = 5,
+          color = "#FF7F7F",
+          weight = 3,
           smoothFactor = 1
-        ) %>%
+        )  %>%
         #clearShapes() %>%
         #clearControls() %>%
       addLegend(

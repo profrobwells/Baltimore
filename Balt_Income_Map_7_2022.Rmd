@@ -266,7 +266,6 @@ min %>%
 ```
 
 
-
 # Statewide median income by place
 
 ```{r}

@@ -215,15 +215,15 @@ grouped_neighborhoods <- pivoted_demos_w_neighborhoods %>%
   )
 
 ## top losing population census tracts
-top_5_losers <- pivoted_demos_w_neighborhoods %>%
+top_10_losers <- pivoted_demos_w_neighborhoods %>%
   arrange(pop_change) %>%
-  head(5) %>%
+  head(10) %>%
   st_as_sf(crs = wgs) 
 
 st_write(top_8_losers, "data_for_viz/top_5_losing_tracts.geojson")
 
 top_8_losers %>%
-  head(5) %>%
-  sum()
+  head() %>%
+  sum(pop_change)
 
 ```

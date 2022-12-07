@@ -68,17 +68,18 @@ server <- function(input, output, session){
           addPolygons(
             data = race_and_income_table,
             color = ~pal(race_and_income_table[[group_to_map()]]),
-            weight = 2.5,
-            smoothFactor = 0.2,
-            fillOpacity = 0.6,
-            highlightOptions = highlightOptions(stroke = 4, weight = 4, color = "White", opacity =1, bringToFront = TRUE),
+            weight = 0.5,
+            #smoothFactor = 0.2,
+            fillOpacity = 0.7,
+            highlightOptions = highlightOptions(weight = 4, stroke = 4, color = "#5A5A5A", opacity =1),
             label = paste0(" Per capita income change is: ",(scales::dollar(race_and_income_table$'Change in Per Capita Income')))
           ) %>%
           clearControls %>%
           addPolylines(
               group = "Neighborhood",
               data = percap_income_table,
-              color = "Gray",
+              color = "#5A5A5A",
+              opacity = 0,
               weight = 1.5,
               label = percap_income_table$community_statistical_area_2020,
               #options = layersControlOptions(collapsed = FALSE)
@@ -87,7 +88,7 @@ server <- function(input, output, session){
               group = "Redlining Zones",
               data = redlining,
               color = "#FF7F7F",
-              weight = 3,
+              weight = 2,
               smoothFactor = 1
             ) %>%
           addLegend(
@@ -118,17 +119,18 @@ server <- function(input, output, session){
       addPolygons(#group = "Black Population",
           data = race_and_income_table,
           color = ~race_pal(race_and_income_table[[group_to_map()]]),
-          weight = 2.5,
+          weight = 0.5,
           smoothFactor = 0.2,
           fillOpacity = 0.7,
           ### add percent sign 
-          highlightOptions = highlightOptions(stroke = 4, weight = 4, color = "White", opacity =1, bringToFront = TRUE),
+          highlightOptions = highlightOptions(stroke = 4, weight = 4, color = "#5A5A5A", opacity =1),
           label = paste0(input$race, " is", " ", race_and_income_table[[group_to_map()]],"%", " for", " ",race_and_income_table$Neighborhood, " |", " Per capita income change is: ",(scales::dollar(race_and_income_table$'Change in Per Capita Income')))
         ) %>%
         addPolylines(
           group = "Neighborhood",
           data = percap_income_table,
-          color = "Gray",
+          color = "#5A5A5A",
+          #opacity = 0,
           weight = 1.5,
           label = percap_income_table$community_statistical_area_2020,
           fillOpacity = 1
@@ -138,7 +140,7 @@ server <- function(input, output, session){
           group = "Redlining Zones",
           data = redlining,
           color = "#FF7F7F",
-          weight = 3,
+          weight = 2,
           smoothFactor = 1
         )  %>%
         #clearShapes() %>%

@@ -71,6 +71,7 @@ server <- function(input, output, session){
             weight = 2.5,
             smoothFactor = 0.2,
             fillOpacity = 0.6,
+            highlightOptions = highlightOptions(stroke = 4, weight = 4, color = "White", opacity =1, bringToFront = TRUE),
             label = paste0(" Per capita income change is: ",(scales::dollar(race_and_income_table$'Change in Per Capita Income')))
           ) %>%
           clearControls %>%
@@ -80,7 +81,6 @@ server <- function(input, output, session){
               color = "Gray",
               weight = 1.5,
               label = percap_income_table$community_statistical_area_2020,
-              fillOpacity = 0.75,
               #options = layersControlOptions(collapsed = FALSE)
             ) %>%
           addPolylines(
@@ -122,6 +122,7 @@ server <- function(input, output, session){
           smoothFactor = 0.2,
           fillOpacity = 0.7,
           ### add percent sign 
+          highlightOptions = highlightOptions(stroke = 4, weight = 4, color = "White", opacity =1, bringToFront = TRUE),
           label = paste0(input$race, " is", " ", race_and_income_table[[group_to_map()]],"%", " for", " ",race_and_income_table$Neighborhood, " |", " Per capita income change is: ",(scales::dollar(race_and_income_table$'Change in Per Capita Income')))
         ) %>%
         addPolylines(
@@ -130,7 +131,7 @@ server <- function(input, output, session){
           color = "Gray",
           weight = 1.5,
           label = percap_income_table$community_statistical_area_2020,
-          fillOpacity = 0.75,
+          fillOpacity = 1
           #options = layersControlOptions(collapsed = FALSE)
         ) %>%
         addPolylines(

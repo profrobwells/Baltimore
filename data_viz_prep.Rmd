@@ -202,3 +202,28 @@ st_write(pivoted_demos_w_neighborhoods, "data_for_viz/balt_demos.geojson")
 
 
 ```
+
+
+```{r}
+
+grouped_neighborhoods <- pivoted_demos_w_neighborhoods %>%
+  #st_drop_geometry() %>%
+  group_by(neighborhood) %>%
+  summarize(
+   avg_pop_2010 = mean(population_e_2020),
+   avg_pop_2020 = mean(population_e_2010)
+  )
+
+## top losing population census tracts
+top_5_losers <- pivoted_demos_w_neighborhoods %>%
+  arrange(pop_change) %>%
+  head(5) %>%
+  st_as_sf(crs = wgs) 
+
+st_write(top_8_losers, "data_for_viz/top_5_losing_tracts.geojson")
+
+top_8_losers %>%
+  head(5) %>%
+  sum()
+
+```

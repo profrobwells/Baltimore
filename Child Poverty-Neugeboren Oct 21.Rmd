@@ -214,3 +214,22 @@ balt_poverty %>%
 
 
 ```
+
+#Wells ggplot
+```{r}
+balt_poverty %>% 
+  select(csa2020, hhchpov20) %>% 
+  mutate(hhchpov20 =round(hhchpov20,1)) %>% 
+  slice_max(hhchpov20, n=10) %>% 
+  #aes(x = reorder(f.name, -age), y = age))
+  ggplot(aes(x = reorder (csa2020, -hhchpov20), y=hhchpov20, fill=hhchpov20)) +
+  #ggplot(aes(y=hhchpov20, x=csa2020, fill=hhchpov20)) +
+  geom_col(position = "dodge", show.legend = FALSE) +
+  coord_flip() +
+  geom_text(aes(label= hhchpov20), hjust=-1, vjust=0) +
+  labs(title = "Top Child Poverty in Baltimore",
+       caption = "Graphic by Rob Wells / Eric Neugeborn, 12-8-22",
+       y="Neighborhood",
+       x="Pct Child Poverty 2020")
+
+```

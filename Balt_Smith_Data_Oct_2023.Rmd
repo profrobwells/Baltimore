@@ -79,9 +79,111 @@ write.csv(smith1, "smith1_balt.csv")
 
 ### Analysis of Smith Data
 
+```{r}
+#199 census tracts
+#25 zip codes (totalling 199 areas, but need to check boundaries)
+x<- smith %>% 
+  group_by(zip) %>% 
+  count () 
+sum(x$n)
+
+#per capita income seems way too low
+median(smith$income_per_capita, na.rm = TRUE) #22653.77
+
+median(smith$pct_anymembershp_zip, na.rm = TRUE) #0.455563
+summary(smith$pct_anymembershp_zip, na.rm = TRUE) 
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#  0.3353  0.4444  0.4556  0.4613  0.4752  0.5241       1 
+
+median(smith$nbanks_zip, na.rm = TRUE) #5
+summary(smith$nbanks_zip, na.rm = TRUE) 
+  # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  # 0.000   2.000   5.000   5.869   8.000  14.000       1 
+
+median(smith$census_response_rate2020, na.rm = TRUE) #0.564
+summary(smith$census_response_rate2020, na.rm = TRUE)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#  0.2830  0.4753  0.5640  0.5594  0.6522  0.8360       3 
+
+smith2 <- read_csv("smith1_balt.csv")
 
 
 
+```
+
+## Membership & Income
+
+```{r}
+#communities with greater than median membership - 46%- but less than median income - $22,654
+smith2 %>% 
+  group_by(neighborhood) %>% 
+  select(pct_anymembershp_zip, income_per_capita) %>% 
+  arrange(desc(pct_anymembershp_zip)) %>% 
+  filter(pct_anymembershp_zip >= 0.455563) %>% 
+  filter(income_per_capita <= 22653.77)
+
+
+```
+## Census Response + Income
+```{r}
+#communities in the upper quartile of census response - 65%- but less than median income - $22,654
+smith2 %>% 
+  group_by(neighborhood) %>% 
+  select(census_response_rate2020, income_per_capita, pct_anymembershp_zip, nbanks_zip) %>% 
+  arrange(desc(census_response_rate2020)) %>% 
+  filter(census_response_rate2020 >= 0.6522) %>% 
+  filter(income_per_capita <= 22653.77)
+
+
+```
+
+```{r}
+
+#communities in the upper quartile of census response - 65%- and upper quartile of membership - 46%
+smith2 %>% 
+  group_by(neighborhood) %>% 
+  select(census_response_rate2020, income_per_capita, pct_anymembershp_zip, nbanks_zip) %>% 
+  arrange(desc(census_response_rate2020)) %>% 
+  filter(census_response_rate2020 >= 0.6522) %>% 
+    filter(pct_anymembershp_zip >= 0.4613) %>% 
+  arrange((income_per_capita))
+
+
+```
+
+## Notes
+--run a correlation on census response and income. run a correlation on banks and income. run a correlation on membership and income
+
+corr(d, w = rep(1, nrow(d))/nrow(d)
+
+cov(x, y = NULL, use = "everything",
+    method = c("pearson", "kendall", "spearman"))
+
+
+## fact check income
+```{r}
+baltcity_income_clean <- read.csv("baltcity_income_clean.csv")
+
+median(baltcity_income_clean$x2020, na.rm = TRUE)
+#B19013_001 is the household median income: 49875
+
+baltcity_percap_income <- read_csv("baltcity_percap_income.csv") %>% 
+  as.data.frame()
+median(baltcity_percap_income$x2020, na.rm = TRUE)
+
+#23422
+```
+
+```{r}
+
+library(janitor)
+total %>%
+  adorn_totals("row")
+
+smith %>% 
+  adorn_totals("row")
+
+```
 
 There are two major functions implemented in tidycensus: get_decennial,
 which grants access to the 1990, 2000, and 2010 decennial US Census APIs

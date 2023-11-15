@@ -38,7 +38,7 @@ Census API key.
 census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE, overwrite = TRUE)
 ```
 
-# Import Smith School Data
+# Import Smith School Baltimore Data
 ```{r}
 googlesheets4::gs4_deauth()
 smith <- read_sheet("https://docs.google.com/spreadsheets/d/1RheKDdtsToCcSLnZoZBYwtN_ISw6E2kgPIQpDQE_BYw/edit?usp=sharing") %>% 
@@ -1034,6 +1034,35 @@ B19080 	Household Income Quintile Upper Limits
 B19081 	Mean Household Income of Quintiles
 B19082 	Shares of Aggregate Household Income by Quintile
 B19083 	Gini Index of Income Inequality
+
+# --------------------------------------
+# Maryland Data Import:  Smith School 
+# --------------------------------------
+
+```{r}
+md <- rio::import("/Users/gizmofo/Library/CloudStorage/GoogleDrive-robwells@umd.edu/My Drive/Baltimore Jour 327 Spring 2024/maryland_tracts.xls") %>% 
+  as.data.frame()
+
+md <- md %>% 
+  clean_names() %>% 
+  mutate(census = as.character(tract))
+
+cross <- rio::import("../output/md_internet_tracts_2020.csv") %>% 
+    mutate(census = as.character(GEOID))
+
+# cross <- rio::import("../data/census_md_place_crosswalk.txt") %>% 
+#   select(NAMELSAD_PLACE_20, GEOID_PLACE_20, OID_PLACE_10) %>% 
+#   mutate(census = as.character(OID_PLACE_10)) 
+
+
+md_named <- md %>% 
+  inner_join(cross, by=c("census"))
+#not a great join - md had 1388 records, md_named 1268 so lost 120 records
+
+write.csv(md_named, "../output/md_smith_data_11.14.csv")
+
+#https://www.nhgis.org/geographic-crosswalks
+```
 
 # --------------------------------------
 # Work in Progress Below

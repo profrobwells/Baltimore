@@ -27,6 +27,7 @@ library(formattable)
 library(dplyr)
 library(tidyr)
 library(janitor)
+#install.packages("leaflet.extras")
 library(leaflet.extras)
 library(googlesheets4)
 
@@ -1040,28 +1041,23 @@ B19083 	Gini Index of Income Inequality
 # --------------------------------------
 
 ```{r}
-md <- rio::import("/Users/gizmofo/Library/CloudStorage/GoogleDrive-robwells@umd.edu/My Drive/Baltimore Jour 327 Spring 2024/maryland_tracts.xls") %>% 
+md <- rio::import("../data/maryland_tracts.xls") %>% 
   as.data.frame()
 
 md <- md %>% 
   clean_names() %>% 
-  mutate(census = as.character(tract))
+  mutate(census = as.character(tract)) %>% 
+  mutate(county = as.numeric(strtrim(tract, 5)))
 
-cross <- rio::import("../output/md_internet_tracts_2020.csv") %>% 
-    mutate(census = as.character(GEOID))
-
-# cross <- rio::import("../data/census_md_place_crosswalk.txt") %>% 
-#   select(NAMELSAD_PLACE_20, GEOID_PLACE_20, OID_PLACE_10) %>% 
-#   mutate(census = as.character(OID_PLACE_10)) 
-
+#MD counties
+md_counties <- rio::import("/Users/robwells/Downloads/md_counties_geoids.txt")
 
 md_named <- md %>% 
-  inner_join(cross, by=c("census"))
-#not a great join - md had 1388 records, md_named 1268 so lost 120 records
+  inner_join(md_counties, by=c("county"="GEOID"))
 
-write.csv(md_named, "../output/md_smith_data_11.14.csv")
+write.csv(md_named, "../output/md_smith_data_12.16.csv")
 
-#https://www.nhgis.org/geographic-crosswalks
+
 ```
 
 # --------------------------------------
@@ -1474,4 +1470,82 @@ percap2_income %>%
   summarize(mean(x2020, na.rm=TRUE))
 
 
+```
+
+# --------------------------------------
+# Notes on zip codes, census tracts
+# --------------------------------------
+
+```{r}
+#library(tidycensus)
+md_tract <- get_acs(
+  geography = "tract",
+  state = "Maryland",
+  variables = c(medinc = "B19013_001"),
+  year = 2022,
+  output = "wide"
+)
+
+#library(tidycensus)
+md_tract2 <- get_decennial(
+  geography = "tract",
+  state = "Maryland",
+ variables = "P005003",
+  year = 2010,
+  output = "wide"
+)
+#https://www.rdocumentation.org/packages/tidycensus/versions/1.5/topics/get_decennial
+md_tract %>% 
+  count(GEOID) %>% 
+  arrange(desc(n))
+
+cross <- rio::import("../output/md_internet_tracts_2020.csv") %>% 
+    mutate(census = as.character(GEOID))
+
+mdplace <- rio::import("/Users/robwells/Downloads/OID_PLACE_20.txt") %>% 
+  as.data.frame()
+
+
+# cross <- rio::import("../data/census_md_place_crosswalk.txt") %>% 
+#   select(NAMELSAD_PLACE_20, GEOID_PLACE_20, OID_PLACE_10) %>% 
+#   mutate(census = as.character(OID_PLACE_10)) 
+
+
+md_named <- md %>% 
+  inner_join(cross, by=c("census"))
+#not a great join - md had 1388 records, md_named 1268 so lost 120 records
+md_named2 <- md %>% 
+  inner_join(md_tract, by=c("census"="GEOID"))
+
+
+md_named1 <- md %>% 
+  left_join(cross, by=c("census"))
+
+anti_md_named <- md %>% 
+  anti_join(cross, by=c("census"))
+
+write.csv(md_named, "../output/md_smith_data_11.14.csv")
+
+#https://www.nhgis.org/geographic-crosswalks
+
+
+
+#MD Zip Codes
+#https://geodata.md.gov/imap/rest/services/Boundaries/MD_PoliticalBoundaries/FeatureServer/3
+# In This Form:
+# Where 0=0
+# Out Fields= *
+# Return Geometery - Yes
+# False for everything else
+# Format: Html or JSON
+library(jsonlite)
+qq <- fromJSON('https://geodata.md.gov/imap/rest/services/Boundaries/MD_PoliticalBoundaries/FeatureServer/3/query?where=0%3D0&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&having=&gdbVersion=&historicMoment=&returnDistinctValues=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&multipatchOption=xyFootprint&resultOffset=&resultRecordCount=&returnTrueCurves=false&returnExceededLimitFeatures=false&quantizationParameters=&returnCentroid=false&sqlFormat=none&resultType=&featureEncoding=esriDefault&f=pjson')
+
+md_zip <- qq[["features"]][["attributes"]]
+
+md_zip <- md_zip %>% 
+  mutate(zip = as.numeric(ZIPCODE1))
+
+anti_md_zips <- anti_md_named %>% 
+  inner_join(md_zip, by=c("zip"))
 ```

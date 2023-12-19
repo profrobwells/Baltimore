@@ -360,7 +360,7 @@ leafMap <- leaflet() %>%
     title = "Pct Membership <br> 2020"
   )
 
-saveWidget(leafMap, "leafMap.html")
+saveWidget(leafMap, "../membership_map_dec_18.html")
 leafMap
 ```
 
@@ -434,7 +434,7 @@ leafMap <- leaflet() %>%
     title = "Median Income Change<br>Per Census Tract <br> 2010 to 2020"
   )
 
-saveWidget(leafMap, "leafMap.html")
+saveWidget(leafMap, "lealMap.html")
 leafMap
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: "Baltimore Income Map"
+title: "Smith School - Baltimore Data Income Map"
 author: "Rob Wells"
 date: "7/21/2022"
 output: html_document
@@ -56,13 +56,13 @@ smith <- smith %>%
 #join Community Statistical Area names
 #associates neighborhood names to Census Tracts using Community Statistical Areas, 2010 https://bniajfi.org/mapping-resources/
 #Baltimore has 56 neighborhoods as measured by Community Statistical Areas
-csa <- read_csv("balt_census_crosswalks_2020.csv") %>%
+csa <- read_csv("../data/balt_census_crosswalks_2020.csv") %>%
   rename(
     geoid = GEOID_Tract_2020
   ) %>%
   clean_names()
 
-smith$tract <- as.character(smith$tract)
+#smith$tract <- as.character(smith$tract)
 
 smith1 <- smith  %>% 
   right_join(csa, by=c("tract"="geoid")) %>% 
@@ -73,7 +73,9 @@ smith1<- smith1 %>%
   rename(neighborhood = community_statistical_area_2020,
   census = tract_2020)
 
-write.csv(smith1, "smith1_balt.csv")
+#write.csv(smith1, "smith1_balt.csv")
+
+
 
 ```
 
@@ -81,6 +83,7 @@ write.csv(smith1, "smith1_balt.csv")
 ### Analysis of Smith Data
 
 ```{r}
+smith <- read.csv("../data/smith1_balt.csv")
 #199 census tracts
 #25 zip codes (totalling 199 areas, but need to check boundaries)
 x<- smith %>% 
@@ -89,25 +92,22 @@ x<- smith %>%
 sum(x$n)
 
 #per capita income seems way too low
-median(smith$income_per_capita, na.rm = TRUE) #22653.77
+median(smith$income_per_capita, na.rm = TRUE) #22789.76
 
 median(smith$pct_anymembershp_zip, na.rm = TRUE) #0.455563
 summary(smith$pct_anymembershp_zip, na.rm = TRUE) 
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-#  0.3353  0.4444  0.4556  0.4613  0.4752  0.5241       1 
+#  0.3353  0.4444  0.4556  0.4613  0.4752  0.5241       3 
 
 median(smith$nbanks_zip, na.rm = TRUE) #5
 summary(smith$nbanks_zip, na.rm = TRUE) 
   # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-  # 0.000   2.000   5.000   5.869   8.000  14.000       1 
+  # 0.000   2.000   5.000   5.847   8.000  14.000       3 
 
 median(smith$census_response_rate2020, na.rm = TRUE) #0.564
 summary(smith$census_response_rate2020, na.rm = TRUE)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 #  0.2830  0.4753  0.5640  0.5594  0.6522  0.8360       3 
-
-smith2 <- read_csv("smith1_balt.csv")
-
 
 
 ```
@@ -115,13 +115,13 @@ smith2 <- read_csv("smith1_balt.csv")
 ## Membership & Income
 
 ```{r}
-#communities with greater than median membership - 46%- but less than median income - $22,654
-smith2 %>% 
+#communities with greater than median membership - 46%- but less than median income - $22,790
+himember <- smith %>% 
   group_by(neighborhood) %>% 
-  select(pct_anymembershp_zip, income_per_capita) %>% 
+  select(pct_anymembershp_zip, income_per_capita, tract) %>% 
   arrange(desc(pct_anymembershp_zip)) %>% 
   filter(pct_anymembershp_zip >= 0.455563) %>% 
-  filter(income_per_capita <= 22653.77)
+  filter(income_per_capita <= 22789.76)
 
 
 ```
@@ -280,6 +280,88 @@ baltcity_income <- baltcity_income %>%
 
 # write.csv(baltcity_income, "baltcity_income.csv")
 # write_rds(baltcity_income, "baltcity_income.rds")
+```
+
+# Map High Membership, Below Median Communities
+
+
+```{r}
+#subset the geometry
+md_income2020_geo <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2020, geometry = TRUE) %>% 
+  mutate(year=("2020")) %>% 
+  select(GEOID, NAME)
+
+himember <- himember %>% 
+  mutate(GEOID = as.character(tract))
+
+#join geocoordinates with baltcity
+himember2 <- md_income2020_geo  %>% 
+ right_join(himember, by=c("GEOID")) %>% 
+ distinct()
+
+himember2$pct_anymembershp_zip <- formattable::percent(himember2$pct_anymembershp_zip, 1)
+
+himember2$income_per_capita <-
+  paste0('$', round(himember2$income_per_capita,0))
+
+# #join Community Statistical Area names
+# #associates neighborhood names to Census Tracts using Community Statistical Areas, 2010 https://bniajfi.org/mapping-resources/
+# #Baltimore has 56 neighborhoods as measured by Community Statistical Areas
+# csa <- read_csv("balt_census_crosswalks_2020.csv") %>%
+#   rename(
+#     geoid = GEOID_Tract_2020
+#   ) %>%
+#   clean_names()
+# 
+# csa$geoid <- as.character(csa$geoid)
+# 
+# baltcity_income <- baltcity_income  %>% 
+#   clean_names() %>%
+#   right_join(csa, by=c("geoid")) %>% 
+#   distinct() 
+# 
+# #Rename Columns
+# baltcity_income <- baltcity_income %>% 
+#   rename(neighborhood = community_statistical_area_2020,
+#   census = tract_2020)
+
+#write_rds(baltcity_income, "baltcity_income.rds")
+#write.csv(baltcity_income, "baltcity_income.csv")
+#Census Tracts 1801, 1802 have no data for 2020, but have data for 2010, 2016
+
+```
+
+```{r}
+#Map by Median Income Difference
+himember2 <- himember2 %>% 
+  sf::st_transform('+proj=longlat +datum=WGS84')
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = himember2$pct_anymembershp_zip
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = himember2,
+              color = ~pal(pct_anymembershp_zip),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = paste("Pct membership in civic groups is:",(himember2$pct_anymembershp_zip), "and income is",(himember2$income_per_capita), "in", (himember2$neighborhood))) %>% 
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = himember2$pct_anymembershp_zip,
+    title = "Pct Membership <br> 2020"
+  )
+
+saveWidget(leafMap, "leafMap.html")
+leafMap
 ```
 
 # Map Median Income by Census Tract

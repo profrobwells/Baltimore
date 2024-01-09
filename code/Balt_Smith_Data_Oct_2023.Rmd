@@ -1264,10 +1264,122 @@ write_csv(sba_baltimore_7a, "../data/sba_baltimore_7a.csv")
 
 ```
 
+# using Census xy
+```{r}
+
+sba_baltimore_7a <- read.csv("../data/sba_baltimore_7a.csv")
+install.packages("sf")
+
+## install all suggested dependencies
+install.packages("censusxy", dependencies = TRUE)
+#https://www.rdocumentation.org/packages/censusxy/versions/1.1.1
+
+library(censusxy)
+
+sba_sf <- cxy_geocode(sba_baltimore_7a, street = "BorrStreet", city = "BorrCity", state = "BorrState", zip = "BorrZip", output = "simple", class = "sf")
+
+
+# Load the necessary libraries
+library(sf)
+library(sp)
+
+# Set your Census Bureau API key
+census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE, overwrite = TRUE)
+# Convert your data frame to a spatial data frame
+coordinates(sba-sf) <- ~long+lat
+
+# Get the census tracts
+tracts <- get_acs(geography = "tract", variables = "B19013_001", 
+                  state = "MD", county = "Baltimore City", geometry = TRUE)
+
+# Spatially join your data to the tracts
+
+
+# Load the sf library
+library(sf)
+
+# Assuming df1 is your data frame with lat and lon columns
+# Convert df1 to an sf object
+#df1_sf <- st_as_sf(df1, coords = c("lon", "lat"), crs = 4326)
+sba_sf1 <- st_as_sf(sba_sf, coords = c("lon", "lat"), crs = 4326)
+
+
+# Assuming tracts is your sf object with polygons
+# Make sure tracts is in the same CRS as df1_sf
+tracts <- st_transform(tracts, 4326)
+
+
+sba_sf1 <- st_transform(sba_sf1, st_crs(tracts))
+
+# Perform the spatial join
+sba_7a_tracts <- st_join(sba_sf1, tracts) %>% 
+  as.data.frame()
+
+#28 entries not from the city of baltimore!
+not_baltimore <- sba_7a_tracts %>% 
+  filter(is.na(NAME))
+
+
+write.csv(sba_7a_tracts, "../data/baltimore_sba_7a_tracts.csv")
+
+```
+
+#Join SBA to neighborhoods
+
+```{r}
+sba_7a_tracts <- separate(data = sba_7a_tracts, col = NAME, into = c("Census_Tract", "County", "State"), sep = ",", extra = "merge", fill = "right") 
+#B19013_001 is median household income
+
+sba_7a_tracts <- sba_7a_tracts %>% 
+  mutate(tract = str_replace(Census_Tract, "Census Tract ", "")) %>% 
+  mutate(tract = as.numeric(tract))
+
+#join Community Statistical Area names
+#associates neighborhood names to Census Tracts using Community Statistical Areas, 2010 https://bniajfi.org/mapping-resources/
+#Baltimore has 56 neighborhoods as measured by Community Statistical Areas
+csa <- read_csv("../data/balt_census_crosswalks_2020.csv") %>%
+  rename(
+    geoid = GEOID_Tract_2020
+  ) %>%
+  clean_names()
+
+#smith$tract <- as.character(smith$tract)
+
+sba_7a_tracts1 <- sba_7a_tracts  %>% 
+  left_join(csa, by=c("tract"="geoid")) %>% 
+  distinct() 
+
+#Rename Columns
+smith1<- smith1 %>% 
+  rename(neighborhood = community_statistical_area_2020,
+  census = tract_2020)
+
+#write.csv(smith1, "smith1_balt.csv")
+
+```
+
+#Census and SBA 7a analysis
+```{r}
+
+
+summary(sba_7a_tracts$estimate)
+ # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+ #  14081   42676   61346   70728   93872  202292      28 
+   
+#median household income data
+summary(tracts$estimate)
+  #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  # 13456   38198   50509   58683   67493  211667       4 
+
+# the SBA 7a loans come from Baltimore Census tracts that are 121% wealthier than the typical baltimore household median household income
+
+```
+
 
 ## Convert lat-long to census blocks
 https://www.fcc.gov/general/census-block-conversions-api-v100
 ```{r}
+
 
 
 

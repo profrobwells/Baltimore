@@ -40,6 +40,7 @@ census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE, overw
 ```
 
 # Import Smith School Baltimore Data
+NOTE: Skip to line 87 and Analysis of Smith Data
 ```{r}
 googlesheets4::gs4_deauth()
 smith <- read_sheet("https://docs.google.com/spreadsheets/d/1RheKDdtsToCcSLnZoZBYwtN_ISw6E2kgPIQpDQE_BYw/edit?usp=sharing") %>% 
@@ -121,27 +122,54 @@ himember <- smith %>%
   select(pct_anymembershp_zip, income_per_capita, tract) %>% 
   arrange(desc(pct_anymembershp_zip)) %>% 
   filter(pct_anymembershp_zip >= 0.455563) %>% 
-  filter(income_per_capita <= 22789.76)
+  filter(income_per_capita <= 22789.76) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) %>% 
+  
+  himember$income_per_capita <- formattable::currency(himember$income_per_capita, digits =0L)
+  
 
+library(kableExtra)
+himember %>%
+  rename(Neighborhood = neighborhood, Membership = pct_anymembershp_zip, Per_Capita_Income = income_per_capita, Census_Tract = tract) %>% 
+  kbl(caption = "Communities With Greater than Median Membership - 46%- but Less than Median Income - $22,790", font_size = 50, bold=T) %>%
+  kable_classic(full_width = T, html_font = "Cambria") %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, border_right = T, width = "10em", background = "yellow") %>% 
+  column_spec(3, border_right = T, width = "10em") %>% 
+  save_kable(file = "../DataOutput/himember.html", self_contained = T)
 
 ```
 ## Census Response + Income
 ```{r}
 #communities in the upper quartile of census response - 65%- but less than median income - $22,654
-smith2 %>% 
+hicensus <- smith %>% 
   group_by(neighborhood) %>% 
-  select(census_response_rate2020, income_per_capita, pct_anymembershp_zip, nbanks_zip) %>% 
+  select(census_response_rate2020, income_per_capita, pct_anymembershp_zip, tract) %>% 
   arrange(desc(census_response_rate2020)) %>% 
   filter(census_response_rate2020 >= 0.6522) %>% 
-  filter(income_per_capita <= 22653.77)
+  filter(income_per_capita <= 22653.77) %>% 
+  mutate(census_response_rate2020 = formattable::percent(census_response_rate2020)) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+  
+  hicensus$income_per_capita <- formattable::currency(hicensus$income_per_capita, digits =0L)
 
+  
+    hicensus %>%
+  rename(Neighborhood = neighborhood, Census_Response = census_response_rate2020, Per_Capita_Income = income_per_capita, Census_Tract = tract, Membership = pct_anymembershp_zip) %>% 
+  kbl(caption = "Communities in the Upper Quartile of Census Response - 65%- but Less than Median Income - $22,654", font_size = 50, bold=T) %>%
+  kable_classic(full_width = T, html_font = "Cambria") %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, border_right = T, width = "10em", background = "yellow") %>% 
+  column_spec(3, border_right = T, width = "10em") %>% 
+  column_spec(4, border_right = T, width = "10em") %>%     
+  save_kable(file = "../DataOutput/hicensus.html", self_contained = T)
 
 ```
 
 ```{r}
 
 #communities in the upper quartile of census response - 65%- and upper quartile of membership - 46%
-smith2 %>% 
+smith %>% 
   group_by(neighborhood) %>% 
   select(census_response_rate2020, income_per_capita, pct_anymembershp_zip, nbanks_zip) %>% 
   arrange(desc(census_response_rate2020)) %>% 
@@ -1145,8 +1173,167 @@ write.csv(md_named, "../output/md_smith_data_12.16.csv")
 # --------------------------------------
 # Work in Progress Below
 # --------------------------------------
+#SBA data
+Explanation from IRE webpage:
+https://www.ire.org/product/sba-7a-business-loans/
+Description
+
+The SBA 7a business loans database contains information about loans guaranteed by the U.S. Small Business Administration under its main lending program, known as 7a. The data include loans approved by the SBA since 1990, when Congress created the agency to help entrepreneurs form or expand small enterprises. The SBA's 7a program provides loans to small business owners who can't obtain financing through traditional channels. The program operates through private-sector lenders who provide loans that are, in turn, guaranteed by the SBA. The SBA7a program itself has no funds for direct lending or grants. The data contain information on the business getting the loan including address and industry code, the bank lending the money, the amount loaned, and (where applicable) whether the loan was paid in full or charged off.
+
+Explanation of 504 loan program
+
+
+What is the 504 loan program?
+https://www.sba.gov/funding-programs/loans/504-loans
+The 504 Loan Program provides long-term, fixed rate financing for major fixed assets that promote business growth and job creation.
+
+504 loans are available through Certified Development Companies (CDCs), SBA's community-based partners who regulate nonprofits and promote economic development within their communities. CDCs are certified and regulated by SBA.
+
+The maximum loan amount for a 504 loan is $5.5 million. For certain energy projects, the borrower can receive a 504 loan for up to $5.5 million per project, for up to three projects not to exceed $16.5 million total.
+
+
+
+To be eligible for a 504 loan, your business must: 
+
+    Operate as a for-profit company in the United States or its possessions
+    Have a tangible net worth of less than $15 million
+    Have an average net income of less than $5 million after federal income taxes for the two years preceding your application
+
+Other general eligibility standards include  falling within SBA size guidelines, having qualified management expertise, a feasible business plan, good character and the ability to repay the loan.
+
+Loans cannot be made to businesses engaged in nonprofit, passive, or speculative activities. For additional information on eligibility criteria and loan application requirements, small businesses and lenders are encouraged to contact a Certified Development Company in their area.
+
+
 ```{r}
+sba <- rio::import("/Users/robwells/Library/CloudStorage/GoogleDrive-robwells@umd.edu/My Drive/Baltimore Jour 327 Spring 2024/sba7a_sample-1.csv")
+
+
+#https://data.sba.gov/en/dataset/7-a-504-foia/resource/e8023bd1-7d8e-4bd2-8346-47cb6b367beb
+#FOIA - 504 (FY2010-Present) as of 230930.csv
+#These are the 504 loans
+sba2 <- rio::import("/Users/robwells/Library/CloudStorage/GoogleDrive-robwells@umd.edu/My Drive/Baltimore Jour 327 Spring 2024/foia-504-fy2010-present-asof-230930.csv")
+
+#Only 46 records
+sba_baltimore_504 <- sba2 %>% 
+  filter(BorrCity=="Baltimore") %>% 
+   filter(BorrState=="MD")
+
+
+summary(sba_baltimore_504$GrossApproval)
+ #  Min.    1st Qu.  Median    Mean     3rd Qu.      Max. 
+ # 178,000  403,250  715,000 1,044,696 1,460,000 4,415,000 
+
+#FOIA - 7(a)(FY2020-Present) as of 230930.csv
+#https://data.sba.gov/en/dataset/7-a-504-foia/resource/c71ba6cf-b4e0-4e60-98f0-48aeaf4c6460
+
+#these are the 7a Loans
+sba3 <- rio::import("/Users/robwells/Library/CloudStorage/GoogleDrive-robwells@umd.edu/My Drive/Baltimore Jour 327 Spring 2024/foia-7afy2020-present-asof-230930.csv")
+
+#Only 126 records, 2000-2023
+sba_baltimore_7a <- sba3 %>% 
+  filter(BorrCity=="Baltimore") %>% 
+  filter(BorrState=="MD")
+
+summary(sba_baltimore2$GrossApproval)
+   # Min. 1st Qu.     Median     Mean   3rd Qu.    Max. 
+   # 7,500   35,000  100,000  434,700  423,750 4,449,000 
+
+```
+
+## Geocode 7a loans
+
+```{r}
+library(tidyr)
+#install.packages("ggmap")
+library(ggmap)
+register_google(key = " ")
+
+sba_baltimore_7a <- sba_baltimore_7a %>% 
+  mutate(fulladdress = paste(BorrStreet, BorrCity, BorrState, BorrZip, sep = ", "))
+
+sba_baltimore_7a <- sba_baltimore_7a %>% 
+  mutate(geo = geocode(fulladdress)) 
+
+sba_baltimore_7a <- sba_baltimore_7a %>% 
+  unnest(geo)
+
+sba_baltimore_7a <- sba_baltimore_7a %>% 
+  as.data.frame()
+
+write_csv(sba_baltimore_7a, "../data/sba_baltimore_7a.csv")
+
+```
+
+
+## Convert lat-long to census blocks
+https://www.fcc.gov/general/census-block-conversions-api-v100
+```{r}
+
+
+
+# Load the necessary library
+library(httr)
+
+# Define a function to get the census block for a given lat and long
+get_census_block <- function(lat, long) {
+  # Define the base URL for the API
+  base_url <- "https://geo.fcc.gov/api/census/block/find"
+  
+  # Make the GET request
+  response <- GET(url = base_url, query = list(latitude = lat, longitude = long, format = "json"))
+  
+  # Parse the response content to JSON
+  content <- content(response, "parsed")
+  
+  # Return the FIPS code for the census block
+  return(content$Block$FIPS)
+}
+
+# Apply the function to each row in df1
+# df1$census_block <- mapply(get_census_block, df1$lat, df1$long)
+sba_baltimore_7a$census_block <- mapply(get_census_block, sba_baltimore_7a$lat, sba_baltimore_7a$lon)
+# 
+# # Use the function to get the census block for a given lat and long
+# census_block <- get_census_block(lat = 39.34476, long = -76.51560)
+# 
+# # Print the census block
+# print(census_block)
+
+```
+
+
+lynch_geocoded_10.8 <- lynch_geocoded_10.8  %>%
+  unnest(lynching)
+
+lynch_geocoded_10.8 <- lynch_geocoded_10.8  %>%
+    rename(lynching.lon = lon, lynching.lat = lat) 
+
+
+```
+
+
+
+
+#find top zip code neighborhoods by sba loan
+```{r}
+#zip to neighborhood file
+zip <- rio::import("../data/Zip-to-CSA-2010.xls")
+
+zip %>% 
+  count(Zip2010) %>% 
+  arrange(desc(n))
+
+sba_baltimore3 <- sba_baltimore2 %>% 
+  right_join(zip, by=c("BorrZip"="Zip2010"))
+
+```
+
+
+
+
 #race by tract
+```{r}
+
 #join with map - white /nonwhite for tooltip
 #how white / nonwhite changed during the decade by tract
 

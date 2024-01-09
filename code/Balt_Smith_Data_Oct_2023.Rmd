@@ -1246,7 +1246,7 @@ summary(sba_baltimore2$GrossApproval)
 library(tidyr)
 #install.packages("ggmap")
 library(ggmap)
-register_google(key = " ")
+register_google(key = )
 
 sba_baltimore_7a <- sba_baltimore_7a %>% 
   mutate(fulladdress = paste(BorrStreet, BorrCity, BorrState, BorrZip, sep = ", "))

@@ -123,7 +123,7 @@ himember <- smith %>%
   arrange(desc(pct_anymembershp_zip)) %>% 
   filter(pct_anymembershp_zip >= 0.455563) %>% 
   filter(income_per_capita <= 22789.76) %>% 
-  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
   
   himember$income_per_capita <- formattable::currency(himember$income_per_capita, digits =0L)
   

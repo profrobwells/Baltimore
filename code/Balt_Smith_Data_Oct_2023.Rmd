@@ -330,7 +330,7 @@ member_all %>%
   column_spec(1, bold = T, border_right = T) %>%
   column_spec(2, border_right = T, width = "10em", background = "yellow") %>% 
   column_spec(3, border_right = T, width = "10em") %>% 
-  save_kable(file = "../DataOutput/member_all.html", self_contained = T)
+  save_kable(file = "../output/member_all.html", self_contained = T)
 
 ```
 
@@ -378,12 +378,25 @@ leafMap <- leaflet() %>%
               smoothFactor = 0.2,
               fillOpacity = 0.5,
               label = paste("Pct membership in civic groups is:",(member_all2$pct_anymembershp_zip), "and income is",(member_all2$income_per_capita), "in", (member_all2$neighborhood))) %>% 
-  addLegend(
-    position = "bottomright",
-    pal = pal,
-    values = member_all2$pct_anymembershp_zip,
-    title = "Pct Membership <br> 2020"
-  ) %>%
+  # addLegend(
+  #   position = "bottomright",
+  #   pal = pal,
+  #   values = member_all2$pct_anymembershp_zip,
+  #   title = "Pct Membership <br> 2020"
+  # ) %>%
+addControl(
+    html = '<div id="legend" style="background-color: white; padding: 10px; border-radius: 5px; border: 1px solid #ccc; text-align: center;">
+              <p><strong>Pct Membership 2020</strong></p>
+              <div style="background-color: black; height: 20px; width: 30px; display: inline-block;"></div> 30-39%
+              <br>
+              <div style="background-color: #e75480; height: 20px; width: 30px; display: inline-block;"></div> 40-45%
+              <br>
+              <div style="background-color: #fa8072; height: 20px; width: 30px; display: inline-block;"></div> 46-50%
+              <br>
+              <div style="background-color: #ffffbf; height: 20px; width: 30px; display: inline-block;"></div> 51-60%
+           </div>',
+    position = "bottomright"
+  ) %>% 
   addControl(
     html = "<div style='background-color: white; padding: 5px; border-radius: 3px;'><h3>Civil Membership & Income in Baltimore</h3></div>",
     position = "topright"

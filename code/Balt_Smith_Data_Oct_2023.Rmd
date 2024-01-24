@@ -310,6 +310,90 @@ baltcity_income <- baltcity_income %>%
 # write_rds(baltcity_income, "baltcity_income.rds")
 ```
 
+# Map Membership and Income - No Filters
+
+```{r}
+member_all <- smith %>% 
+  group_by(neighborhood) %>% 
+  select(pct_anymembershp_zip, income_per_capita, tract) %>% 
+  arrange(desc(pct_anymembershp_zip)) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+  
+member_all$income_per_capita <- formattable::currency(member_all$income_per_capita, digits =0L)
+  
+
+library(kableExtra)
+member_all %>%
+  rename(Neighborhood = neighborhood, Membership = pct_anymembershp_zip, Per_Capita_Income = income_per_capita, Census_Tract = tract) %>% 
+  kbl(caption = "All Communities By Civic Membership", font_size = 50, bold=T) %>%
+  kable_classic(full_width = T, html_font = "Cambria") %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, border_right = T, width = "10em", background = "yellow") %>% 
+  column_spec(3, border_right = T, width = "10em") %>% 
+  save_kable(file = "../DataOutput/member_all.html", self_contained = T)
+
+```
+
+```{r}
+#subset the geometry
+md_income2020_geo <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2020, geometry = TRUE) %>% 
+  mutate(year=("2020")) %>% 
+  select(GEOID, NAME)
+
+member_all <- member_all %>% 
+  mutate(GEOID = as.character(tract))
+
+#join geocoordinates with baltcity
+member_all2 <- md_income2020_geo  %>% 
+ right_join(member_all, by=c("GEOID")) %>% 
+ distinct()
+
+member_all2$pct_anymembershp_zip <- formattable::percent(member_all2$pct_anymembershp_zip, 1)
+
+# member_all2$income_per_capita <-
+#   paste0('$', round(member_all2$income_per_capita,0))
+
+
+```
+
+```{r}
+#Map by Median Income Difference
+member_all2 <- member_all2 %>% 
+  sf::st_transform('+proj=longlat +datum=WGS84')
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = member_all2$pct_anymembershp_zip
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = member_all2,
+              color = ~pal(pct_anymembershp_zip),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = paste("Pct membership in civic groups is:",(member_all2$pct_anymembershp_zip), "and income is",(member_all2$income_per_capita), "in", (member_all2$neighborhood))) %>% 
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = member_all2$pct_anymembershp_zip,
+    title = "Pct Membership <br> 2020"
+  ) %>%
+  addControl(
+    html = "<div style='background-color: white; padding: 5px; border-radius: 3px;'><h3>Civil Membership & Income in Baltimore</h3></div>",
+    position = "topright"
+  )
+
+saveWidget(leafMap, "../member_all_map_jan_24.html")
+leafMap
+```
+
+
 # Map High Membership, Below Median Communities
 
 

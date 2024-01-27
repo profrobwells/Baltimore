@@ -2,8 +2,17 @@
 title: "Zip Code Business Patterns"
 author: "Rob Wells"
 date: "1/27/2024"
-output: html_document
+output: pdf_document
 ---
+output:
+  pdf_document:
+    keep_tex: true
+    toc: true
+    number_sections: true
+    fig_caption: true
+    latex_engine: xelatex
+---
+
 
 #Zip Code Business Patterns for Baltimore
 
@@ -19,6 +28,7 @@ library(formattable)
 #install.packages("censusapi")
 library(censusapi)
 #https://www.hrecht.com/censusapi/articles/example-list.html#county-business-patterns-and-nonemployer-statistics
+library(htmltools)
 
 # Add key to .Renviron
 Sys.setenv(CENSUS_KEY="9cabe8a191a1f824755d4a1845f13cb08faa2c5f")
@@ -55,6 +65,7 @@ for(zip in baltimore_zips){
 ```
 
 # Definitions of EMP, ESTAB, EMPSZES
+
 ```{r}
 
 # 
@@ -82,8 +93,8 @@ for(zip in baltimore_zips){
 
 ```
 
-
 #List of ZDP Variables
+
 ```{r}
 
 # Results:
@@ -153,8 +164,8 @@ for(zip in baltimore_zips){
 
 ```
 
-
 # FIPS Codes
+
 ```{r}
 
 #https://www.hrecht.com/censusapi/articles/getting-started.html
@@ -201,22 +212,16 @@ zbp_2018 <- getCensus(
 head(zbp_2018)
 
 
-zbp_2018 <- getCensus(
+B_zbp_2018 <- getCensus(
     name = "zbp",
     vintage = 2018,
     vars = c("EMP", "ESTAB", "EMPSZES", "GEO_ID"),
     region = "zipcode:21202, 21297")
 ```
 
+Notes for below zbp_2018 \<- getCensus( name = "zbp", vintage = 2018, vars = c("EMP", "ESTAB", "EMPSZES", "GEO_ID"), region = "zipcode:21202")
+
 ```{r}
-# zbp_2018 <- getCensus(
-#     name = "zbp",
-#     vintage = 2018,
-#     vars = c("EMP", "ESTAB", "EMPSZES", "GEO_ID"),
-#     region = "zipcode:21202")
-
-library(censusapi)
-
 baltimore_zips <- c("21201","21202","21203","21205","21206","21211","21213","21214","21215","21216","21217","21218","21222","21223","21224","21229","21230","21231","21234","21236","21237","21239","21251","21263","21264","21270","21273","21275","21278","21280","21281","21282","21286","21287","21288") 
 
 
@@ -362,10 +367,8 @@ if (status_code(response) == 200) {
 }
 ```
 
-
-
-
 #Test code of cbp
+
 ```{r}
 cbp <- getCensus(
     name = "cbp",

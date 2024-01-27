@@ -1,0 +1,389 @@
+---
+title: "Zip Code Business Patterns"
+author: "Rob Wells"
+date: "1/27/2024"
+output: html_document
+---
+
+#Zip Code Business Patterns for Baltimore
+
+This notebook returns 2018 Baltimore neighborhood business pattern data by zip code using the ZIP Codes Business Patterns (ZBP) APIs
+
+<https://www.census.gov/data/developers/data-sets/cbp-zbp/zbp-api.html>
+
+<https://api.census.gov/data/2018/zbp>
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(formattable)
+#install.packages("censusapi")
+library(censusapi)
+#https://www.hrecht.com/censusapi/articles/example-list.html#county-business-patterns-and-nonemployer-statistics
+
+# Add key to .Renviron
+Sys.setenv(CENSUS_KEY="9cabe8a191a1f824755d4a1845f13cb08faa2c5f")
+# Reload .Renviron
+readRenviron("~/.Renviron")
+# Check to see that the expected key is output in your R console
+Sys.getenv("CENSUS_KEY")
+
+```
+
+```{r}
+
+baltimore_zips <- c("21201","21202","21203","21205","21206","21211","21213","21214","21215","21216","21217","21218","21222","21223","21224","21229","21230","21231","21234","21236","21237","21239","21251","21263","21264","21270","21273","21275","21278","21280","21281","21282","21286","21287","21288") 
+
+baltimore_zbp <- NULL
+
+for(zip in baltimore_zips){
+
+  tmp <- tryCatch(
+    getCensus(
+      name="zbp",
+      vintage=2018, 
+      vars=c("EMP","ESTAB","EMPSZES","GEO_ID"),
+      region=paste0("zipcode:",zip)
+    ),
+    error = function(e) NULL
+  )
+  
+  if(!is.null(tmp)){
+    baltimore_zbp <- rbind(baltimore_zbp, tmp)  
+  }
+
+}
+```
+
+# Definitions of EMP, ESTAB, EMPSZES
+```{r}
+
+# 
+#  The variables EMP, ESTAB, and EMPSZES that were requested in the getCensus() call refer to fields from the Zip Business Patterns (ZBP) dataset. Here is a brief definition of each:
+# 
+# - EMP - Number of employees 
+# This shows the total number of employees for businesses operating in that zip code based on the ZBP data.
+# 
+# - ESTAB - Number of establishments
+# This shows the total number of business establishments operating in the zip code. An establishment is a single physical location where business is conducted.
+# 
+# - EMPSZES - Size of establishments
+# This shows a breakdown of the number of establishments in the zip code by employee size range. The ranges are 1-4, 5-9, 10-19, 20-49, 50-99, 100-249, 250-499, 500-999, and 1000+ employees.
+# 
+# So in summary:
+# 
+# - EMP is the total employee count
+# - ESTAB is the total number of establishments 
+# - EMPSZES shows number of establishments in each employee size bucket
+# 
+# These variables provide useful data on the business landscape and employment numbers within each zip code area based on the Zip Business Patterns data.
+# 
+# Let me know if this helps explain what these fields represent in the ZBP census dataset!
+
+
+```
+
+
+#List of ZDP Variables
+```{r}
+
+# Results:
+#   Variable Name: for 
+# Description: Census API FIPS 'for' clause 
+# 
+# Variable Name: in 
+# Description: Census API FIPS 'in' clause 
+# 
+# Variable Name: ucgid 
+# Description: Uniform Census Geography Identifier clause 
+# 
+# Variable Name: EMP_N 
+# Description: Noise range for number of employees 
+# 
+# Variable Name: PAYQTR1_N 
+# Description: Noise range for first-quarter payroll 
+# 
+# Variable Name: GEOCOMP 
+# Description: GEO_ID Component 
+# 
+# Variable Name: YEAR 
+# Description: Year 
+# 
+# Variable Name: SUBSECTOR 
+# Description: SUBSECTOR 
+# 
+# Variable Name: NAICS2017 
+# Description: 2017 NAICS code 
+# 
+# Variable Name: PAYANN_N 
+# Description: Noise range for annual payroll 
+# 
+# Variable Name: PAYQTR1 
+# Description: First-quarter payroll ($1,000) 
+# 
+# Variable Name: ZIPCODE 
+# Description: Geography 
+# 
+# Variable Name: SECTOR 
+# Description: NAICS economic sector  
+# 
+# Variable Name: EMP 
+# Description: Number of employees 
+# 
+# Variable Name: INDLEVEL 
+# Description: Industry level 
+# 
+# Variable Name: GEO_ID 
+# Description: Geographic identifier code 
+# 
+# Variable Name: SUMLEVEL 
+# Description: Summary Level code 
+# 
+# Variable Name: ESTAB 
+# Description: Number of establishments 
+# 
+# Variable Name: INDGROUP 
+# Description: Industry group 
+# 
+# Variable Name: PAYANN 
+# Description: Annual payroll ($1,000) 
+# 
+# Variable Name: EMPSZES 
+# Description: Employment size of establishments 
+
+
+```
+
+
+# FIPS Codes
+```{r}
+
+#https://www.hrecht.com/censusapi/articles/getting-started.html
+apis <- listCensusApis()
+colnames(apis)
+
+# FIPS MD
+# STATE|STATEFP|COUNTYFP|COUNTYNS|COUNTYNAME|CLASSFP|FUNCSTAT
+# MD|24|001|01713506|Allegany County|H1|A
+# MD|24|003|01710958|Anne Arundel County|H1|A
+# MD|24|005|01695314|Baltimore County|H1|A
+# MD|24|009|01676636|Calvert County|H1|A
+# MD|24|011|00595737|Caroline County|H1|A
+# MD|24|013|01696228|Carroll County|H1|A
+# MD|24|015|00596115|Cecil County|H1|A
+# MD|24|017|01676992|Charles County|H1|A
+# MD|24|019|00596495|Dorchester County|H1|A
+# MD|24|021|01711211|Frederick County|H1|A
+# MD|24|023|01711058|Garrett County|H1|A
+# MD|24|025|01698178|Harford County|H1|A
+# MD|24|027|01709077|Howard County|H1|A
+# MD|24|029|00593907|Kent County|H1|A
+# MD|24|031|01712500|Montgomery County|H1|A
+# MD|24|033|01714670|Prince George's County|H1|A
+# MD|24|035|00596089|Queen Anne's County|H1|A
+# MD|24|037|01697853|St. Mary's County|H1|A
+# MD|24|039|00596907|Somerset County|H1|A
+# MD|24|041|00592947|Talbot County|H1|A
+# MD|24|043|01714220|Washington County|H1|A
+# MD|24|045|01668606|Wicomico County|H1|A
+# MD|24|047|01668802|Worcester County|H1|A
+# MD|24|510|01702381|Baltimore city|C7|F
+```
+
+#Baltimore business patterns by zip
+
+```{r}
+
+zbp_2018 <- getCensus(
+    name = "zbp",
+    vintage = 2018,
+    vars = c("EMP", "ESTAB", "EMPSZES"),
+    region = "zipcode:90210")
+head(zbp_2018)
+
+
+zbp_2018 <- getCensus(
+    name = "zbp",
+    vintage = 2018,
+    vars = c("EMP", "ESTAB", "EMPSZES", "GEO_ID"),
+    region = "zipcode:21202, 21297")
+```
+
+```{r}
+# zbp_2018 <- getCensus(
+#     name = "zbp",
+#     vintage = 2018,
+#     vars = c("EMP", "ESTAB", "EMPSZES", "GEO_ID"),
+#     region = "zipcode:21202")
+
+library(censusapi)
+
+baltimore_zips <- c("21201","21202","21203","21205","21206","21211","21213","21214","21215","21216","21217","21218","21222","21223","21224","21229","21230","21231","21234","21236","21237","21239","21251","21263","21264","21270","21273","21275","21278","21280","21281","21282","21286","21287","21288") 
+
+
+baltimore_zbp <- NULL 
+
+for(zip in baltimore_zips){
+  tmp <- getCensus(
+    name="zbp", 
+    vintage=2018,
+    vars=c("EMP","ESTAB","EMPSZES","GEO_ID"),
+    region=paste0("zipcode:",zip)
+  )
+  
+  baltimore_zbp <- rbind(baltimore_zbp, tmp)
+}
+
+write.csv(baltimore_zbp, "../DataOutput/baltimore_zbp_jan_27.csv")
+
+```
+
+#Zip Business Patterns
+
+```{r}
+zdp_vars <- load_variables(2021, "cbp", cache = TRUE)
+
+#http://api.census.gov/data/2021/cbp
+# 
+#  `dataset` must be one of "sf1", "sf2", "sf3", "sf4", "pl",
+#   "dhc", "dp", "ddhca", "as", "gu", "mp", "vi", "acsse", "dpas", "dpgu",
+#   "dpmp", "dpvi", "dhcvi", "dhcgu", "dhcvi", "dhcas", "acs1", "acs3",
+#   "acs5", "acs1/profile", "acs3/profile", "acs5/profile", "acs1/subject",
+#   "acs3/subject", "acs5/subject", "acs1/cprofile", "acs5/cprofile",
+#   "sf2profile", "sf3profile", "sf4profile", "aian", "aianprofile",
+#   "cd110h", "cd110s", "cd110hprofile", "cd110sprofile", "sldh", "slds",
+#   "sldhprofile", "sldsprofile", "cqr", "cd113", "cd113profile", "cd115",
+#   "cd115profile", "cd116", "plnat", or "cd118", not "zdp".
+# 
+# sf1: Summary File 1 (SF1) contains detailed demographic data from the decennial census, including population counts, demographic characteristics, and housing characteristics.
+# 
+# sf2: Summary File 2 (SF2) contains more detailed sample data from the decennial census, including detailed demographic and housing characteristics.
+# 
+# sf3: Summary File 3 (SF3) contains additional detailed sample data from the decennial census, providing more detailed demographic and housing characteristics compared to SF2.
+# 
+# sf4: Summary File 4 (SF4) contains data from the decennial census, focusing on specific topics such as income, poverty, education, and housing.
+# 
+# pl: Public Law (PL) datasets contain data related to redistricting and apportionment.
+# 
+# dhc: Demographic and Housing Characteristics (DHC) dataset contains detailed demographic and housing characteristics data.
+# 
+# dp: Decennial Census Data Profiles (DP) dataset contains profile data derived from the decennial census.
+# 
+# ddhca: Decennial Demographic and Housing Characteristics (DHC) dataset contains detailed demographic and housing characteristics data.
+# 
+# as: American Community Survey (ACS) dataset contains data from the American Community Survey, providing detailed demographic, social, economic, and housing characteristics.
+# 
+# gu: Group Quarters (GU) dataset contains data related to group quarters, such as correctional facilities, nursing homes, and college dormitories.
+# 
+# mp: Master Address File/Topologically Integrated Geographic Encoding and Referencing (MAF/TIGER) dataset contains geographic boundary and address data.
+# 
+# vi: Voting District (VI) dataset contains data related to voting districts.
+# 
+# acsse: American Community Survey Summary Estimates (ACSSE) dataset contains summary estimates data from the American Community Survey.
+# 
+# dpas: Decennial Census Data Profiles - Age/Sex (DPAS) dataset contains profile data related to age and sex derived from the decennial census.
+# 
+# dpgu: Decennial Census Data Profiles - Group Quarters (DPGU) dataset contains profile data related to group quarters derived from the decennial census.
+# 
+# dpmp: Decennial Census Data Profiles - Master Address File/Topologically Integrated Geographic Encoding and Referencing (DPMP) dataset contains profile data related to geographic encoding derived from the decennial census.
+# 
+# dpvi: Decennial Census Data Profiles - Voting District (DPVI) dataset contains profile data related to voting districts derived from the decennial census.
+# 
+# dhcvi: Decennial Census Data Profiles - Voting District (DHCVI) dataset contains profile data related to voting districts derived from the decennial census.
+# 
+# dhcas: Decennial Census Data Profiles - Age/Sex (DHCAS) dataset contains profile data related to age and sex derived from the decennial census.
+# 
+# acs1, acs3, acs5: American Community Survey 1-Year, 3-Year, and 5-Year Estimates datasets contain estimates data from the American Community Survey.
+# 
+# acs1/profile, acs3/profile, acs5/profile: American Community Survey Profile datasets contain profile data derived from the American Community Survey.
+# 
+# acs1/subject, acs3/subject, acs5/subject: American Community Survey Subject datasets contain subject-specific data derived from the American Community Survey.
+# 
+# acs1/cprofile, acs5/cprofile: American Community Survey Comparison Profile datasets contain comparison profile data derived from the American Community Survey.
+# 
+# sf2profile, sf3profile, sf4profile: Summary File Profile datasets contain profile data derived from the summary files of the decennial census.
+# 
+# aian: American Indian and Alaska Native (AIAN) dataset contains data related to American Indian and Alaska Native populations.
+# 
+# aianprofile: American Indian and Alaska Native (AIAN) Profile dataset contains profile data related to American Indian and Alaska Native populations.
+# 
+# cd110h, cd110s: Congressional District Summary File datasets contain summary file data related to congressional districts.
+# 
+# cd110hprofile, cd110sprofile: Congressional District Summary File Profile datasets contain profile data related to congressional districts.
+# 
+# sldh, slds: State Legislative District Summary File datasets contain summary file data related to state legislative districts.
+# 
+# sldhprofile, sldsprofile: State Legislative District Summary File Profile datasets contain profile data related to state legislative districts.
+# 
+# cqr: Census Quality Survey (CQR) dataset contains data related to the quality of census data.
+# 
+# cd113: Congressional District Profile datasets contain profile data related to congressional districts.
+# 
+# cd113profile: Congressional District Profile Profile dataset contains profile data related to congressional districts.
+# 
+# cd115: Congressional District Summary File datasets contain summary file data related to congressional districts.
+# 
+# cd115profile: Congressional District Summary File Profile datasets contain profile data related to congressional districts.
+# 
+# cd116: Congressional District Summary File datasets contain summary file data related to congressional districts.
+# 
+# plnat: PL94-171 Natural dataset contains data related to redistricting and apportionment.
+# 
+# cd118: Congressional District Summary File datasets contain summary file data related to congressional districts.
+
+```
+
+#Code to List of ZDP Variables
+
+```{r}
+# Load required packages
+library(httr)
+
+# Make an API request to retrieve variable information
+response <- GET("https://api.census.gov/data/2018/zbp/variables.json")
+
+# Check if the request was successful (status code 200)
+if (status_code(response) == 200) {
+  # Extract variable information from the response
+  variable_info <- content(response, "parsed")
+  
+  # Check if the 'variables' field exists in the response
+  if ("variables" %in% names(variable_info)) {
+    # Print the variable names and descriptions
+    for (var_id in names(variable_info$variables)) {
+      cat("Variable Name:", var_id, "\n")
+      cat("Description:", variable_info$variables[[var_id]]$label, "\n")
+      cat("\n")
+    }
+  } else {
+    cat("Error: 'variables' field not found in the API response.\n")
+  }
+} else {
+  cat("Error: Unable to retrieve variable information. Status code:", status_code(response), "\n")
+}
+```
+
+
+
+
+#Test code of cbp
+```{r}
+cbp <- getCensus(
+    name = "cbp",
+    vintage = 2020,
+    vars = c("EMP", "ESTAB"),
+    region = "state:24",
+    NAICS2017 = "*")
+
+
+cbp_bal <- getCensus(
+    name = "cbp",
+    vintage = 2020,
+    vars = c("EMP", "ESTAB", "GEO_ID"),
+    region = "county:510", 
+    regionin = "state:24",
+    NAICS2017 = "*")
+
+
+
+
+```

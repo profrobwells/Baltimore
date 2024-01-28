@@ -1,0 +1,24 @@
+---
+title: "Facebook Networking"
+author: "Wells"
+date: "2024-01-28"
+output: html_document
+---
+#load libraries
+```{r include=FALSE} 
+# For general data science
+library(tidyverse)
+
+# For data cleaning
+library(janitor)
+
+# For working with datetime
+library(lubridate)
+```
+
+
+```{r}
+fb <- rio::import("/Users/gizmofo/Downloads/us-zip-code-us-zip-code-fb-social-connectedness-index-october-2021/zcta_zcta_shard2.tsv")
+
+
+```

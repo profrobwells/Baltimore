@@ -4,6 +4,13 @@ author: "Wells"
 date: "2024-01-28"
 output: html_document
 ---
+
+#Facebook social connections in Baltimore neighborhoods
+https://data.humdata.org/dataset/social-connectedness-index#
+
+This notebook measures Facebook social connections by zip code in Baltimore neighborhoods, a way of determining social activity in the virtual realm
+
+
 #load libraries
 ```{r include=FALSE} 
 # For general data science
@@ -16,9 +23,151 @@ library(janitor)
 library(lubridate)
 ```
 
-
+#Import FB network data, Baltimore Zips
 ```{r}
 fb <- rio::import("/Users/gizmofo/Downloads/us-zip-code-us-zip-code-fb-social-connectedness-index-october-2021/zcta_zcta_shard2.tsv")
 
+#Each row is a US ZCTA (zip code tabulation) ‚Äì US ZCTA pair. Excludes ZCTAs with few active users. Due to the large size of this data set, it is split across ten files. The files are split according to the first digit of the zip code for location i. For instance, all pairs in which the first zip code begins with the digit 7 will be contained in file 7 .
+#https://data.humdata.org/dataset/e9988552-74e4-4ff4-943f-c782ac8bca87/resource/3fff416a-824a-43a3-a6cd-aab2880ce684/download/us-zip-code-us-zip-code-fb-social-connectedness-index-october-2021.zip
+
+
+
+# Each dataset has three columns:
+# user_loc First Location
+# fr_loc Second Location
+# scaled_sci Scaled SCI as described above
+
+baltimore_zips <- c("21201","21202","21203","21205","21206","21211","21213","21214","21215","21216","21217","21218","21222","21223","21224","21229","21230","21231","21234","21236","21237","21239","21251","21263","21264","21270","21273","21275","21278","21280","21281","21282","21286","21287","21288") 
+
+
 
 ```
+
+#subset Baltimore zips
+```{r}
+bmore_fb <- fb %>% 
+  filter(user_loc == baltimore_zips)
+
+```
+
+
+#Add  zip code neighborhoods
+```{r}
+#zip to neighborhood file
+zip <- rio::import("../data/Zip-to-CSA-2010.xls")
+
+df <- zip %>%
+  group_by(Zip2010) %>%
+  summarise(CSA2010 = toString(CSA2010)) %>% 
+  mutate(place = str_extract(CSA2010, "^[^,]*"))
+
+
+bmore_fb <- bmore_fb %>% 
+  left_join(df, by=c("user_loc"="Zip2010"))
+
+```
+
+
+
+
+```{r}
+#"user_loc"   "fr_loc"     "scaled_sci"
+summary(bmore_fb$scaled_sci)
+#The typical Baltimore zip code had a connectiveness score of 2,856, nearly triple the median figure for the U.S., 1036.
+ # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ #      1     415    2856   14118    7286 5887702 
+
+#national comparison. the median is really low 1036. mean is 30523
+summary(fb$scaled_sci)
+    # Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+    #     1         1      1036     30523      6278 827398964 
+
+```
+
+
+```{r}
+bmore_fb %>% 
+  count(place) %>% 
+  arrange(desc(n))
+
+
+```
+
+#Total and Median FB Activity by Neighborhood
+```{r}
+bmore_fb_summary <- bmore_fb %>% 
+  group_by(place) %>%
+   summarize(
+    median_score = median(scaled_sci),
+    total_score = sum(scaled_sci),
+    zip = first(user_loc) # Take first zip
+  )  %>% 
+  ungroup() %>% 
+  arrange(desc(total_score))
+
+write.csv(bmore_fb_summary, "../DataOutput/bmore_fb_summary.csv")
+
+library(kableExtra)
+bmore_fb_summary %>%
+  kbl(caption = "Facebook Network Activity by Baltimore Zip Code", font_size = 50, bold=T) %>%
+  kable_classic(full_width = T, html_font = "Cambria") %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, border_right = T, width = "10em") %>% 
+  column_spec(3, border_right = T, width = "10em", background = "yellow") %>% 
+  save_kable(file = "../output/bmore_fb_summary.html", self_contained = T)
+
+```
+
+
+
+
+
+
+```{r}
+#Map by Median Income Difference
+bmore_fb_summary  <- bmore_fb_summary  %>% 
+  sf::st_transform('+proj=longlat +datum=WGS84')
+
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = member_all2$pct_anymembershp_zip
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = member_all2,
+              color = ~pal(pct_anymembershp_zip),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = paste("Pct membership in civic groups is:",(member_all2$pct_anymembershp_zip), "and income is",(member_all2$income_per_capita), "in", (member_all2$neighborhood))) %>% 
+  # addLegend(
+  #   position = "bottomright",
+  #   pal = pal,
+  #   values = member_all2$pct_anymembershp_zip,
+  #   title = "Pct Membership <br> 2020"
+  # ) %>%
+addControl(
+    html = '<div id="legend" style="background-color: white; padding: 10px; border-radius: 5px; border: 1px solid #ccc; text-align: center;">
+              <p><strong>Pct Membership 2020</strong></p>
+              <div style="background-color: black; height: 20px; width: 30px; display: inline-block;"></div> 30-39%
+              <br>
+              <div style="background-color: #e75480; height: 20px; width: 30px; display: inline-block;"></div> 40-45%
+              <br>
+              <div style="background-color: #fa8072; height: 20px; width: 30px; display: inline-block;"></div> 46-50%
+              <br>
+              <div style="background-color: #ffffbf; height: 20px; width: 30px; display: inline-block;"></div> 51-60%
+           </div>',
+    position = "bottomright"
+  ) %>% 
+  addControl(
+    html = "<div style='background-color: white; padding: 5px; border-radius: 3px;'><h3>Civil Membership & Income in Baltimore</h3></div>",
+    position = "topright"
+  )
+
+saveWidget(leafMap, "../output/member_all_map_jan_24.html")
+leafMap
+```
+
+

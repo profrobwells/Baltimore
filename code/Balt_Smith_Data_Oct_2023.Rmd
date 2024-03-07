@@ -191,12 +191,12 @@ cov(x, y = NULL, use = "everything",
 
 ## fact check income
 ```{r}
-baltcity_income_clean <- read.csv("baltcity_income_clean.csv")
+baltcity_income_clean <- read.csv("../data/baltcity_income_clean.csv")
 
 median(baltcity_income_clean$x2020, na.rm = TRUE)
 #B19013_001 is the household median income: 49875
 
-baltcity_percap_income <- read_csv("baltcity_percap_income.csv") %>% 
+baltcity_percap_income <- read_csv("../data/baltcity_percap_income.csv") %>% 
   as.data.frame()
 median(baltcity_percap_income$x2020, na.rm = TRUE)
 
@@ -333,21 +333,33 @@ member_all %>%
   save_kable(file = "../output/member_all.html", self_contained = T)
 
 ```
+American Community Survey
+B19013Median Household Income in the Past 12 Mont
+https://data.census.gov/table/ACSDT5Y2021.B19013?q=b19013&g=040XX00US50$0600000&tp=true
 
 ```{r}
 #subset the geometry
-md_income2020_geo <- get_acs(geography = "tract", 
+md_income2022_geo <- get_acs(geography = "tract", 
               variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
                state = "MD", 
-               year = 2020, geometry = TRUE) %>% 
-  mutate(year=("2020")) %>% 
-  select(GEOID, NAME)
+               year = 2022, geometry = TRUE) %>% 
+  mutate(year=("2022")) %>% 
+  rename(hh_med_inc_2022 = estimate) %>% 
+  filter(variable=="median_income") %>% 
+  mutate(hh_med_inc_2022 = formattable::currency(hh_med_inc_2022, digits =0L))
+
+# md_income2020_geo <- get_acs(geography = "tract", 
+#               variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+#                state = "MD", 
+#                year = 2020, geometry = TRUE) %>% 
+#   mutate(year=("2020")) %>% 
+#   select(GEOID, NAME)
 
 member_all <- member_all %>% 
   mutate(GEOID = as.character(tract))
 
 #join geocoordinates with baltcity
-member_all2 <- md_income2020_geo  %>% 
+member_all2 <- md_income2022_geo  %>% 
  right_join(member_all, by=c("GEOID")) %>% 
  distinct()
 
@@ -377,7 +389,7 @@ leafMap <- leaflet() %>%
               weight = 2.5,
               smoothFactor = 0.2,
               fillOpacity = 0.5,
-              label = paste("Pct membership in civic groups is:",(member_all2$pct_anymembershp_zip), "and income is",(member_all2$income_per_capita), "in", (member_all2$neighborhood))) %>% 
+              label = paste("Pct membership in civic groups is:",(member_all2$pct_anymembershp_zip), "and household median income is",(member_all2$hh_med_inc_2022), "in", (member_all2$neighborhood))) %>% 
   # addLegend(
   #   position = "bottomright",
   #   pal = pal,
@@ -398,11 +410,12 @@ addControl(
     position = "bottomright"
   ) %>% 
   addControl(
-    html = "<div style='background-color: white; padding: 5px; border-radius: 3px;'><h3>Civil Membership & Income in Baltimore</h3></div>",
+    html = "<div style='background-color: white; padding: 5px; border-radius: 3px;'><h3>Civil Membership, Household Median Income in Baltimore</h3></div>",
     position = "topright"
   )
 
-saveWidget(leafMap, "../output/member_all_map_jan_24.html")
+# saveWidget(leafMap, "../output/member_all_map_jan_24.html")
+saveWidget(leafMap, "../output/member_all_map_march_6.html")
 leafMap
 ```
 

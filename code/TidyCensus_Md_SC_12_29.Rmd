@@ -17,6 +17,7 @@ library(tidycensus)
 # head(a, 5)
 #install.packages("formattable")
 library(formattable)
+library(leaflet)
 ```
 
 Get a Census API key. A key can be obtained from http://api.census.gov/data/key_signup.html.
@@ -175,14 +176,15 @@ baltcity_income2 <- baltcity_income2 %>%
   mutate(Diff_2020_2010 = (x2020-x2010)) %>% 
   mutate(Diff_2020_2016 = (x2020-x2016))
 
-write.csv(baltcity_income2, "baltcity_income2.csv")
-write_rds(baltcity_income2, "baltcity_income2.rds")
+# write.csv(baltcity_income2, "baltcity_income2.csv")
+# write_rds(baltcity_income2, "baltcity_income2.rds")
 ```
 
 
 #Map Files
 
-
+#P3_001N	!!Total:	RACE FOR THE POPULATION 18 YEARS AND OVER	
+https://api.census.gov/data/2020/dec/pl/variables.html
 
 ##Getting Decennial geometries
 ```{r results=FALSE}
@@ -196,19 +198,20 @@ decennial_vars <- load_variables(2020, dataset="pl")
 
 nation_geometries <- get_decennial(year=2020, geography="tract",state=state_list, variables = "P3_001N", sumfile = "pl", geometry = TRUE)
 
+#P3_001N RACE FOR THE POPULATION 18 YEARS AND OVER
 clean_dec_nation_geometries <- nation_geometries %>% 
-  clean_names() %>% 
+  janitor::clean_names() %>% 
   separate(name, into = c("tract","county","state"), sep=", ") %>% 
   mutate(total_pop=value) %>% 
   select(-variable,-value)
 
-write_rds(clean_dec_nation_geometries,"dec_nation_geometries.rds")
+# write_rds(clean_dec_nation_geometries,"dec_nation_geometries.rds")
 
 
 baltcity_income_map <- nation_geometries  %>% 
  right_join(baltcity_income2, by=c("GEOID"="geoid"))
 
-write.csv(baltcity_income_map, "baltcity_income_map.csv")
+#write.csv(baltcity_income_map, "baltcity_income_map.csv")
 
 
 ```
@@ -216,7 +219,7 @@ write.csv(baltcity_income_map, "baltcity_income_map.csv")
 
 ##Preparing leaflet - population
 ```{r}
-clean_dec_nation_geometries <- readRDS("dec_nation_geometries.rds")
+clean_dec_nation_geometries <- readRDS("Baltimore/data/dec_nation_geometries.rds")
 
 MD_dec_geometries <- clean_dec_nation_geometries %>% 
   filter(county== "Baltimore city")

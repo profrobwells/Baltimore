@@ -333,7 +333,7 @@ member_all %>%
   save_kable(file = "../output/member_all.html", self_contained = T)
 
 ```
-American Community Survey
+#American Community Survey
 B19013Median Household Income in the Past 12 Mont
 https://data.census.gov/table/ACSDT5Y2021.B19013?q=b19013&g=040XX00US50$0600000&tp=true
 
@@ -418,7 +418,45 @@ addControl(
 saveWidget(leafMap, "../output/member_all_map_march_6.html")
 leafMap
 ```
+# _________________________________________________________________
+#Update Smith Data
 
+
+```{r}
+md_income2022_geo <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001", income_per_capita = "B19301_001"), 
+               state = "MD", 
+               year = 2022, geometry = TRUE) %>% 
+  mutate(year=("2022")) %>% 
+  as.data.frame()
+
+smith_updated_2022 <- md_income2022_geo %>% 
+    select(!(moe)) %>%
+  pivot_wider(names_from = variable, values_from = estimate)
+
+```
+
+
+```{r}
+csa <- read_csv("../data/balt_census_crosswalks_2020.csv") %>%
+  rename(
+    geoid = GEOID_Tract_2020
+  ) %>%
+  clean_names()
+
+smith_updated_2022$GEOID <- as.numeric(smith_updated_2022$GEOID)
+
+smith_updated_2022 <- smith_updated_2022  %>% 
+  right_join(csa, by=c("GEOID"="geoid")) %>% 
+  distinct() 
+
+```
+
+
+
+
+
+#--------------------------------------------------------------------
 
 # Map High Membership, Below Median Communities
 

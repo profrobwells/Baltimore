@@ -1511,7 +1511,7 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
@@ -1537,7 +1537,7 @@ window.initializeCodeFolding = function(show) {
     //   * Change text
     //   * add a class for intermediate states styling
     div.on('hide.bs.collapse', function () {
-      showCodeText.text('Code');
+      showCodeText.text('Show');
       showCodeButton.addClass('btn-collapsing');
     });
     div.on('hidden.bs.collapse', function () {
@@ -1763,86 +1763,163 @@ Central Downtown ingo here: <a href="https://parking.baltimorecity.gov/central-d
 Residential Parking Permits from Open baltimore:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcInBkZnRvb2xzXCIpXG5cbmBgYCJ9 -->
-<pre class="r"><code>install.packages(&quot;pdftools&quot;)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGZvcm1hdHRhYmxlKVxubGlicmFyeShqYW5pdG9yKVxubGlicmFyeShnb29nbGVzaGVldHM0KVxuaW5zdGFsbC5wYWNrYWdlcyhcInBkZnRvb2xzXCIpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)
+library(formattable)
+library(janitor)
+library(googlesheets4)
+install.packages(&quot;pdftools&quot;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoidHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvYmlnLXN1ci1hcm02NC9jb250cmliLzQuMi9wZGZ0b29sc18zLjQuMC50Z3onXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3gtZ3ppcCcgbGVuZ3RoIDc1MDE0MDIgYnl0ZXMgKDcuMiBNQilcbj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5kb3dubG9hZGVkIDcuMiBNQlxuIn0= -->
-<pre><code>trying URL &#39;https://cran.rstudio.com/bin/macosx/big-sur-arm64/contrib/4.2/pdftools_3.4.0.tgz&#39;
-Content type &#39;application/x-gzip&#39; length 7501402 bytes (7.2 MB)
+<!-- rnb-output-begin eyJkYXRhIjoidHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvYmlnLXN1ci1hcm02NC9jb250cmliLzQuMy9wZGZ0b29sc18zLjQuMC50Z3onXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3gtZ3ppcCcgbGVuZ3RoIDc1MDE4ODQgYnl0ZXMgKDcuMiBNQilcbj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5kb3dubG9hZGVkIDcuMiBNQlxuIn0= -->
+<pre><code>trying URL &#39;https://cran.rstudio.com/bin/macosx/big-sur-arm64/contrib/4.3/pdftools_3.4.0.tgz&#39;
+Content type &#39;application/x-gzip&#39; length 7501884 bytes (7.2 MB)
 ==================================================
 downloaded 7.2 MB</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5UaGUgZG93bmxvYWRlZCBiaW5hcnkgcGFja2FnZXMgYXJlIGluXG5cdC92YXIvZm9sZGVycy80ai81dl95bXgyMTcyOTVubDlmazdod196cDgwMDAwZ24vVC8vUnRtcHd0VWwzNi9kb3dubG9hZGVkX3BhY2thZ2VzXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5UaGUgZG93bmxvYWRlZCBiaW5hcnkgcGFja2FnZXMgYXJlIGluXG5cdC92YXIvZm9sZGVycy9xYi9ubXE4cWZ6czRmemIwMDUwOGp4MWNsbHIwMDAwZ3AvVC8vUnRtcG5lRkJxcC9kb3dubG9hZGVkX3BhY2thZ2VzXG4ifQ== -->
 <pre><code>
 The downloaded binary packages are in
-    /var/folders/4j/5v_ymx217295nl9fk7hw_zp80000gn/T//RtmpwtUl36/downloaded_packages</code></pre>
+    /var/folders/qb/nmq8qfzs4fzb00508jx1cllr0000gp/T//RtmpneFBqp/downloaded_packages</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShwZGZ0b29scylcblxuYGBgIn0= -->
+<pre class="r"><code>library(pdftools)
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Import neighborhood, create name, address and clean</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXR2ZXJub24gPC0gbXR2ZXJub24gJT4lIFxuICBtdXRhdGUoZmlyc3RfcmF0ZV9jaGFuZ2UxID0gYXMubnVtZXJpYyhhcy5jaGFyYWN0ZXIoZmlyc3RfcmF0ZV9jaGFuZ2UpKSkgJT4lIFxuICBtdXRhdGUoc2Vjb25kX3JhdGVfY2hhbmdlMSA9IGFzLm51bWVyaWModW5saXN0KHNlY29uZF9yYXRlX2NoYW5nZSkpKVxuXG5gYGAifQ== -->
-<pre class="r"><code>mtvernon &lt;- mtvernon %&gt;% 
-  mutate(first_rate_change1 = as.numeric(as.character(first_rate_change))) %&gt;% 
-  mutate(second_rate_change1 = as.numeric(unlist(second_rate_change)))
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2xpbXBzZShtdHZlcm5vbilcblxuYGBgIn0= -->
+<pre class="r"><code>glimpse(mtvernon)
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogVGhlcmUgd2FzIDEgd2FybmluZyBpbiBgbXV0YXRlKClgLlxu4oS5IEluIGFyZ3VtZW50OiBgZmlyc3RfcmF0ZV9jaGFuZ2UxID0gYXMubnVtZXJpYyhhcy5jaGFyYWN0ZXIoZmlyc3RfcmF0ZV9jaGFuZ2UpKWAuXG5DYXVzZWQgYnkgd2FybmluZzpcbiEgTkFzIGludHJvZHVjZWQgYnkgY29lcmNpb25XYXJuaW5nOiBUaGVyZSB3YXMgMSB3YXJuaW5nIGluIGBtdXRhdGUoKWAuXG7ihLkgSW4gYXJndW1lbnQ6IGBzZWNvbmRfcmF0ZV9jaGFuZ2UxID0gYXMubnVtZXJpYyh1bmxpc3Qoc2Vjb25kX3JhdGVfY2hhbmdlKSlgLlxuQ2F1c2VkIGJ5IHdhcm5pbmc6XG4hIE5BcyBpbnRyb2R1Y2VkIGJ5IGNvZXJjaW9uXG4ifQ== -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTE1XG5Db2x1bW5zOiAxMlxuJCBibG9jayAgICAgICAgICAgICAgIDxsaXN0PiA5MDAsIDEwMDAsIDEwMDAsIDExMDAsIDEyMDAsIDMwMCwgXCJVbml0XCIsIFwiVW5pdFwiLCBcIlVuaXRcIiwgXCJVbml0XCIsIFwiVW7igKZcbiQgc3RyZWV0ICAgICAgICAgICAgICA8Y2hyPiBcIkNhdGhlZHJhbFwiLCBcIkNhdGhlZHJhbFwiLCBcIkNhdGhlZHJhbFwiLCBcIkNhdGhlZHJhbFwiLCBcIkNhdGhlZHJhbFwiLCBcIkRydWnigKZcbiQgc2lkZSAgICAgICAgICAgICAgICA8Y2hyPiBcIkVTXCIsIFwiRVNcIiwgXCJXU1wiLCBcIldTXCIsIFwiV1NcIiwgXCJTU1wiLCBcIk5TXCIsIFwiU1NcIiwgXCJTU1wiLCBcIk5TXCIsIFwiU1NcIiwgXCJOU1wi4oCmXG4kIGluaXRpYWxfcmF0ZSAgICAgICAgPGxpc3Q+IDIsIDIsIDIsIDIsIDIsIDAuNSwgMC43NSwgMC43NSwgMiwgXCIkMC41MCBhbmRcXG4kMC43NVwiLCAwLjUsIDAuNzUsIDAuN+KAplxuJCBmaXJzdF9yYXRlX2NoYW5nZSAgIDxsaXN0PiAxLjc1LCAxLjc1LCAxLjc1LCAyLjI1LCAxLjc1LCAwLjUsIDEsIDEsIDEuNzUsIDAuNSwgMC41LCAwLjUsIDEsIDAuNSzigKZcbiQgc2Vjb25kX3JhdGVfY2hhbmdlICA8bGlzdD4gMiwgMS43NSwgMS43NSwgMi41LCAxLjc1LCAwLjUsIDEsIDEsIDEuNSwgMC43NSwgMC43NSwgMC41LCAxLjI1LCAwLjUs4oCmXG4kIHg3ICAgICAgICAgICAgICAgICAgPGNocj4gTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBcIkluY3JlYXNlXCIsIFwiTWFpbnRhaW5cIiwgXCJE4oCmXG4kIG5laWdoYm9yaG9vZCAgICAgICAgPGNocj4gXCJtdHZlcm5vblwiLCBcIm10dmVybm9uXCIsIFwibXR2ZXJub25cIiwgXCJtdHZlcm5vblwiLCBcIm10dmVybm9uXCIsIFwibXR2ZXJub25cIuKAplxuJCBhZGRyZXNzICAgICAgICAgICAgIDxjaHI+IFwiOTAwIENhdGhlZHJhbCwgQmFsdGltb3JlLCBNZFwiLCBcIjEwMDAgQ2F0aGVkcmFsLCBCYWx0aW1vcmUsIE1kXCIsIFwiMTAwMOKAplxuJCBpbml0aWFsX3JhdGUxICAgICAgIDxkYmw+IDIuMDAsIDIuMDAsIDIuMDAsIDIuMDAsIDIuMDAsIDAuNTAsIDAuNzUsIDAuNzUsIDIuMDAsIE5BLCAwLjUwLCAwLjc1LCDigKZcbiQgZmlyc3RfcmF0ZV9jaGFuZ2UxICA8ZGJsPiAxLjc1LCAxLjc1LCAxLjc1LCAyLjI1LCAxLjc1LCAwLjUwLCAxLjAwLCAxLjAwLCAxLjc1LCAwLjUwLCAwLjUwLCAwLjUw4oCmXG4kIHNlY29uZF9yYXRlX2NoYW5nZTEgPGRibD4gMi4wMCwgMS43NSwgMS43NSwgMi41MCwgMS43NSwgMC41MCwgMS4wMCwgMS4wMCwgMS41MCwgMC43NSwgMC43NSwgMC41MOKAplxuIn0= -->
+<pre><code>Rows: 115
+Columns: 12
+$ block               &lt;list&gt; 900, 1000, 1000, 1100, 1200, 300, &quot;Unit&quot;, &quot;Unit&quot;, &quot;Unit&quot;, &quot;Unit&quot;, &quot;Un…
+$ street              &lt;chr&gt; &quot;Cathedral&quot;, &quot;Cathedral&quot;, &quot;Cathedral&quot;, &quot;Cathedral&quot;, &quot;Cathedral&quot;, &quot;Drui…
+$ side                &lt;chr&gt; &quot;ES&quot;, &quot;ES&quot;, &quot;WS&quot;, &quot;WS&quot;, &quot;WS&quot;, &quot;SS&quot;, &quot;NS&quot;, &quot;SS&quot;, &quot;SS&quot;, &quot;NS&quot;, &quot;SS&quot;, &quot;NS&quot;…
+$ initial_rate        &lt;list&gt; 2, 2, 2, 2, 2, 0.5, 0.75, 0.75, 2, &quot;$0.50 and\n$0.75&quot;, 0.5, 0.75, 0.7…
+$ first_rate_change   &lt;list&gt; 1.75, 1.75, 1.75, 2.25, 1.75, 0.5, 1, 1, 1.75, 0.5, 0.5, 0.5, 1, 0.5,…
+$ second_rate_change  &lt;list&gt; 2, 1.75, 1.75, 2.5, 1.75, 0.5, 1, 1, 1.5, 0.75, 0.75, 0.5, 1.25, 0.5,…
+$ x7                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, &quot;Increase&quot;, &quot;Maintain&quot;, &quot;D…
+$ neighborhood        &lt;chr&gt; &quot;mtvernon&quot;, &quot;mtvernon&quot;, &quot;mtvernon&quot;, &quot;mtvernon&quot;, &quot;mtvernon&quot;, &quot;mtvernon&quot;…
+$ address             &lt;chr&gt; &quot;900 Cathedral, Baltimore, Md&quot;, &quot;1000 Cathedral, Baltimore, Md&quot;, &quot;1000…
+$ initial_rate1       &lt;dbl&gt; 2.00, 2.00, 2.00, 2.00, 2.00, 0.50, 0.75, 0.75, 2.00, NA, 0.50, 0.75, …
+$ first_rate_change1  &lt;dbl&gt; 1.75, 1.75, 1.75, 2.25, 1.75, 0.50, 1.00, 1.00, 1.75, 0.50, 0.50, 0.50…
+$ second_rate_change1 &lt;dbl&gt; 2.00, 1.75, 1.75, 2.50, 1.75, 0.50, 1.00, 1.00, 1.50, 0.75, 0.75, 0.50…</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>#analysis of mtvernon neighborhood</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhbmdlc19tdHZlcm5vbiA8LSBtdHZlcm5vbiAlPiVcbiAgc2VsZWN0KG5laWdoYm9yaG9vZCwgYWRkcmVzcywgdG90YWxfZGlmZiwgY2hhbmdlKSAlPiUgXG4gIGdyb3VwX2J5KGNoYW5nZSkgJT4lIFxuICBzdW1tYXJpc2UoY291bnQgPSBuKCksIGF2Z190b3RhbF9kaWZmID0gbWVhbih0b3RhbF9kaWZmLCBuYS5ybSA9IFRSVUUpKSAlPiUgXG4gIG11dGF0ZShwY3QgPSByb3VuZChjb3VudCAvIHN1bShjb3VudCksIDIpKSAlPiUgXG4gIHNlbGVjdChjaGFuZ2UsIGNvdW50LCBwY3QsIGF2Z190b3RhbF9kaWZmLCBuZWlnaGJvcmhvb2QpXG5cbmBgYCJ9 -->
+<pre class="r"><code>changes_mtvernon &lt;- mtvernon %&gt;%
+  select(neighborhood, address, total_diff, change) %&gt;% 
+  group_by(change) %&gt;% 
+  summarise(count = n(), avg_total_diff = mean(total_diff, na.rm = TRUE)) %&gt;% 
+  mutate(pct = round(count / sum(count), 2)) %&gt;% 
+  select(change, count, pct, avg_total_diff, neighborhood)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gYHNlbGVjdCgpYDpcbiEgQ2FuJ3Qgc3Vic2V0IGNvbHVtbnMgdGhhdCBkb24ndCBleGlzdC5cbuKcliBDb2x1bW4gYG5laWdoYm9yaG9vZGAgZG9lc24ndCBleGlzdC5cbkJhY2t0cmFjZTpcbiAxLiAuLi4gJT4lIC4uLlxuIDMuIGRwbHlyOjo6c2VsZWN0LmRhdGEuZnJhbWUoLiwgY2hhbmdlLCBjb3VudCwgcGN0LCBhdmdfdG90YWxfZGlmZiwgbmVpZ2hib3Job29kKVxuIn0= -->
+<pre><code>Error in `select()`:
+! Can&#39;t subset columns that don&#39;t exist.
+✖ Column `neighborhood` doesn&#39;t exist.
+Backtrace:
+ 1. ... %&gt;% ...
+ 3. dplyr:::select.data.frame(., change, count, pct, avg_total_diff, neighborhood)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="extract-pdf-table-for-fells-point---use-tabula" class="section level3">
+<h3>Extract pdf table for Fells Point - use Tabula</h3>
+<p>–convert dollars to numbers –../data/FellsPointRateTables.csv</p>
+<p>#Import neighborhood, create name, address and clean</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmVsbHMgPC0gcmVhZC5jc3YoXCIuLi9kYXRhL0ZlbGxzUG9pbnRSYXRlVGFibGVzLmNzdlwiKSAlPiUgXG4gIGFzLmRhdGEuZnJhbWUoKSAlPiUgXG4gIGNsZWFuX25hbWVzKCkgJT4lIFxuICBtdXRhdGUobmVpZ2hib3Job29kID0gXCJmZWxsc3B0XCIpICU+JSBcbiAgbXV0YXRlKGFkZHJlc3MgPSBwYXN0ZTAoYmxvY2ssIFwiIFwiLCBzdHJlZXQsIFwiLCBcIixcIkJhbHRpbW9yZVwiLCBcIiwgXCIsXCJNZFwiKSkgJT4lIFxuICBtdXRhdGUocmF0ZTFfZGF5ID0gYXMubnVtZXJpYyhmaXJzdF9yYXRlX2NoYW5nZV9kYXl0aW1lX3JhdGUpKSAlPiUgXG4gICBtdXRhdGUocmF0ZTFfZXZlID0gYXMubnVtZXJpYyhmaXJzdF9yYXRlX2NoYW5nZV9ldmVuaW5nX3JhdGUpKSAlPiUgXG4gICBtdXRhdGUocmF0ZTJfZGF5ID0gYXMubnVtZXJpYyhzZWNvbmRfcmF0ZV9jaGFuZ2VfZGF5dGltZV9yYXRlKSkgJT4lIFxuICAgbXV0YXRlKHJhdGUyX2V2ZSA9IGFzLm51bWVyaWMoc2Vjb25kX3JhdGVfY2hhbmdlX2V2ZW5pbmdfcmF0ZSkpXG5gYGAifQ== -->
+<pre class="r"><code>fells &lt;- read.csv(&quot;../data/FellsPointRateTables.csv&quot;) %&gt;% 
+  as.data.frame() %&gt;% 
+  clean_names() %&gt;% 
+  mutate(neighborhood = &quot;fellspt&quot;) %&gt;% 
+  mutate(address = paste0(block, &quot; &quot;, street, &quot;, &quot;,&quot;Baltimore&quot;, &quot;, &quot;,&quot;Md&quot;)) %&gt;% 
+  mutate(rate1_day = as.numeric(first_rate_change_daytime_rate)) %&gt;% 
+   mutate(rate1_eve = as.numeric(first_rate_change_evening_rate)) %&gt;% 
+   mutate(rate2_day = as.numeric(second_rate_change_daytime_rate)) %&gt;% 
+   mutate(rate2_eve = as.numeric(second_rate_change_evening_rate))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogVGhlcmUgd2FzIDEgd2FybmluZyBpbiBgbXV0YXRlKClgLlxu4oS5IEluIGFyZ3VtZW50OiBgcmF0ZTFfZXZlID0gYXMubnVtZXJpYyhmaXJzdF9yYXRlX2NoYW5nZV9ldmVuaW5nX3JhdGUpYC5cbkNhdXNlZCBieSB3YXJuaW5nOlxuISBOQXMgaW50cm9kdWNlZCBieSBjb2VyY2lvbldhcm5pbmc6IFRoZXJlIHdhcyAxIHdhcm5pbmcgaW4gYG11dGF0ZSgpYC5cbuKEuSBJbiBhcmd1bWVudDogYHJhdGUyX2V2ZSA9IGFzLm51bWVyaWMoc2Vjb25kX3JhdGVfY2hhbmdlX2V2ZW5pbmdfcmF0ZSlgLlxuQ2F1c2VkIGJ5IHdhcm5pbmc6XG4hIE5BcyBpbnRyb2R1Y2VkIGJ5IGNvZXJjaW9uXG4ifQ== -->
 <pre><code>Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `first_rate_change1 = as.numeric(as.character(first_rate_change))`.
+ℹ In argument: `rate1_eve = as.numeric(first_rate_change_evening_rate)`.
 Caused by warning:
 ! NAs introduced by coercionWarning: There was 1 warning in `mutate()`.
-ℹ In argument: `second_rate_change1 = as.numeric(unlist(second_rate_change))`.
+ℹ In argument: `rate2_eve = as.numeric(second_rate_change_evening_rate)`.
 Caused by warning:
 ! NAs introduced by coercion</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2ZpZ3VyZSBvdXQgd2h5IDgwMCBTIEJyb2Fkd2F5IGhhcyAkMi4yNSAoWWVhciAyMDIyKSBcblxuI25lZWQgdG8gZ2VvY29kZSB0aGUgc3RyZWV0c1xuXG5cbmdsaW1wc2UoZmVsbHMpXG5gYGAifQ== -->
+<pre class="r"><code>#figure out why 800 S Broadway has $2.25 (Year 2022) 
+
+#need to geocode the streets
+
+
+glimpse(fells)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNDNcbkNvbHVtbnM6IDE1XG4kIGJsb2NrICAgICAgICAgICAgICAgICAgICAgICAgICAgPGludD4gMTYwMCwgMTcwMCwgMTcwMCwgMTgwMCwgMTgwMCwgMTUwMCwgMTYwMCwgMTYwMCwgMTcwMCwgMTcwMOKAplxuJCBzdHJlZXQgICAgICAgICAgICAgICAgICAgICAgICAgIDxjaHI+IFwiRWFzdGVyblwiLCBcIkVhc3Rlcm5cIiwgXCJFYXN0ZXJuXCIsIFwiRWFzdGVyblwiLCBcIkVhc3Rlcm5cIiwgXCJGbOKAplxuJCBzaWRlICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxjaHI+IFwiTlNcIiwgXCJOU1wiLCBcInNzXCIsIFwiTlNcIiwgXCJzc1wiLCBcIk5TXCIsIFwiTlNcIiwgXCJzc1wiLCBcIk5TXCIsIFwic3NcIuKAplxuJCBpbml0aWFsX3JhdGUgICAgICAgICAgICAgICAgICAgIDxkYmw+IDIuMCwgMi4wLCAyLjAsIDIuMCwgMi4wLCAwLjUsIDIuMCwgMi4wLCAyLjAsIDIuMCwgMi4wLCAyLjDigKZcbiQgZmlyc3RfcmF0ZV9jaGFuZ2VfZGF5dGltZV9yYXRlICA8ZGJsPiAyLjI1LCAxLjc1LCAxLjc1LCAxLjc1LCAxLjc1LCAwLjc1LCAyLjI1LCAyLjI1LCAyLjAwLCAyLjAw4oCmXG4kIGZpcnN0X3JhdGVfY2hhbmdlX2V2ZW5pbmdfcmF0ZSAgPGNocj4gXCJOT01JRVwiLCBcIjIuMjVcIiwgXCIyLjI1XCIsIFwiTk9NSUVcIiwgXCJOT01JRVwiLCBcIk5PTUlFXCIsIFwiTk9NSUXigKZcbiQgc2Vjb25kX3JhdGVfY2hhbmdlX2RheXRpbWVfcmF0ZSA8ZGJsPiAyLjUwLCAxLjUwLCAxLjUwLCAxLjUwLCAxLjUwLCAxLjAwLCAyLjI1LCAyLjI1LCAxLjc1LCAxLjc14oCmXG4kIHNlY29uZF9yYXRlX2NoYW5nZV9ldmVuaW5nX3JhdGUgPGNocj4gXCJOTyBNSUVcIiwgXCIyLjUwXCIsIFwiMi41MFwiLCBcIjEuNzVcIiwgXCIxLjc1XCIsIFwiTk9NSUVcIiwgXCJOT01JRVwi4oCmXG4kIHggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGNocj4gXCJJbmNyZWFzZVwiLCBcIk1haW50YWluXCIsIFwiRGVjcmVhc2VcIiwgXCJcIiwgXCJcIiwgXCJcIiwgXCJcIiwgXCJcIiwgXCJcIuKAplxuJCBuZWlnaGJvcmhvb2QgICAgICAgICAgICAgICAgICAgIDxjaHI+IFwiZmVsbHNwdFwiLCBcImZlbGxzcHRcIiwgXCJmZWxsc3B0XCIsIFwiZmVsbHNwdFwiLCBcImZlbGxzcHRcIiwgXCJmZeKAplxuJCBhZGRyZXNzICAgICAgICAgICAgICAgICAgICAgICAgIDxjaHI+IFwiMTYwMCBFYXN0ZXJuLCBCYWx0aW1vcmUsIE1kXCIsIFwiMTcwMCBFYXN0ZXJuLCBCYWx0aW1vcmUsIE3igKZcbiQgcmF0ZTFfZGF5ICAgICAgICAgICAgICAgICAgICAgICA8ZGJsPiAyLjI1LCAxLjc1LCAxLjc1LCAxLjc1LCAxLjc1LCAwLjc1LCAyLjI1LCAyLjI1LCAyLjAwLCAyLjAw4oCmXG4kIHJhdGUxX2V2ZSAgICAgICAgICAgICAgICAgICAgICAgPGRibD4gTkEsIDIuMjUsIDIuMjUsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgMi4wMCwgMi4wMOKAplxuJCByYXRlMl9kYXkgICAgICAgICAgICAgICAgICAgICAgIDxkYmw+IDIuNTAsIDEuNTAsIDEuNTAsIDEuNTAsIDEuNTAsIDEuMDAsIDIuMjUsIDIuMjUsIDEuNzUsIDEuNzXigKZcbiQgcmF0ZTJfZXZlICAgICAgICAgICAgICAgICAgICAgICA8ZGJsPiBOQSwgMi41MCwgMi41MCwgMS43NSwgMS43NSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgMi4yNSwg4oCmXG4ifQ== -->
+<pre><code>Rows: 43
+Columns: 15
+$ block                           &lt;int&gt; 1600, 1700, 1700, 1800, 1800, 1500, 1600, 1600, 1700, 1700…
+$ street                          &lt;chr&gt; &quot;Eastern&quot;, &quot;Eastern&quot;, &quot;Eastern&quot;, &quot;Eastern&quot;, &quot;Eastern&quot;, &quot;Fl…
+$ side                            &lt;chr&gt; &quot;NS&quot;, &quot;NS&quot;, &quot;ss&quot;, &quot;NS&quot;, &quot;ss&quot;, &quot;NS&quot;, &quot;NS&quot;, &quot;ss&quot;, &quot;NS&quot;, &quot;ss&quot;…
+$ initial_rate                    &lt;dbl&gt; 2.0, 2.0, 2.0, 2.0, 2.0, 0.5, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0…
+$ first_rate_change_daytime_rate  &lt;dbl&gt; 2.25, 1.75, 1.75, 1.75, 1.75, 0.75, 2.25, 2.25, 2.00, 2.00…
+$ first_rate_change_evening_rate  &lt;chr&gt; &quot;NOMIE&quot;, &quot;2.25&quot;, &quot;2.25&quot;, &quot;NOMIE&quot;, &quot;NOMIE&quot;, &quot;NOMIE&quot;, &quot;NOMIE…
+$ second_rate_change_daytime_rate &lt;dbl&gt; 2.50, 1.50, 1.50, 1.50, 1.50, 1.00, 2.25, 2.25, 1.75, 1.75…
+$ second_rate_change_evening_rate &lt;chr&gt; &quot;NO MIE&quot;, &quot;2.50&quot;, &quot;2.50&quot;, &quot;1.75&quot;, &quot;1.75&quot;, &quot;NOMIE&quot;, &quot;NOMIE&quot;…
+$ x                               &lt;chr&gt; &quot;Increase&quot;, &quot;Maintain&quot;, &quot;Decrease&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;…
+$ neighborhood                    &lt;chr&gt; &quot;fellspt&quot;, &quot;fellspt&quot;, &quot;fellspt&quot;, &quot;fellspt&quot;, &quot;fellspt&quot;, &quot;fe…
+$ address                         &lt;chr&gt; &quot;1600 Eastern, Baltimore, Md&quot;, &quot;1700 Eastern, Baltimore, M…
+$ rate1_day                       &lt;dbl&gt; 2.25, 1.75, 1.75, 1.75, 1.75, 0.75, 2.25, 2.25, 2.00, 2.00…
+$ rate1_eve                       &lt;dbl&gt; NA, 2.25, 2.25, NA, NA, NA, NA, NA, NA, NA, NA, 2.00, 2.00…
+$ rate2_day                       &lt;dbl&gt; 2.50, 1.50, 1.50, 1.50, 1.50, 1.00, 2.25, 2.25, 1.75, 1.75…
+$ rate2_eve                       &lt;dbl&gt; NA, 2.50, 2.50, 1.75, 1.75, NA, NA, NA, NA, NA, NA, 2.25, …</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#analysis of neighborhood</p>
+<p>#analysis of fells neighborhood</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhbmdlc19tdHZlcm5vbiA8LSBtdHZlcm5vbiAlPiVcbiAgc2VsZWN0KG5laWdoYm9yaG9vZCwgYWRkcmVzcywgdG90YWxfZGlmZiwgY2hhbmdlKSAlPiUgXG4gIGdyb3VwX2J5KChjaGFuZ2UpKSAlPiUgXG4gIGNvdW50KGNoYW5nZXMgPSBjaGFuZ2UpICU+JSBcbiAgc3VtbWFyaXplKHN1bSh0b3RhbF9kaWZmKSkgJT4lIFxuICBtdXRhdGUocGN0ID0gKHJvdW5kKG4vc3VtKG4pLDIpKSlcblxuYGBgIn0= -->
-<pre class="r"><code>changes_mtvernon &lt;- mtvernon %&gt;%
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmVsbHMgPC0gZmVsbHMgJT4lIFxuICBtdXRhdGUoZmlyc3RfZGF5X2RpZmYgPSAocmF0ZTJfZGF5IC0gcmF0ZTFfZGF5KSkgJT4lIFxuICBtdXRhdGUoZmlyc3RfZXZlX2RpZmYgPSAocmF0ZTJfZXZlIC0gcmF0ZTFfZXZlKSkgJT4lIFxuICBtdXRhdGUoY2hhbmdlID0gY2FzZV93aGVuKGZpcnN0X2RheV9kaWZmIDwgMCB+IFwiZGVjcmVhc2VcIixcbiAgICAgICAgIGZpcnN0X2RheV9kaWZmID4gMCB+IFwiaW5jcmVhc2VcIixcbiAgICAgICAgIGZpcnN0X2RheV9kaWZmID09IDAgfiBcIm5vX2NoYW5nZVwiLFxuICAgICAgICAgZmlyc3RfZXZlX2RpZmYgPCAwIH4gXCJkZWNyZWFzZVwiLFxuICAgICAgICAgZmlyc3RfZXZlX2RpZmYgPiAwIH4gXCJpbmNyZWFzZVwiLFxuICAgICAgICAgZmlyc3RfZXZlX2RpZmYgPT0gMCB+IFwibm9fY2hhbmdlXCIsXG4gICAgICAgICApXG4gIClcblxuXG5cbmNoYW5nZXNfbXR2ZXJub24gPC0gbXR2ZXJub24gJT4lXG4gIHNlbGVjdChuZWlnaGJvcmhvb2QsIGFkZHJlc3MsIHRvdGFsX2RpZmYsIGNoYW5nZSkgJT4lIFxuICBncm91cF9ieShjaGFuZ2UpICU+JSBcbiAgc3VtbWFyaXNlKGNvdW50ID0gbigpLCBhdmdfdG90YWxfZGlmZiA9IG1lYW4odG90YWxfZGlmZiwgbmEucm0gPSBUUlVFKSkgJT4lIFxuICBtdXRhdGUocGN0ID0gcm91bmQoY291bnQgLyBzdW0oY291bnQpLCAyKSkgJT4lIFxuICBzZWxlY3QoY2hhbmdlLCBjb3VudCwgcGN0LCBhdmdfdG90YWxfZGlmZilcbmBgYCJ9 -->
+<pre class="r"><code>fells &lt;- fells %&gt;% 
+  mutate(first_day_diff = (rate2_day - rate1_day)) %&gt;% 
+  mutate(first_eve_diff = (rate2_eve - rate1_eve)) %&gt;% 
+  mutate(change = case_when(first_day_diff &lt; 0 ~ &quot;decrease&quot;,
+         first_day_diff &gt; 0 ~ &quot;increase&quot;,
+         first_day_diff == 0 ~ &quot;no_change&quot;,
+         first_eve_diff &lt; 0 ~ &quot;decrease&quot;,
+         first_eve_diff &gt; 0 ~ &quot;increase&quot;,
+         first_eve_diff == 0 ~ &quot;no_change&quot;,
+         )
+  )
+
+
+
+changes_mtvernon &lt;- mtvernon %&gt;%
   select(neighborhood, address, total_diff, change) %&gt;% 
-  group_by((change)) %&gt;% 
-  count(changes = change) %&gt;% 
-  summarize(sum(total_diff)) %&gt;% 
-  mutate(pct = (round(n/sum(n),2)))
-</code></pre>
+  group_by(change) %&gt;% 
+  summarise(count = n(), avg_total_diff = mean(total_diff, na.rm = TRUE)) %&gt;% 
+  mutate(pct = round(count / sum(count), 2)) %&gt;% 
+  select(change, count, pct, avg_total_diff)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gYHN1bW1hcml6ZSgpYDpcbuKEuSBJbiBhcmd1bWVudDogYHN1bSh0b3RhbF9kaWZmKWAuXG7ihLkgSW4gZ3JvdXAgMTogYChjaGFuZ2UpID0gXCJkZWNyZWFzZVwiYC5cbkNhdXNlZCBieSBlcnJvcjpcbiEgb2JqZWN0ICd0b3RhbF9kaWZmJyBub3QgZm91bmRcbkJhY2t0cmFjZTpcbiAgMS4gLi4uICU+JSBtdXRhdGUocGN0ID0gKHJvdW5kKG4gLyBzdW0obiksIDIpKSlcbiAgNC4gZHBseXI6OjpzdW1tYXJpc2UuZ3JvdXBlZF9kZiguLCBzdW0odG90YWxfZGlmZikpXG4gIDUuIGRwbHlyOjo6c3VtbWFyaXNlX2NvbHMoLmRhdGEsIGRwbHlyX3F1b3N1cmVzKC4uLiksIGJ5LCBcInN1bW1hcmlzZVwiKVxuICA3LiBkcGx5cjo6Om1hcChxdW9zdXJlcywgc3VtbWFyaXNlX2V2YWxfb25lLCBtYXNrID0gbWFzaylcbiAgOC4gYmFzZTo6bGFwcGx5KC54LCAuZiwgLi4uKVxuICA5LiBkcGx5ciAobG9jYWwpIEZVTihYW1tpXV0sIC4uLilcbiAxMC4gbWFzayRldmFsX2FsbF9zdW1tYXJpc2UocXVvKVxuIDExLiBkcGx5ciAobG9jYWwpIGV2YWwoKVxuIn0= -->
-<pre><code>Error in `summarize()`:
-ℹ In argument: `sum(total_diff)`.
-ℹ In group 1: `(change) = &quot;decrease&quot;`.
-Caused by error:
-! object &#39;total_diff&#39; not found
-Backtrace:
-  1. ... %&gt;% mutate(pct = (round(n / sum(n), 2)))
-  4. dplyr:::summarise.grouped_df(., sum(total_diff))
-  5. dplyr:::summarise_cols(.data, dplyr_quosures(...), by, &quot;summarise&quot;)
-  7. dplyr:::map(quosures, summarise_eval_one, mask = mask)
-  8. base::lapply(.x, .f, ...)
-  9. dplyr (local) FUN(X[[i]], ...)
- 10. mask$eval_all_summarise(quo)
- 11. dplyr (local) eval()</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IG9iamVjdCAnbXR2ZXJub24nIG5vdCBmb3VuZFxuIn0= -->
+<pre><code>Error: object &#39;mtvernon&#39; not found</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#Extract pdf table #needs work</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFeHRyYWN0IHRhYmxlcyBmcm9tIGEgUERGIGZpbGVcbnRhYmxlcyA8LSBwZGZfZGF0YShwZGZfZmlsZSlcblxuYGBgIn0= -->
-<pre class="r"><code># Extract tables from a PDF file
-tables &lt;- pdf_data(pdf_file)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gbG9hZGZpbGUocGRmKSA6IG9iamVjdCAncGRmX2ZpbGUnIG5vdCBmb3VuZFxuIn0= -->
-<pre><code>Error in loadfile(pdf) : object &#39;pdf_file&#39; not found</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
+</div>
 <div id="note-on-the-brute-force-conversion-of-the-first_rate_change1" class="section level3">
 <h3>Note on the brute force conversion of the first_rate_change1:</h3>
 <p>Yes, both methods should achieve the same result. They both convert
@@ -1877,10 +1954,32 @@ simpler.</p>
  })</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>#PDF tools - needs work</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5maWxlIDwtIFwiaHR0cHM6Ly9hY3JvYmF0LmFkb2JlLmNvbS9saW5rL3Jldmlldz91cmk9dXJuJTNBYWFpZCUzQXNjZHMlM0FVUyUzQTU2YzZmZTE4LWYwYzMtM2U5ZS1iN2Q0LTgwMjY2YjYwMDI4OFwiXG5cbnBkZl9maWxlIDwtIFwiLi4vZGF0YS9GZWxsc1BvaW50Um91bmQyUmF0ZVRhYmxlcy5wZGZcIlxuXG4jIEV4dHJhY3QgdGFibGVzIGZyb20gYSBQREYgZmlsZVxudGFibGVzIDwtIHBkZl9kYXRhKHBkZl9maWxlKVxuXG4jIFZpZXcgdGhlIGZpcnN0IHRhYmxlXG5wcmludCh0YWJsZXNbWzFdXSlcblxuXG5mZWxscyA8LSAodGFibGVzW1sxXV0pICU+JSBcbiAgYXMuZGF0YS5mcmFtZSgpXG5cblxuYGBgIn0= -->
+<pre class="r"><code>
+file &lt;- &quot;https://acrobat.adobe.com/link/review?uri=urn%3Aaaid%3Ascds%3AUS%3A56c6fe18-f0c3-3e9e-b7d4-80266b600288&quot;
+
+pdf_file &lt;- &quot;../data/FellsPointRound2RateTables.pdf&quot;
+
+# Extract tables from a PDF file
+tables &lt;- pdf_data(pdf_file)
+
+# View the first table
+print(tables[[1]])
+
+
+fells &lt;- (tables[[1]]) %&gt;% 
+  as.data.frame()
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUGFya2luZyBEYXRhIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIEJhbHRpbW9yZSBQYXJraW5nIE1ldGVyIERhdGEKU291cmNlOiAKRmVsbHMgUG9pbnQgaW5mbyBmcm9tIHBkZiBwcm92aWRlZCBieSBCYWx0aW1vcmUgUGFya2luZyBBdXRob3JpdHkgMy84IC8yMDIzIGF0IDM6MTEKTXQgVmVybm9uIGluZm8gaGVyZTogaHR0cHM6Ly9wYXJraW5nLmJhbHRpbW9yZWNpdHkuZ292L2RlbWFuZC1iYXNlZC1wYXJraW5nLW1ldGVyLXJhdGUtc2V0dGluZy9tdC12ZXJub24tZGVtYW5kLWJhc2VkLXBhcmtpbmctbWV0ZXItcmF0ZS1zZXR0aW5nIApUaWZmYW55IEphbWVzIGZyb20gdGhlIHBhcmtpbmcgYXV0aG9yaXR5IGlzIGNoZWNraW5nIG9uIEZlZGVyYWwgSGlsbApIYXJib3IgRWFzdCBpbmZvIGhlcmU6IGh0dHBzOi8vcGFya2luZy5iYWx0aW1vcmVjaXR5Lmdvdi9oYXJib3ItZWFzdC1wYXJraW5nLWRlbWFuZC1wYXJraW5nLW1ldGVyLXJhdGUtc2V0dGluZwpDZW50cmFsIERvd250b3duIGluZ28gaGVyZTogaHR0cHM6Ly9wYXJraW5nLmJhbHRpbW9yZWNpdHkuZ292L2NlbnRyYWwtZG93bnRvd24tZGVtYW5kLWJhc2VkLXBhcmtpbmctbWV0ZXItcmF0ZS1zZXR0aW5nCgpQYXJraW5nIGZhY2lsaXRpZXMgZnJvbSAzMTEgT3BlbiBCYWx0aW1vcmU6IGh0dHBzOi8vZGF0YS5iYWx0aW1vcmVjaXR5Lmdvdi9kYXRhc2V0cy8zZDk5NWRmZjdjNDI0ZDM5YTU5YmI2NWQ0YWY0OTQ4Nl8wL2V4cGxvcmU/bG9jYXRpb249MzkuMzIwNTE0JTJDLTc2LjYwOTI4NiUyQzExLjU4ClJlc2lkZW50aWFsIFBhcmtpbmcgUGVybWl0cyBmcm9tIE9wZW4gYmFsdGltb3JlOiAKCmBgYHtyIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGZvcm1hdHRhYmxlKQpsaWJyYXJ5KGphbml0b3IpCmxpYnJhcnkoZ29vZ2xlc2hlZXRzNCkKaW5zdGFsbC5wYWNrYWdlcygicGRmdG9vbHMiKQpsaWJyYXJ5KHBkZnRvb2xzKQoKYGBgCgojSW1wb3J0IG5laWdoYm9yaG9vZCwgY3JlYXRlIG5hbWUsIGFkZHJlc3MgYW5kIGNsZWFuCmBgYHtyfQpnb29nbGVzaGVldHM0OjpnczRfZGVhdXRoKCkKbXR2ZXJub24gPC0gcmVhZF9zaGVldCgiaHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vc3ByZWFkc2hlZXRzL2QvMUZPTDJ2QmZBNGlmQmJiampqUUVWRENIa2xjSV9PV3ZkM3ZnaERpQnFEV0UvZWRpdCNnaWQ9MTY0MDk2NDUxNiIsICJNdCBWZXJub24iKSAlPiUgCiAgYXMuZGF0YS5mcmFtZSgpICU+JSAKICBjbGVhbl9uYW1lcygpICU+JSAKICBtdXRhdGUobmVpZ2hib3Job29kID0gIm10dmVybm9uIikgJT4lIAogIG11dGF0ZShhZGRyZXNzID0gcGFzdGUwKGJsb2NrLCAiICIsIHN0cmVldCwgIiwgIiwiQmFsdGltb3JlIiwgIiwgIiwiTWQiKSkgJT4lIAogIG11dGF0ZShpbml0aWFsX3JhdGUxID0gYXMubnVtZXJpYyh1bmxpc3QoaW5pdGlhbF9yYXRlKSkpIAoKbXR2ZXJub24gPC0gbXR2ZXJub24gJT4lIAogIG11dGF0ZShmaXJzdF9yYXRlX2NoYW5nZTEgPSBhcy5udW1lcmljKGFzLmNoYXJhY3RlcihmaXJzdF9yYXRlX2NoYW5nZSkpKSAlPiUgCiAgbXV0YXRlKHNlY29uZF9yYXRlX2NoYW5nZTEgPSBhcy5udW1lcmljKHVubGlzdChzZWNvbmRfcmF0ZV9jaGFuZ2UpKSkKCiNmaWd1cmUgb3V0IHdoeSBFIENoYXNlIGlzIC41MCBhbmQgLjc1OyA4MDAgTiBIb3dhcmQgaXMgJDEgYW5kICQyOyAyMDAgVyBDZW50cmUgaXMgJDEgYW5kICQyOyBXIFByZXN0b24gaXMgLjc1IGFuZCAkMiAtIHdoYXQgYSBodWdlIHJhbmdlIQoKI25lZWQgdG8gZ2VvY29kZSB0aGUgc3RyZWV0cwoKCiNOb3RlIG9uIHRoZSBicnV0ZSBmb3JjZSBjb252ZXJzaW9uIG9mIHRoZSBmaXJzdF9yYXRlX2NoYW5nZTE6IHNlZSBiZWxvdwoKZ2xpbXBzZShtdHZlcm5vbikKYGBgCgojYW5hbHlzaXMgb2YgbmVpZ2hib3Job29kCmBgYHtyfQptdHZlcm5vbiA8LSBtdHZlcm5vbiAlPiUgCiAgbXV0YXRlKGZpcnN0X2RpZmYgPSAoZmlyc3RfcmF0ZV9jaGFuZ2UxIC0gaW5pdGlhbF9yYXRlMSkpICU+JSAKICBtdXRhdGUoc2Vjb25kX2RpZmYgPSAoc2Vjb25kX3JhdGVfY2hhbmdlMSAtIGZpcnN0X3JhdGVfY2hhbmdlMSkpICU+JSAKICBtdXRhdGUodG90YWxfZGlmZiA9IHJvd1N1bXMoc2VsZWN0KC4sIGMoImZpcnN0X2RpZmYiLCAic2Vjb25kX2RpZmYiKSksIG5hLnJtID0gVFJVRSkpICU+JSAKICBtdXRhdGUoY2hhbmdlID0gY2FzZV93aGVuKHRvdGFsX2RpZmYgPCAwIH4gImRlY3JlYXNlIiwKICAgICAgICAgdG90YWxfZGlmZiA+IDAgfiAiaW5jcmVhc2UiLAogICAgICAgICB0b3RhbF9kaWZmID09IDAgfiAibm9fY2hhbmdlIikKICApCgoKCmNoYW5nZXNfbXR2ZXJub24gPC0gbXR2ZXJub24gJT4lCiAgc2VsZWN0KG5laWdoYm9yaG9vZCwgYWRkcmVzcywgdG90YWxfZGlmZiwgY2hhbmdlKSAlPiUgCiAgZ3JvdXBfYnkoY2hhbmdlKSAlPiUgCiAgc3VtbWFyaXNlKGNvdW50ID0gbigpLCBhdmdfdG90YWxfZGlmZiA9IG1lYW4odG90YWxfZGlmZiwgbmEucm0gPSBUUlVFKSkgJT4lIAogIG11dGF0ZShwY3QgPSByb3VuZChjb3VudCAvIHN1bShjb3VudCksIDIpKSAlPiUgCiAgc2VsZWN0KGNoYW5nZSwgY291bnQsIHBjdCwgYXZnX3RvdGFsX2RpZmYpCgojSW4gTW91bnQgVmVybm9uLCA1NyUgb2YgdGhlIHBhcmtpbmcgbWV0ZXJzIHNob3dlZCBhIGRlY3JlYXNlIG9mIGFuIGF2ZXJhZ2Ugb2YgNDMgY2VudHMuIEp1c3QgMjIlIG9mIG1ldGVycyBzaG93ZWQgYW4gaW5jcmVhc2Ugb2YgYW4gYXZlcmFnZSBvZiAzNiBjZW50cy4KCmBgYAoKCiNFeHRyYWN0IHBkZiB0YWJsZQojbmVlZHMgd29yawpgYGB7cn0KCmZpbGUgPC0gImh0dHBzOi8vYWNyb2JhdC5hZG9iZS5jb20vbGluay9yZXZpZXc/dXJpPXVybiUzQWFhaWQlM0FzY2RzJTNBVVMlM0E1NmM2ZmUxOC1mMGMzLTNlOWUtYjdkNC04MDI2NmI2MDAyODgiCgpwZGZfZmlsZSA8LSAiLi4vZGF0YS9GZWxsc1BvaW50Um91bmQyUmF0ZVRhYmxlcy5wZGYiCgojIEV4dHJhY3QgdGFibGVzIGZyb20gYSBQREYgZmlsZQp0YWJsZXMgPC0gcGRmX2RhdGEocGRmX2ZpbGUpCgojIFZpZXcgdGhlIGZpcnN0IHRhYmxlCnByaW50KHRhYmxlc1tbMV1dKQoKCmZlbGxzIDwtICh0YWJsZXNbWzFdXSkgJT4lIAogIGFzLmRhdGEuZnJhbWUoKQoKCmBgYAoKCgoKCgojIyMgTm90ZSBvbiB0aGUgYnJ1dGUgZm9yY2UgY29udmVyc2lvbiBvZiB0aGUgZmlyc3RfcmF0ZV9jaGFuZ2UxOiAKClllcywgYm90aCBtZXRob2RzIHNob3VsZCBhY2hpZXZlIHRoZSBzYW1lIHJlc3VsdC4gVGhleSBib3RoIGNvbnZlcnQgdGhlIGVsZW1lbnRzIG9mIHRoZSBmaXJzdF9yYXRlX2NoYW5nZSBjb2x1bW4gdG8gbnVtZXJpYyB2YWx1ZXMuIFRoZSBtYWluIGRpZmZlcmVuY2UgbGllcyBpbiB0aGUgYXBwcm9hY2ggdG8gaGFuZGxlIHBvdGVudGlhbCBzaXplIGRpc2NyZXBhbmNpZXMgaW4gdGhlIHZlY3RvcnMgd2l0aGluIHRoZSBjb2x1bW4uCgpZb3VyIGFwcHJvYWNoIGRpcmVjdGx5IGNvbnZlcnRzIHRoZSBjb2x1bW4gdG8gY2hhcmFjdGVyIGFuZCB0aGVuIHRvIG51bWVyaWMuIFRoaXMgYXNzdW1lcyB0aGF0IHRoZSBkYXRhIGluIHRoZSBjb2x1bW4gY2FuIGJlIGRpcmVjdGx5IGNvbnZlcnRlZCB0byBudW1lcmljIHdpdGhvdXQgY29uc2lkZXJpbmcgcG90ZW50aWFsIGlzc3VlcyBzdWNoIGFzIG1pc3Npbmcgb3IgaW5jb25zaXN0ZW50IHZhbHVlcy4KCiBUaGUgYWx0ZXJuYXRpdmUgYXBwcm9hY2ggSSBwcm92aWRlZCBoYW5kbGVzIHBvdGVudGlhbCBpc3N1ZXMgd2l0aCB2YXJ5aW5nIHZlY3RvciBsZW5ndGhzIGluIHRoZSBjb2x1bW4uIEl0IHBhZHMgc2hvcnRlciB2ZWN0b3JzIHdpdGggTkEgdmFsdWVzIHRvIGVuc3VyZSBhbGwgdmVjdG9ycyBoYXZlIHRoZSBzYW1lIGxlbmd0aCBiZWZvcmUgY29udmVydGluZyB0aGVtIHRvIG51bWVyaWMuIFRoaXMgYXBwcm9hY2ggaXMgbW9yZSByb2J1c3QgaWYgdGhlcmUgYXJlIHZhcmlhdGlvbnMgaW4gdGhlIGxlbmd0aCBvZiB0aGUgdmVjdG9ycyB3aXRoaW4gdGhlIGNvbHVtbi4KCiBJZiB5b3UncmUgY29uZmlkZW50IHRoYXQgdGhlIGRhdGEgaW4geW91ciBjb2x1bW4gaXMgY29uc2lzdGVudCBhbmQgZG9lc24ndCBoYXZlIG1pc3Npbmcgb3IgaW5jb25zaXN0ZW50IHZhbHVlcywgeW91ciBhcHByb2FjaCBvZiBkaXJlY3RseSBjb252ZXJ0aW5nIHRvIGNoYXJhY3RlciBhbmQgdGhlbiB0byBudW1lcmljIGlzIHBlcmZlY3RseSB2YWxpZCBhbmQgc2ltcGxlci4KClJvYm90IG1ldGhvZAoKYGBge3J9CiAjIEZpbmQgdGhlIG1heGltdW0gbGVuZ3RoIG9mIGVsZW1lbnRzIGluIGZpcnN0X3JhdGVfY2hhbmdlIGNvbHVtbgogbWF4X2xlbmd0aCA8LSBtYXgoc2FwcGx5KG10dmVybm9uJGZpcnN0X3JhdGVfY2hhbmdlLCBsZW5ndGgpKQoKICNQYWQgc2hvcnRlciB2ZWN0b3JzIHdpdGggTkEgdmFsdWVzIHRvIG1ha2UgdGhlbSBjb25zaXN0ZW50CiAKIG10dmVybm9uJGZpcnN0X3JhdGVfY2hhbmdlIDwtIGxhcHBseShtdHZlcm5vbiRmaXJzdF9yYXRlX2NoYW5nZSwgZnVuY3Rpb24oeCkgewogICBsZW5ndGgoeCkgPC0gbWF4X2xlbmd0aAogICB4CiB9KQpgYGA=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUGFya2luZyBEYXRhIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIEJhbHRpbW9yZSBQYXJraW5nIE1ldGVyIERhdGEKU291cmNlOiAKRmVsbHMgUG9pbnQgaW5mbyBmcm9tIHBkZiBwcm92aWRlZCBieSBCYWx0aW1vcmUgUGFya2luZyBBdXRob3JpdHkgMy84IC8yMDIzIGF0IDM6MTEKTXQgVmVybm9uIGluZm8gaGVyZTogaHR0cHM6Ly9wYXJraW5nLmJhbHRpbW9yZWNpdHkuZ292L2RlbWFuZC1iYXNlZC1wYXJraW5nLW1ldGVyLXJhdGUtc2V0dGluZy9tdC12ZXJub24tZGVtYW5kLWJhc2VkLXBhcmtpbmctbWV0ZXItcmF0ZS1zZXR0aW5nIApUaWZmYW55IEphbWVzIGZyb20gdGhlIHBhcmtpbmcgYXV0aG9yaXR5IGlzIGNoZWNraW5nIG9uIEZlZGVyYWwgSGlsbApIYXJib3IgRWFzdCBpbmZvIGhlcmU6IGh0dHBzOi8vcGFya2luZy5iYWx0aW1vcmVjaXR5Lmdvdi9oYXJib3ItZWFzdC1wYXJraW5nLWRlbWFuZC1wYXJraW5nLW1ldGVyLXJhdGUtc2V0dGluZwpDZW50cmFsIERvd250b3duIGluZ28gaGVyZTogaHR0cHM6Ly9wYXJraW5nLmJhbHRpbW9yZWNpdHkuZ292L2NlbnRyYWwtZG93bnRvd24tZGVtYW5kLWJhc2VkLXBhcmtpbmctbWV0ZXItcmF0ZS1zZXR0aW5nCgpQYXJraW5nIGZhY2lsaXRpZXMgZnJvbSAzMTEgT3BlbiBCYWx0aW1vcmU6IGh0dHBzOi8vZGF0YS5iYWx0aW1vcmVjaXR5Lmdvdi9kYXRhc2V0cy8zZDk5NWRmZjdjNDI0ZDM5YTU5YmI2NWQ0YWY0OTQ4Nl8wL2V4cGxvcmU/bG9jYXRpb249MzkuMzIwNTE0JTJDLTc2LjYwOTI4NiUyQzExLjU4ClJlc2lkZW50aWFsIFBhcmtpbmcgUGVybWl0cyBmcm9tIE9wZW4gYmFsdGltb3JlOiAKCmBgYHtyIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGZvcm1hdHRhYmxlKQpsaWJyYXJ5KGphbml0b3IpCmxpYnJhcnkoZ29vZ2xlc2hlZXRzNCkKI2luc3RhbGwucGFja2FnZXMoInBkZnRvb2xzIikKbGlicmFyeShwZGZ0b29scykKCmBgYAoKI0ltcG9ydCBuZWlnaGJvcmhvb2QsIGNyZWF0ZSBuYW1lLCBhZGRyZXNzIGFuZCBjbGVhbgpgYGB7cn0KZ29vZ2xlc2hlZXRzNDo6Z3M0X2RlYXV0aCgpCm10dmVybm9uIDwtIHJlYWRfc2hlZXQoImh0dHBzOi8vZG9jcy5nb29nbGUuY29tL3NwcmVhZHNoZWV0cy9kLzFGT0wydkJmQTRpZkJiYmpqalFFVkRDSGtsY0lfT1d2ZDN2Z2hEaUJxRFdFL2VkaXQjZ2lkPTE2NDA5NjQ1MTYiLCAiTXQgVmVybm9uIikgJT4lIAogIGFzLmRhdGEuZnJhbWUoKSAlPiUgCiAgY2xlYW5fbmFtZXMoKSAlPiUgCiAgbXV0YXRlKG5laWdoYm9yaG9vZCA9ICJtdHZlcm5vbiIpICU+JSAKICBtdXRhdGUoYWRkcmVzcyA9IHBhc3RlMChibG9jaywgIiAiLCBzdHJlZXQsICIsICIsIkJhbHRpbW9yZSIsICIsICIsIk1kIikpICU+JSAKICBtdXRhdGUoaW5pdGlhbF9yYXRlMSA9IGFzLm51bWVyaWModW5saXN0KGluaXRpYWxfcmF0ZSkpKSAKCm10dmVybm9uIDwtIG10dmVybm9uICU+JSAKICBtdXRhdGUoZmlyc3RfcmF0ZV9jaGFuZ2UxID0gYXMubnVtZXJpYyhhcy5jaGFyYWN0ZXIoZmlyc3RfcmF0ZV9jaGFuZ2UpKSkgJT4lIAogIG11dGF0ZShzZWNvbmRfcmF0ZV9jaGFuZ2UxID0gYXMubnVtZXJpYyh1bmxpc3Qoc2Vjb25kX3JhdGVfY2hhbmdlKSkpCgojZmlndXJlIG91dCB3aHkgRSBDaGFzZSBpcyAuNTAgYW5kIC43NTsgODAwIE4gSG93YXJkIGlzICQxIGFuZCAkMjsgMjAwIFcgQ2VudHJlIGlzICQxIGFuZCAkMjsgVyBQcmVzdG9uIGlzIC43NSBhbmQgJDIgLSB3aGF0IGEgaHVnZSByYW5nZSEKCiNuZWVkIHRvIGdlb2NvZGUgdGhlIHN0cmVldHMKCgojTm90ZSBvbiB0aGUgYnJ1dGUgZm9yY2UgY29udmVyc2lvbiBvZiB0aGUgZmlyc3RfcmF0ZV9jaGFuZ2UxOiBzZWUgYmVsb3cKCmdsaW1wc2UobXR2ZXJub24pCmBgYAoKI2FuYWx5c2lzIG9mIG10dmVybm9uIG5laWdoYm9yaG9vZApgYGB7cn0KbXR2ZXJub24gPC0gbXR2ZXJub24gJT4lIAogIG11dGF0ZShmaXJzdF9kaWZmID0gKGZpcnN0X3JhdGVfY2hhbmdlMSAtIGluaXRpYWxfcmF0ZTEpKSAlPiUgCiAgbXV0YXRlKHNlY29uZF9kaWZmID0gKHNlY29uZF9yYXRlX2NoYW5nZTEgLSBmaXJzdF9yYXRlX2NoYW5nZTEpKSAlPiUgCiAgbXV0YXRlKHRvdGFsX2RpZmYgPSByb3dTdW1zKHNlbGVjdCguLCBjKCJmaXJzdF9kaWZmIiwgInNlY29uZF9kaWZmIikpLCBuYS5ybSA9IFRSVUUpKSAlPiUgCiAgbXV0YXRlKGNoYW5nZSA9IGNhc2Vfd2hlbih0b3RhbF9kaWZmIDwgMCB+ICJkZWNyZWFzZSIsCiAgICAgICAgIHRvdGFsX2RpZmYgPiAwIH4gImluY3JlYXNlIiwKICAgICAgICAgdG90YWxfZGlmZiA9PSAwIH4gIm5vX2NoYW5nZSIpCiAgKQoKCgpjaGFuZ2VzX210dmVybm9uIDwtIG10dmVybm9uICU+JQogIHNlbGVjdChuZWlnaGJvcmhvb2QsIGFkZHJlc3MsIHRvdGFsX2RpZmYsIGNoYW5nZSkgJT4lIAogIGdyb3VwX2J5KGNoYW5nZSkgJT4lIAogIHN1bW1hcmlzZShjb3VudCA9IG4oKSwgYXZnX3RvdGFsX2RpZmYgPSBtZWFuKHRvdGFsX2RpZmYsIG5hLnJtID0gVFJVRSkpICU+JSAKICBtdXRhdGUocGN0ID0gcm91bmQoY291bnQgLyBzdW0oY291bnQpLCAyKSkgJT4lIAogIHNlbGVjdChjaGFuZ2UsIGNvdW50LCBwY3QsIGF2Z190b3RhbF9kaWZmKSAlPiUgCiAgbXV0YXRlKG5laWdoYm9yaG9vZCA9ICJtdHZlcm5vbiIpCgojSW4gTW91bnQgVmVybm9uLCA1NyUgb2YgdGhlIHBhcmtpbmcgbWV0ZXJzIHNob3dlZCBhIGRlY3JlYXNlIG9mIGFuIGF2ZXJhZ2Ugb2YgNDMgY2VudHMuIEp1c3QgMjIlIG9mIG1ldGVycyBzaG93ZWQgYW4gaW5jcmVhc2Ugb2YgYW4gYXZlcmFnZSBvZiAzNiBjZW50cy4KCmBgYAoKCiMjIyBFeHRyYWN0IHBkZiB0YWJsZSBmb3IgRmVsbHMgUG9pbnQgLSB1c2UgVGFidWxhCi0tY29udmVydCBkb2xsYXJzIHRvIG51bWJlcnMKLS0uLi9kYXRhL0ZlbGxzUG9pbnRSYXRlVGFibGVzLmNzdgoKCgoKI0ltcG9ydCBuZWlnaGJvcmhvb2QsIGNyZWF0ZSBuYW1lLCBhZGRyZXNzIGFuZCBjbGVhbgpgYGB7cn0KZmVsbHMgPC0gcmVhZC5jc3YoIi4uL2RhdGEvRmVsbHNQb2ludFJhdGVUYWJsZXMuY3N2IikgJT4lIAogIGFzLmRhdGEuZnJhbWUoKSAlPiUgCiAgY2xlYW5fbmFtZXMoKSAlPiUgCiAgbXV0YXRlKG5laWdoYm9yaG9vZCA9ICJmZWxsc3B0IikgJT4lIAogIG11dGF0ZShhZGRyZXNzID0gcGFzdGUwKGJsb2NrLCAiICIsIHN0cmVldCwgIiwgIiwiQmFsdGltb3JlIiwgIiwgIiwiTWQiKSkgJT4lIAogIG11dGF0ZShyYXRlMV9kYXkgPSBhcy5udW1lcmljKGZpcnN0X3JhdGVfY2hhbmdlX2RheXRpbWVfcmF0ZSkpICU+JSAKICAgbXV0YXRlKHJhdGUxX2V2ZSA9IGFzLm51bWVyaWMoZmlyc3RfcmF0ZV9jaGFuZ2VfZXZlbmluZ19yYXRlKSkgJT4lIAogICBtdXRhdGUocmF0ZTJfZGF5ID0gYXMubnVtZXJpYyhzZWNvbmRfcmF0ZV9jaGFuZ2VfZGF5dGltZV9yYXRlKSkgJT4lIAogICBtdXRhdGUocmF0ZTJfZXZlID0gYXMubnVtZXJpYyhzZWNvbmRfcmF0ZV9jaGFuZ2VfZXZlbmluZ19yYXRlKSkKCiNmaWd1cmUgb3V0IHdoeSA4MDAgUyBCcm9hZHdheSBoYXMgJDIuMjUgKFllYXIgMjAyMikgCgojbmVlZCB0byBnZW9jb2RlIHRoZSBzdHJlZXRzCgoKZ2xpbXBzZShmZWxscykKYGBgCgoKI2FuYWx5c2lzIG9mIGZlbGxzIG5laWdoYm9yaG9vZApgYGB7cn0KZmVsbHMgPC0gZmVsbHMgJT4lIAogIG11dGF0ZShmaXJzdF9kYXlfZGlmZiA9IChyYXRlMl9kYXkgLSByYXRlMV9kYXkpKSAlPiUgCiAgbXV0YXRlKGZpcnN0X2V2ZV9kaWZmID0gKHJhdGUyX2V2ZSAtIHJhdGUxX2V2ZSkpICU+JSAKICBtdXRhdGUoY2hhbmdlID0gY2FzZV93aGVuKGZpcnN0X2RheV9kaWZmIDwgMCB+ICJkZWNyZWFzZSIsCiAgICAgICAgIGZpcnN0X2RheV9kaWZmID4gMCB+ICJpbmNyZWFzZSIsCiAgICAgICAgIGZpcnN0X2RheV9kaWZmID09IDAgfiAibm9fY2hhbmdlIiwKICAgICAgICAgZmlyc3RfZXZlX2RpZmYgPCAwIH4gImRlY3JlYXNlIiwKICAgICAgICAgZmlyc3RfZXZlX2RpZmYgPiAwIH4gImluY3JlYXNlIiwKICAgICAgICAgZmlyc3RfZXZlX2RpZmYgPT0gMCB+ICJub19jaGFuZ2UiLAogICAgICAgICApCiAgKQoKCgpjaGFuZ2VzX2ZlbGxzIDwtIGZlbGxzICU+JQogIHNlbGVjdChuZWlnaGJvcmhvb2QsIGFkZHJlc3MsIGZpcnN0X2RheV9kaWZmLCBmaXJzdF9ldmVfZGlmZiwgY2hhbmdlKSAlPiUgCiAgZ3JvdXBfYnkoY2hhbmdlKSAlPiUgCiAgc3VtbWFyaXNlKGNvdW50ID0gbigpLCBhdmdfZmlyc3RfZGF5X2RpZmYgPSBtZWFuKGZpcnN0X2RheV9kaWZmLCBuYS5ybSA9IFRSVUUpLCBhdmdfZmlyc3RfZXZlX2RpZmYgPSByb3VuZChtZWFuKGZpcnN0X2V2ZV9kaWZmLCBuYS5ybSA9IFRSVUUpKSwyKSAlPiUgCiAgbXV0YXRlKHBjdCA9IHJvdW5kKGNvdW50IC8gc3VtKGNvdW50KSksMikgJT4lIAogIHNlbGVjdChjaGFuZ2UsIGNvdW50LCBwY3QsIGF2Z19maXJzdF9kYXlfZGlmZiwgYXZnX2ZpcnN0X2V2ZV9kaWZmKSAlPiUgCiAgICBtdXRhdGUobmVpZ2hib3Job29kID0gImZlbGxzcHQiKQoKIwoKYGBgCgoKIyMjIE5vdGUgb24gdGhlIGJydXRlIGZvcmNlIGNvbnZlcnNpb24gb2YgdGhlIGZpcnN0X3JhdGVfY2hhbmdlMTogCgpZZXMsIGJvdGggbWV0aG9kcyBzaG91bGQgYWNoaWV2ZSB0aGUgc2FtZSByZXN1bHQuIFRoZXkgYm90aCBjb252ZXJ0IHRoZSBlbGVtZW50cyBvZiB0aGUgZmlyc3RfcmF0ZV9jaGFuZ2UgY29sdW1uIHRvIG51bWVyaWMgdmFsdWVzLiBUaGUgbWFpbiBkaWZmZXJlbmNlIGxpZXMgaW4gdGhlIGFwcHJvYWNoIHRvIGhhbmRsZSBwb3RlbnRpYWwgc2l6ZSBkaXNjcmVwYW5jaWVzIGluIHRoZSB2ZWN0b3JzIHdpdGhpbiB0aGUgY29sdW1uLgoKWW91ciBhcHByb2FjaCBkaXJlY3RseSBjb252ZXJ0cyB0aGUgY29sdW1uIHRvIGNoYXJhY3RlciBhbmQgdGhlbiB0byBudW1lcmljLiBUaGlzIGFzc3VtZXMgdGhhdCB0aGUgZGF0YSBpbiB0aGUgY29sdW1uIGNhbiBiZSBkaXJlY3RseSBjb252ZXJ0ZWQgdG8gbnVtZXJpYyB3aXRob3V0IGNvbnNpZGVyaW5nIHBvdGVudGlhbCBpc3N1ZXMgc3VjaCBhcyBtaXNzaW5nIG9yIGluY29uc2lzdGVudCB2YWx1ZXMuCgogVGhlIGFsdGVybmF0aXZlIGFwcHJvYWNoIEkgcHJvdmlkZWQgaGFuZGxlcyBwb3RlbnRpYWwgaXNzdWVzIHdpdGggdmFyeWluZyB2ZWN0b3IgbGVuZ3RocyBpbiB0aGUgY29sdW1uLiBJdCBwYWRzIHNob3J0ZXIgdmVjdG9ycyB3aXRoIE5BIHZhbHVlcyB0byBlbnN1cmUgYWxsIHZlY3RvcnMgaGF2ZSB0aGUgc2FtZSBsZW5ndGggYmVmb3JlIGNvbnZlcnRpbmcgdGhlbSB0byBudW1lcmljLiBUaGlzIGFwcHJvYWNoIGlzIG1vcmUgcm9idXN0IGlmIHRoZXJlIGFyZSB2YXJpYXRpb25zIGluIHRoZSBsZW5ndGggb2YgdGhlIHZlY3RvcnMgd2l0aGluIHRoZSBjb2x1bW4uCgogSWYgeW91J3JlIGNvbmZpZGVudCB0aGF0IHRoZSBkYXRhIGluIHlvdXIgY29sdW1uIGlzIGNvbnNpc3RlbnQgYW5kIGRvZXNuJ3QgaGF2ZSBtaXNzaW5nIG9yIGluY29uc2lzdGVudCB2YWx1ZXMsIHlvdXIgYXBwcm9hY2ggb2YgZGlyZWN0bHkgY29udmVydGluZyB0byBjaGFyYWN0ZXIgYW5kIHRoZW4gdG8gbnVtZXJpYyBpcyBwZXJmZWN0bHkgdmFsaWQgYW5kIHNpbXBsZXIuCgpSb2JvdCBtZXRob2QKCmBgYHtyfQogIyBGaW5kIHRoZSBtYXhpbXVtIGxlbmd0aCBvZiBlbGVtZW50cyBpbiBmaXJzdF9yYXRlX2NoYW5nZSBjb2x1bW4KIG1heF9sZW5ndGggPC0gbWF4KHNhcHBseShtdHZlcm5vbiRmaXJzdF9yYXRlX2NoYW5nZSwgbGVuZ3RoKSkKCiAjUGFkIHNob3J0ZXIgdmVjdG9ycyB3aXRoIE5BIHZhbHVlcyB0byBtYWtlIHRoZW0gY29uc2lzdGVudAogCiBtdHZlcm5vbiRmaXJzdF9yYXRlX2NoYW5nZSA8LSBsYXBwbHkobXR2ZXJub24kZmlyc3RfcmF0ZV9jaGFuZ2UsIGZ1bmN0aW9uKHgpIHsKICAgbGVuZ3RoKHgpIDwtIG1heF9sZW5ndGgKICAgeAogfSkKYGBgCgoKCiNQREYgdG9vbHMgLSBuZWVkcyB3b3JrCmBgYHtyfQoKZmlsZSA8LSAiaHR0cHM6Ly9hY3JvYmF0LmFkb2JlLmNvbS9saW5rL3Jldmlldz91cmk9dXJuJTNBYWFpZCUzQXNjZHMlM0FVUyUzQTU2YzZmZTE4LWYwYzMtM2U5ZS1iN2Q0LTgwMjY2YjYwMDI4OCIKCnBkZl9maWxlIDwtICIuLi9kYXRhL0ZlbGxzUG9pbnRSb3VuZDJSYXRlVGFibGVzLnBkZiIKCiMgRXh0cmFjdCB0YWJsZXMgZnJvbSBhIFBERiBmaWxlCnRhYmxlcyA8LSBwZGZfZGF0YShwZGZfZmlsZSkKCiMgVmlldyB0aGUgZmlyc3QgdGFibGUKcHJpbnQodGFibGVzW1sxXV0pCgoKZmVsbHMgPC0gKHRhYmxlc1tbMV1dKSAlPiUgCiAgYXMuZGF0YS5mcmFtZSgpCgoKYGBg</div>
 
 
 

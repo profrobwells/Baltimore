@@ -19,7 +19,7 @@ library(tidyverse)
 library(formattable)
 library(janitor)
 library(googlesheets4)
-install.packages("pdftools")
+#install.packages("pdftools")
 library(pdftools)
 
 ```
@@ -48,7 +48,7 @@ mtvernon <- mtvernon %>%
 glimpse(mtvernon)
 ```
 
-#analysis of neighborhood
+#analysis of mtvernon neighborhood
 ```{r}
 mtvernon <- mtvernon %>% 
   mutate(first_diff = (first_rate_change1 - initial_rate1)) %>% 
@@ -66,37 +66,69 @@ changes_mtvernon <- mtvernon %>%
   group_by(change) %>% 
   summarise(count = n(), avg_total_diff = mean(total_diff, na.rm = TRUE)) %>% 
   mutate(pct = round(count / sum(count), 2)) %>% 
-  select(change, count, pct, avg_total_diff)
+  select(change, count, pct, avg_total_diff) %>% 
+  mutate(neighborhood = "mtvernon")
 
 #In Mount Vernon, 57% of the parking meters showed a decrease of an average of 43 cents. Just 22% of meters showed an increase of an average of 36 cents.
 
 ```
 
 
-#Extract pdf table
-#needs work
+### Extract pdf table for Fells Point - use Tabula
+--convert dollars to numbers
+--../data/FellsPointRateTables.csv
+
+
+
+
+#Import neighborhood, create name, address and clean
 ```{r}
+fells <- read.csv("../data/FellsPointRateTables.csv") %>% 
+  as.data.frame() %>% 
+  clean_names() %>% 
+  mutate(neighborhood = "fellspt") %>% 
+  mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>% 
+  mutate(rate1_day = as.numeric(first_rate_change_daytime_rate)) %>% 
+   mutate(rate1_eve = as.numeric(first_rate_change_evening_rate)) %>% 
+   mutate(rate2_day = as.numeric(second_rate_change_daytime_rate)) %>% 
+   mutate(rate2_eve = as.numeric(second_rate_change_evening_rate))
 
-file <- "https://acrobat.adobe.com/link/review?uri=urn%3Aaaid%3Ascds%3AUS%3A56c6fe18-f0c3-3e9e-b7d4-80266b600288"
+#figure out why 800 S Broadway has $2.25 (Year 2022) 
 
-pdf_file <- "../data/FellsPointRound2RateTables.pdf"
-
-# Extract tables from a PDF file
-tables <- pdf_data(pdf_file)
-
-# View the first table
-print(tables[[1]])
+#need to geocode the streets
 
 
-fells <- (tables[[1]]) %>% 
-  as.data.frame()
-
-
+glimpse(fells)
 ```
 
 
+#analysis of fells neighborhood
+```{r}
+fells <- fells %>% 
+  mutate(first_day_diff = (rate2_day - rate1_day)) %>% 
+  mutate(first_eve_diff = (rate2_eve - rate1_eve)) %>% 
+  mutate(change = case_when(first_day_diff < 0 ~ "decrease",
+         first_day_diff > 0 ~ "increase",
+         first_day_diff == 0 ~ "no_change",
+         first_eve_diff < 0 ~ "decrease",
+         first_eve_diff > 0 ~ "increase",
+         first_eve_diff == 0 ~ "no_change",
+         )
+  )
 
 
+
+changes_fells <- fells %>%
+  select(neighborhood, address, first_day_diff, first_eve_diff, change) %>% 
+  group_by(change) %>% 
+  summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff = round(mean(first_eve_diff, na.rm = TRUE)),2) %>% 
+  mutate(pct = round(count / sum(count)),2) %>% 
+  select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>% 
+    mutate(neighborhood = "fellspt")
+
+#
+
+```
 
 
 ### Note on the brute force conversion of the first_rate_change1: 
@@ -121,4 +153,26 @@ Robot method
    length(x) <- max_length
    x
  })
+```
+
+
+
+#PDF tools - needs work
+```{r}
+
+file <- "https://acrobat.adobe.com/link/review?uri=urn%3Aaaid%3Ascds%3AUS%3A56c6fe18-f0c3-3e9e-b7d4-80266b600288"
+
+pdf_file <- "../data/FellsPointRound2RateTables.pdf"
+
+# Extract tables from a PDF file
+tables <- pdf_data(pdf_file)
+
+# View the first table
+print(tables[[1]])
+
+
+fells <- (tables[[1]]) %>% 
+  as.data.frame()
+
+
 ```

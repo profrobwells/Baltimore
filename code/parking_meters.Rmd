@@ -1,0 +1,124 @@
+---
+title: "Parking Data"
+output: html_notebook
+---
+
+# Baltimore Parking Meter Data
+Source: 
+Fells Point info from pdf provided by Baltimore Parking Authority 3/8 /2023 at 3:11
+Mt Vernon info here: https://parking.baltimorecity.gov/demand-based-parking-meter-rate-setting/mt-vernon-demand-based-parking-meter-rate-setting 
+Tiffany James from the parking authority is checking on Federal Hill
+Harbor East info here: https://parking.baltimorecity.gov/harbor-east-parking-demand-parking-meter-rate-setting
+Central Downtown ingo here: https://parking.baltimorecity.gov/central-downtown-demand-based-parking-meter-rate-setting
+
+Parking facilities from 311 Open Baltimore: https://data.baltimorecity.gov/datasets/3d995dff7c424d39a59bb65d4af49486_0/explore?location=39.320514%2C-76.609286%2C11.58
+Residential Parking Permits from Open baltimore: 
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(formattable)
+library(janitor)
+library(googlesheets4)
+install.packages("pdftools")
+library(pdftools)
+
+```
+
+#Import neighborhood, create name, address and clean
+```{r}
+googlesheets4::gs4_deauth()
+mtvernon <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Mt Vernon") %>% 
+  as.data.frame() %>% 
+  clean_names() %>% 
+  mutate(neighborhood = "mtvernon") %>% 
+  mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>% 
+  mutate(initial_rate1 = as.numeric(unlist(initial_rate))) 
+
+mtvernon <- mtvernon %>% 
+  mutate(first_rate_change1 = as.numeric(as.character(first_rate_change))) %>% 
+  mutate(second_rate_change1 = as.numeric(unlist(second_rate_change)))
+
+#figure out why E Chase is .50 and .75; 800 N Howard is $1 and $2; 200 W Centre is $1 and $2; W Preston is .75 and $2 - what a huge range!
+
+#need to geocode the streets
+
+
+#Note on the brute force conversion of the first_rate_change1: see below
+
+glimpse(mtvernon)
+```
+
+#analysis of neighborhood
+```{r}
+mtvernon <- mtvernon %>% 
+  mutate(first_diff = (first_rate_change1 - initial_rate1)) %>% 
+  mutate(second_diff = (second_rate_change1 - first_rate_change1)) %>% 
+  mutate(total_diff = rowSums(select(., c("first_diff", "second_diff")), na.rm = TRUE)) %>% 
+  mutate(change = case_when(total_diff < 0 ~ "decrease",
+         total_diff > 0 ~ "increase",
+         total_diff == 0 ~ "no_change")
+  )
+
+
+
+changes_mtvernon <- mtvernon %>%
+  select(neighborhood, address, total_diff, change) %>% 
+  group_by(change) %>% 
+  summarise(count = n(), avg_total_diff = mean(total_diff, na.rm = TRUE)) %>% 
+  mutate(pct = round(count / sum(count), 2)) %>% 
+  select(change, count, pct, avg_total_diff)
+
+#In Mount Vernon, 57% of the parking meters showed a decrease of an average of 43 cents. Just 22% of meters showed an increase of an average of 36 cents.
+
+```
+
+
+#Extract pdf table
+#needs work
+```{r}
+
+file <- "https://acrobat.adobe.com/link/review?uri=urn%3Aaaid%3Ascds%3AUS%3A56c6fe18-f0c3-3e9e-b7d4-80266b600288"
+
+pdf_file <- "../data/FellsPointRound2RateTables.pdf"
+
+# Extract tables from a PDF file
+tables <- pdf_data(pdf_file)
+
+# View the first table
+print(tables[[1]])
+
+
+fells <- (tables[[1]]) %>% 
+  as.data.frame()
+
+
+```
+
+
+
+
+
+
+### Note on the brute force conversion of the first_rate_change1: 
+
+Yes, both methods should achieve the same result. They both convert the elements of the first_rate_change column to numeric values. The main difference lies in the approach to handle potential size discrepancies in the vectors within the column.
+
+Your approach directly converts the column to character and then to numeric. This assumes that the data in the column can be directly converted to numeric without considering potential issues such as missing or inconsistent values.
+
+ The alternative approach I provided handles potential issues with varying vector lengths in the column. It pads shorter vectors with NA values to ensure all vectors have the same length before converting them to numeric. This approach is more robust if there are variations in the length of the vectors within the column.
+
+ If you're confident that the data in your column is consistent and doesn't have missing or inconsistent values, your approach of directly converting to character and then to numeric is perfectly valid and simpler.
+
+Robot method
+
+```{r}
+ # Find the maximum length of elements in first_rate_change column
+ max_length <- max(sapply(mtvernon$first_rate_change, length))
+
+ #Pad shorter vectors with NA values to make them consistent
+ 
+ mtvernon$first_rate_change <- lapply(mtvernon$first_rate_change, function(x) {
+   length(x) <- max_length
+   x
+ })
+```

@@ -1,0 +1,49 @@
+---
+title: "Parking Violations"
+output: html_notebook
+---
+
+A review of parking citation data in Baltimore
+https://data.baltimorecity.gov/datasets/baltimore::parking-and-moving-citations/explore?showTable=true
+
+```{r}
+# Load the tidyverse,janitor
+library(tidyverse)
+library(janitor)
+```
+
+```{r}
+parking_tix <- rio::import("/Users/robwells/Downloads/Parking_and_Moving_Citations.csv")
+
+parking_tix <- parking_tix %>%  
+  clean_names()
+
+parking_tix$year <- sub("^([0-9]{4}).*", "\\1", parking_tix$viol_date)
+
+parking_2022_2023 <- parking_tix %>% 
+  filter(year > 2021) 
+
+write.csv(parking_2022_2023, "parking_2022_2023.csv")
+
+
+
+
+```
+
+# fix makes
+```{r}
+
+parking_tix <- parking_tix %>% 
+  mutate(make_clean = make) %>% 
+  mutate(make_clean = case_when(
+    make_clean =="HOND" ~ "HONDA",
+    make_clean =="YAMAH" ~ "YAMAHA",
+    TRUE ~ make_clean))
+  
+makes <- parking_tix %>% 
+  group_by(make_clean) %>% 
+  count() %>% 
+  filter(n > 100) %>% 
+  arrange(desc(make_clean))
+
+```

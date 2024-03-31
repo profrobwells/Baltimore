@@ -1,0 +1,59 @@
+,,,,,,,Second,,,,,
+,,,,R1,,,,,,,,
+Block,Street,Side,Initial Rate,,First Rate,R2,Rate,,,,,
+,,,,Recommendation,,,,,,,,
+,,,,,Change,Recommendation,Change,,,,,
+101,Key Highway,SS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,,,,,
+201,Key Highway,SS,$2.00 ,Decrease,$1.75 ,Maintain,$1.75 ,,,,,
+301-401,Key Highway,SS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,,,,,
+801,Key Highway,ES,$0.50 ,Decrease,$0.50 ,Maintain,$0.50 ,,,,,
+900-1000,Key Highway,WS,$0.50 ,Decrease,$0.50 ,Maintain,$0.50 ,,,,,
+901-1001,Key Highway,ES,$0.50 ,Decrease,$0.50 ,Maintain,$0.50 ,,,,,
+1100,Key Highway,WS,$2.00 ,Decrease,$1.75 ,Decrease,$0.50 ,,,,,
+1101,Key Highway,ES,$0.50 ,Decrease,$0.50 ,Maintain,$0.50 ,,,,,
+1301,Key Highway,ES,$0.50 ,Decrease,$0.50 ,Maintain,$0.50 ,,,,,
+1400,Key Highway,WS,$0.50 ,Decrease,$0.50 ,Maintain,$0.50 ,,,,,
+1301,Webster,ES,$0.50 ,Decrease,$0.50 ,Maintain,$0.50 ,,,,,
+700-800,Covington Street,WS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,,,,,
+900,Covington Street,WS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,Increase,,,,
+1000,Covington Street,WS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,Decrease,,,,
+Unit,E. Ostend Street,NS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,Maintain,,,,
+Unit,E. Poultney Street,NS,$2.00 ,Increase,$2.25 ,now split rate,,,,,,
+100,W. Henrietta Street,NS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,,,,,
+Unit,W. Henrietta Street,NS,$2.00 ,Decrease,$1.75 ,Increase,$2.00 ,,,,,
+Unit,E. Henrietta Street,NS,$2.00 ,Maintain,$2.00 ,Maintain,$2.00 ,,,,,
+Unit,E. Henrietta Street,SS,$2.00 ,Maintain,$2.00 ,Maintain,$2.00 ,,,,,
+Unit,E. Lee Street,SS,$2.00 ,Maintain,$2.00 ,Decrease,$1.75 ,,,,,
+Unit,E. Barre Street,SS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,,,,,
+800,Leadenhall Street,WS,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,,,,,
+801,Leadenhall Street,ES,$2.00 ,Decrease,$1.75 ,Decrease,$1.50 ,,,,,
+400,Light Street,WS,$2.00 ,Increase,$2.25 ,now within CBD,,,,,,
+500,Light Street,WS,$2.00 ,Increase,$2.25 ,now within CBD,,,,,,
+600,Light Street,WS,$1.50 ,Maintain,$1.50 ,now within CBD,,,,,,
+501,S Charles Street,ES,$1.50/$2.00,was split rate,$1.25/$1.75,Decrease,$1.00 ,,,,,
+701,S Charles Street,ES,$1.50/$2.00,was split rate,$1.25/$1.75,Maintain,$1.25 ,,,,,
+Block,Street,Side,Initial Rate,"R1 DaytimeRecommendation","FirstDaytimeRate Change","R1 EveningRecommendation","FirstEveningRateChange","R2 DaytimeRecommendation","SecondDaytimeRate Change","R2 EveningRecommendation","SecondEvening RateChange",
+Unit,E. North Cross Street,NS,$1.50/$2.00,Increase,$1.75 ,Increase,$2.25 ,Increase,$2.00 ,Increase,$2.50 ,
+Unit,E. South Cross Street,NS,$1.50/$2.00,Decrease,$1.25 ,Increase,$2.25 ,Increase,$1.50 ,Increase,$2.50 ,
+Unit,E. South Cross Street,SS,$1.50/$2.00,Decrease,$1.25 ,Increase,$2.25 ,Increase,$1.50 ,Increase,$2.50 ,
+Unit,E. Poultney Street,NS,$2.00 ,Increase,$2.25 ,N/A,N/A,Increase,$2.50 ,Increase,$2.50 ,
+Unit,W. Hamburg Street,NS,$1.50/$2.00,Decrease,$1.25 ,Maintain,$2.00 ,Maintain,$1.25 ,Decrease,$1.75 ,
+Unit,W. Hamburg Street,SS,$1.50/$2.00,Decrease,$1.25 ,Maintain,$2.00 ,Maintain,$1.25 ,Decrease,$1.75 ,
+501,S. Charles Street,ES,$1.50/$2.00,Decrease,$1.25 ,Decrease,$1.75 ,no longer split rate,,,,
+701,S. Charles Street,ES,$1.50/$2.00,Decrease,$1.25 ,Decrease,$1.75 ,no longer split rate,,,Increase,
+900,S. Charles Street,WS,$1.50/$2.00,Maintain,$1.50 ,Maintain,$2.00 ,Decrease,$1.25 ,Increase,$2.25 ,Decrease
+901,S. Charles Street,ES,$1.50/$2.00,Maintain,$1.50 ,Maintain,$2.00 ,Decrease,$1.25 ,Increase,$2.25 ,Maintain
+1000,S. Charles Street,WS,$1.50/$2.00,Maintain,$1.50 ,Increase,$2.25 ,Increase,$1.75 ,Increase,$2.50 ,
+1001,S. Charles Street,ES,$1.50/$2.00,Maintain,$1.50 ,Increase,$2.25 ,Increase,$1.75 ,Increase,$2.50 ,
+1100,S. Charles Street,WS,$1.50/$2.00,Increase,$1.75 ,Increase,$2.25 ,Increase,$2.00 ,Increase,$2.50 ,
+1101,S. Charles Street,ES,$1.50/$2.00,Increase,$1.75 ,Increase,$2.25 ,Increase,$2.00 ,Increase,$2.50 ,
+800,Light Street,WS,$1.50/$2.00,Decrease,$1.25 ,Maintain,$2.00 ,Decrease,$1.00 ,Decrease,$1.75 ,
+801,Light Street,ES,$1.50/$2.00,Decrease,$1.25 ,Maintain,$2.00 ,Decrease,$1.00 ,Decrease,$1.75 ,
+900,Light Street,WS,$1.50/$2.00,Decrease,$1.25 ,Increase,$2.25 ,Maintain,$1.25 ,Increase,$2.50 ,
+901,Light Street,ES,$1.50/$2.00,Decrease,$1.25 ,Increase,$2.25 ,Maintain,$1.25 ,Increase,$2.50 ,
+1001,Light Street,ES,$1.50/$2.00,Increase,$1.75 ,Increase,$2.25 ,Increase,$2.00 ,Increase,$2.50 ,
+1000,Light Street,WS,$1.50/$2.00,Increase,$1.75 ,Increase,$2.25 ,Increase,$2.00 ,Increase,$2.50 ,
+1100,Light Street,WS,$1.50/$2.00,Increase,$1.75 ,Increase,$2.25 ,Maintain,$1.75 ,Increase,$2.50 ,
+1101,Light Street,ES,$1.50/$2.00,Increase,$1.75 ,Increase,$2.25 ,Maintain,$1.75 ,Increase,$2.50 ,
+1200,Light Street,WS,$1.50/$2.00,Decrease,$1.25 ,Decrease,$1.75 ,Decrease,$1.00 ,Increase,$2.00 ,
+1201,Light Street,ES,$1.50/$2.00,Decrease,$1.25 ,Decrease,$1.75 ,Decrease,$1.00 ,Increase,$2.00 ,

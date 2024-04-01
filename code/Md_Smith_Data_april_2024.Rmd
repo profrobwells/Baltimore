@@ -48,7 +48,24 @@ md <- md %>%
   mutate(census = as.character(tract)) %>% 
   mutate(county = as.numeric(strtrim(tract, 5))) %>% 
   mutate(geoid = as.numeric(strtrim(tract, 7))) %>% 
-  mutate(geoid1 = as.character((geoid)))
+  mutate(geoid1 = as.character((geoid))) %>% 
+  mutate(zip1 = as.character((zip)))
+```
+
+
+```{r}
+mdzip <- rio::import("../data/ZIP_TRACT_122023.xlsx")
+
+
+
+md_places <- md %>% 
+  inner_join(mdzip, by=c("zip1"="ZIP")) %>% 
+  distinct(tract, .keep_all = TRUE) %>% 
+  mutate(pct_anymembershp1 = formattable::percent(pct_anymembershp_zip)) 
+
+
+write.csv(md_places, "../data/smith_md_places_april1.csv")
+```
 
 #MD counties
 md_counties <- rio::import("../data/md_counties_geoids.txt")
@@ -62,7 +79,7 @@ md_named <- md %>%
 #write.csv(md_named, "../output/md_smith_data_1.28.csv")
 
 
-```
+
 
 # Census Place file
 

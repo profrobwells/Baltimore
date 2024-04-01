@@ -24,7 +24,8 @@ library(pdftools)
 
 ```
 
-#Import neighborhood, create name, address and clean
+#Mt Vernon
+Import neighborhood, create name, address and clean
 ```{r}
 googlesheets4::gs4_deauth()
 mtvernon <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Mt Vernon") %>% 
@@ -83,6 +84,9 @@ changes_mtvernon <- mtvernon %>%
 
 #Import neighborhood, create name, address and clean
 ```{r}
+#rsw: added this to reset google sheets
+googlesheets4::gs4_deauth()
+
 fells <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Fells") %>% 
   as.data.frame() %>% 
   clean_names() %>% 
@@ -102,10 +106,11 @@ glimpse(fells)
 ```
 
 
-#analysis of fells neighborhood
+### Fells analysis 
 ```{r}
 
-fedhill <- fedhill %>%
+fells <- fells %>% 
+# fedhill <- fedhill %>%
    mutate(first_day_diff= (rate1_day - initial_rate)) %>% 
   mutate(first_eve_diff = (rate1_eve - initial_rate)) %>%
   mutate(second_day_diff = (rate2_day - rate1_day)) %>% 
@@ -125,18 +130,28 @@ fedhill <- fedhill %>%
          )
   )
 
+glimpse(changes_fells)
 
+
+#Fix: i calculated avg_first_eve_diff1 as a separate column and then rounded it as a new column avg_first_eve_diff. there was some weirdness trying to round it back to the original. and I fixed the syntax on round to have , digits =2 follow it.
 
 changes_fells <- fells %>%
-  select(neighborhood, address, first_day_diff, first_eve_diff, change) %>% 
-  group_by(change) %>% 
-  summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff = round(mean(first_eve_diff, na.rm = TRUE)),2) %>% 
-  mutate(pct = round(count / sum(count)),2) %>% 
-  select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>% 
-    mutate(neighborhood = "fellspt")
+  group_by(change) %>%
+  summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff1 = mean(first_eve_diff, na.rm = TRUE)) %>%
+  mutate(pct = round(count/sum(count), digits = 2)) %>% 
+  mutate(avg_first_eve_diff = round(avg_first_eve_diff1, digits = 2)) %>% 
+  select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>%
+  mutate(neighborhood = "fellspt")
 
-#
-#There is something wrong with the summarize here and thus on Fed Hill and Harbor Easr which is causing the pct to not come out correctly
+
+# changes_fells <- fells %>%
+#   select(neighborhood, address, first_day_diff, first_eve_diff, change) %>% 
+#   group_by(change) %>% 
+#   summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff = round(mean(first_eve_diff, na.rm = TRUE)),2) %>% 
+#   mutate(pct = round(count / sum(count)),2) %>% 
+#   select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>% 
+#     mutate(neighborhood = "fellspt")
+
 ```
 
 #Import Central Downtown
@@ -158,6 +173,7 @@ cdowntown <- cdowntown %>%
  mutate(eleventh_rate1 = as.numeric(as.character(eleventh_rate_change)))
 ```
 #Central Downtown analysis
+#RSW: NICE JOB
 ```{r}
 cdowntown <- cdowntown %>%
   mutate(seventh_diff = (seventh_rate1 - initial_sixth_rate1)) %>%
@@ -184,6 +200,9 @@ changes_cdowntown <- cdowntown %>%
 
 #Import Fed Hill
 ```{r}
+
+#rsw - I think I follow what you are saying. just verify it with the city
+
 #Please see "Federal Hill" Column D on Google Sheet. They say $1.50/$2.00 but in "Fed Hill" I was able to logically assign the initial rate because if the rate adjustment one was recommended a decrease and the new price was $1.25, the initial had to have been $1.50.
 
 fedhill <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "FedHill") %>%
@@ -209,36 +228,54 @@ fedhill <- fedhill %>%
   mutate(total_diff = rowSums(select(., c("first_day_diff", "first_eve_diff", "second_day_diff", "second_eve_diff")), na.rm = TRUE,)) %>%
   mutate(day_diff = rowSums(select(., c("first_day_diff","second_day_diff")), na.rm = TRUE,)) %>%
   mutate(evening_diff = rowSums(select(., c("first_eve_diff", "second_eve_diff")), na.rm = TRUE,)) %>%
-  mutate(change = case_when(first_day_diff < 0 ~ "decrease",
-                            first_day_diff > 0 ~ "increase",
-                            first_day_diff == 0 ~ "no_change",
-                            first_eve_diff < 0 ~ "decrease",
-                            first_eve_diff > 0 ~ "increase",
-                            first_eve_diff == 0 ~ "no_change",
-                            second_day_diff < 0 ~ "decrease",
-                            second_day_diff > 0 ~ "increase",
-                            second_day_diff == 0 ~ "no_change",
-                            second_eve_diff < 0 ~ "decrease",
-                            second_eve_diff > 0 ~ "increase",
-                            second_eve_diff == 0 ~ "no_change")) 
+    # mutate(change = case_when(first_day_diff < 0 ~ "decrease",
+    #                         first_day_diff > 0 ~ "increase",
+    #                         first_day_diff == 0 ~ "no_change",
+    #                         first_eve_diff < 0 ~ "decrease",
+    #                         first_eve_diff > 0 ~ "increase",
+    #                         first_eve_diff == 0 ~ "no_change",
+    #                         second_day_diff < 0 ~ "decrease",
+    #                         second_day_diff > 0 ~ "increase",
+    #                         second_day_diff == 0 ~ "no_change",
+    #                         second_eve_diff < 0 ~ "decrease",
+    #                         second_eve_diff > 0 ~ "increase",
+    #                         second_eve_diff == 0 ~ "no_change")) 
+  mutate(change = case_when(day_diff < 0 ~ "decrease",
+                            day_diff > 0 ~ "increase",
+                            day_diff == 0 ~ "no_change",
+                            evening_diff < 0 ~ "decrease",
+                            evening_diff > 0 ~ "increase",
+                            evening_diff == 0 ~ "no_change"))
 
-fedhill <- fedhill %>%   
-  mutate(day_diff = as.numeric(unlist(day_diff))) %>%
-  mutate(evening_diff = as.numeric(unlist(evening_diff)))
+
+#rsw fix - applied the same changes as in the fells point data: i calculated day_diff_avg1 as a separate column and then rounded it as a new column day_diff_avg. there was some weirdness trying to round it back to the original. and I fixed the syntax on round to have , digits =2 follow it.
+changes_fedhill <- fedhill %>%
+  group_by(change) %>%
+  summarise(count = n(), day_diff_avg1 = mean(first_day_diff, na.rm = TRUE), evening_diff_avg1 = mean(first_eve_diff, na.rm = TRUE)) %>%
+  mutate(pct = round(count/sum(count), digits = 2)) %>% 
+  mutate(evening_diff_avg = round(evening_diff_avg1, digits = 2)) %>% 
+  mutate(day_diff_avg = round(day_diff_avg1, digits = 2)) %>% 
+  select(change, count, pct, day_diff_avg, evening_diff_avg) %>%
+  mutate(neighborhood = "fedhill")
 
 #I'm not sure whyt in summarise below, I get an error saying that object "day_diff" not found. I tried to unlist it as a numeric above to fix that, but it didn't work.
-
-changes_fedhill <- fedhill %>%
-  select(neighborhood, address, first_day_diff, first_eve_diff, change) %>%
-  group_by(change) %>%
-  summarise(count = n(), avg_first_day_diff = mean(day_diff, na.rm = TRUE), avg_first_eve_diff = round(mean(evening_diff, na.rm = TRUE)),2) %>%
-  mutate(pct = round(count / sum(count)),2) %>%
-  select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>%
-  mutate(neighborhood = "fedhill")
+# 
+# fedhill <- fedhill %>%   
+#   mutate(day_diff = as.numeric(unlist(day_diff))) %>%
+#   mutate(evening_diff = as.numeric(unlist(evening_diff)))
+# 
+# changes_fedhill <- fedhill %>%
+#   select(neighborhood, address, first_day_diff, first_eve_diff, change) %>%
+#   group_by(change) %>%
+#   summarise(count = n(), avg_first_day_diff = mean(day_diff, na.rm = TRUE), avg_first_eve_diff = round(mean(evening_diff, na.rm = TRUE)),2) %>%
+#   mutate(pct = round(count / sum(count)),2) %>%
+#   select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>%
+#   mutate(neighborhood = "fedhill")
 
 ```
 
 
+#rsw - go ahead and fix harbor east using the same strategy I applied for fedhill and fells point
 
 #Import Harbor East
 ```{r}

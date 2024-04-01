@@ -1,0 +1,307 @@
+---
+title: "Smith School - Baltimore Data Income Map"
+author: "Rob Wells"
+date: "1/28/2024"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r message=FALSE, warning=FALSE}
+#remotes::install_github("walkerke/tidycensus")
+library(tidyverse)
+library(tidycensus)
+#a = get_decennial(geography = "state", variables = "P1_001N", year = 2020)
+# head(a, 5)
+#install.packages("formattable")
+library(formattable)
+library(htmlwidgets)
+library(leaflet)
+library(sf)
+library(formattable)
+library(dplyr)
+library(tidyr)
+library(janitor)
+#install.packages("leaflet.extras")
+library(leaflet.extras)
+library(googlesheets4)
+
+```
+
+Census API key.
+
+```{r message=FALSE}
+census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE, overwrite = TRUE)
+```
+
+# --------------------------------------
+# Maryland Data Import:  Smith School 
+# --------------------------------------
+
+```{r}
+md <- rio::import("../data/maryland_tracts.xls") %>% 
+  as.data.frame()
+
+md <- md %>% 
+  clean_names() %>% 
+  mutate(census = as.character(tract)) %>% 
+  mutate(county = as.numeric(strtrim(tract, 5))) %>% 
+  mutate(geoid = as.numeric(strtrim(tract, 7))) %>% 
+  mutate(geoid1 = as.character((geoid)))
+
+#MD counties
+md_counties <- rio::import("../data/md_counties_geoids.txt")
+
+md_named <- md %>% 
+  inner_join(md_counties, by=c("county"="GEOID")) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+  
+  md_named$income_per_capita <- formattable::currency(md_named$income_per_capita, digits =0L)
+
+#write.csv(md_named, "../output/md_smith_data_1.28.csv")
+
+
+```
+
+# Census Place file
+
+```{r}
+places <- rio::import("https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2020_gaz_place_24.txt") %>% 
+  mutate(geoid1 = as.character(GEOID))
+
+
+
+md_places <- md %>% 
+  inner_join(places, by=c("geoid1")) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+
+```
+
+
+# Census Tract Median Income Using ACS
+
+#Subset geocoordinates
+```{r}
+#subset the geometry
+
+#2020 Median Income By Census Tract ACS
+#2016-2020
+#B19001 COUNTS THE NUMBER OF HOUSEHOLDS
+#B19013_001 is the household median income
+md_income2020_geo <- get_acs(geography = "tract", 
+              variables = c(number_households = "B19001_001", median_income = "B19013_001"), 
+               state = "MD", 
+               year = 2020, geometry = TRUE) %>% 
+  mutate(year=("2020")) %>% 
+  select(GEOID, NAME)
+
+maryland_places_data <- get_acs(geography = "place",
+                                 variables = c(number_households = "B19001_001", median_income = "B19013_001"),
+                                 state = "MD",
+                                 year = 2020)
+
+
+# Retrieve ACS data for places in Maryland
+places_data <- get_acs(geography = "place",
+                        variables = c(number_households = "B19001_001", median_income = "B19013_001"),
+                        state = "MD",
+                        year = 2020)
+
+# Retrieve ACS data for tracts in Maryland
+# Ensure caching of shapefiles
+options(tigris_use_cache = TRUE)
+tracts_data <- get_acs(geography = "tract",
+                        variables = c(number_households = "B19001_001", median_income = "B19013_001"),
+                        state = "MD",
+                        year = 2020,
+                        geometry = TRUE)
+
+# Merge the place and tract data
+maryland_data <- bind_rows(places_data, tracts_data)
+
+#B19013 defined: https://www.socialexplorer.com/data/ACS2010_5yr/metadata/?ds=ACS10_5yr&var=B19013001
+
+md_named <- md_named %>% 
+  mutate(GEOID = as.character(tract))
+
+#join geocoordinates 
+md2 <- md_income2020_geo  %>% 
+ right_join(md_named, by=c("GEOID")) %>% 
+ distinct()
+
+md2 <- md2 %>%
+   sf::st_transform('+proj=longlat +datum=WGS84')
+
+```
+
+
+
+
+
+```{r}
+pal <- colorNumeric(
+  palette = "inferno",
+  domain = md2$pct_anymembershp_zip
+)
+
+#https://leaflet-extras.github.io/leaflet-providers/preview/
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  addPolygons(data = md2,
+              color = ~pal(md2$pct_anymembershp_zip),
+              weight = 2.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+  label = paste("Pct membership in civic groups is:",(md2$pct_anymembershp_zip), "Income is",(md2$income_per_capita), "in", (md2$NAME.y), "zip code", (md2$zip))) %>%
+ addControl(
+    html = '<div id="legend" style="background-color: white; padding: 10px; border-radius: 5px; border: 1px solid #ccc; text-align: center;">
+              <p><strong>Pct Membership 2020</strong></p>
+              <div style="background-color: gray; height: 20px; width: 30px; display: inline-block;"></div> 0: NA
+              <br>
+              <div style="background-color: black; height: 20px; width: 30px; display: inline-block;"></div> 30-39%
+              <br>
+              <div style="background-color: #e75480; height: 20px; width: 30px; display: inline-block;"></div> 40-45%
+              <br>
+              <div style="background-color: #fa8072; height: 20px; width: 30px; display: inline-block;"></div> 46-50%
+              <br>
+              <div style="background-color: #ffffbf; height: 20px; width: 30px; display: inline-block;"></div> 51-60%
+           </div>',
+    position = "bottomright"
+  ) %>% 
+  addControl(
+    html = "<div style='background-color: white; padding: 5px; border-radius: 3px;'><h3>Civil Membership & Income in Maryland</h3></div>",
+    position = "topright"
+  )
+
+saveWidget(leafMap, "../output/state_member_all_map_jan_28.html")
+leafMap
+```
+
+
+### NOTES
+#Map by county
+```{r}
+md_named <- read.csv("../output/md_smith_data_12.16.csv") %>% 
+  rename(lat = INTPTLAT, long = INTPTLONG)
+
+
+library(sf)
+
+md_named <- st_as_sf(md_named, coords = c("long", "lat"), crs = 4326)
+
+md_named <- st_set_crs(md_named, 4326) %>%
+  st_transform(4326)
+
+md_named <- md_named %>%
+  st_as_sf(., coords = c("long", "lat")) %>%
+  st_buffer(dist = 0.01) # convert points to polygons
+
+#addCircles(data = md_named, radius = 500, fillOpacity = 0.5, ...)
+# #Map by Median Income Difference
+# md_named<- md_named %>% 
+#    sf::st_transform('+proj=longlat +datum=WGS84')
+```
+
+
+### Analysis of Maryland Data
+
+```{r}
+x<- md_named %>% 
+  group_by(zip) %>% 
+  count () 
+sum(x$n)
+
+#per capita income seems way too low
+median(md_named$income_per_capita, na.rm = TRUE) #34917.79
+
+median(md_named$pct_anymembershp_zip, na.rm = TRUE) #0.513087
+summary(md_named$pct_anymembershp_zip, na.rm = TRUE) 
+ #   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+ # 0.3124  0.4698  0.5131  0.5150  0.5521  0.6842     150 
+
+median(md_named$nbanks_zip, na.rm = TRUE) #7
+summary(md_named$nbanks_zip, na.rm = TRUE) 
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#   0.000   3.000   7.000   8.016  11.000  34.000     147  
+
+median(md_named$census_response_rate2020, na.rm = TRUE) # 0.741
+summary(md_named$census_response_rate2020, na.rm = TRUE)
+ #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+ # 0.0650  0.6470  0.7410  0.7161  0.8090  0.9230     122 
+
+
+```
+
+
+#Revise for Maryland
+
+
+
+## Membership & Income
+
+```{r}
+#communities with greater than median membership - 46%- but less than median income - $22,790
+himember <- smith %>% 
+  group_by(neighborhood) %>% 
+  select(pct_anymembershp_zip, income_per_capita, tract) %>% 
+  arrange(desc(pct_anymembershp_zip)) %>% 
+  filter(pct_anymembershp_zip >= 0.455563) %>% 
+  filter(income_per_capita <= 22789.76) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+  
+  himember$income_per_capita <- formattable::currency(himember$income_per_capita, digits =0L)
+  
+
+library(kableExtra)
+himember %>%
+  rename(Neighborhood = neighborhood, Membership = pct_anymembershp_zip, Per_Capita_Income = income_per_capita, Census_Tract = tract) %>% 
+  kbl(caption = "Communities With Greater than Median Membership - 46%- but Less than Median Income - $22,790", font_size = 50, bold=T) %>%
+  kable_classic(full_width = T, html_font = "Cambria") %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, border_right = T, width = "10em", background = "yellow") %>% 
+  column_spec(3, border_right = T, width = "10em") %>% 
+  save_kable(file = "../DataOutput/himember.html", self_contained = T)
+
+```
+## Census Response + Income
+```{r}
+#communities in the upper quartile of census response - 65%- but less than median income - $22,654
+hicensus <- smith %>% 
+  group_by(neighborhood) %>% 
+  select(census_response_rate2020, income_per_capita, pct_anymembershp_zip, tract) %>% 
+  arrange(desc(census_response_rate2020)) %>% 
+  filter(census_response_rate2020 >= 0.6522) %>% 
+  filter(income_per_capita <= 22653.77) %>% 
+  mutate(census_response_rate2020 = formattable::percent(census_response_rate2020)) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+  
+  hicensus$income_per_capita <- formattable::currency(hicensus$income_per_capita, digits =0L)
+
+  
+    hicensus %>%
+  rename(Neighborhood = neighborhood, Census_Response = census_response_rate2020, Per_Capita_Income = income_per_capita, Census_Tract = tract, Membership = pct_anymembershp_zip) %>% 
+  kbl(caption = "Communities in the Upper Quartile of Census Response - 65%- but Less than Median Income - $22,654", font_size = 50, bold=T) %>%
+  kable_classic(full_width = T, html_font = "Cambria") %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, border_right = T, width = "10em", background = "yellow") %>% 
+  column_spec(3, border_right = T, width = "10em") %>% 
+  column_spec(4, border_right = T, width = "10em") %>%     
+  save_kable(file = "../DataOutput/hicensus.html", self_contained = T)
+
+```
+
+```{r}
+
+#communities in the upper quartile of census response - 65%- and upper quartile of membership - 46%
+smith %>% 
+  group_by(neighborhood) %>% 
+  select(census_response_rate2020, income_per_capita, pct_anymembershp_zip, nbanks_zip) %>% 
+  arrange(desc(census_response_rate2020)) %>% 
+  filter(census_response_rate2020 >= 0.6522) %>% 
+    filter(pct_anymembershp_zip >= 0.4613) %>% 
+  arrange((income_per_capita))
+
+
+```
+

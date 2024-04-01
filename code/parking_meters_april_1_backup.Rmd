@@ -1,0 +1,387 @@
+---
+title: "Parking Data"
+output: html_notebook
+---
+
+# Baltimore Parking Meter Data
+Source: 
+Fells Point info from pdf provided by Baltimore Parking Authority 3/8 /2023 at 3:11
+Mt Vernon info here: https://parking.baltimorecity.gov/demand-based-parking-meter-rate-setting/mt-vernon-demand-based-parking-meter-rate-setting 
+Tiffany James from the parking authority is checking on Federal Hill
+Harbor East info here: https://parking.baltimorecity.gov/harbor-east-parking-demand-parking-meter-rate-setting
+Central Downtown ingo here: https://parking.baltimorecity.gov/central-downtown-demand-based-parking-meter-rate-setting
+
+Parking facilities from 311 Open Baltimore: https://data.baltimorecity.gov/datasets/3d995dff7c424d39a59bb65d4af49486_0/explore?location=39.320514%2C-76.609286%2C11.58
+Residential Parking Permits from Open baltimore: 
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(formattable)
+library(janitor)
+library(googlesheets4)
+#install.packages("pdftools")
+library(pdftools)
+
+```
+
+#Mt Vernon
+Import neighborhood, create name, address and clean
+```{r}
+googlesheets4::gs4_deauth()
+mtvernon <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Mt Vernon") %>% 
+  as.data.frame() %>% 
+  clean_names() %>% 
+  mutate(neighborhood = "mtvernon") %>% 
+  mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>% 
+  mutate(initial_rate1 = as.numeric(unlist(initial_rate))) 
+
+mtvernon <- mtvernon %>% 
+  mutate(first_rate_change1 = as.numeric(as.character(first_rate_change))) %>% 
+  mutate(second_rate_change1 = as.numeric(unlist(second_rate_change)))
+
+#figure out why E Chase is .50 and .75; 800 N Howard is $1 and $2; 200 W Centre is $1 and $2; W Preston is .75 and $2 - what a huge range!
+
+#need to geocode the streets
+
+
+#Note on the brute force conversion of the first_rate_change1: see below
+
+glimpse(mtvernon)
+```
+
+#analysis of mtvernon neighborhood
+```{r}
+mtvernon <- mtvernon %>% 
+  mutate(first_diff = (first_rate_change1 - initial_rate1)) %>% 
+  mutate(second_diff = (second_rate_change1 - first_rate_change1)) %>% 
+  mutate(total_diff = rowSums(select(., c("first_diff", "second_diff")), na.rm = TRUE)) %>% 
+  mutate(change = case_when(total_diff < 0 ~ "decrease",
+         total_diff > 0 ~ "increase",
+         total_diff == 0 ~ "no_change")
+  )
+
+
+
+changes_mtvernon <- mtvernon %>%
+  select(neighborhood, address, total_diff, change) %>% 
+  group_by(change) %>% 
+  summarise(count = n(), avg_total_diff = mean(total_diff, na.rm = TRUE)) %>% 
+  mutate(pct = round(count / sum(count), 2)) %>% 
+  select(change, count, pct, avg_total_diff) %>% 
+  mutate(neighborhood = "mtvernon")
+
+#In Mount Vernon, 57% of the parking meters showed a decrease of an average of 43 cents. Just 22% of meters showed an increase of an average of 36 cents.
+
+```
+
+
+### Extract pdf table for Fells Point - use Tabula
+--convert dollars to numbers
+--../data/FellsPointRateTables.csv
+
+
+
+
+#Import neighborhood, create name, address and clean
+```{r}
+#rsw: added this to reset google sheets
+googlesheets4::gs4_deauth()
+
+fells <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Fells") %>% 
+  as.data.frame() %>% 
+  clean_names() %>% 
+  mutate(neighborhood = "fellspt") %>% 
+  mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>% 
+  mutate(rate1_day = as.numeric(first_rate_change_daytime_rate)) %>% 
+   mutate(rate1_eve = as.numeric(first_rate_change_evening_rate)) %>% 
+   mutate(rate2_day = as.numeric(second_rate_change_daytime_rate)) %>% 
+   mutate(rate2_eve = as.numeric(second_rate_change_evening_rate))
+
+#figure out why 800 S Broadway has $2.25 (Year 2022) 
+
+#need to geocode the streets
+
+
+glimpse(fells)
+```
+
+
+### Fells analysis 
+```{r}
+
+fells <- fells %>% 
+# fedhill <- fedhill %>%
+   mutate(first_day_diff= (rate1_day - initial_rate)) %>% 
+  mutate(first_eve_diff = (rate1_eve - initial_rate)) %>%
+  mutate(second_day_diff = (rate2_day - rate1_day)) %>% 
+  mutate(second_eve_diff = (rate2_eve - rate1_eve)) %>% 
+  mutate(change = case_when(first_day_diff < 0 ~ "decrease",
+         first_day_diff > 0 ~ "increase",
+         first_day_diff == 0 ~ "no_change",
+         first_eve_diff < 0 ~ "decrease",
+         first_eve_diff > 0 ~ "increase",
+         first_eve_diff == 0 ~ "no_change",
+         second_day_diff < 0 ~ "decrease",
+         second_day_diff > 0 ~ "increase",
+         second_day_diff == 0 ~ "no_change",
+         second_eve_diff < 0 ~ "decrease",
+         second_eve_diff > 0 ~ "increase",
+         second_eve_diff == 0 ~ "no_change"
+         )
+  )
+
+glimpse(changes_fells)
+
+
+#Fix: i calculated avg_first_eve_diff1 as a separate column and then rounded it as a new column avg_first_eve_diff. there was some weirdness trying to round it back to the original. and I fixed the syntax on round to have , digits =2 follow it.
+
+changes_fells <- fells %>%
+  group_by(change) %>%
+  summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff1 = mean(first_eve_diff, na.rm = TRUE)) %>%
+  mutate(pct = round(count/sum(count), digits = 2)) %>% 
+  mutate(avg_first_eve_diff = round(avg_first_eve_diff1, digits = 2)) %>% 
+  select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>%
+  mutate(neighborhood = "fellspt")
+
+
+# changes_fells <- fells %>%
+#   select(neighborhood, address, first_day_diff, first_eve_diff, change) %>% 
+#   group_by(change) %>% 
+#   summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff = round(mean(first_eve_diff, na.rm = TRUE)),2) %>% 
+#   mutate(pct = round(count / sum(count)),2) %>% 
+#   select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>% 
+#     mutate(neighborhood = "fellspt")
+
+```
+
+#Import Central Downtown
+```{r}
+cdowntown <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Central Downtown") %>% 
+  as.data.frame() %>% 
+  clean_names() %>% 
+  mutate(neighborhood = "cdowntown") %>% 
+  mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>% 
+  mutate(initial_sixth_rate1 = as.numeric(as.character(sixth_rate_change))) 
+
+
+
+cdowntown <- cdowntown %>% 
+   mutate(seventh_rate1 = as.numeric(as.character(seventh_rate_change))) %>%
+   mutate(eigth_rate1 = as.numeric(as.character(eighth_rate_change))) %>%
+   mutate(ninth_rate1 = as.numeric(as.character(ninth_rate_change))) %>%
+   mutate(tenth_rate1 = as.numeric(as.character(tenth_rate_change))) %>%
+ mutate(eleventh_rate1 = as.numeric(as.character(eleventh_rate_change)))
+```
+#Central Downtown analysis
+#RSW: NICE JOB
+```{r}
+cdowntown <- cdowntown %>%
+  mutate(seventh_diff = (seventh_rate1 - initial_sixth_rate1)) %>%
+  mutate(eigth_diff = (eigth_rate1 - seventh_rate1)) %>%
+  mutate(ninth_diff = (ninth_rate1 - eigth_rate1)) %>%
+  mutate(tenth_diff = (tenth_rate1 - ninth_rate1)) %>%
+  mutate(eleventh_diff = (eleventh_rate1 - tenth_rate1)) %>%
+  mutate(total_diff = rowSums(select(., c("seventh_diff", "eigth_diff", "ninth_diff", "tenth_diff", "eleventh_diff")), na.rm = TRUE)) %>%
+  mutate(change = case_when(total_diff < 0 ~ "decrease",
+        total_diff > 0 ~ "increase", 
+        total_diff == 0 ~ "no_change"))
+  
+
+changes_cdowntown <- cdowntown %>%
+  select(neighborhood, address, total_diff, change) %>%
+  group_by(change) %>%
+  summarise(count = n(), avg_total_diff = mean(total_diff, na.rm = TRUE)) %>%
+  mutate(pct = round(count / sum(count), 2)) %>%
+  select(change, count, pct, avg_total_diff) %>%
+  mutate(neighborhood = "cdowntown")
+
+#In Central Downtown, 50% of meters saw an increase at an average of $.78. Just 33% saw a decrease averaging $.42.
+```
+
+#Import Fed Hill
+```{r}
+
+#rsw - I think I follow what you are saying. just verify it with the city
+
+#Please see "Federal Hill" Column D on Google Sheet. They say $1.50/$2.00 but in "Fed Hill" I was able to logically assign the initial rate because if the rate adjustment one was recommended a decrease and the new price was $1.25, the initial had to have been $1.50.
+
+fedhill <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "FedHill") %>%
+  as.data.frame() %>%
+  clean_names() %>%
+  mutate(neighborhood = "fedhill") %>%
+  mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>% 
+  mutate(rate1_day = as.numeric(first_daytime_rate_change)) %>% 
+   mutate(rate1_eve = as.numeric(first_evening_rate_change)) %>% 
+   mutate(rate2_day = as.numeric(second_daytime_rate_change)) %>% 
+   mutate(rate2_eve = as.numeric(second_evening_rate_change))
+
+
+```
+
+#Fed Hill analysis
+```{r}
+fedhill <- fedhill %>%
+  mutate(first_day_diff = (rate1_day - initial_rate)) %>%
+  mutate(first_eve_diff = (rate1_eve - initial_rate)) %>%
+  mutate(second_day_diff =(rate2_day - rate1_day)) %>%
+  mutate(second_eve_diff = (rate2_eve - rate1_eve)) %>%
+  mutate(total_diff = rowSums(select(., c("first_day_diff", "first_eve_diff", "second_day_diff", "second_eve_diff")), na.rm = TRUE,)) %>%
+  mutate(day_diff = rowSums(select(., c("first_day_diff","second_day_diff")), na.rm = TRUE,)) %>%
+  mutate(evening_diff = rowSums(select(., c("first_eve_diff", "second_eve_diff")), na.rm = TRUE,)) %>%
+    # mutate(change = case_when(first_day_diff < 0 ~ "decrease",
+    #                         first_day_diff > 0 ~ "increase",
+    #                         first_day_diff == 0 ~ "no_change",
+    #                         first_eve_diff < 0 ~ "decrease",
+    #                         first_eve_diff > 0 ~ "increase",
+    #                         first_eve_diff == 0 ~ "no_change",
+    #                         second_day_diff < 0 ~ "decrease",
+    #                         second_day_diff > 0 ~ "increase",
+    #                         second_day_diff == 0 ~ "no_change",
+    #                         second_eve_diff < 0 ~ "decrease",
+    #                         second_eve_diff > 0 ~ "increase",
+    #                         second_eve_diff == 0 ~ "no_change")) 
+  mutate(change = case_when(day_diff < 0 ~ "decrease",
+                            day_diff > 0 ~ "increase",
+                            day_diff == 0 ~ "no_change",
+                            evening_diff < 0 ~ "decrease",
+                            evening_diff > 0 ~ "increase",
+                            evening_diff == 0 ~ "no_change"))
+
+
+#rsw fix - applied the same changes as in the fells point data: i calculated day_diff_avg1 as a separate column and then rounded it as a new column day_diff_avg. there was some weirdness trying to round it back to the original. and I fixed the syntax on round to have , digits =2 follow it.
+changes_fedhill <- fedhill %>%
+  group_by(change) %>%
+  summarise(count = n(), day_diff_avg1 = mean(first_day_diff, na.rm = TRUE), evening_diff_avg1 = mean(first_eve_diff, na.rm = TRUE)) %>%
+  mutate(pct = round(count/sum(count), digits = 2)) %>% 
+  mutate(evening_diff_avg = round(evening_diff_avg1, digits = 2)) %>% 
+  mutate(day_diff_avg = round(day_diff_avg1, digits = 2)) %>% 
+  select(change, count, pct, day_diff_avg, evening_diff_avg) %>%
+  mutate(neighborhood = "fedhill")
+
+#I'm not sure whyt in summarise below, I get an error saying that object "day_diff" not found. I tried to unlist it as a numeric above to fix that, but it didn't work.
+# 
+# fedhill <- fedhill %>%   
+#   mutate(day_diff = as.numeric(unlist(day_diff))) %>%
+#   mutate(evening_diff = as.numeric(unlist(evening_diff)))
+# 
+# changes_fedhill <- fedhill %>%
+#   select(neighborhood, address, first_day_diff, first_eve_diff, change) %>%
+#   group_by(change) %>%
+#   summarise(count = n(), avg_first_day_diff = mean(day_diff, na.rm = TRUE), avg_first_eve_diff = round(mean(evening_diff, na.rm = TRUE)),2) %>%
+#   mutate(pct = round(count / sum(count)),2) %>%
+#   select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>%
+#   mutate(neighborhood = "fedhill")
+
+```
+
+
+#rsw - go ahead and fix harbor east using the same strategy I applied for fedhill and fells point
+
+#Import Harbor East
+```{r}
+harboreast <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Harbor East") %>%
+as.data.frame() %>%
+clean_names() %>%
+mutate(neighborhood = "harboreast") %>%
+mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>%
+mutate(initial_rate1 = as.numeric(unlist(initial_rate)))
+
+harboreast <- harboreast %>%
+  mutate(rate1_day = as.numeric(first_rate_change_daytlme_rate)) %>%
+  mutate(rate1_eve = as.numeric(first_rate_change_evening_rate)) %>%
+  mutate(rate2_day = as.numeric(second_rate_change_daytlme_rate)) %>%
+  mutate(rate2_eve = as.numeric(second_rate_change_evening_rate)) %>%
+  mutate(rate3_day = as.numeric(third_rate_change_daytime_rate)) %>%
+  mutate(rate3_eve = as.numeric(third_rate_change_even_ing_rate))
+```
+
+#Harbor East analysis
+```{r}
+harboreast <- harboreast %>%
+  mutate(first_day_diff = (rate1_day - initial_rate)) %>%
+  mutate(first_eve_diff = (rate1_eve - rate1_eve)) %>%
+  mutate(second_day_diff =(rate2_day - rate1_day)) %>%
+  mutate(second_eve_diff = (rate2_eve - rate1_eve)) %>%
+  mutate(third_day_diff =(rate3_day - rate2_day)) %>%
+  mutate(third_eve_diff = (rate3_eve - rate2_eve)) %>%
+  mutate(day_diff = rowSums(select(., c("first_day_diff","second_day_diff", "third_day_diff")), na.rm = TRUE,)) %>%
+  mutate(evening_diff = rowSums(select(., c("first_eve_diff", "second_eve_diff", "third_eve_diff")), na.rm = TRUE,)) %>%
+  mutate(change = case_when(first_day_diff < 0 ~ "decrease",
+                            first_day_diff > 0 ~ "increase",
+                            first_day_diff == 0 ~ "no_change",
+                            first_eve_diff < 0 ~ "decrease",
+                            first_eve_diff > 0 ~ "increase",
+                            first_eve_diff == 0 ~ "no_change",
+                            second_day_diff < 0 ~ "decrease",
+                            second_day_diff > 0 ~ "increase",
+                            second_day_diff == 0 ~ "no_change",
+                            second_eve_diff < 0 ~ "decrease",
+                            second_eve_diff > 0 ~ "increase",
+                            second_eve_diff == 0 ~ "no_change",
+                            third_day_diff < 0 ~ "decrease",
+                            third_day_diff > 0 ~ "increase",
+                            third_day_diff == 0 ~ "no_change",
+                            third_eve_diff < 0 ~ "decrease",
+                            third_eve_diff > 0 ~ "increase",
+                            third_eve_diff == 0 ~ "no_change"))
+
+#This is having the same issue as fedhill
+
+changes_harboreast <- harboreast %>%
+  select(neighborhood, address, first_day_diff, first_eve_diff, change) %>%
+  group_by(change) %>%
+  summarise(count = n(), avg_day_diff = mean(day_diff, na.rm = TRUE), avg_eve_diff = round(mean(eve_diff, na.rm = TRUE)),2) %>%
+  mutate(pct = round(count / sum(count)),2) %>%
+  select(change, count, pct, avg_day_diff, avg_eve_diff) %>%
+  mutate(neighborhood = "harboreast")
+```
+
+
+
+
+
+### Note on the brute force conversion of the first_rate_change1: 
+
+Yes, both methods should achieve the same result. They both convert the elements of the first_rate_change column to numeric values. The main difference lies in the approach to handle potential size discrepancies in the vectors within the column.
+
+Your approach directly converts the column to character and then to numeric. This assumes that the data in the column can be directly converted to numeric without considering potential issues such as missing or inconsistent values.
+
+ The alternative approach I provided handles potential issues with varying vector lengths in the column. It pads shorter vectors with NA values to ensure all vectors have the same length before converting them to numeric. This approach is more robust if there are variations in the length of the vectors within the column.
+
+ If you're confident that the data in your column is consistent and doesn't have missing or inconsistent values, your approach of directly converting to character and then to numeric is perfectly valid and simpler.
+
+Robot method
+
+```{r}
+ # Find the maximum length of elements in first_rate_change column
+ max_length <- max(sapply(mtvernon$first_rate_change, length))
+
+ #Pad shorter vectors with NA values to make them consistent
+ 
+ mtvernon$first_rate_change <- lapply(mtvernon$first_rate_change, function(x) {
+   length(x) <- max_length
+   x
+ })
+```
+
+
+
+#PDF tools - needs work
+```{r}
+
+file <- "https://acrobat.adobe.com/link/review?uri=urn%3Aaaid%3Ascds%3AUS%3A56c6fe18-f0c3-3e9e-b7d4-80266b600288"
+
+pdf_file <- "../data/FellsPointRound2RateTables.pdf"
+
+# Extract tables from a PDF file
+tables <- pdf_data(pdf_file)
+
+# View the first table
+print(tables[[1]])
+
+
+fells <- (tables[[1]]) %>% 
+  as.data.frame()
+
+
+```

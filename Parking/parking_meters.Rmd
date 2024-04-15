@@ -130,27 +130,75 @@ fells <- fells %>%
          )
   )
 
-glimpse(changes_fells)
+
+fells_day <- fells %>% 
+# fedhill <- fedhill %>%
+   mutate(first_day_diff= (rate1_day - initial_rate)) %>% 
+ # mutate(first_eve_diff = (rate1_eve - initial_rate)) %>%
+  mutate(second_day_diff = (rate2_day - rate1_day)) %>% 
+  #mutate(second_eve_diff = (rate2_eve - rate1_eve)) %>% 
+  mutate(change = case_when(first_day_diff < 0 ~ "decrease",
+         first_day_diff > 0 ~ "increase",
+         first_day_diff == 0 ~ "no_change",
+         #first_eve_diff < 0 ~ "decrease",
+         #first_eve_diff > 0 ~ "increase",
+         #first_eve_diff == 0 ~ "no_change",
+         second_day_diff < 0 ~ "decrease",
+         second_day_diff > 0 ~ "increase",
+         second_day_diff == 0 ~ "no_change",
+         #second_eve_diff < 0 ~ "decrease",
+         #second_eve_diff > 0 ~ "increase",
+         #second_eve_diff == 0 ~ "no_change"
+         )
+  )
+
+changes_fells_day <- fells_day %>%
+  group_by(change) %>%
+  summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE)) %>%
+  mutate(pct = round(count/sum(count), digits = 2)) %>% 
+  select(change, count, pct, avg_first_day_diff) %>%
+  mutate(neighborhood = "fellspt")
+
+
+fells_eve <- fells %>% 
+ #  mutate(first_day_diff= (rate1_day - initial_rate)) %>% 
+  mutate(first_eve_diff = (rate1_eve - initial_rate)) %>%
+#  mutate(second_day_diff = (rate2_day - rate1_day)) %>% 
+ mutate(second_eve_diff = (rate2_eve - rate1_eve)) %>% 
+  mutate(change = case_when(first_eve_diff < 0 ~ "decrease",
+         first_eve_diff > 0 ~ "increase",
+         first_eve_diff == 0 ~ "no_change",
+         second_eve_diff < 0 ~ "decrease",
+         second_eve_diff > 0 ~ "increase",
+         second_eve_diff == 0 ~ "no_change"
+         )
+  )
+
+changes_fells_eve <- fells_eve %>%
+  group_by(change) %>%
+  summarise(count_eve = n(), avg_first_eve_diff1 = mean(first_eve_diff, na.rm = TRUE)) %>%
+  mutate(pct_eve = round(count_eve/sum(count_eve), digits = 2)) %>% 
+  mutate(avg_first_eve_diff = round(avg_first_eve_diff1, digits = 2)) %>% 
+  select(change, count_eve, pct_eve, avg_first_eve_diff) %>%
+  mutate(neighborhood = "fellspt")
+
+
+#glimpse(changes_fells)
 
 
 #Fix: i calculated avg_first_eve_diff1 as a separate column and then rounded it as a new column avg_first_eve_diff. there was some weirdness trying to round it back to the original. and I fixed the syntax on round to have , digits =2 follow it.
 
-changes_fells <- fells %>%
-  group_by(change) %>%
-  summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff1 = mean(first_eve_diff, na.rm = TRUE)) %>%
-  mutate(pct = round(count/sum(count), digits = 2)) %>% 
-  mutate(avg_first_eve_diff = round(avg_first_eve_diff1, digits = 2)) %>% 
-  select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>%
-  mutate(neighborhood = "fellspt")
 
-
+#the original that over-aggregated
 # changes_fells <- fells %>%
-#   select(neighborhood, address, first_day_diff, first_eve_diff, change) %>% 
-#   group_by(change) %>% 
-#   summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff = round(mean(first_eve_diff, na.rm = TRUE)),2) %>% 
-#   mutate(pct = round(count / sum(count)),2) %>% 
-#   select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>% 
-#     mutate(neighborhood = "fellspt")
+#   group_by(change) %>%
+#   summarise(count = n(), avg_first_day_diff = mean(first_day_diff, na.rm = TRUE), avg_first_eve_diff1 = mean(first_eve_diff, na.rm = TRUE)) %>%
+#   mutate(pct = round(count/sum(count), digits = 2)) %>% 
+#   mutate(avg_first_eve_diff = round(avg_first_eve_diff1, digits = 2)) %>% 
+#   select(change, count, pct, avg_first_day_diff, avg_first_eve_diff) %>%
+#   mutate(neighborhood = "fellspt")
+
+
 
 ```
 

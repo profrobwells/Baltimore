@@ -197,16 +197,29 @@ glimpse(changes_fells)
 
 #Import Central Downtown
 ```{r}
-cdowntown <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Central Downtown") %>% 
+cdowntown6_11 <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Central Downtown6-11") %>% 
   as.data.frame() %>% 
   clean_names() %>% 
-  mutate(neighborhood = "cdowntown") %>% 
+  mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) 
+
+cdowntown1_5 <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Central Downtown1-5") %>% 
+  as.data.frame() %>% 
+  clean_names() %>% 
   mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>% 
-  mutate(initial_sixth_rate1 = as.numeric(as.character(sixth_rate_change))) 
+  mutate(initial_rate = as.numeric(as.character(starting_rate))) 
 
-
+cdowntown <- cdowntown1_5 %>% 
+  inner_join(cdowntown6_11, by="address") %>% 
+  select(initial_rate, first_rate_change, second_rate_change, third_rate_change, fourth_rate_change, fifth_rate_change, sixth_rate_change, seventh_rate_change, eighth_rate_change, ninth_rate_change, tenth_rate_change, eleventh_rate_change, address) %>% 
+  mutate(neighborhood = "cdowntown") 
 
 cdowntown <- cdowntown %>% 
+   mutate(first_rate1 = as.numeric(as.character(first_rate_change))) %>%
+   mutate(second_rate1 = as.numeric(as.character(second_rate_change))) %>%
+   mutate(third_rate1 = as.numeric(as.character(third_rate_change))) %>%
+   mutate(fourth_rate1 = as.numeric(as.character(fourth_rate_change))) %>%
+ mutate(fifth_rate1 = as.numeric(as.character(fifth_rate_change))) %>% 
+  mutate(sixth_rate1 = as.numeric(as.character(sixth_rate_change))) %>%
    mutate(seventh_rate1 = as.numeric(as.character(seventh_rate_change))) %>%
    mutate(eigth_rate1 = as.numeric(as.character(eighth_rate_change))) %>%
    mutate(ninth_rate1 = as.numeric(as.character(ninth_rate_change))) %>%
@@ -217,12 +230,18 @@ cdowntown <- cdowntown %>%
 #RSW: NICE JOB
 ```{r}
 cdowntown <- cdowntown %>%
-  mutate(seventh_diff = (seventh_rate1 - initial_sixth_rate1)) %>%
+  mutate(first_diff = (first_rate1 - initial_rate)) %>%
+  mutate(second_diff = (second_rate1 - first_rate1)) %>%
+   mutate(third_diff = (third_rate1 - second_rate1)) %>%
+  mutate(fourth_diff = (fourth_rate1 - third_rate1)) %>%
+    mutate(fifth_diff = (fifth_rate1 - fourth_rate1)) %>%
+  mutate(sixth_diff = (sixth_rate1 - fifth_rate1)) %>%
+  mutate(seventh_diff = (seventh_rate1 - sixth_rate1)) %>%
   mutate(eigth_diff = (eigth_rate1 - seventh_rate1)) %>%
   mutate(ninth_diff = (ninth_rate1 - eigth_rate1)) %>%
   mutate(tenth_diff = (tenth_rate1 - ninth_rate1)) %>%
   mutate(eleventh_diff = (eleventh_rate1 - tenth_rate1)) %>%
-  mutate(total_diff = rowSums(select(., c("seventh_diff", "eigth_diff", "ninth_diff", "tenth_diff", "eleventh_diff")), na.rm = TRUE)) %>%
+  mutate(total_diff = rowSums(select(., c("first_diff", "second_diff", "third_diff", "fourth_diff", "fifth_diff", "sixth_diff", "seventh_diff", "eigth_diff", "ninth_diff", "tenth_diff", "eleventh_diff")), na.rm = TRUE)) %>%
   mutate(change = case_when(total_diff < 0 ~ "decrease",
         total_diff > 0 ~ "increase", 
         total_diff == 0 ~ "no_change"))
@@ -236,7 +255,7 @@ changes_cdowntown <- cdowntown %>%
   select(change, count, pct, avg_total_diff) %>%
   mutate(neighborhood = "cdowntown")
 
-#In Central Downtown, 50% of meters saw an increase at an average of $.78. Just 33% saw a decrease averaging $.42.
+#In Central Downtown, 50% of meters saw an decreases at an average of $1.03. Just 44% saw a increases averaging $1.64.
 ```
 
 #Import Fed Hill

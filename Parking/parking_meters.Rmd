@@ -394,7 +394,9 @@ as.data.frame() %>%
 clean_names() %>%
 mutate(neighborhood = "harboreast") %>%
 mutate(address = paste0(block, " ", street, ", ","Baltimore", ", ","Md")) %>%
-mutate(initial_rate = as.numeric(unlist(initial_rate)))
+mutate(initial_rate = as.numeric(unlist(initial_rate))) 
+
+as.data.frame(harboreast)
 
 harboreast <- harboreast %>%
   mutate(rate1_day = as.numeric(first_rate_change_daytlme_rate)) %>%

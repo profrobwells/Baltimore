@@ -1,18 +1,25 @@
 ---
 title: "Parking Data"
 output: html_notebook
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 # Baltimore Parking Meter Data
-Source: 
-Fells Point info from pdf provided by Baltimore Parking Authority 3/8 /2023 at 3:11
-Mt Vernon info here: https://parking.baltimorecity.gov/demand-based-parking-meter-rate-setting/mt-vernon-demand-based-parking-meter-rate-setting 
-Tiffany James from the parking authority is checking on Federal Hill
-Harbor East info here: https://parking.baltimorecity.gov/harbor-east-parking-demand-parking-meter-rate-setting
-Central Downtown ingo here: https://parking.baltimorecity.gov/central-downtown-demand-based-parking-meter-rate-setting
 
-Parking facilities from 311 Open Baltimore: https://data.baltimorecity.gov/datasets/3d995dff7c424d39a59bb65d4af49486_0/explore?location=39.320514%2C-76.609286%2C11.58
-Residential Parking Permits from Open baltimore: 
+Source: Fells Point info from pdf provided by Baltimore Parking
+Authority 3/8 /2023 at 3:11 Mt Vernon info here:
+<https://parking.baltimorecity.gov/demand-based-parking-meter-rate-setting/mt-vernon-demand-based-parking-meter-rate-setting>
+Tiffany James from the parking authority is checking on Federal Hill
+Harbor East info here:
+<https://parking.baltimorecity.gov/harbor-east-parking-demand-parking-meter-rate-setting>
+Central Downtown ingo here:
+<https://parking.baltimorecity.gov/central-downtown-demand-based-parking-meter-rate-setting>
+
+Parking facilities from 311 Open Baltimore:
+<https://data.baltimorecity.gov/datasets/3d995dff7c424d39a59bb65d4af49486_0/explore?location=39.320514%2C-76.609286%2C11.58>
+Residential Parking Permits from Open baltimore:
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -24,8 +31,8 @@ library(pdftools)
 
 ```
 
-#Mt Vernon
-Import neighborhood, create name, address and clean
+#Mt Vernon Import neighborhood, create name, address and clean
+
 ```{r}
 googlesheets4::gs4_deauth()
 mtvernon <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Mt Vernon") %>% 
@@ -50,6 +57,7 @@ glimpse(mtvernon)
 ```
 
 #analysis of mtvernon neighborhood
+
 ```{r}
 mtvernon <- mtvernon %>% 
   mutate(first_diff = (first_rate_change1 - initial_rate1)) %>% 
@@ -74,15 +82,12 @@ changes_mtvernon <- mtvernon %>%
 
 ```
 
-
 ### Extract pdf table for Fells Point - use Tabula
---convert dollars to numbers
---../data/FellsPointRateTables.csv
 
-
-
+--convert dollars to numbers --../data/FellsPointRateTables.csv
 
 #Import neighborhood, create name, address and clean
+
 ```{r}
 #rsw: added this to reset google sheets
 googlesheets4::gs4_deauth()
@@ -105,8 +110,8 @@ fells <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQE
 glimpse(fells)
 ```
 
+### Fells analysis
 
-### Fells analysis 
 ```{r}
 
 fells_day <- fells %>% 
@@ -196,6 +201,7 @@ glimpse(changes_fells)
 ```
 
 #Import Central Downtown
+
 ```{r}
 cdowntown6_11 <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Central Downtown6-11") %>% 
   as.data.frame() %>% 
@@ -226,8 +232,9 @@ cdowntown <- cdowntown %>%
    mutate(tenth_rate1 = as.numeric(as.character(tenth_rate_change))) %>%
  mutate(eleventh_rate1 = as.numeric(as.character(eleventh_rate_change)))
 ```
-#Central Downtown analysis
-#RSW: NICE JOB
+
+#Central Downtown analysis #RSW: NICE JOB
+
 ```{r}
 cdowntown <- cdowntown %>%
   mutate(first_diff = (first_rate1 - initial_rate)) %>%
@@ -259,6 +266,7 @@ changes_cdowntown <- cdowntown %>%
 ```
 
 #Import Fed Hill
+
 ```{r}
 
 #rsw - I think I follow what you are saying. just verify it with the city
@@ -281,6 +289,7 @@ fedhill <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjj
 ```
 
 #Fed Hill analysis
+
 ```{r}
 
 fedhill_day <- fedhill %>% 
@@ -384,10 +393,11 @@ changes_fedhill <- changes_fedhill_day %>%
 
 ```
 
-
-#rsw - go ahead and fix harbor east using the same strategy I applied for fedhill and fells point
+#rsw - go ahead and fix harbor east using the same strategy I applied
+for fedhill and fells point
 
 #Import Harbor East
+
 ```{r}
 harboreast <- read_sheet("https://docs.google.com/spreadsheets/d/1FOL2vBfA4ifBbbjjjQEVDCHklcI_OWvd3vghDiBqDWE/edit#gid=1640964516", "Harbor East") %>%
 as.data.frame() %>%
@@ -408,6 +418,7 @@ harboreast <- harboreast %>%
 ```
 
 #Harbor East analysis
+
 ```{r}
 harboreast_day <- harboreast %>% 
    mutate(first_day_diff= (rate1_day - initial_rate)) %>% 
@@ -489,19 +500,28 @@ changes_harboreast <- changes_harboreast_day %>%
  # mutate(neighborhood = "harboreast")
 ```
 
+### Note on the brute force conversion of the first_rate_change1:
 
+Yes, both methods should achieve the same result. They both convert the
+elements of the first_rate_change column to numeric values. The main
+difference lies in the approach to handle potential size discrepancies
+in the vectors within the column.
 
+Your approach directly converts the column to character and then to
+numeric. This assumes that the data in the column can be directly
+converted to numeric without considering potential issues such as
+missing or inconsistent values.
 
+The alternative approach I provided handles potential issues with
+varying vector lengths in the column. It pads shorter vectors with NA
+values to ensure all vectors have the same length before converting them
+to numeric. This approach is more robust if there are variations in the
+length of the vectors within the column.
 
-### Note on the brute force conversion of the first_rate_change1: 
-
-Yes, both methods should achieve the same result. They both convert the elements of the first_rate_change column to numeric values. The main difference lies in the approach to handle potential size discrepancies in the vectors within the column.
-
-Your approach directly converts the column to character and then to numeric. This assumes that the data in the column can be directly converted to numeric without considering potential issues such as missing or inconsistent values.
-
- The alternative approach I provided handles potential issues with varying vector lengths in the column. It pads shorter vectors with NA values to ensure all vectors have the same length before converting them to numeric. This approach is more robust if there are variations in the length of the vectors within the column.
-
- If you're confident that the data in your column is consistent and doesn't have missing or inconsistent values, your approach of directly converting to character and then to numeric is perfectly valid and simpler.
+If you're confident that the data in your column is consistent and
+doesn't have missing or inconsistent values, your approach of directly
+converting to character and then to numeric is perfectly valid and
+simpler.
 
 Robot method
 
@@ -517,9 +537,8 @@ Robot method
  })
 ```
 
-
-
 #PDF tools - needs work
+
 ```{r}
 
 file <- "https://acrobat.adobe.com/link/review?uri=urn%3Aaaid%3Ascds%3AUS%3A56c6fe18-f0c3-3e9e-b7d4-80266b600288"
@@ -538,12 +557,22 @@ fells <- (tables[[1]]) %>%
 
 ```
 
-
 #Select latest, and bind
+
 ```{r}
 cdowntown_1 <- cdowntown %>% 
   select(address, neighborhood, eleventh_rate1) %>% 
   rename(latest_day = eleventh_rate1)
 
+```
+
+```{r}
+harboreast_1 <- harboreast %>% 
+   select(address, neighborhood, third_rate_change_daytime_rate) %>% 
+  rename(latest_day = third_rate_change_daytime_rate)
+
+mtvernon_1 <- mtvernon %>% 
+   select(address, neighborhood, second_rate_change1) %>% 
+  rename(latest_day = second_rate_change1)
 
 ```

@@ -1,0 +1,556 @@
+"","address","neighborhood","latest_day","location.lon","location.lat"
+"1","900 Cathedral, Baltimore, Md","mtvernon",2.00,-76.61749, 39.29995
+"2","1000 Cathedral, Baltimore, Md","mtvernon",1.75,-76.61808, 39.30117
+"3","1000 Cathedral, Baltimore, Md","mtvernon",1.75,-76.61808, 39.30117
+"4","1100 Cathedral, Baltimore, Md","mtvernon",2.50,-76.61800, 39.30182
+"5","1200 Cathedral, Baltimore, Md","mtvernon",1.75,-76.61841, 39.30345
+"6","300 Druid Hill Ave, Baltimore, Md","mtvernon",0.50,-76.62153, 39.29658
+"7","Unit E Biddle, Baltimore, Md","mtvernon",1.00,-76.58550, 39.30464
+"8","Unit E Biddle, Baltimore, Md","mtvernon",1.00,-76.58550, 39.30464
+"9","Unit E Centre, Baltimore, Md","mtvernon",1.50,-76.61248, 39.29646
+"10","Unit E Chase, Baltimore, Md","mtvernon",0.75,-76.58544, 39.30358
+"11","Unit E Chase, Baltimore, Md","mtvernon",0.75,-76.58544, 39.30358
+"12","Unit E Eager, Baltimore, Md","mtvernon",0.50,-76.58390, 39.30178
+"13","100 E Hamilton, Baltimore, Md","mtvernon",1.25,-76.61429, 39.29570
+"14","200 E Madison, Baltimore, Md","mtvernon",0.50,-76.61241, 39.29883
+"15","200 E Madison, Baltimore, Md","mtvernon",0.50,-76.61241, 39.29883
+"16","100 E Monument, Baltimore, Md","mtvernon",1.50,-76.61405, 39.29760
+"17","200 E Monument, Baltimore, Md","mtvernon",0.50,-76.61285, 39.29765
+"18","200 E Monument, Baltimore, Md","mtvernon",0.50,-76.61285, 39.29765
+"19","100 E Mount Royal, Baltimore, Md","mtvernon",0.50,-76.61455, 39.30550
+"20","100 E Mount Royal, Baltimore, Md","mtvernon",0.50,-76.61455, 39.30550
+"21","200 E Mount Royal, Baltimore, Md","mtvernon",NA,-76.61338, 39.30555
+"22","200 E Mount Royal, Baltimore, Md","mtvernon",NA,-76.61338, 39.30555
+"23","Unit E Mount Royal, Baltimore, Md","mtvernon",0.75,-76.61396, 39.30553
+"24","Unit E Mount Royal, Baltimore, Md","mtvernon",0.75,-76.61396, 39.30553
+"25","200 E Read, Baltimore, Md","mtvernon",0.50,-76.61260, 39.29992
+"26","Unit E Read, Baltimore, Md","mtvernon",NA,-76.61360, 39.29973
+"27","Unit E Read, Baltimore, Md","mtvernon",2.00,-76.61360, 39.29973
+"28","700 Linden, Baltimore, Md","mtvernon",0.50,-76.62103, 39.29756
+"29","800 Linden, Baltimore, Md","mtvernon",2.25,-76.62104, 39.29889
+"30","1200 Maryland, Baltimore, Md","mtvernon",0.50,-76.61743, 39.30376
+"31","1200 Maryland, Baltimore, Md","mtvernon",0.50,-76.61743, 39.30376
+"32","1300 Maryland, Baltimore, Md","mtvernon",0.50,-76.61748, 39.30444
+"33","1300 Maryland, Baltimore, Md","mtvernon",0.50,-76.61748, 39.30444
+"34","1000 MLK, Baltimore, Md","mtvernon",1.50,-76.61987, 39.30165
+"35","1100 MLK, Baltimore, Md","mtvernon",1.50,-76.62029, 39.30168
+"36","1100 MLK, Baltimore, Md","mtvernon",1.50,-76.62029, 39.30168
+"37","1000 Morton, Baltimore, Md","mtvernon",0.50,-76.61686, 39.30116
+"38","500 N Calvert, Baltimore, Md","mtvernon",1.50,-76.61302, 39.29580
+"39","600 N Calvert, Baltimore, Md","mtvernon",1.50,-76.61297, 39.29661
+"40","600 N Calvert, Baltimore, Md","mtvernon",1.50,-76.61297, 39.29661
+"41","700 N Calvert, Baltimore, Md","mtvernon",1.50,-76.61324, 39.29799
+"42","700 N Calvert, Baltimore, Md","mtvernon",1.50,-76.61324, 39.29799
+"43","800 N Calvert, Baltimore, Md","mtvernon",0.75,-76.61264, 39.29884
+"44","500 N Charles, Baltimore, Md","mtvernon",1.75,-76.61552, 39.29511
+"45","500 N Charles, Baltimore, Md","mtvernon",1.75,-76.61552, 39.29511
+"46","800 N Charles, Baltimore, Md","mtvernon",1.75,-76.61597, 39.29875
+"47","800 N Charles, Baltimore, Md","mtvernon",1.75,-76.61597, 39.29875
+"48","900 N Charles, Baltimore, Md","mtvernon",1.50,-76.61614, 39.29980
+"49","900 N Charles, Baltimore, Md","mtvernon",1.50,-76.61614, 39.29980
+"50","1000 N Charles, Baltimore, Md","mtvernon",1.50,-76.61628, 39.30120
+"51","1000 N Charles, Baltimore, Md","mtvernon",1.50,-76.61628, 39.30120
+"52","1100 N Charles, Baltimore, Md","mtvernon",1.50,-76.61622, 39.30251
+"53","1100 N Charles, Baltimore, Md","mtvernon",1.50,-76.61622, 39.30251
+"54","1200 N Charles, Baltimore, Md","mtvernon",2.00,-76.61638, 39.30355
+"55","1200 N Charles, Baltimore, Md","mtvernon",2.00,-76.61638, 39.30355
+"56","1300 N Charles, Baltimore, Md","mtvernon",1.50,-76.61659, 39.30462
+"57","1300 N Charles, Baltimore, Md","mtvernon",1.50,-76.61659, 39.30462
+"58","700 N Eutaw, Baltimore, Md","mtvernon",1.50,-76.62163, 39.29691
+"59","700 N Eutaw, Baltimore, Md","mtvernon",1.50,-76.62163, 39.29691
+"60","500‐600 N Eutaw, Baltimore, Md","mtvernon",1.50,-76.62171, 39.29584
+"61","500‐600 N Eutaw, Baltimore, Md","mtvernon",1.50,-76.62171, 39.29584
+"62","600 N Howard, Baltimore, Md","mtvernon",1.50,-76.62028, 39.29678
+"63","700 N Howard, Baltimore, Md","mtvernon",1.50,-76.62013, 39.29748
+"64","800 N Howard, Baltimore, Md","mtvernon",1.50,-76.62012, 39.29848
+"65","800 N Howard, Baltimore, Md","mtvernon",1.50,-76.62012, 39.29848
+"66","500 Park, Baltimore, Md","mtvernon",1.50,-76.61841, 39.29513
+"67","500 Park, Baltimore, Md","mtvernon",1.50,-76.61841, 39.29513
+"68","600 Park, Baltimore, Md","mtvernon",0.50,-76.71868, 39.32162
+"69","600 Park, Baltimore, Md","mtvernon",0.50,-76.71868, 39.32162
+"70","700 Park, Baltimore, Md","mtvernon",0.50,-76.71868, 39.32162
+"71","800 Park, Baltimore, Md","mtvernon",0.50,-76.71868, 39.32162
+"72","800 Park, Baltimore, Md","mtvernon",0.50,-76.71868, 39.32162
+"73","900 Park, Baltimore, Md","mtvernon",1.50,-76.71868, 39.32162
+"74","500 St Paul Pl
+(upper), Baltimore, Md","mtvernon",1.00,-76.61433, 39.29515
+"75","500 St Paul St
+(lower), Baltimore, Md","mtvernon",2.00,-76.61379, 39.29582
+"76","700 St Paul St, Baltimore, Md","mtvernon",0.50,-76.61407, 39.29779
+"77","800 St Paul St, Baltimore, Md","mtvernon",1.25,-76.61442, 39.29879
+"78","1000 St Paul St, Baltimore, Md","mtvernon",1.25,-76.61442, 39.30140
+"79","1000 St Paul St, Baltimore, Md","mtvernon",1.25,-76.61442, 39.30140
+"80","1100 St Paul St, Baltimore, Md","mtvernon",0.75,-76.61465, 39.30269
+"81","1100 St Paul St, Baltimore, Md","mtvernon",0.75,-76.61465, 39.30269
+"82","1200 St Paul St, Baltimore, Md","mtvernon",1.00,-76.61467, 39.30362
+"83","1200 St Paul St, Baltimore, Md","mtvernon",1.00,-76.61467, 39.30362
+"84","1300 St Paul St, Baltimore, Md","mtvernon",0.50,-76.61466, 39.30476
+"85","Unit W Biddle, Baltimore, Md","mtvernon",0.75,-76.61741, 39.30338
+"86","Unit W Centre, Baltimore, Md","mtvernon",2.50,-76.61853, 39.29622
+"87","200 W Centre, Baltimore, Md","mtvernon",1.25,-76.61832, 39.29624
+"88","300 W Centre, Baltimore, Md","mtvernon",1.50,-76.61992, 39.29623
+"89","100 W Chase, Baltimore, Md","mtvernon",1.50,-76.61800, 39.30231
+"90","100 W Chase, Baltimore, Md","mtvernon",1.50,-76.61800, 39.30231
+"91","200 W Chase, Baltimore, Md","mtvernon",1.50,-76.61871, 39.30228
+"92","200 W Chase, Baltimore, Md","mtvernon",1.50,-76.61871, 39.30228
+"93","Unit W Chase, Baltimore, Md","mtvernon",1.00,-76.61799, 39.30231
+"94","Unit W Chase, Baltimore, Md","mtvernon",1.00,-76.61799, 39.30231
+"95","100 W Eager, Baltimore, Md","mtvernon",0.50,-76.61757, 39.30088
+"96","100 W Eager, Baltimore, Md","mtvernon",0.50,-76.61757, 39.30088
+"97","Unit W Eager, Baltimore, Md","mtvernon",0.50,-76.61716, 39.30096
+"98","Unit W Eager, Baltimore, Md","mtvernon",0.50,-76.61716, 39.30096
+"99","100 W Hamilton, Baltimore, Md","mtvernon",1.50,-76.61730, 39.29571
+"100","300 W Madison, Baltimore, Md","mtvernon",1.00,-76.62020, 39.29842
+"101","300 W Madison, Baltimore, Md","mtvernon",1.00,-76.62020, 39.29842
+"102","300 W Monument, Baltimore, Md","mtvernon",1.25,-76.62035, 39.29749
+"103","300 W Monument, Baltimore, Md","mtvernon",1.25,-76.62035, 39.29749
+"104","100 W Mt Royal
+(MD‐Lanvale), Baltimore, Md","mtvernon",0.50,-76.61838, 39.30546
+"105","100 W Mt Royal (Cathedral‐
+MD), Baltimore, Md","mtvernon",0.50,-76.61838, 39.30546
+"106","100/1200 W Mt Royal, Baltimore, Md","mtvernon",0.75,-76.61838, 39.30546
+"107","1200 W Mt Royal (Lanvale‐
+Dolphin), Baltimore, Md","mtvernon",0.50,-76.62053, 39.30679
+"108","Unit W Preston (Charles‐
+Cathedral), Baltimore, Md","mtvernon",0.50,-76.62576, 39.29949
+"109","Unit W Preston (Charles‐
+Cathedral), Baltimore, Md","mtvernon",0.50,-76.62576, 39.29949
+"110","100 W Read, Baltimore, Md","mtvernon",1.50,-76.61784, 39.29981
+"111","200 W Read, Baltimore, Md","mtvernon",1.50,-76.61873, 39.30050
+"112","200 W Read, Baltimore, Md","mtvernon",1.50,-76.61873, 39.30050
+"113","Unit W Read, Baltimore, Md","mtvernon",1.50,-76.61857, 39.30024
+"114","Unit W Read, Baltimore, Md","mtvernon",1.50,-76.61857, 39.30024
+"115","600 Washington PL, Baltimore, Md","mtvernon",2.00,-76.61534, 39.29648
+"116","800 Eastern, Baltimore, Md","harboreast",0.50,-76.60459, 39.29456
+"117","1300 Eastern, Baltimore, Md","harboreast",0.50,-76.63674, 39.31994
+"118","1300 Eastern, Baltimore, Md","harboreast",0.50,-76.63674, 39.31994
+"119","1400 Eastern, Baltimore, Md","harboreast",0.50,-76.61219, 39.29038
+"120","500 S Caroline, Baltimore, Md","harboreast",1.00,-76.59675, 39.28540
+"121","500 S Caroline, Baltimore, Md","harboreast",1.00,-76.59675, 39.28540
+"122","600 S Caroline, Baltimore, Md","harboreast",0.50,-76.59704, 39.28381
+"123","600 S Caroline, Baltimore, Md","harboreast",0.50,-76.59704, 39.28381
+"124","700 S Caroline, Baltimore, Md","harboreast",1.25,-76.59699, 39.28309
+"125","800 S Caroline, Baltimore, Md","harboreast",1.75,-76.59657, 39.28241
+"126","900 S Caroline, Baltimore, Md","harboreast",2.25,-76.59720, 39.28122
+"127","800/900 Lancaster, Baltimore, Md","harboreast",2.25,-76.60086, 39.28253
+"128","800/900 Lancaster, Baltimore, Md","harboreast",2.25,-76.60086, 39.28253
+"129","1000 Lancaster, Baltimore, Md","harboreast",1.50,-76.59965, 39.28253
+"130","1000 Lancaster, Baltimore, Md","harboreast",1.50,-76.59965, 39.28253
+"131","1300 Lancaster, Baltimore, Md","harboreast",1.25,-76.59836, 39.28249
+"132","1400 Lancaster, Baltimore, Md","harboreast",1.25,-76.59695, 39.28264
+"133","600 President, Baltimore, Md","harboreast",1.00,-76.60228, 39.28416
+"134","700 President, Baltimore, Md","harboreast",2.25,-76.60130, 39.28237
+"135","500 Albemarle, Baltimore, Md","harboreast",1.00,-76.60192, 39.28519
+"136","NULL NA, Baltimore, Md","harboreast",NA,-76.65580, 39.29103
+"137","1000 Fleet, Baltimore, Md","harboreast",1.75,-76.60009, 39.28443
+"138","1000 Fleet, Baltimore, Md","harboreast",1.75,-76.60009, 39.28443
+"139","1300 Fleet, Baltimore, Md","harboreast",2.00,-76.59891, 39.28443
+"140","1400 Fleet, Baltimore, Md","harboreast",1.25,-76.59819, 39.28435
+"141","700 Aliceanna, Baltimore, Md","harboreast",2.50,-76.60222, 39.28348
+"142","700 Aliceanna, Baltimore, Md","harboreast",2.50,-76.60222, 39.28348
+"143","800 Aliceanna, Baltimore, Md","harboreast",2.25,-76.60111, 39.28337
+"144","800 Aliceanna, Baltimore, Md","harboreast",2.25,-76.60111, 39.28337
+"145","1000 Aliceanna, Baltimore, Md","harboreast",1.25,-76.59997, 39.28342
+"146","1300 Aliceanna, Baltimore, Md","harboreast",1.50,-76.59859, 39.28331
+"147","1300 Aliceanna, Baltimore, Md","harboreast",1.50,-76.59859, 39.28331
+"148","1400 Aliceanna, Baltimore, Md","harboreast",1.25,-76.59769, 39.28364
+"149","1400 Aliceanna, Baltimore, Md","harboreast",1.25,-76.59769, 39.28364
+"150","500 S Exeter, Baltimore, Md","harboreast",1.75,-76.60036, 39.28528
+"151","500 S Exeter, Baltimore, Md","harboreast",1.75,-76.60036, 39.28528
+"152","600 S Exeter, Baltimore, Md","harboreast",1.75,-76.60008, 39.28404
+"153","600 S Exeter, Baltimore, Md","harboreast",1.75,-76.60008, 39.28404
+"154","700 S Exeter, Baltimore, Md","harboreast",2.00,-76.60022, 39.28325
+"155","700 S Exeter, Baltimore, Md","harboreast",2.00,-76.60022, 39.28325
+"156","500 S Central, Baltimore, Md","harboreast",NA,-76.59918, 39.28529
+"157","500 S Central, Baltimore, Md","harboreast",2.00,-76.59918, 39.28529
+"158","600 S Central, Baltimore, Md","harboreast",1.75,-76.59910, 39.28431
+"159","600 S Central, Baltimore, Md","harboreast",1.75,-76.59910, 39.28431
+"160","700 S Central, Baltimore, Md","harboreast",1.25,-76.59904, 39.28328
+"161","700 S Central, Baltimore, Md","harboreast",1.25,-76.59904, 39.28328
+"162","900 Central, Baltimore, Md","harboreast",2.25,-76.70501, 39.22215
+"163","900 Central, Baltimore, Md","harboreast",2.25,-76.70501, 39.22215
+"164","500 S Eden, Baltimore, Md","harboreast",1.25,-76.59830, 39.28537
+"165","500 S Eden, Baltimore, Md","harboreast",1.25,-76.59830, 39.28537
+"166","600 S Eden, Baltimore, Md","harboreast",1.75,-76.59861, 39.28380
+"167","600 S Eden, Baltimore, Md","harboreast",1.75,-76.59861, 39.28380
+"168","700 S Eden, Baltimore, Md","harboreast",2.00,-76.59835, 39.28320
+"169","1300 Dock, Baltimore, Md","harboreast",2.00,-76.54328, 39.20887
+"170","1400 Dock, Baltimore, Md","harboreast",1.75,-76.59886, 39.28148
+"171","1300 Point, Baltimore, Md","harboreast",1.75,-76.61219, 39.29038
+"172","1300 Paint, Baltimore, Md","harboreast",NA,-76.61219, 39.29038
+"173","1400 Point, Baltimore, Md","harboreast",NA,-76.61219, 39.29038
+"174","1400 Point, Baltimore, Md","harboreast",2.25,-76.61219, 39.29038
+"175","900 Wills, Baltimore, Md","harboreast",NA,-76.59746, 39.28153
+"176","900 Wills, Baltimore, Md","harboreast",1.75,-76.59746, 39.28153
+"177","1200 Wills, Baltimore, Md","harboreast",NA,-76.59789, 39.27996
+"178","1200 Wills, Baltimore, Md","harboreast",NA,-76.59789, 39.27996
+"179","1600 Eastern, Baltimore, Md","fellspt",2.50,-76.58916, 39.29172
+"180","1700 Eastern, Baltimore, Md","fellspt",1.50,-76.61219, 39.29038
+"181","1700 Eastern, Baltimore, Md","fellspt",1.50,-76.61219, 39.29038
+"182","1800 Eastern, Baltimore, Md","fellspt",1.50,-76.60459, 39.29456
+"183","1800 Eastern, Baltimore, Md","fellspt",1.50,-76.60459, 39.29456
+"184","1500 Fleet, Baltimore, Md","fellspt",1.00,-76.59644, 39.28476
+"185","1600 Fleet, Baltimore, Md","fellspt",2.25,-76.59527, 39.28448
+"186","1600 Fleet, Baltimore, Md","fellspt",2.25,-76.59527, 39.28448
+"187","1700 Fleet, Baltimore, Md","fellspt",1.75,-76.59328, 39.28457
+"188","1700 Fleet, Baltimore, Md","fellspt",1.75,-76.59328, 39.28457
+"189","1800 Fleet, Baltimore, Md","fellspt",1.75,-76.59116, 39.28476
+"190","1500 Thames, Baltimore, Md","fellspt",2.00,-76.59565, 39.28051
+"191","1500 Thames, Baltimore, Md","fellspt",2.00,-76.59565, 39.28051
+"192","1600 Thames, Baltimore, Md","fellspt",2.25,-76.59484, 39.28115
+"193","1600 Thames, Baltimore, Md","fellspt",2.25,-76.59484, 39.28115
+"194","1700 Thames, Baltimore, Md","fellspt",2.25,-76.59255, 39.28203
+"195","1700 Thames, Baltimore, Md","fellspt",2.25,-76.59255, 39.28203
+"196","200 S Broadway, Baltimore, Md","fellspt",1.50,-76.59411, 39.28909
+"197","200 S Broadway, Baltimore, Md","fellspt",1.50,-76.59411, 39.28909
+"198","200 S Broadway, Baltimore, Md","fellspt",1.50,-76.59411, 39.28909
+"199","200 S Broadway, Baltimore, Md","fellspt",1.50,-76.59411, 39.28909
+"200","300 S Broadway, Baltimore, Md","fellspt",1.50,-76.59394, 39.28740
+"201","300 S Broadway, Baltimore, Md","fellspt",1.50,-76.59394, 39.28740
+"202","300 S Broadway, Baltimore, Md","fellspt",1.50,-76.59394, 39.28740
+"203","300 S Broadway, Baltimore, Md","fellspt",1.50,-76.59394, 39.28740
+"204","400 S Broadway, Baltimore, Md","fellspt",1.50,-76.59393, 39.28636
+"205","400 S Broadway, Baltimore, Md","fellspt",1.50,-76.59393, 39.28636
+"206","400 S Broadway, Baltimore, Md","fellspt",1.50,-76.59393, 39.28636
+"207","400 S Broadway, Baltimore, Md","fellspt",1.50,-76.59393, 39.28636
+"208","500 S Broadway, Baltimore, Md","fellspt",1.50,-76.59387, 39.28538
+"209","500 S Broadway, Baltimore, Md","fellspt",1.50,-76.59387, 39.28538
+"210","500 S Broadway, Baltimore, Md","fellspt",1.50,-76.59387, 39.28538
+"211","500 S Broadway, Baltimore, Md","fellspt",1.50,-76.59387, 39.28538
+"212","600 S Broadway, Baltimore, Md","fellspt",2.25,-76.59378, 39.28442
+"213","600 S Broadway, Baltimore, Md","fellspt",2.25,-76.59378, 39.28442
+"214","600 S Broadway, Baltimore, Md","fellspt",2.25,-76.59378, 39.28442
+"215","600 S Broadway, Baltimore, Md","fellspt",2.25,-76.59378, 39.28442
+"216","700 S Broadway, Baltimore, Md","fellspt",2.00,-76.59371, 39.28341
+"217","700 S Broadway, Baltimore, Md","fellspt",2.00,-76.59371, 39.28341
+"218","700 S Broadway, Baltimore, Md","fellspt",2.00,-76.59371, 39.28341
+"219","700 S Broadway, Baltimore, Md","fellspt",2.00,-76.59371, 39.28341
+"220","800 S Broadway, Baltimore, Md","fellspt",2.25,-76.59363, 39.28245
+"221","800 S Broadway, Baltimore, Md","fellspt",2.25,-76.59363, 39.28245
+"222","Unit E. North Cross Street, Baltimore, Md","fedhill",2.00,-76.57914, 39.36757
+"223","Unit E. South Cross Street, Baltimore, Md","fedhill",1.50,-76.71868, 39.35078
+"224","Unit E. South Cross Street, Baltimore, Md","fedhill",1.50,-76.71868, 39.35078
+"225","Unit E. Poultney Street, Baltimore, Md","fedhill",2.50,-76.61308, 39.27760
+"226","Unit W. Hamburg Street, Baltimore, Md","fedhill",1.25,-76.63303, 39.27778
+"227","Unit W. Hamburg Street, Baltimore, Md","fedhill",1.25,-76.63303, 39.27778
+"228","501 S. Charles Street, Baltimore, Md","fedhill",NA,-76.61463, 39.28325
+"229","701 S. Charles Street, Baltimore, Md","fedhill",NA,-76.61412, 39.28079
+"230","900 S. Charles Street, Baltimore, Md","fedhill",1.25,-76.61471, 39.27884
+"231","901 S. Charles Street, Baltimore, Md","fedhill",1.25,-76.61437, 39.27884
+"232","1000 S. Charles Street, Baltimore, Md","fedhill",1.75,-76.61464, 39.27768
+"233","1001 S. Charles Street, Baltimore, Md","fedhill",1.75,-76.61427, 39.27805
+"234","1100 S. Charles Street, Baltimore, Md","fedhill",2.00,-76.61465, 39.27666
+"235","1101 S. Charles Street, Baltimore, Md","fedhill",2.00,-76.61435, 39.27660
+"236","800 Light Street, Baltimore, Md","fedhill",1.00,-76.61295, 39.27979
+"237","801 Light Street, Baltimore, Md","fedhill",1.00,-76.61243, 39.27983
+"238","900 Light Street, Baltimore, Md","fedhill",1.25,-76.61291, 39.27893
+"239","901 Light Street, Baltimore, Md","fedhill",1.25,-76.61241, 39.27874
+"240","1001 Light Street, Baltimore, Md","fedhill",2.00,-76.61231, 39.27819
+"241","1000 Light Street, Baltimore, Md","fedhill",2.00,-76.61281, 39.27816
+"242","1100 Light Street, Baltimore, Md","fedhill",1.75,-76.61264, 39.27657
+"243","1101 Light Street, Baltimore, Md","fedhill",1.75,-76.61218, 39.27696
+"244","1200 Light Street, Baltimore, Md","fedhill",1.00,-76.61248, 39.27584
+"245","1201 Light Street, Baltimore, Md","fedhill",1.00,-76.61202, 39.27592
+"246","Unit E Franklin, Baltimore, Md","cdowntown",0.50,-76.61417, 39.29505
+"247","Unit E Mulberry, Baltimore, Md","cdowntown",0.50,-76.61485, 39.29414
+"248","200 E Saratoga, Baltimore, Md","cdowntown",0.50,-76.61250, 39.29239
+"249","100 N Greene, Baltimore, Md","cdowntown",0.50,-76.62396, 39.29046
+"250","100 N Greene, Baltimore, Md","cdowntown",0.50,-76.62396, 39.29046
+"251","100 N Greene, Baltimore, Md","cdowntown",0.50,-76.62396, 39.29046
+"252","100 N Greene, Baltimore, Md","cdowntown",0.50,-76.62396, 39.29046
+"253","200 N Greene, Baltimore, Md","cdowntown",0.50,-76.62408, 39.29181
+"254","200 N Greene, Baltimore, Md","cdowntown",0.50,-76.62408, 39.29181
+"255","200 N Greene, Baltimore, Md","cdowntown",0.50,-76.62408, 39.29181
+"256","200 N Greene, Baltimore, Md","cdowntown",0.50,-76.62408, 39.29181
+"257","400 N Howard, Baltimore, Md","cdowntown",1.50,-76.62003, 39.29405
+"258","200 Pearl, Baltimore, Md","cdowntown",NA,-76.62461, 39.29135
+"259","200 Pearl, Baltimore, Md","cdowntown",1.25,-76.62461, 39.29135
+"260","200 Pearl, Baltimore, Md","cdowntown",NA,-76.62461, 39.29135
+"261","200 Pearl, Baltimore, Md","cdowntown",1.25,-76.62461, 39.29135
+"262","100 S Greene, Baltimore, Md","cdowntown",0.75,-76.62405, 39.28704
+"263","100 S Greene, Baltimore, Md","cdowntown",0.75,-76.62405, 39.28704
+"264","100 S Greene, Baltimore, Md","cdowntown",0.75,-76.62405, 39.28704
+"265","100 S Greene, Baltimore, Md","cdowntown",0.75,-76.62405, 39.28704
+"266","400 W Fayette, Baltimore, Md","cdowntown",1.00,-76.62130, 39.29047
+"267","200 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61845, 39.29523
+"268","300 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61999, 39.29509
+"269","300 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61999, 39.29509
+"270","300 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61999, 39.29509
+"271","300 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61999, 39.29509
+"272","500 W Franklin, Baltimore, Md","cdowntown",0.50,-76.62279, 39.29505
+"273","Unit W Franklin, Baltimore, Md","cdowntown",0.50,-76.64971, 39.29371
+"274","100 W Mulberry, Baltimore, Md","cdowntown",0.50,-76.61757, 39.29420
+"275","200 W Mulberry, Baltimore, Md","cdowntown",0.75,-76.61827, 39.29416
+"276","300 W Mulberry, Baltimore, Md","cdowntown",0.75,-76.61977, 39.29396
+"277","400 W Mulberry, Baltimore, Md","cdowntown",0.75,-76.62106, 39.29381
+"278","500 W Mulberry, Baltimore, Md","cdowntown",0.50,-76.62010, 39.29386
+"279","Unit W Mulberry, Baltimore, Md","cdowntown",0.50,-76.64851, 39.29287
+"280","300 Guilford, Baltimore, Md","cdowntown",NA,-76.61117, 39.29244
+"281","200 Park, Baltimore, Md","cdowntown",0.75,-76.71868, 39.32162
+"282","200 Park, Baltimore, Md","cdowntown",0.75,-76.71868, 39.32162
+"283","200 Park, Baltimore, Md","cdowntown",0.75,-76.71868, 39.32162
+"284","200 Park, Baltimore, Md","cdowntown",0.75,-76.71868, 39.32162
+"285","Unit S Greene, Baltimore, Md","cdowntown",0.50,-76.62356, 39.28685
+"286","Unit S Greene, Baltimore, Md","cdowntown",NA,-76.62356, 39.28685
+"287","100 S President, Baltimore, Md","cdowntown",1.00,-76.60462, 39.28810
+"288","300 St Paul Pl, Baltimore, Md","cdowntown",0.75,-76.61437, 39.29279
+"289","100 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61717, 39.29531
+"290","100 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61717, 39.29531
+"291","100 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61717, 39.29531
+"292","100 W Franklin, Baltimore, Md","cdowntown",0.50,-76.61717, 39.29531
+"293","400 W Franklin, Baltimore, Md","cdowntown",0.75,-76.62148, 39.29509
+"294","400 W Franklin, Baltimore, Md","cdowntown",0.75,-76.62148, 39.29509
+"295","400 W Franklin, Baltimore, Md","cdowntown",0.75,-76.62148, 39.29509
+"296","400 W Franklin, Baltimore, Md","cdowntown",0.75,-76.62148, 39.29509
+"297","600 W Lexington, Baltimore, Md","cdowntown",1.00,-76.62395, 39.29181
+"298","600 W Lexington, Baltimore, Md","cdowntown",1.00,-76.62395, 39.29181
+"299","600 W Lexington, Baltimore, Md","cdowntown",1.00,-76.62395, 39.29181
+"300","600 W Lexington, Baltimore, Md","cdowntown",1.00,-76.62395, 39.29181
+"301","500 W Pratt, Baltimore, Md","cdowntown",1.25,-76.62209, 39.28628
+"302","350 Guilford, Baltimore, Md","cdowntown",NA,-76.61173, 39.29432
+"303","Unit N Eutaw, Baltimore, Md","cdowntown",1.50,-76.62136, 39.29633
+"304","Unit N Eutaw, Baltimore, Md","cdowntown",1.50,-76.62136, 39.29633
+"305","Unit N Eutaw, Baltimore, Md","cdowntown",1.50,-76.62136, 39.29633
+"306","Unit N Eutaw, Baltimore, Md","cdowntown",1.50,-76.62136, 39.29633
+"307","100 Park, Baltimore, Md","cdowntown",0.75,-76.61219, 39.29038
+"308","100 Park, Baltimore, Md","cdowntown",0.75,-76.61219, 39.29038
+"309","100 Park, Baltimore, Md","cdowntown",0.75,-76.61219, 39.29038
+"310","100 Park, Baltimore, Md","cdowntown",0.75,-76.61219, 39.29038
+"311","300 Park, Baltimore, Md","cdowntown",1.25,-76.71868, 39.32162
+"312","300 Park, Baltimore, Md","cdowntown",1.25,-76.71868, 39.32162
+"313","300 Park, Baltimore, Md","cdowntown",1.25,-76.71868, 39.32162
+"314","300 Park, Baltimore, Md","cdowntown",1.25,-76.71868, 39.32162
+"315","400 Park, Baltimore, Md","cdowntown",0.50,-76.61862, 39.29417
+"316","400 Park, Baltimore, Md","cdowntown",0.50,-76.61862, 39.29417
+"317","400 Park, Baltimore, Md","cdowntown",0.50,-76.61862, 39.29417
+"318","400 Park, Baltimore, Md","cdowntown",0.50,-76.61862, 39.29417
+"319","100 Pearl, Baltimore, Md","cdowntown",0.75,-76.62456, 39.29031
+"320","100 Pearl, Baltimore, Md","cdowntown",0.75,-76.62456, 39.29031
+"321","100 Pearl, Baltimore, Md","cdowntown",0.75,-76.62456, 39.29031
+"322","100 Pearl, Baltimore, Md","cdowntown",0.75,-76.62456, 39.29031
+"323","300 W Baltimore, Baltimore, Md","cdowntown",1.25,-76.61970, 39.28957
+"324","400 W Baltimore, Baltimore, Md","cdowntown",0.75,-76.62094, 39.28932
+"325","400 W Baltimore, Baltimore, Md","cdowntown",0.75,-76.62094, 39.28932
+"326","400 W Baltimore, Baltimore, Md","cdowntown",0.75,-76.62094, 39.28932
+"327","400 W Baltimore, Baltimore, Md","cdowntown",0.75,-76.62094, 39.28932
+"328","400 W Camden, Baltimore, Md","cdowntown",0.75,-76.62067, 39.28523
+"329","400 W Camden, Baltimore, Md","cdowntown",0.75,-76.62067, 39.28523
+"330","400 W Camden, Baltimore, Md","cdowntown",0.75,-76.62067, 39.28523
+"331","400 W Camden, Baltimore, Md","cdowntown",0.75,-76.62067, 39.28523
+"332","200 W Lexington, Baltimore, Md","cdowntown",0.75,-76.61820, 39.29178
+"333","200 W Lexington, Baltimore, Md","cdowntown",0.75,-76.61820, 39.29178
+"334","200 W Lexington, Baltimore, Md","cdowntown",0.75,-76.61820, 39.29178
+"335","200 W Lexington, Baltimore, Md","cdowntown",0.75,-76.61820, 39.29178
+"336","100 W Saratoga, Baltimore, Md","cdowntown",0.75,-76.61717, 39.29300
+"337","100 W Saratoga, Baltimore, Md","cdowntown",0.75,-76.61717, 39.29300
+"338","100 W Saratoga, Baltimore, Md","cdowntown",0.75,-76.61717, 39.29300
+"339","100 W Saratoga, Baltimore, Md","cdowntown",0.75,-76.61717, 39.29300
+"340","200 W Saratoga, Baltimore, Md","cdowntown",1.50,-76.61830, 39.29311
+"341","200 W Saratoga, Baltimore, Md","cdowntown",1.50,-76.61830, 39.29311
+"342","200 W Saratoga, Baltimore, Md","cdowntown",1.50,-76.61830, 39.29311
+"343","200 W Saratoga, Baltimore, Md","cdowntown",1.50,-76.61830, 39.29311
+"344","200 Clay, Baltimore, Md","cdowntown",0.50,-76.61789, 39.29244
+"345","300 E Lombard, Baltimore, Md","cdowntown",NA,-76.61035, 39.28833
+"346","100 S Eutaw, Baltimore, Md","cdowntown",1.50,-76.62081, 39.28752
+"347","100 S Eutaw, Baltimore, Md","cdowntown",1.50,-76.62081, 39.28752
+"348","100 S Eutaw, Baltimore, Md","cdowntown",1.50,-76.62081, 39.28752
+"349","100 S Eutaw, Baltimore, Md","cdowntown",1.50,-76.62081, 39.28752
+"350","400 St Paul Pl, Baltimore, Md","cdowntown",0.50,-76.61443, 39.29408
+"351","300 W Camden, Baltimore, Md","cdowntown",1.00,-76.61932, 39.28527
+"352","300 W Camden, Baltimore, Md","cdowntown",1.00,-76.61932, 39.28527
+"353","300 W Camden, Baltimore, Md","cdowntown",1.00,-76.61932, 39.28527
+"354","300 W Camden, Baltimore, Md","cdowntown",1.00,-76.61932, 39.28527
+"355","700 W Lombard, Baltimore, Md","cdowntown",1.50,-76.62604, 39.28746
+"356","500 W Saratoga, Baltimore, Md","cdowntown",0.50,-76.62252, 39.29277
+"357","300 Cathedral, Baltimore, Md","cdowntown",2.00,-76.61704, 39.29331
+"358","300 Cathedral, Baltimore, Md","cdowntown",2.00,-76.61704, 39.29331
+"359","300 Cathedral, Baltimore, Md","cdowntown",2.00,-76.61704, 39.29331
+"360","300 Cathedral, Baltimore, Md","cdowntown",2.00,-76.61704, 39.29331
+"361","400 Cathedral, Baltimore, Md","cdowntown",1.00,-76.61726, 39.29452
+"362","400 Cathedral, Baltimore, Md","cdowntown",1.00,-76.61726, 39.29452
+"363","400 Cathedral, Baltimore, Md","cdowntown",1.00,-76.61726, 39.29452
+"364","400 Cathedral, Baltimore, Md","cdowntown",1.00,-76.61726, 39.29452
+"365","100 Guilford, Baltimore, Md","cdowntown",0.50,-76.61103, 39.29046
+"366","100 N Liberty, Baltimore, Md","cdowntown",1.75,-76.61765, 39.29056
+"367","100 N Liberty, Baltimore, Md","cdowntown",1.75,-76.61765, 39.29056
+"368","100 N Liberty, Baltimore, Md","cdowntown",1.75,-76.61765, 39.29056
+"369","100 N Liberty, Baltimore, Md","cdowntown",1.75,-76.61765, 39.29056
+"370","200 N Paca, Baltimore, Md","cdowntown",0.75,-76.62268, 39.29188
+"371","300 N Paca, Baltimore, Md","cdowntown",2.25,-76.62252, 39.29277
+"372","Unit N Paca, Baltimore, Md","cdowntown",0.50,-76.62257, 39.29381
+"373","Unit N Paca, Baltimore, Md","cdowntown",0.50,-76.62257, 39.29381
+"374","Unit N Paca, Baltimore, Md","cdowntown",0.50,-76.62257, 39.29381
+"375","Unit N Paca, Baltimore, Md","cdowntown",0.50,-76.62257, 39.29381
+"376","100 S Penn, Baltimore, Md","cdowntown",2.25,-76.61081, 39.28788
+"377","500 W Baltimore, Baltimore, Md","cdowntown",1.50,-76.62278, 39.28938
+"378","500 W Baltimore, Baltimore, Md","cdowntown",1.50,-76.62278, 39.28938
+"379","500 W Baltimore, Baltimore, Md","cdowntown",1.50,-76.62278, 39.28938
+"380","500 W Baltimore, Baltimore, Md","cdowntown",1.50,-76.62278, 39.28938
+"381","700 W Baltimore, Baltimore, Md","cdowntown",1.00,-76.62687, 39.28915
+"382","500 W Fayette, Baltimore, Md","cdowntown",1.50,-76.62263, 39.29058
+"383","600 W Fayette, Baltimore, Md","cdowntown",1.75,-76.62379, 39.29028
+"384","600 W Fayette, Baltimore, Md","cdowntown",1.75,-76.62379, 39.29028
+"385","600 W Fayette, Baltimore, Md","cdowntown",1.75,-76.62379, 39.29028
+"386","600 W Fayette, Baltimore, Md","cdowntown",1.75,-76.62379, 39.29028
+"387","600 W Pratt, Baltimore, Md","cdowntown",1.25,-76.62428, 39.28649
+"388","600 W Pratt, Baltimore, Md","cdowntown",1.25,-76.62428, 39.28649
+"389","600 W Pratt, Baltimore, Md","cdowntown",1.25,-76.62428, 39.28649
+"390","600 W Pratt, Baltimore, Md","cdowntown",1.25,-76.62428, 39.28649
+"391","700 W Pratt, Baltimore, Md","cdowntown",2.00,-76.62631, 39.28644
+"392","700 W Pratt, Baltimore, Md","cdowntown",2.00,-76.62631, 39.28644
+"393","700 W Pratt, Baltimore, Md","cdowntown",2.00,-76.62631, 39.28644
+"394","700 W Pratt, Baltimore, Md","cdowntown",2.00,-76.62631, 39.28644
+"395","300 W Saratoga, Baltimore, Md","cdowntown",0.75,-76.62020, 39.29301
+"396","200 N Liberty, Baltimore, Md","cdowntown",3.00,-76.61735, 39.29156
+"397","200 N Liberty, Baltimore, Md","cdowntown",3.00,-76.61735, 39.29156
+"398","200 N Liberty, Baltimore, Md","cdowntown",3.00,-76.61735, 39.29156
+"399","200 N Liberty, Baltimore, Md","cdowntown",3.00,-76.61735, 39.29156
+"400","400 N Paca, Baltimore, Md","cdowntown",2.00,-76.62283, 39.29402
+"401","400 N Paca, Baltimore, Md","cdowntown",2.00,-76.62283, 39.29402
+"402","400 N Paca, Baltimore, Md","cdowntown",2.00,-76.62283, 39.29402
+"403","400 N Paca, Baltimore, Md","cdowntown",2.00,-76.62283, 39.29402
+"404","100 N Pine, Baltimore, Md","cdowntown",1.50,-76.62713, 39.29068
+"405","100 N Pine, Baltimore, Md","cdowntown",1.50,-76.62713, 39.29068
+"406","100 N Pine, Baltimore, Md","cdowntown",1.50,-76.62713, 39.29068
+"407","100 N Pine, Baltimore, Md","cdowntown",1.50,-76.62713, 39.29068
+"408","100 S Fremont, Baltimore, Md","cdowntown",1.50,-76.62763, 39.28670
+"409","100 S Fremont, Baltimore, Md","cdowntown",1.50,-76.62763, 39.28670
+"410","100 S Fremont, Baltimore, Md","cdowntown",1.50,-76.62763, 39.28670
+"411","100 S Fremont, Baltimore, Md","cdowntown",1.50,-76.62763, 39.28670
+"412","Unit S Gay, Baltimore, Md","cdowntown",2.00,-76.60881, 39.28861
+"413","Unit S Gay, Baltimore, Md","cdowntown",2.00,-76.60881, 39.28861
+"414","Unit S Gay, Baltimore, Md","cdowntown",2.00,-76.60881, 39.28861
+"415","Unit S Gay, Baltimore, Md","cdowntown",2.00,-76.60881, 39.28861
+"416","300 W Fayette, Baltimore, Md","cdowntown",1.50,-76.62024, 39.29074
+"417","100 W Lexington, Baltimore, Md","cdowntown",1.50,-76.61731, 39.29180
+"418","500 E Fayette, Baltimore, Md","cdowntown",2.25,-76.60817, 39.29062
+"419","100 E Franklin, Baltimore, Md","cdowntown",2.25,-76.61370, 39.29519
+"420","100 E Franklin, Baltimore, Md","cdowntown",2.25,-76.61370, 39.29519
+"421","100 E Franklin, Baltimore, Md","cdowntown",2.25,-76.61370, 39.29519
+"422","100 E Franklin, Baltimore, Md","cdowntown",2.25,-76.61370, 39.29519
+"423","300 Holliday, Baltimore, Md","cdowntown",2.00,-76.61043, 39.29129
+"424","100 N Paca, Baltimore, Md","cdowntown",1.25,-76.62256, 39.29063
+"425","200 N Pine, Baltimore, Md","cdowntown",3.50,-76.62695, 39.29128
+"426","200 N Pine, Baltimore, Md","cdowntown",3.50,-76.62695, 39.29128
+"427","200 N Pine, Baltimore, Md","cdowntown",3.50,-76.62695, 39.29128
+"428","200 N Pine, Baltimore, Md","cdowntown",3.50,-76.62695, 39.29128
+"429","400 W Redwood, Baltimore, Md","cdowntown",3.50,-76.62114, 39.28878
+"430","400 W Redwood, Baltimore, Md","cdowntown",3.50,-76.62114, 39.28878
+"431","400 W Redwood, Baltimore, Md","cdowntown",3.50,-76.62114, 39.28878
+"432","400 W Redwood, Baltimore, Md","cdowntown",3.50,-76.62114, 39.28878
+"433","400 W Saratoga, Baltimore, Md","cdowntown",2.25,-76.62148, 39.29294
+"434","400 W Saratoga, Baltimore, Md","cdowntown",2.25,-76.62148, 39.29294
+"435","400 W Saratoga, Baltimore, Md","cdowntown",2.25,-76.62148, 39.29294
+"436","400 W Saratoga, Baltimore, Md","cdowntown",2.25,-76.62148, 39.29294
+"437","Unit N Greene, Baltimore, Md","cdowntown",2.50,-76.62380, 39.29167
+"438","Unit N Greene, Baltimore, Md","cdowntown",2.50,-76.62380, 39.29167
+"439","Unit N Greene, Baltimore, Md","cdowntown",2.50,-76.62380, 39.29167
+"440","Unit N Greene, Baltimore, Md","cdowntown",2.50,-76.62380, 39.29167
+"441","Unit S Pine, Baltimore, Md","cdowntown",2.50,-76.62676, 39.28878
+"442","200 St Paul St, Baltimore, Md","cdowntown",3.50,-76.61446, 39.29129
+"443","600 W Baltimore, Baltimore, Md","cdowntown",4.00,-76.62369, 39.28921
+"444","600 W Baltimore, Baltimore, Md","cdowntown",4.00,-76.62369, 39.28921
+"445","600 W Baltimore, Baltimore, Md","cdowntown",4.00,-76.62369, 39.28921
+"446","600 W Baltimore, Baltimore, Md","cdowntown",4.00,-76.62369, 39.28921
+"447","300 W Redwood, Baltimore, Md","cdowntown",NA,-76.62014, 39.28863
+"448","300 W Redwood, Baltimore, Md","cdowntown",NA,-76.62014, 39.28863
+"449","100 Clay, Baltimore, Md","cdowntown",4.00,-76.61682, 39.29235
+"450","200 E Lexington, Baltimore, Md","cdowntown",3.75,-76.61205, 39.29134
+"451","100 E Redwood, Baltimore, Md","cdowntown",4.00,-76.61326, 39.28896
+"452","100 E Redwood, Baltimore, Md","cdowntown",4.00,-76.61326, 39.28896
+"453","400 N Eutaw, Baltimore, Md","cdowntown",2.50,-76.62141, 39.29396
+"454","400 N Eutaw, Baltimore, Md","cdowntown",2.50,-76.62141, 39.29396
+"455","400 N Eutaw, Baltimore, Md","cdowntown",2.50,-76.62141, 39.29396
+"456","400 N Eutaw, Baltimore, Md","cdowntown",2.50,-76.62141, 39.29396
+"457","Unit N Hanover, Baltimore, Md","cdowntown",4.25,-76.61643, 39.28985
+"458","200 N Sharp, Baltimore, Md","cdowntown",4.25,-76.61599, 39.29351
+"459","Unit Park, Baltimore, Md","cdowntown",3.50,-76.52895, 39.33494
+"460","Unit S Calvert, Baltimore, Md","cdowntown",2.75,-76.61220, 39.28828
+"461","Unit S Calvert, Baltimore, Md","cdowntown",2.75,-76.61220, 39.28828
+"462","100 S Charles, Baltimore, Md","cdowntown",2.50,-76.61554, 39.28713
+"463","Unit S Charles, Baltimore, Md","cdowntown",3.00,-76.61429, 39.27576
+"464","200 W Fayette, Baltimore, Md","cdowntown",4.00,-76.61813, 39.29070
+"465","200 E Baltimore, Baltimore, Md","cdowntown",NA,-76.61207, 39.28983
+"466","200 E Baltimore, Baltimore, Md","cdowntown",2.50,-76.61207, 39.28983
+"467","300 E Baltimore, Baltimore, Md","cdowntown",NA,-76.61084, 39.28984
+"468","100 E Fayette, Baltimore, Md","cdowntown",4.50,-76.61681, 39.29104
+"469","200 E Redwood, Baltimore, Md","cdowntown",4.00,-76.61198, 39.28910
+"470","200 E Redwood, Baltimore, Md","cdowntown",4.00,-76.61198, 39.28910
+"471","200 E Redwood, Baltimore, Md","cdowntown",4.00,-76.61198, 39.28910
+"472","200 E Redwood, Baltimore, Md","cdowntown",4.00,-76.61198, 39.28910
+"473","Unit E Redwood, Baltimore, Md","cdowntown",4.50,-76.61296, 39.28886
+"474","Unit E Redwood, Baltimore, Md","cdowntown",4.50,-76.61296, 39.28886
+"475","Unit E Redwood, Baltimore, Md","cdowntown",4.50,-76.61296, 39.28886
+"476","Unit E Redwood, Baltimore, Md","cdowntown",4.50,-76.61296, 39.28886
+"477","300 N Eutaw, Baltimore, Md","cdowntown",3.50,-76.62144, 39.29301
+"478","300 N Eutaw, Baltimore, Md","cdowntown",3.50,-76.62144, 39.29301
+"479","300 N Eutaw, Baltimore, Md","cdowntown",3.50,-76.62144, 39.29301
+"480","300 N Eutaw, Baltimore, Md","cdowntown",3.50,-76.62144, 39.29301
+"481","Unit N Gay, Baltimore, Md","cdowntown",3.75,-76.59505, 39.30185
+"482","300 N Howard, Baltimore, Md","cdowntown",4.50,-76.61984, 39.29298
+"483","Unit S Eutaw, Baltimore, Md","cdowntown",4.00,-76.62067, 39.28539
+"484","Unit S Eutaw, Baltimore, Md","cdowntown",4.00,-76.62067, 39.28539
+"485","Unit S Eutaw, Baltimore, Md","cdowntown",4.00,-76.62067, 39.28539
+"486","Unit S Eutaw, Baltimore, Md","cdowntown",4.00,-76.62067, 39.28539
+"487","100 S Paca, Baltimore, Md","cdowntown",4.50,-76.62217, 39.28747
+"488","Unit S Paca, Baltimore, Md","cdowntown",4.50,-76.62801, 39.27748
+"489","Unit S Paca, Baltimore, Md","cdowntown",4.50,-76.62801, 39.27748
+"490","Unit South, Baltimore, Md","cdowntown",3.75,-76.61086, 39.28836
+"491","100 St Paul St, Baltimore, Md","cdowntown",4.00,-76.61426, 39.29062
+"492","300 W Lexington, Baltimore, Md","cdowntown",3.75,-76.62049, 39.29173
+"493","300 W Lexington, Baltimore, Md","cdowntown",3.75,-76.62049, 39.29173
+"494","300 W Lexington, Baltimore, Md","cdowntown",3.75,-76.62049, 39.29173
+"495","300 W Lexington, Baltimore, Md","cdowntown",3.75,-76.62049, 39.29173
+"496","500 W Lexington, Baltimore, Md","cdowntown",3.75,-76.62257, 39.29133
+"497","500 W Lexington, Baltimore, Md","cdowntown",3.75,-76.62257, 39.29133
+"498","500 W Lexington, Baltimore, Md","cdowntown",3.75,-76.62257, 39.29133
+"499","500 W Lexington, Baltimore, Md","cdowntown",3.75,-76.62257, 39.29133
+"500","100 Water, Baltimore, Md","cdowntown",4.50,-76.61321, 39.28822
+"501","400 Water, Baltimore, Md","cdowntown",4.25,-76.61004, 39.28856
+"502","500 Water, Baltimore, Md","cdowntown",4.50,-76.60880, 39.28862
+"503","600 Water, Baltimore, Md","cdowntown",4.50,-76.60783, 39.28886
+"504","100 Commerce, Baltimore, Md","cdowntown",4.75,-76.61011, 39.28784
+"505","100 Commerce, Baltimore, Md","cdowntown",4.75,-76.61011, 39.28784
+"506","100 Commerce, Baltimore, Md","cdowntown",4.75,-76.61011, 39.28784
+"507","100 Commerce, Baltimore, Md","cdowntown",4.75,-76.61011, 39.28784
+"508","Unit Commerce, Baltimore, Md","cdowntown",3.75,-76.61015, 39.28855
+"509","Unit Commerce, Baltimore, Md","cdowntown",3.75,-76.61015, 39.28855
+"510","Unit Commerce, Baltimore, Md","cdowntown",3.75,-76.61015, 39.28855
+"511","Unit Commerce, Baltimore, Md","cdowntown",3.75,-76.61015, 39.28855
+"512","Unit Custom House, Baltimore, Md","cdowntown",4.50,-76.60974, 39.28911
+"513","400 E Baltimore, Baltimore, Md","cdowntown",NA,-76.61003, 39.28996
+"514","Unit E Baltimore, Baltimore, Md","cdowntown",NA,-76.58916, 39.29172
+"515","Unit E Baltimore, Baltimore, Md","cdowntown",4.25,-76.58916, 39.29172
+"516","400 E Fayette, Baltimore, Md","cdowntown",4.75,-76.61027, 39.29048
+"517","Unit E Fayette, Baltimore, Md","cdowntown",4.75,-76.58561, 39.29428
+"518","300 E Lexington, Baltimore, Md","cdowntown",4.25,-76.61098, 39.29139
+"519","400 E Lexington, Baltimore, Md","cdowntown",4.50,-76.60999, 39.29161
+"520","400 E Lexington, Baltimore, Md","cdowntown",4.50,-76.60999, 39.29161
+"521","400 E Lexington, Baltimore, Md","cdowntown",4.50,-76.60999, 39.29161
+"522","400 E Lexington, Baltimore, Md","cdowntown",4.50,-76.60999, 39.29161
+"523","Unit E Lexington, Baltimore, Md","cdowntown",4.75,-76.60611, 39.29222
+"524","Unit E Pleasant, Baltimore, Md","cdowntown",3.50,-76.61262, 39.29363
+"525","Unit E Pleasant, Baltimore, Md","cdowntown",3.50,-76.61262, 39.29363
+"526","Unit E Pleasant, Baltimore, Md","cdowntown",3.50,-76.61262, 39.29363
+"527","Unit E Pleasant, Baltimore, Md","cdowntown",3.50,-76.61262, 39.29363
+"528","700 E Pratt, Baltimore, Md","cdowntown",4.50,-76.60594, 39.28699
+"529","500-600 E Pratt, Baltimore, Md","cdowntown",4.75,-76.60836, 39.28718
+"530","400 E Saratoga, Baltimore, Md","cdowntown",3.25,-76.61011, 39.29273
+"531","400 E Saratoga, Baltimore, Md","cdowntown",3.25,-76.61011, 39.29273
+"532","400 E Saratoga, Baltimore, Md","cdowntown",3.25,-76.61011, 39.29273
+"533","400 E Saratoga, Baltimore, Md","cdowntown",3.25,-76.61011, 39.29273
+"534","200 Guilford, Baltimore, Md","cdowntown",4.50,-76.61145, 39.29128
+"535","200 Guilford, Baltimore, Md","cdowntown",4.50,-76.61145, 39.29128
+"536","200 Holliday, Baltimore, Md","cdowntown",4.50,-76.61080, 39.29186
+"537","200 Holliday, Baltimore, Md","cdowntown",4.50,-76.61080, 39.29186
+"538","200 Holliday, Baltimore, Md","cdowntown",4.50,-76.61080, 39.29186
+"539","200 Holliday, Baltimore, Md","cdowntown",4.50,-76.61080, 39.29186
+"540","Unit Holliday, Baltimore, Md","cdowntown",4.00,-76.61045, 39.29322
+"541","100 N Gay, Baltimore, Md","cdowntown",3.75,-76.60906, 39.29131
+"542","300 St Paul St, Baltimore, Md","cdowntown",4.75,-76.61435, 39.29275
+"543","400 St Paul St, Baltimore, Md","cdowntown",4.75,-76.61462, 39.29427
+"544","Unit W Fayette, Baltimore, Md","cdowntown",3.75,-76.63752, 39.28979
+"545","300 Water, Baltimore, Md","cdowntown",4.75,-76.61067, 39.28866
+"546","100 E Baltimore, Baltimore, Md","cdowntown",4.00,-76.61380, 39.28958
+"547","100 N Paca, Baltimore, Md","cdowntown",1.25,-76.62256, 39.29063
+"548","300 N Paca, Baltimore, Md","cdowntown",2.25,-76.62252, 39.29277

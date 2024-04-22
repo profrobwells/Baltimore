@@ -557,13 +557,8 @@ fells <- (tables[[1]]) %>%
 
 ```
 
-<<<<<<< HEAD
-#Select latest, and bind
-
-=======
 
 #Select latest, and bind for day
->>>>>>> 883fd1af435525ae0755b8a76af9a5d8d7db3fac
 ```{r}
 cdowntown_1 <- cdowntown %>% 
   select(address, neighborhood, eleventh_rate1) %>% 
@@ -580,10 +575,21 @@ fells_1 <- fells %>%
 
 harboreast_1 <- harboreast %>% 
    select(address, neighborhood, third_rate_change_daytime_rate) %>% 
-  rename(latest_day = third_rate_change_daytime_rate)
+  rename(latest_day = third_rate_change_daytime_rate) %>% 
+  mutate(latest_day = as.numeric(as.character(latest_day)))
 
 mtvernon_1 <- mtvernon %>% 
    select(address, neighborhood, second_rate_change1) %>% 
   rename(latest_day = second_rate_change1)
 
+parking_day <- rbind(mtvernon_1, harboreast_1, fells_1, fedhill_1, cdowntown_1)
+
 ```
+
+#Geocode
+```{r}
+
+```
+
+
+

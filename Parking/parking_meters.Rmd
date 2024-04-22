@@ -534,5 +534,14 @@ print(tables[[1]])
 fells <- (tables[[1]]) %>% 
   as.data.frame()
 
+```
+
+
+#Select latest, and bind
+```{r}
+cdowntown_1 <- cdowntown %>% 
+  select(address, neighborhood, eleventh_rate1) %>% 
+  rename(latest_day = eleventh_rate1)
+
 
 ```

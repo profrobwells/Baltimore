@@ -29,6 +29,10 @@ library(googlesheets4)
 #install.packages("pdftools")
 library(pdftools)
 
+#install.packages("ggmap")
+library(ggmap)
+register_google(key = "XXXXX")
+
 ```
 
 #Mt Vernon Import neighborhood, create name, address and clean
@@ -589,7 +593,13 @@ parking_day <- rbind(mtvernon_1, harboreast_1, fells_1, fedhill_1, cdowntown_1)
 #Geocode
 ```{r}
 
+parking_day <- parking_day %>% 
+   mutate(location = geocode(address))
+
+write.csv(parking_day, "parking_day.csv")
+
 ```
 
+Hi emily
 
 

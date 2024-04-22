@@ -557,16 +557,27 @@ fells <- (tables[[1]]) %>%
 
 ```
 
+<<<<<<< HEAD
 #Select latest, and bind
 
+=======
+
+#Select latest, and bind for day
+>>>>>>> 883fd1af435525ae0755b8a76af9a5d8d7db3fac
 ```{r}
 cdowntown_1 <- cdowntown %>% 
   select(address, neighborhood, eleventh_rate1) %>% 
   rename(latest_day = eleventh_rate1)
 
-```
+fedhill_1 <- fedhill %>% 
+  select(address, neighborhood, rate2_day) %>% 
+  rename(latest_day = rate2_day)
 
-```{r}
+
+fells_1 <- fells %>% 
+  select(address, neighborhood, rate2_day) %>% 
+  rename(latest_day = rate2_day)
+
 harboreast_1 <- harboreast %>% 
    select(address, neighborhood, third_rate_change_daytime_rate) %>% 
   rename(latest_day = third_rate_change_daytime_rate)

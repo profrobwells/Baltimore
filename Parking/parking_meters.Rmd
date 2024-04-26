@@ -541,26 +541,6 @@ Robot method
  })
 ```
 
-#PDF tools - needs work
-
-```{r}
-
-file <- "https://acrobat.adobe.com/link/review?uri=urn%3Aaaid%3Ascds%3AUS%3A56c6fe18-f0c3-3e9e-b7d4-80266b600288"
-
-pdf_file <- "../data/FellsPointRound2RateTables.pdf"
-
-# Extract tables from a PDF file
-tables <- pdf_data(pdf_file)
-
-# View the first table
-print(tables[[1]])
-
-
-fells <- (tables[[1]]) %>% 
-  as.data.frame()
-
-```
-
 
 #Select latest, and bind for day
 ```{r}
@@ -576,10 +556,11 @@ fedhill_1 <- fedhill %>%
 fells_1 <- fells %>% 
   select(address, neighborhood, rate2_day) %>% 
   rename(latest_day = rate2_day)
+#**will need to be updated**
 
 harboreast_1 <- harboreast %>% 
-   select(address, neighborhood, third_rate_change_daytime_rate) %>% 
-  rename(latest_day = third_rate_change_daytime_rate) %>% 
+   select(address, neighborhood, fourth_rate_change_even_ing_rate) %>% 
+  rename(latest_day = fourth_rate_change_even_ing_rate) %>% 
   mutate(latest_day = as.numeric(as.character(latest_day)))
 
 mtvernon_1 <- mtvernon %>% 
@@ -600,6 +581,66 @@ write.csv(parking_day, "parking_day.csv")
 
 ```
 
-Hi emily
+
+#NIGHT
+```{r}
+cdowntown_2 <- cdowntown %>% 
+  select(address, neighborhood, eleventh_rate1) %>% 
+  rename(latest_day = eleventh_rate1)
+
+fedhill_2 <- fedhill %>% 
+  select(address, neighborhood, rate2_day) %>% 
+  rename(latest_day = rate2_day)
 
 
+fells_2 <- fells %>% 
+  select(address, neighborhood, rate2_day) %>% 
+  rename(latest_day = rate2_day)
+#**Fells will need to be updated**
+
+harboreast_2 <- harboreast %>% 
+   select(address, neighborhood,fourth_rate_change_even_ing_rate) %>% 
+  rename(latest_day = fourth_rate_change_even_ing_rate)
+
+mtvernon_2 <- mtvernon %>% 
+   select(address, neighborhood, second_rate_change1) %>% 
+  rename(latest_day = second_rate_change1)
+
+parking_night <- rbind(mtvernon_2, harboreast_2, fells_2, fedhill_2, cdowntown_2)
+
+parking_night <- parking_night %>% 
+   mutate(location = geocode(address))
+
+write.csv(parking_night, "parking_night.csv")
+
+```
+
+
+#ALL CHANGES DAY
+```{r}
+cdowntown_3 <- cdowntown %>% 
+  select(address, neighborhood, eleventh_rate1, change) %>% 
+  rename(latest_day = eleventh_rate1)
+
+fedhill_3 <- fedhill_day %>% 
+  select(address, neighborhood, rate2_eve, change) %>% 
+  rename(latest_day = rate2_eve)
+
+
+fells_3 <- fells_day %>% 
+  select(address, neighborhood, rate2_eve, change) %>% 
+  rename(latest_day = rate2_eve)
+#**Fells will need to be updated**
+
+mtvernon_3 <- mtvernon %>% 
+   select(address, neighborhood, second_rate_change1, change) %>% 
+  rename(latest_day = second_rate_change1)
+
+harboreast_3 <- harboreast_day %>% 
+   select(address, neighborhood, fourth_rate_change_even_ing_rate, change) %>% 
+  rename(latest_day = fourth_rate_change_even_ing_rate)
+
+change_day <- rbind(mtvernon_3, fells_3, harboreast_3, fedhill_3, cdowntown_3) %>% 
+  group_by(change) %>% 
+   summarise(count_day = n())
+```

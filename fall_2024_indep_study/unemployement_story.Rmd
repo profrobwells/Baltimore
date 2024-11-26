@@ -1,0 +1,127 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+options(scipen=999)
+# Load libraries
+library(tidyverse)
+library(lubridate)
+```
+
+```{r}
+list.files("data")
+```
+
+
+```{r}
+unemployment_data <- read_csv("data/unemployement_data.csv") 
+county_zip <- read_csv("data/county_zip.csv") 
+  
+unemployment_data <- unemployment_data |>
+  clean_names()
+```
+#Cleaning
+```{r}
+md_unemployment <- unemployment_data |>
+  filter(zip_code >= 20331 & zip_code <= 21930) |>
+  mutate(state = NULL)
+```
+
+```{r}
+md_unemployment_new <- pivot_wider(
+  md_unemployment,
+  names_from = year,
+  values_from = count_of_claimants,
+  names_prefix = "count_of_claimants"
+)
+```
+```{r}
+colnames(md_unemployment_new) <- c("zip_code", "count_april2023", "count_april2024")
+```
+
+```{r}
+md_unemployment_new$count_april2023 <- gsub("NULL", 0, md_unemployment_new$count_april2023)
+md_unemployment_new$count_april2024 <- gsub("NULL", 0, md_unemployment_new$count_april2024)
+md_unemployment_new$count_april2023[md_unemployment_new$zip_code == 21655] <- 18
+md_unemployment_new$count_april2023[md_unemployment_new$zip_code == 21617] <- 13
+  
+```
+
+```{r}
+md_unemployment_new$count_april2023 <- as.numeric(md_unemployment_new$count_april2023)
+md_unemployment_new$count_april2024 <- as.numeric(md_unemployment_new$count_april2024)
+
+md_unemployment_new <- md_unemployment_new |>
+  mutate(difference = (count_april2024 - count_april2023))|>
+  mutate(pct_change = ((count_april2024 - count_april2023)/count_april2023)*100)
+```
+
+```{r}
+names(county_zip)[names(county_zip) == "zip"] <- "zip_code"
+md_unemployment_new$zip_code <- as.numeric(md_unemployment_new$zip_code)
+county_zip$zip_code <- as.numeric(county_zip$zip_code)
+```
+
+#Joining our dataset to county zip codes with names of cities/counties
+```{r}
+md_unemployment_joined <- md_unemployment_new |>
+  inner_join(county_zip, by = c("zip_code" = "zip_code"))|>
+  select(zip_code, count_april2023, count_april2024, difference, pct_change, primary_city, county, estimated_population)
+write.csv(md_unemployment_joined, "for_datawrapper.csv")
+```
+
+```{r}
+md_unemployment_counties <- md_unemployment_joined |>
+  group_by(county)|>
+  summarize(count_april2023 = sum(count_april2023))
+```
+```{r}
+md_unemployment_counties1 <- md_unemployment_joined |>
+  group_by(county)|>
+  summarize(count_april2024 = sum(count_april2024))
+print(md_unemployment_counties1)
+```
+
+
+```{r}
+final_counties <- md_unemployment_counties |>
+  inner_join(md_unemployment_counties1, by = c("county" = "county")) 
+
+#write.csv(md_unemployment_counties1, "for_datawrapper_counties.csv")
+```
+
+```{r}
+final_counties <- final_counties |>
+  mutate(pct_change = ((count_april2024 - count_april2023)/count_april2023)*100)
+```
+
+
+#Summary statistics for each year
+```{r}
+summary(md_unemployment_joined$count_april2023)
+```
+
+```{r}
+summary(md_unemployment_joined$count_april2024)
+```
+The mean unemployment rose about 7.
+
+
+#Total unemployment in state each year
+```{r}
+total_2023 <- sum(md_unemployment_joined$count_april2023)
+print(total_2023)
+```
+
+```{r}
+total_2024 <- sum(md_unemployment_joined$count_april2024)
+print(total_2024)
+```
+
+Unemployment in Maryland rose about 3000 from 2023 to 2024 

@@ -11,7 +11,7 @@
 
 
 
-<title>Biz Journal Masterlist</title>
+<title>R Notebook</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1746,7 +1746,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Biz Journal Masterlist</h1>
+<h1 class="title toc-ignore">R Notebook</h1>
 
 </div>
 
@@ -1760,57 +1760,232 @@ the chunk or by placing your cursor inside it and pressing
 <em>Cmd+Shift+Enter</em>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3B0aW9ucyhzY2lwZW49OTk5KVxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGphbml0b3IpXG5saWJyYXJ5KGx1YnJpZGF0ZSlcbmxpYnJhcnkocmlvKVxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3B0aW9ucyhzY2lwZW49OTk5KVxuIyBMb2FkIGxpYnJhcmllc1xubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGx1YnJpZGF0ZSlcbmBgYCJ9 -->
 <pre class="r"><code>options(scipen=999)
+# Load libraries
 library(tidyverse)
-library(janitor)
-library(lubridate)
-library(rio)
-library(dplyr)</code></pre>
+library(lubridate)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYml6X21hc3Rlcl9saXN0IDwtIHJlYWQuY3N2IChcImRhdGEvYml6X21hc3Rlcl9saXN0LmNzdlwiKSB8PiBcbiAgY2xlYW5fbmFtZXMoKVxuc2JhX2ZpbHRlcmVkIDwtIHJlYWQuY3N2IChcImRhdGEvc2JhX2ZpbHRlcmVkLmNzdlwiKSB8PiBcbiAgY2xlYW5fbmFtZXMoKVxuYGBgIn0= -->
-<pre class="r"><code>biz_master_list &lt;- read.csv (&quot;data/biz_master_list.csv&quot;) |&gt; 
-  clean_names()
-sba_filtered &lt;- read.csv (&quot;data/sba_filtered.csv&quot;) |&gt; 
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlzdC5maWxlcyhcImRhdGFcIilcbmBgYCJ9 -->
+<pre class="r"><code>list.files(&quot;data&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYml6X21hc3Rlcl9saXN0LmNzdlwiICAgIFwiY291bnR5X3ppcC5jc3ZcIiAgICAgICAgIFwic2JhX2ZpbHRlcmVkLmNzdlwiICAgICAgIFwidW5lbXBsb3llbWVudF9kYXRhLmNzdlwiXG4ifQ== -->
+<pre><code>[1] &quot;biz_master_list.csv&quot;    &quot;county_zip.csv&quot;         &quot;sba_filtered.csv&quot;       &quot;unemployement_data.csv&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudW5lbXBsb3ltZW50X2RhdGEgPC0gcmVhZF9jc3YoXCJkYXRhL3VuZW1wbG95ZW1lbnRfZGF0YS5jc3ZcIikgXG5gYGAifQ== -->
+<pre class="r"><code>unemployment_data &lt;- read_csv(&quot;data/unemployement_data.csv&quot;) </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjIzMiBDb2x1bW5zOiA04pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICgzKTogWWVhciwgU3RhdGUsIFppcCBDb2RlXG5kYmwgKDEpOiBDb3VudCBvZiBDbGFpbWFudHNcbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
+<pre><code>Rows: 2232 Columns: 4── Column specification ──────────────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr (3): Year, State, Zip Code
+dbl (1): Count of Claimants
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY291bnR5X3ppcCA8LSByZWFkX2NzdihcImRhdGEvY291bnR5X3ppcC5jc3ZcIikgXG5gYGAifQ== -->
+<pre class="r"><code>county_zip &lt;- read_csv(&quot;data/county_zip.csv&quot;) </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNjIyIENvbHVtbnM6IDE24pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICg5KTogdHlwZSwgcHJpbWFyeV9jaXR5LCBhY2NlcHRhYmxlX2NpdGllcywgdW5hY2NlcHRhYmxlX2NpdGllcywgc3RhdGUsIGNvdW50eSwgdGltZXpvbmUsIGNvdW50cnksLi4uXG5kYmwgKDUpOiB6aXAsIGxhdGl0dWRlLCBsb25naXR1ZGUsIGRlY29tbWlzc2lvbmVkLCBlc3RpbWF0ZWRfcG9wdWxhdGlvblxubnVtICgxKTogYXJlYV9jb2Rlc1xubGdsICgxKTogd29ybGRfcmVnaW9uXG7ihLkgVXNlIGBzcGVjKClgIHRvIHJldHJpZXZlIHRoZSBmdWxsIGNvbHVtbiBzcGVjaWZpY2F0aW9uIGZvciB0aGlzIGRhdGEuXG7ihLkgU3BlY2lmeSB0aGUgY29sdW1uIHR5cGVzIG9yIHNldCBgc2hvd19jb2xfdHlwZXMgPSBGQUxTRWAgdG8gcXVpZXQgdGhpcyBtZXNzYWdlLlxuIn0= -->
+<pre><code>Rows: 622 Columns: 16── Column specification ──────────────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr (9): type, primary_city, acceptable_cities, unacceptable_cities, state, county, timezone, country,...
+dbl (5): zip, latitude, longitude, decommissioned, estimated_population
+num (1): area_codes
+lgl (1): world_region
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbnVuZW1wbG95bWVudF9kYXRhIDwtIHVuZW1wbG95bWVudF9kYXRhIHw+XG4gIGNsZWFuX25hbWVzKClcbmBgYCJ9 -->
+<pre class="r"><code>  
+unemployment_data &lt;- unemployment_data |&gt;
   clean_names()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>#Cleaning</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2ZpbHRlcmVkIGJ5IG9ubHkgdGhlIHppcHMgaW5jbHVkZWQgaW4gc2JhIGRhdGFcbmJyaWRnZV9iaXpfY29tcCA8LSBiaXpfbWFzdGVyX2xpc3QgfD5cbiAgZmlsdGVyKHppcCAlaW4lIGMoMjEwNDUsIDIxMDAxLCAyMTIyNiwgMjEyMzAsIDIxMjE1LCAyMTIyMywgMjEwNDUsIDIxMjExLCBcbiAgICAgICAgICAgICAgICAgICAgMjEyMjcsIDIxMDQ2LCAyMTEyMiwgMjEwNDQsIDIxMjA4LCAyMTIwMSwgMjEyMjQsIDIxMDQ0LCBcbiAgICAgICAgICAgICAgICAgICAgMjEyMDksIDIxMjEyLCAyMTIyOCwgMjEyMjIsIDIxMjA2LCAyMTA2MSwgMjEwNzYsIDIxMjE3LCBcbiAgICAgICAgICAgICAgICAgICAgMjEyMjQsIDIxMjEwLCAyMTIxNSwgMjEyMTQsIDIwNzk0LCAyMTIxNiwgMjEyMTgpKVxud3JpdGVfY3N2KGJyaWRnZV9iaXpfY29tcCwgXCJicmlkZ2VfYml6X2NvbXAuY3N2XCIpXG5cbmJpel9tYXN0ZXJfbGlzdCRjaXR5IDwtIGdzdWIoXCIgRHVuZGFsa1wiLCBcIkR1bmRhbGtcIiwgYml6X21hc3Rlcl9saXN0JGNpdHkpXG5cbmJyaWRnZV9kdW5kYWxrX2NvbXAgPC0gYml6X21hc3Rlcl9saXN0IHw+XG4gIGZpbHRlcihjaXR5ID09IFwiRHVuZGFsa1wiKVxuICB3cml0ZV9jc3YoYnJpZGdlX2R1bmRhbGtfY29tcCwgXCJicmlkZ2VfZHVuZGFsa19jb21wLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>#filtered by only the zips included in sba data
-bridge_biz_comp &lt;- biz_master_list |&gt;
-  filter(zip %in% c(21045, 21001, 21226, 21230, 21215, 21223, 21045, 21211, 
-                    21227, 21046, 21122, 21044, 21208, 21201, 21224, 21044, 
-                    21209, 21212, 21228, 21222, 21206, 21061, 21076, 21217, 
-                    21224, 21210, 21215, 21214, 20794, 21216, 21218))
-write_csv(bridge_biz_comp, &quot;bridge_biz_comp.csv&quot;)
-
-biz_master_list$city &lt;- gsub(&quot; Dundalk&quot;, &quot;Dundalk&quot;, biz_master_list$city)
-
-bridge_dundalk_comp &lt;- biz_master_list |&gt;
-  filter(city == &quot;Dundalk&quot;)
-  write_csv(bridge_dundalk_comp, &quot;bridge_dundalk_comp.csv&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWRfdW5lbXBsb3ltZW50IDwtIHVuZW1wbG95bWVudF9kYXRhIHw+XG4gIGZpbHRlcih6aXBfY29kZSA+PSAyMDMzMSAmIHppcF9jb2RlIDw9IDIxOTMwKSB8PlxuICBtdXRhdGUoc3RhdGUgPSBOVUxMKVxuYGBgIn0= -->
+<pre class="r"><code>md_unemployment &lt;- unemployment_data |&gt;
+  filter(zip_code &gt;= 20331 &amp; zip_code &lt;= 21930) |&gt;
+  mutate(state = NULL)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the
-toolbar or by pressing <em>Cmd+Option+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and
-output will be saved alongside it (click the <em>Preview</em> button or
-press <em>Cmd+Shift+K</em> to preview the HTML file).</p>
-<p>The preview shows you a rendered HTML copy of the contents of the
-editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not
-run any R code chunks. Instead, the output of the chunk when it was last
-run in the editor is displayed.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWRfdW5lbXBsb3ltZW50X25ldyA8LSBwaXZvdF93aWRlcihcbiAgbWRfdW5lbXBsb3ltZW50LFxuICBuYW1lc19mcm9tID0geWVhcixcbiAgdmFsdWVzX2Zyb20gPSBjb3VudF9vZl9jbGFpbWFudHMsXG4gIG5hbWVzX3ByZWZpeCA9IFwiY291bnRfb2ZfY2xhaW1hbnRzXCJcbilcbmBgYCJ9 -->
+<pre class="r"><code>md_unemployment_new &lt;- pivot_wider(
+  md_unemployment,
+  names_from = year,
+  values_from = count_of_claimants,
+  names_prefix = &quot;count_of_claimants&quot;
+)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogVmFsdWVzIGZyb20gYGNvdW50X29mX2NsYWltYW50c2AgYXJlIG5vdCB1bmlxdWVseSBpZGVudGlmaWVkOyBvdXRwdXQgd2lsbCBjb250YWluIGxpc3QtY29scy5cbuKAoiBVc2UgYHZhbHVlc19mbiA9IGxpc3RgIHRvIHN1cHByZXNzIHRoaXMgd2FybmluZy5cbuKAoiBVc2UgYHZhbHVlc19mbiA9IHtzdW1tYXJ5X2Z1bn1gIHRvIHN1bW1hcmlzZSBkdXBsaWNhdGVzLlxu4oCiIFVzZSB0aGUgZm9sbG93aW5nIGRwbHlyIGNvZGUgdG8gaWRlbnRpZnkgZHVwbGljYXRlcy5cbiAge2RhdGF9ICU+JVxuICBkcGx5cjo6Z3JvdXBfYnkoemlwX2NvZGUsIHllYXIpICU+JVxuICBkcGx5cjo6c3VtbWFyaXNlKG4gPSBkcGx5cjo6bigpLCAuZ3JvdXBzID0gXCJkcm9wXCIpICU+JVxuICBkcGx5cjo6ZmlsdGVyKG4gPiAxTClcbiJ9 -->
+<pre><code>Warning: Values from `count_of_claimants` are not uniquely identified; output will contain list-cols.
+• Use `values_fn = list` to suppress this warning.
+• Use `values_fn = {summary_fun}` to summarise duplicates.
+• Use the following dplyr code to identify duplicates.
+  {data} %&gt;%
+  dplyr::group_by(zip_code, year) %&gt;%
+  dplyr::summarise(n = dplyr::n(), .groups = &quot;drop&quot;) %&gt;%
+  dplyr::filter(n &gt; 1L)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sbmFtZXMobWRfdW5lbXBsb3ltZW50X25ldykgPC0gYyhcInppcF9jb2RlXCIsIFwiY291bnRfYXByaWwyMDIzXCIsIFwiY291bnRfYXByaWwyMDI0XCIpXG5gYGAifQ== -->
+<pre class="r"><code>colnames(md_unemployment_new) &lt;- c(&quot;zip_code&quot;, &quot;count_april2023&quot;, &quot;count_april2024&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWRfdW5lbXBsb3ltZW50X25ldyRjb3VudF9hcHJpbDIwMjMgPC0gZ3N1YihcIk5VTExcIiwgMCwgbWRfdW5lbXBsb3ltZW50X25ldyRjb3VudF9hcHJpbDIwMjMpXG5tZF91bmVtcGxveW1lbnRfbmV3JGNvdW50X2FwcmlsMjAyNCA8LSBnc3ViKFwiTlVMTFwiLCAwLCBtZF91bmVtcGxveW1lbnRfbmV3JGNvdW50X2FwcmlsMjAyNClcbm1kX3VuZW1wbG95bWVudF9uZXckY291bnRfYXByaWwyMDIzW21kX3VuZW1wbG95bWVudF9uZXckemlwX2NvZGUgPT0gMjE2NTVdIDwtIDE4XG5tZF91bmVtcGxveW1lbnRfbmV3JGNvdW50X2FwcmlsMjAyM1ttZF91bmVtcGxveW1lbnRfbmV3JHppcF9jb2RlID09IDIxNjE3XSA8LSAxM1xuICBcbmBgYCJ9 -->
+<pre class="r"><code>md_unemployment_new$count_april2023 &lt;- gsub(&quot;NULL&quot;, 0, md_unemployment_new$count_april2023)
+md_unemployment_new$count_april2024 &lt;- gsub(&quot;NULL&quot;, 0, md_unemployment_new$count_april2024)
+md_unemployment_new$count_april2023[md_unemployment_new$zip_code == 21655] &lt;- 18
+md_unemployment_new$count_april2023[md_unemployment_new$zip_code == 21617] &lt;- 13
+  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWRfdW5lbXBsb3ltZW50X25ldyRjb3VudF9hcHJpbDIwMjMgPC0gYXMubnVtZXJpYyhtZF91bmVtcGxveW1lbnRfbmV3JGNvdW50X2FwcmlsMjAyMylcbm1kX3VuZW1wbG95bWVudF9uZXckY291bnRfYXByaWwyMDI0IDwtIGFzLm51bWVyaWMobWRfdW5lbXBsb3ltZW50X25ldyRjb3VudF9hcHJpbDIwMjQpXG5cbm1kX3VuZW1wbG95bWVudF9uZXcgPC0gbWRfdW5lbXBsb3ltZW50X25ldyB8PlxuICBtdXRhdGUoZGlmZmVyZW5jZSA9IChjb3VudF9hcHJpbDIwMjQgLSBjb3VudF9hcHJpbDIwMjMpKXw+XG4gIG11dGF0ZShwY3RfY2hhbmdlID0gKChjb3VudF9hcHJpbDIwMjQgLSBjb3VudF9hcHJpbDIwMjMpL2NvdW50X2FwcmlsMjAyMykqMTAwKVxuYGBgIn0= -->
+<pre class="r"><code>md_unemployment_new$count_april2023 &lt;- as.numeric(md_unemployment_new$count_april2023)
+md_unemployment_new$count_april2024 &lt;- as.numeric(md_unemployment_new$count_april2024)
+
+md_unemployment_new &lt;- md_unemployment_new |&gt;
+  mutate(difference = (count_april2024 - count_april2023))|&gt;
+  mutate(pct_change = ((count_april2024 - count_april2023)/count_april2023)*100)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXMoY291bnR5X3ppcClbbmFtZXMoY291bnR5X3ppcCkgPT0gXCJ6aXBcIl0gPC0gXCJ6aXBfY29kZVwiXG5tZF91bmVtcGxveW1lbnRfbmV3JHppcF9jb2RlIDwtIGFzLm51bWVyaWMobWRfdW5lbXBsb3ltZW50X25ldyR6aXBfY29kZSlcbmNvdW50eV96aXAkemlwX2NvZGUgPC0gYXMubnVtZXJpYyhjb3VudHlfemlwJHppcF9jb2RlKVxuYGBgIn0= -->
+<pre class="r"><code>names(county_zip)[names(county_zip) == &quot;zip&quot;] &lt;- &quot;zip_code&quot;
+md_unemployment_new$zip_code &lt;- as.numeric(md_unemployment_new$zip_code)
+county_zip$zip_code &lt;- as.numeric(county_zip$zip_code)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>#Joining our dataset to county zip codes with names of
+cities/counties</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWRfdW5lbXBsb3ltZW50X2pvaW5lZCA8LSBtZF91bmVtcGxveW1lbnRfbmV3IHw+XG4gIGlubmVyX2pvaW4oY291bnR5X3ppcCwgYnkgPSBjKFwiemlwX2NvZGVcIiA9IFwiemlwX2NvZGVcIikpfD5cbiAgc2VsZWN0KHppcF9jb2RlLCBjb3VudF9hcHJpbDIwMjMsIGNvdW50X2FwcmlsMjAyNCwgZGlmZmVyZW5jZSwgcGN0X2NoYW5nZSwgcHJpbWFyeV9jaXR5LCBjb3VudHksIGVzdGltYXRlZF9wb3B1bGF0aW9uKVxud3JpdGUuY3N2KG1kX3VuZW1wbG95bWVudF9qb2luZWQsIFwiZm9yX2RhdGF3cmFwcGVyLmNzdlwiKVxuYGBgIn0= -->
+<pre class="r"><code>md_unemployment_joined &lt;- md_unemployment_new |&gt;
+  inner_join(county_zip, by = c(&quot;zip_code&quot; = &quot;zip_code&quot;))|&gt;
+  select(zip_code, count_april2023, count_april2024, difference, pct_change, primary_city, county, estimated_population)
+write.csv(md_unemployment_joined, &quot;for_datawrapper.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWRfdW5lbXBsb3ltZW50X2NvdW50aWVzIDwtIG1kX3VuZW1wbG95bWVudF9qb2luZWQgfD5cbiAgZ3JvdXBfYnkoY291bnR5KXw+XG4gIHN1bW1hcml6ZShjb3VudF9hcHJpbDIwMjMgPSBzdW0oY291bnRfYXByaWwyMDIzKSlcbmBgYCJ9 -->
+<pre class="r"><code>md_unemployment_counties &lt;- md_unemployment_joined |&gt;
+  group_by(county)|&gt;
+  summarize(count_april2023 = sum(count_april2023))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWRfdW5lbXBsb3ltZW50X2NvdW50aWVzMSA8LSBtZF91bmVtcGxveW1lbnRfam9pbmVkIHw+XG4gIGdyb3VwX2J5KGNvdW50eSl8PlxuICBzdW1tYXJpemUoY291bnRfYXByaWwyMDI0ID0gc3VtKGNvdW50X2FwcmlsMjAyNCkpXG5wcmludChtZF91bmVtcGxveW1lbnRfY291bnRpZXMxKVxuYGBgIn0= -->
+<pre class="r"><code>md_unemployment_counties1 &lt;- md_unemployment_joined |&gt;
+  group_by(county)|&gt;
+  summarize(count_april2024 = sum(count_april2024))
+print(md_unemployment_counties1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MjUsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMjUgw5cgMiJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUEyMVRUVzhUTVJCMU5nbW9nVFFiUlVLcXhHRnZuTEtxQWtJY2syN1ZWa0tWQWlta0Z3VHU3blN6cW1OSHMxNUNUbnpjRUJkT25EZ2dUbkRqSjNEa24vQXZHdXpZaTdvR1M5YXozM3k4OGNqemVQLzBidXUwUlFpcGswYTlSdXBOZFNUTkp5Y0gvUWVFTkR4MXFaRUcyZEw0U2puMTFFR1R2dG83MXRBWk1RWXA1YXNnRWdXWEswdjNScHhETU1LQ0o4Q3FwdTA5eW1RMkZ3aEJsUDFsL1N0c3hUdWk3Q1dnckxLZGlLSmdHZi9YR1JYdkNONk1JTTdjSXFJWlJRWjVsZTN1QzR4bmtFdkFxc0UvUUVnQXMvakNTWE9vQkVFNjFXMGZVVHdYbUZUWjlwRllVcGU4OFJDNEU5MDlGbHltWWc3bzlQVFdHRE1lUTNBSUFsTzQ0OVRlZTFRQThFRDMzVFYxSmpwYkRvNlFQNUhCTWNXVjY5NmR5UEMvaHZZSlpXZkNMWGRLODFuR1V5bTRvenJOWWpGWDIxR2RxaDVYV3F3YXBqL1VFRi9vNzBlR245OFkvTzVaL0dWUS9EVDRkR2h3YWYwWEh3Mit0a2l0L2QzWTRETWI5OEg2di85bWNHeDF2dHcyK1BXVDlTZldibkZoNHNzMWpHMytsZFZiL2pENGR0ZDZWQ2FueWVrY2NtS214clBrdGJqU3FjM3RPVjFneGdhN2czdE9oaTBVeTdETTB0WlpkT0hyOWZxM0t4VXptcGRTSmRsS3FLVGhPYXA0ZGJ0MFFxNkxoY3dFVjBHZW51Nm1FMXhEaC9BTHJpdEordkdzNEJmOXdYMnRzTEdiMWJibm5TdG56Mmg2YTV1cldUWUJlS3BHdUN5ZTBUTmc1UVNwSjI5ZUhLcWVjRmsrUmJGNUtJV2twVjhyRnF4a05vOGpsMzhBWVYxcEVkVUVBQUE9In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["county"],"name":[1],"type":["chr"],"align":["left"]},{"label":["count_april2024"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Allegany County","2":"294"},{"1":"Anne Arundel County","2":"1824"},{"1":"Baltimore City","2":"3201"},{"1":"Baltimore County","2":"3300"},{"1":"Calvert County","2":"254"},{"1":"Caroline County","2":"89"},{"1":"Carroll County","2":"374"},{"1":"Cecil County","2":"265"},{"1":"Charles County","2":"505"},{"1":"Dorchester County","2":"138"},{"1":"Frederick County","2":"586"},{"1":"Garrett County","2":"119"},{"1":"Harford County","2":"876"},{"1":"Howard County","2":"821"},{"1":"Kent County","2":"66"},{"1":"Montgomery County","2":"2062"},{"1":"Prince George's County","2":"2379"},{"1":"Queen Anne's County","2":"116"},{"1":"Somerset County","2":"64"},{"1":"St Mary's County","2":"268"},{"1":"St. Mary's County","2":"0"},{"1":"Talbot County","2":"154"},{"1":"Washington County","2":"409"},{"1":"Wicomico County","2":"379"},{"1":"Worcester County","2":"550"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[25]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmluYWxfY291bnRpZXMgPC0gbWRfdW5lbXBsb3ltZW50X2NvdW50aWVzIHw+XG4gIGlubmVyX2pvaW4obWRfdW5lbXBsb3ltZW50X2NvdW50aWVzMSwgYnkgPSBjKFwiY291bnR5XCIgPSBcImNvdW50eVwiKSkgXG4gIFxuXG4jd3JpdGUuY3N2KG1kX3VuZW1wbG95bWVudF9jb3VudGllczEsIFwiZm9yX2RhdGF3cmFwcGVyX2NvdW50aWVzLmNzdlwiKVxuYGBgIn0= -->
+<pre class="r"><code>final_counties &lt;- md_unemployment_counties |&gt;
+  inner_join(md_unemployment_counties1, by = c(&quot;county&quot; = &quot;county&quot;)) 
+  
+
+#write.csv(md_unemployment_counties1, &quot;for_datawrapper_counties.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmluYWxfY291bnRpZXMgPC0gZmluYWxfY291bnRpZXMgfD5cbiAgbXV0YXRlKHBjdF9jaGFuZ2UgPSAoKGNvdW50X2FwcmlsMjAyNCAtIGNvdW50X2FwcmlsMjAyMykvY291bnRfYXByaWwyMDIzKSoxMDApXG5gYGAifQ== -->
+<pre class="r"><code>final_counties &lt;- final_counties |&gt;
+  mutate(pct_change = ((count_april2024 - count_april2023)/count_april2023)*100)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>#Summary statistics for each year</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShtZF91bmVtcGxveW1lbnRfam9pbmVkJGNvdW50X2FwcmlsMjAyMylcbmBgYCJ9 -->
+<pre class="r"><code>summary(md_unemployment_joined$count_april2023)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgTWluLiAxc3QgUXUuICBNZWRpYW4gICAgTWVhbiAzcmQgUXUuICAgIE1heC4gXG4gICAwLjAwICAgIDMuMDAgICAxMy4wMCAgIDM1LjY5ICAgNDcuMDAgIDI2OS4wMCBcbiJ9 -->
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    3.00   13.00   35.69   47.00  269.00 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShtZF91bmVtcGxveW1lbnRfam9pbmVkJGNvdW50X2FwcmlsMjAyNClcbmBgYCJ9 -->
+<pre class="r"><code>summary(md_unemployment_joined$count_april2024)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgTWluLiAxc3QgUXUuICBNZWRpYW4gICAgTWVhbiAzcmQgUXUuICAgIE1heC4gXG4gICAwLjAwICAgIDMuMDAgICAxNS4wMCAgIDQyLjQzICAgNjAuMDAgIDM1OS4wMCBcbiJ9 -->
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    3.00   15.00   42.43   60.00  359.00 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The mean unemployment rose about 7.</p>
+<p>#Total unemployment in state each year</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG90YWxfMjAyMyA8LSBzdW0obWRfdW5lbXBsb3ltZW50X2pvaW5lZCRjb3VudF9hcHJpbDIwMjMpXG5wcmludCh0b3RhbF8yMDIzKVxuYGBgIn0= -->
+<pre class="r"><code>total_2023 &lt;- sum(md_unemployment_joined$count_april2023)
+print(total_2023)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE2MDYwXG4ifQ== -->
+<pre><code>[1] 16060</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG90YWxfMjAyNCA8LSBzdW0obWRfdW5lbXBsb3ltZW50X2pvaW5lZCRjb3VudF9hcHJpbDIwMjQpXG5wcmludCh0b3RhbF8yMDI0KVxuYGBgIn0= -->
+<pre class="r"><code>total_2024 &lt;- sum(md_unemployment_joined$count_april2024)
+print(total_2024)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE5MDkzXG4ifQ== -->
+<pre><code>[1] 19093</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Unemployment in Maryland rose about 3000 from 2023 to 2024</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQml6IEpvdXJuYWwgTWFzdGVybGlzdCIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gCgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ21kK1NoaWZ0K0VudGVyKi4gCgpgYGB7cn0Kb3B0aW9ucyhzY2lwZW49OTk5KQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShqYW5pdG9yKQpsaWJyYXJ5KGx1YnJpZGF0ZSkKbGlicmFyeShyaW8pCmxpYnJhcnkoZHBseXIpCmBgYAoKYGBge3J9CmJpel9tYXN0ZXJfbGlzdCA8LSByZWFkLmNzdiAoImRhdGEvYml6X21hc3Rlcl9saXN0LmNzdiIpIHw+IAogIGNsZWFuX25hbWVzKCkKc2JhX2ZpbHRlcmVkIDwtIHJlYWQuY3N2ICgiZGF0YS9zYmFfZmlsdGVyZWQuY3N2IikgfD4gCiAgY2xlYW5fbmFtZXMoKQpgYGAKCmBgYHtyfQojZmlsdGVyZWQgYnkgb25seSB0aGUgemlwcyBpbmNsdWRlZCBpbiBzYmEgZGF0YQpicmlkZ2VfYml6X2NvbXAgPC0gYml6X21hc3Rlcl9saXN0IHw+CiAgZmlsdGVyKHppcCAlaW4lIGMoMjEwNDUsIDIxMDAxLCAyMTIyNiwgMjEyMzAsIDIxMjE1LCAyMTIyMywgMjEwNDUsIDIxMjExLCAKICAgICAgICAgICAgICAgICAgICAyMTIyNywgMjEwNDYsIDIxMTIyLCAyMTA0NCwgMjEyMDgsIDIxMjAxLCAyMTIyNCwgMjEwNDQsIAogICAgICAgICAgICAgICAgICAgIDIxMjA5LCAyMTIxMiwgMjEyMjgsIDIxMjIyLCAyMTIwNiwgMjEwNjEsIDIxMDc2LCAyMTIxNywgCiAgICAgICAgICAgICAgICAgICAgMjEyMjQsIDIxMjEwLCAyMTIxNSwgMjEyMTQsIDIwNzk0LCAyMTIxNiwgMjEyMTgpKQp3cml0ZV9jc3YoYnJpZGdlX2Jpel9jb21wLCAiYnJpZGdlX2Jpel9jb21wLmNzdiIpCgpiaXpfbWFzdGVyX2xpc3QkY2l0eSA8LSBnc3ViKCIgRHVuZGFsayIsICJEdW5kYWxrIiwgYml6X21hc3Rlcl9saXN0JGNpdHkpCgpicmlkZ2VfZHVuZGFsa19jb21wIDwtIGJpel9tYXN0ZXJfbGlzdCB8PgogIGZpbHRlcihjaXR5ID09ICJEdW5kYWxrIikKICB3cml0ZV9jc3YoYnJpZGdlX2R1bmRhbGtfY29tcCwgImJyaWRnZV9kdW5kYWxrX2NvbXAuY3N2IikKYGBgCgoKCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDbWQrT3B0aW9uK0kqLgoKV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDbWQrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4gCgpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gCgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ21kK1NoaWZ0K0VudGVyKi4gCgpgYGB7cn0Kb3B0aW9ucyhzY2lwZW49OTk5KQojIExvYWQgbGlicmFyaWVzCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGx1YnJpZGF0ZSkKYGBgCgpgYGB7cn0KbGlzdC5maWxlcygiZGF0YSIpCmBgYAoKCmBgYHtyfQp1bmVtcGxveW1lbnRfZGF0YSA8LSByZWFkX2NzdigiZGF0YS91bmVtcGxveWVtZW50X2RhdGEuY3N2IikgCmNvdW50eV96aXAgPC0gcmVhZF9jc3YoImRhdGEvY291bnR5X3ppcC5jc3YiKSAKICAKdW5lbXBsb3ltZW50X2RhdGEgPC0gdW5lbXBsb3ltZW50X2RhdGEgfD4KICBjbGVhbl9uYW1lcygpCmBgYAojQ2xlYW5pbmcKYGBge3J9Cm1kX3VuZW1wbG95bWVudCA8LSB1bmVtcGxveW1lbnRfZGF0YSB8PgogIGZpbHRlcih6aXBfY29kZSA+PSAyMDMzMSAmIHppcF9jb2RlIDw9IDIxOTMwKSB8PgogIG11dGF0ZShzdGF0ZSA9IE5VTEwpCmBgYAoKYGBge3J9Cm1kX3VuZW1wbG95bWVudF9uZXcgPC0gcGl2b3Rfd2lkZXIoCiAgbWRfdW5lbXBsb3ltZW50LAogIG5hbWVzX2Zyb20gPSB5ZWFyLAogIHZhbHVlc19mcm9tID0gY291bnRfb2ZfY2xhaW1hbnRzLAogIG5hbWVzX3ByZWZpeCA9ICJjb3VudF9vZl9jbGFpbWFudHMiCikKYGBgCmBgYHtyfQpjb2xuYW1lcyhtZF91bmVtcGxveW1lbnRfbmV3KSA8LSBjKCJ6aXBfY29kZSIsICJjb3VudF9hcHJpbDIwMjMiLCAiY291bnRfYXByaWwyMDI0IikKYGBgCgpgYGB7cn0KbWRfdW5lbXBsb3ltZW50X25ldyRjb3VudF9hcHJpbDIwMjMgPC0gZ3N1YigiTlVMTCIsIDAsIG1kX3VuZW1wbG95bWVudF9uZXckY291bnRfYXByaWwyMDIzKQptZF91bmVtcGxveW1lbnRfbmV3JGNvdW50X2FwcmlsMjAyNCA8LSBnc3ViKCJOVUxMIiwgMCwgbWRfdW5lbXBsb3ltZW50X25ldyRjb3VudF9hcHJpbDIwMjQpCm1kX3VuZW1wbG95bWVudF9uZXckY291bnRfYXByaWwyMDIzW21kX3VuZW1wbG95bWVudF9uZXckemlwX2NvZGUgPT0gMjE2NTVdIDwtIDE4Cm1kX3VuZW1wbG95bWVudF9uZXckY291bnRfYXByaWwyMDIzW21kX3VuZW1wbG95bWVudF9uZXckemlwX2NvZGUgPT0gMjE2MTddIDwtIDEzCiAgCmBgYAoKYGBge3J9Cm1kX3VuZW1wbG95bWVudF9uZXckY291bnRfYXByaWwyMDIzIDwtIGFzLm51bWVyaWMobWRfdW5lbXBsb3ltZW50X25ldyRjb3VudF9hcHJpbDIwMjMpCm1kX3VuZW1wbG95bWVudF9uZXckY291bnRfYXByaWwyMDI0IDwtIGFzLm51bWVyaWMobWRfdW5lbXBsb3ltZW50X25ldyRjb3VudF9hcHJpbDIwMjQpCgptZF91bmVtcGxveW1lbnRfbmV3IDwtIG1kX3VuZW1wbG95bWVudF9uZXcgfD4KICBtdXRhdGUoZGlmZmVyZW5jZSA9IChjb3VudF9hcHJpbDIwMjQgLSBjb3VudF9hcHJpbDIwMjMpKXw+CiAgbXV0YXRlKHBjdF9jaGFuZ2UgPSAoKGNvdW50X2FwcmlsMjAyNCAtIGNvdW50X2FwcmlsMjAyMykvY291bnRfYXByaWwyMDIzKSoxMDApCmBgYAoKYGBge3J9Cm5hbWVzKGNvdW50eV96aXApW25hbWVzKGNvdW50eV96aXApID09ICJ6aXAiXSA8LSAiemlwX2NvZGUiCm1kX3VuZW1wbG95bWVudF9uZXckemlwX2NvZGUgPC0gYXMubnVtZXJpYyhtZF91bmVtcGxveW1lbnRfbmV3JHppcF9jb2RlKQpjb3VudHlfemlwJHppcF9jb2RlIDwtIGFzLm51bWVyaWMoY291bnR5X3ppcCR6aXBfY29kZSkKYGBgCgojSm9pbmluZyBvdXIgZGF0YXNldCB0byBjb3VudHkgemlwIGNvZGVzIHdpdGggbmFtZXMgb2YgY2l0aWVzL2NvdW50aWVzCmBgYHtyfQptZF91bmVtcGxveW1lbnRfam9pbmVkIDwtIG1kX3VuZW1wbG95bWVudF9uZXcgfD4KICBpbm5lcl9qb2luKGNvdW50eV96aXAsIGJ5ID0gYygiemlwX2NvZGUiID0gInppcF9jb2RlIikpfD4KICBzZWxlY3QoemlwX2NvZGUsIGNvdW50X2FwcmlsMjAyMywgY291bnRfYXByaWwyMDI0LCBkaWZmZXJlbmNlLCBwY3RfY2hhbmdlLCBwcmltYXJ5X2NpdHksIGNvdW50eSwgZXN0aW1hdGVkX3BvcHVsYXRpb24pCndyaXRlLmNzdihtZF91bmVtcGxveW1lbnRfam9pbmVkLCAiZm9yX2RhdGF3cmFwcGVyLmNzdiIpCmBgYAoKYGBge3J9Cm1kX3VuZW1wbG95bWVudF9jb3VudGllcyA8LSBtZF91bmVtcGxveW1lbnRfam9pbmVkIHw+CiAgZ3JvdXBfYnkoY291bnR5KXw+CiAgc3VtbWFyaXplKGNvdW50X2FwcmlsMjAyMyA9IHN1bShjb3VudF9hcHJpbDIwMjMpKQpgYGAKYGBge3J9Cm1kX3VuZW1wbG95bWVudF9jb3VudGllczEgPC0gbWRfdW5lbXBsb3ltZW50X2pvaW5lZCB8PgogIGdyb3VwX2J5KGNvdW50eSl8PgogIHN1bW1hcml6ZShjb3VudF9hcHJpbDIwMjQgPSBzdW0oY291bnRfYXByaWwyMDI0KSkKcHJpbnQobWRfdW5lbXBsb3ltZW50X2NvdW50aWVzMSkKYGBgCgoKYGBge3J9CmZpbmFsX2NvdW50aWVzIDwtIG1kX3VuZW1wbG95bWVudF9jb3VudGllcyB8PgogIGlubmVyX2pvaW4obWRfdW5lbXBsb3ltZW50X2NvdW50aWVzMSwgYnkgPSBjKCJjb3VudHkiID0gImNvdW50eSIpKSAKCiN3cml0ZS5jc3YobWRfdW5lbXBsb3ltZW50X2NvdW50aWVzMSwgImZvcl9kYXRhd3JhcHBlcl9jb3VudGllcy5jc3YiKQpgYGAKCmBgYHtyfQpmaW5hbF9jb3VudGllcyA8LSBmaW5hbF9jb3VudGllcyB8PgogIG11dGF0ZShwY3RfY2hhbmdlID0gKChjb3VudF9hcHJpbDIwMjQgLSBjb3VudF9hcHJpbDIwMjMpL2NvdW50X2FwcmlsMjAyMykqMTAwKQpgYGAKCgojU3VtbWFyeSBzdGF0aXN0aWNzIGZvciBlYWNoIHllYXIKYGBge3J9CnN1bW1hcnkobWRfdW5lbXBsb3ltZW50X2pvaW5lZCRjb3VudF9hcHJpbDIwMjMpCmBgYAoKYGBge3J9CnN1bW1hcnkobWRfdW5lbXBsb3ltZW50X2pvaW5lZCRjb3VudF9hcHJpbDIwMjQpCmBgYApUaGUgbWVhbiB1bmVtcGxveW1lbnQgcm9zZSBhYm91dCA3LgoKCiNUb3RhbCB1bmVtcGxveW1lbnQgaW4gc3RhdGUgZWFjaCB5ZWFyCmBgYHtyfQp0b3RhbF8yMDIzIDwtIHN1bShtZF91bmVtcGxveW1lbnRfam9pbmVkJGNvdW50X2FwcmlsMjAyMykKcHJpbnQodG90YWxfMjAyMykKYGBgCgpgYGB7cn0KdG90YWxfMjAyNCA8LSBzdW0obWRfdW5lbXBsb3ltZW50X2pvaW5lZCRjb3VudF9hcHJpbDIwMjQpCnByaW50KHRvdGFsXzIwMjQpCmBgYAoKVW5lbXBsb3ltZW50IGluIE1hcnlsYW5kIHJvc2UgYWJvdXQgMzAwMCBmcm9tIDIwMjMgdG8gMjAyNCA=</div>
 
 
 
@@ -1857,7 +2032,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("sba_biz_comparison.Rmd");
+  window.initializeSourceEmbed("unemployement_story.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

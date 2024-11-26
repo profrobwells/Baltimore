@@ -30,11 +30,13 @@ bridge_biz_comp <- biz_master_list |>
                     21227, 21046, 21122, 21044, 21208, 21201, 21224, 21044, 
                     21209, 21212, 21228, 21222, 21206, 21061, 21076, 21217, 
                     21224, 21210, 21215, 21214, 20794, 21216, 21218))
+write_csv(bridge_biz_comp, "bridge_biz_comp.csv")
 
 biz_master_list$city <- gsub(" Dundalk", "Dundalk", biz_master_list$city)
 
 bridge_dundalk_comp <- biz_master_list |>
   filter(city == "Dundalk")
+  write_csv(bridge_dundalk_comp, "bridge_dundalk_comp.csv")
 ```
 
 

@@ -1,0 +1,451 @@
+"","zip_code","count_april2023","count_april2024","difference","pct_change","primary_city","county","estimated_population"
+"1",21655,18,19,1,5.55555555555556,"Preston","Caroline County",4360
+"2",20601,67,97,30,44.7761194029851,"Waldorf","Charles County",20090
+"3",20602,83,85,2,2.40963855421687,"Waldorf","Charles County",18650
+"4",20603,81,86,5,6.17283950617284,"Waldorf","Charles County",22217
+"5",20606,0,1,1,Inf,"Abell","St Mary's County",0
+"6",20607,34,31,-3,-8.82352941176471,"Accokeek","Prince George's County",8377
+"7",20608,3,3,0,0,"Aquasco","Prince George's County",722
+"8",20609,4,2,-2,-50,"Avenue","St Mary's County",940
+"9",20611,2,3,1,50,"Bel Alton","Charles County",951
+"10",20612,1,0,-1,-100,"Benedict","Charles County",0
+"11",20613,24,43,19,79.1666666666667,"Brandywine","Prince George's County",10256
+"12",20615,3,4,1,33.3333333333333,"Broomes Island","Calvert County",0
+"13",20616,26,24,-2,-7.69230769230769,"Bryans Road","Charles County",4871
+"14",20617,3,5,2,66.6666666666667,"Bryantown","Charles County",903
+"15",20618,3,2,-1,-33.3333333333333,"Bushwood","St Mary's County",616
+"16",20619,19,31,12,63.1578947368421,"California","St Mary's County",8705
+"17",20620,3,1,-2,-66.6666666666667,"Callaway","St Mary's County",1254
+"18",20621,3,0,-3,-100,"Chaptico","St Mary's County",1312
+"19",20622,8,13,5,62.5,"Charlotte Hall","Charles County",3891
+"20",20623,11,6,-5,-45.4545454545455,"Cheltenham","Prince George's County",2531
+"21",20624,3,5,2,66.6666666666667,"Clements","St Mary's County",1077
+"22",20625,4,3,-1,-25,"Cobb Island","Charles County",678
+"23",20629,0,1,1,Inf,"Dowell","Calvert County",0
+"24",20630,1,1,0,0,"Drayden","St Mary's County",0
+"25",20632,0,1,1,Inf,"Faulkner","Charles County",0
+"26",20634,22,19,-3,-13.6363636363636,"Great Mills","St Mary's County",5941
+"27",20636,19,13,-6,-31.578947368421,"Hollywood","St Mary's County",8431
+"28",20637,8,10,2,25,"Hughesville","Charles County",4794
+"29",20639,30,39,9,30,"Huntingtown","Calvert County",12778
+"30",20640,40,43,3,7.5,"Indian Head","Charles County",7882
+"31",20645,1,3,2,200,"Issue","Charles County",744
+"32",20646,41,49,8,19.5121951219512,"La Plata","Charles County",16450
+"33",20650,14,20,6,42.8571428571429,"Leonardtown","St Mary's County",10513
+"34",20653,83,75,-8,-9.63855421686747,"Lexington Park","St Mary's County",16545
+"35",20656,1,0,-1,-100,"Loveville","St. Mary's County",0
+"36",20657,82,60,-22,-26.8292682926829,"Lusby","Calvert County",16379
+"37",20658,1,2,1,100,"Marbury","Charles County",1028
+"38",20659,62,80,18,29.0322580645161,"Mechanicsville","St Mary's County",19456
+"39",20662,12,15,3,25,"Nanjemoy","Charles County",2187
+"40",20664,19,14,-5,-26.3157894736842,"Newburg","Charles County",2300
+"41",20670,0,1,1,Inf,"Patuxent River","St Mary's County",873
+"42",20674,2,2,0,0,"Piney Point","St Mary's County",643
+"43",20675,1,4,3,300,"Pomfret","Charles County",1515
+"44",20676,8,11,3,37.5,"Port Republic","Calvert County",2964
+"45",20677,12,8,-4,-33.3333333333333,"Port Tobacco","Charles County",2081
+"46",20678,35,44,9,25.7142857142857,"Prince Frederick","Calvert County",9060
+"47",20680,1,5,4,400,"Ridge","St Mary's County",794
+"48",20684,3,3,0,0,"Saint Inigoes","St Mary's County",902
+"49",20685,13,20,7,53.8461538461538,"Saint Leonard","Calvert County",5780
+"50",20687,0,2,2,Inf,"Scotland","St Mary's County",0
+"51",20688,8,9,1,12.5,"Solomons","Calvert County",1920
+"52",20689,1,2,1,100,"Sunderland","Calvert County",1516
+"53",20690,1,2,1,100,"Tall Timbers","St Mary's County",671
+"54",20692,5,3,-2,-40,"Valley Lee","St Mary's County",1054
+"55",20693,1,1,0,0,"Welcome","Charles County",1079
+"56",20695,36,39,3,8.33333333333333,"White Plains","Charles County",7316
+"57",20701,1,4,3,300,"Annapolis Junction","Anne Arundel County",0
+"58",20705,59,71,12,20.3389830508475,"Beltsville","Prince George's County",21122
+"59",20706,106,119,13,12.2641509433962,"Lanham","Prince George's County",31002
+"60",20707,100,135,35,35,"Laurel","Prince George's County",26214
+"61",20708,93,85,-8,-8.60215053763441,"Laurel","Prince George's County",19398
+"62",20709,1,0,-1,-100,"Laurel","Prince George's County",0
+"63",20710,20,15,-5,-25,"Bladensburg","Prince George's County",6493
+"64",20711,14,17,3,21.4285714285714,"Lothian","Anne Arundel County",5488
+"65",20712,11,17,6,54.5454545454545,"Mount Rainier","Prince George's County",6569
+"66",20714,15,16,1,6.66666666666667,"North Beach","Calvert County",3488
+"67",20715,39,64,25,64.1025641025641,"Bowie","Prince George's County",21792
+"68",20716,58,55,-3,-5.17241379310345,"Bowie","Prince George's County",17493
+"69",20720,63,84,21,33.3333333333333,"Bowie","Prince George's County",17823
+"70",20721,65,69,4,6.15384615384615,"Bowie","Prince George's County",22471
+"71",20722,10,8,-2,-20,"Brentwood","Prince George's County",4676
+"72",20723,77,94,17,22.0779220779221,"Laurel","Howard County",24130
+"73",20724,55,60,5,9.09090909090909,"Laurel","Anne Arundel County",12891
+"74",20725,1,0,-1,-100,"Laurel","Prince George's County",465
+"75",20732,21,24,3,14.2857142857143,"Chesapeake Beach","Calvert County",8400
+"76",20733,7,9,2,28.5714285714286,"Churchton","Anne Arundel County",2606
+"77",20735,82,110,28,34.1463414634146,"Clinton","Prince George's County",30519
+"78",20736,9,8,-1,-11.1111111111111,"Owings","Calvert County",7915
+"79",20737,43,41,-2,-4.65116279069767,"Riverdale","Prince George's County",15681
+"80",20740,40,58,18,45,"College Park","Prince George's County",15633
+"81",20741,1,0,-1,-100,"College Park","Prince George's County",0
+"82",20743,99,120,21,21.2121212121212,"Capitol Heights","Prince George's County",29683
+"83",20744,100,113,13,13,"Fort Washington","Prince George's County",41540
+"84",20745,63,91,28,44.4444444444444,"Oxon Hill","Prince George's County",20874
+"85",20746,95,110,15,15.7894736842105,"Suitland","Prince George's County",22404
+"86",20747,126,133,7,5.55555555555556,"District Heights","Prince George's County",30726
+"87",20748,104,98,-6,-5.76923076923077,"Temple Hills","Prince George's County",30423
+"88",20751,3,3,0,0,"Deale","Anne Arundel County",1944
+"89",20754,15,16,1,6.66666666666667,"Dunkirk","Calvert County",6409
+"90",20755,2,8,6,300,"Fort George G Meade","Anne Arundel County",6733
+"91",20758,5,1,-4,-80,"Friendship","Anne Arundel County",746
+"92",20759,9,5,-4,-44.4444444444444,"Fulton","Howard County",2725
+"93",20762,1,1,0,0,"Andrews Air Force Base","Prince George's County",2572
+"94",20763,5,5,0,0,"Savage","Howard County",2285
+"95",20764,17,19,2,11.7647058823529,"Shady Side","Anne Arundel County",3585
+"96",20765,2,1,-1,-50,"Galesville","Anne Arundel County",532
+"97",20769,14,13,-1,-7.14285714285714,"Glenn Dale","Prince George's County",5725
+"98",20770,68,79,11,16.1764705882353,"Greenbelt","Prince George's County",18966
+"99",20772,109,135,26,23.8532110091743,"Upper Marlboro","Prince George's County",34695
+"100",20774,123,137,14,11.3821138211382,"Upper Marlboro","Prince George's County",35509
+"101",20776,4,7,3,75,"Harwood","Anne Arundel County",2800
+"102",20777,7,8,1,14.2857142857143,"Highland","Howard County",3036
+"103",20778,5,4,-1,-20,"West River","Anne Arundel County",1676
+"104",20779,2,3,1,50,"Tracys Landing","Anne Arundel County",1160
+"105",20781,18,16,-2,-11.1111111111111,"Hyattsville","Prince George's County",8985
+"106",20782,47,60,13,27.6595744680851,"Hyattsville","Prince George's County",23691
+"107",20783,58,71,13,22.4137931034483,"Hyattsville","Prince George's County",29484
+"108",20784,66,63,-3,-4.54545454545455,"Hyattsville","Prince George's County",24037
+"109",20785,110,124,14,12.7272727272727,"Hyattsville","Prince George's County",27933
+"110",20792,0,1,1,Inf,"Upper Marlboro","Prince George's County",409
+"111",20794,25,38,13,52,"Jessup","Howard County",7418
+"112",20814,25,46,21,84,"Bethesda","Montgomery County",22685
+"113",20815,26,26,0,0,"Chevy Chase","Montgomery County",24927
+"114",20816,6,9,3,50,"Bethesda","Montgomery County",13948
+"115",20817,26,48,22,84.6153846153846,"Bethesda","Montgomery County",31025
+"116",20818,2,4,2,100,"Cabin John","Montgomery County",1588
+"117",20832,29,46,17,58.6206896551724,"Olney","Montgomery County",21823
+"118",20833,8,8,0,0,"Brookeville","Montgomery County",6945
+"119",20837,10,16,6,60,"Poolesville","Montgomery County",5273
+"120",20839,0,1,1,Inf,"Beallsville","Montgomery County",0
+"121",20841,25,27,2,8,"Boyds","Montgomery County",7969
+"122",20842,2,2,0,0,"Dickerson","Montgomery County",1511
+"123",20849,1,0,-1,-100,"Rockville","Montgomery County",470
+"124",20850,93,125,32,34.4086021505376,"Rockville","Montgomery County",37165
+"125",20851,25,32,7,28,"Rockville","Montgomery County",11459
+"126",20852,74,84,10,13.5135135135135,"Rockville","Montgomery County",32220
+"127",20853,29,46,17,58.6206896551724,"Rockville","Montgomery County",26064
+"128",20854,30,68,38,126.666666666667,"Potomac","Montgomery County",44511
+"129",20855,29,36,7,24.1379310344828,"Derwood","Montgomery County",13190
+"130",20859,1,0,-1,-100,"Potomac","Montgomery County",0
+"131",20860,1,5,4,400,"Sandy Spring","Montgomery County",1485
+"132",20861,5,7,2,40,"Ashton","Montgomery County",1811
+"133",20862,0,1,1,Inf,"Brinklow","Montgomery County",0
+"134",20866,32,43,11,34.375,"Burtonsville","Montgomery County",11721
+"135",20868,3,2,-1,-33.3333333333333,"Spencerville","Montgomery County",651
+"136",20871,47,77,30,63.8297872340426,"Clarksburg","Montgomery County",10531
+"137",20872,19,30,11,57.8947368421053,"Damascus","Montgomery County",11276
+"138",20874,151,187,36,23.841059602649,"Germantown","Montgomery County",48336
+"139",20875,1,0,-1,-100,"Germantown","Montgomery County",716
+"140",20876,52,66,14,26.9230769230769,"Germantown","Montgomery County",20992
+"141",20877,63,87,24,38.0952380952381,"Gaithersburg","Montgomery County",26800
+"142",20878,121,166,45,37.1900826446281,"Gaithersburg","Montgomery County",52924
+"143",20879,39,59,20,51.2820512820513,"Gaithersburg","Montgomery County",21332
+"144",20882,18,14,-4,-22.2222222222222,"Gaithersburg","Montgomery County",12565
+"145",20883,1,0,-1,-100,"Gaithersburg","Montgomery County",0
+"146",20885,1,0,-1,-100,"Gaithersburg","Montgomery County",0
+"147",20886,84,83,-1,-1.19047619047619,"Montgomery Village","Montgomery County",27103
+"148",20895,21,27,6,28.5714285714286,"Kensington","Montgomery County",16190
+"149",20896,0,1,1,Inf,"Garrett Park","Montgomery County",905
+"150",20898,1,0,-1,-100,"Gaithersburg","Montgomery County",0
+"151",20901,59,52,-7,-11.864406779661,"Silver Spring","Montgomery County",29903
+"152",20902,74,89,15,20.2702702702703,"Silver Spring","Montgomery County",39168
+"153",20903,38,28,-10,-26.3157894736842,"Silver Spring","Montgomery County",17654
+"154",20904,136,120,-16,-11.7647058823529,"Silver Spring","Montgomery County",44859
+"155",20905,33,26,-7,-21.2121212121212,"Silver Spring","Montgomery County",16516
+"156",20906,97,132,35,36.0824742268041,"Silver Spring","Montgomery County",53137
+"157",20907,0,1,1,Inf,"Silver Spring","Montgomery County",0
+"158",20910,84,90,6,7.14285714285714,"Silver Spring","Montgomery County",30661
+"159",20912,32,44,12,37.5,"Takoma Park","Montgomery County",19175
+"160",20916,0,1,1,Inf,"Silver Spring","Montgomery County",0
+"161",21001,95,124,29,30.5263157894737,"Aberdeen","Harford County",18383
+"162",21005,1,2,1,100,"Aberdeen Proving Ground","Harford County",1142
+"163",21009,89,113,24,26.9662921348315,"Abingdon","Harford County",25308
+"164",21012,34,29,-5,-14.7058823529412,"Arnold","Anne Arundel County",18695
+"165",21013,10,15,5,50,"Baldwin","Baltimore County",4382
+"166",21014,93,102,9,9.67741935483871,"Bel Air","Harford County",31074
+"167",21015,87,86,-1,-1.14942528735632,"Bel Air","Harford County",24922
+"168",21017,29,30,1,3.44827586206897,"Belcamp","Harford County",5504
+"169",21022,0,1,1,Inf,"Brooklandville","Baltimore County",0
+"170",21028,7,11,4,57.1428571428571,"Churchville","Harford County",2971
+"171",21029,12,17,5,41.6666666666667,"Clarksville","Howard County",10412
+"172",21030,63,74,11,17.4603174603175,"Cockeysville","Baltimore County",20714
+"173",21032,11,17,6,54.5454545454545,"Crownsville","Anne Arundel County",7811
+"174",21034,17,13,-4,-23.5294117647059,"Darlington","Harford County",3086
+"175",21035,14,17,3,21.4285714285714,"Davidsonville","Anne Arundel County",7106
+"176",21036,4,3,-1,-25,"Dayton","Howard County",1875
+"177",21037,45,39,-6,-13.3333333333333,"Edgewater","Anne Arundel County",17576
+"178",21040,116,141,25,21.551724137931,"Edgewood","Harford County",19332
+"179",21042,47,77,30,63.8297872340426,"Ellicott City","Howard County",34548
+"180",21043,59,117,58,98.3050847457627,"Ellicott City","Howard County",34351
+"181",21044,91,142,51,56.043956043956,"Columbia","Howard County",34780
+"182",21045,113,114,1,0.884955752212389,"Columbia","Howard County",32742
+"183",21046,39,45,6,15.3846153846154,"Columbia","Howard County",13087
+"184",21047,24,31,7,29.1666666666667,"Fallston","Harford County",10915
+"185",21048,15,14,-1,-6.66666666666667,"Finksburg","Carroll County",9672
+"186",21050,41,41,0,0,"Forest Hill","Harford County",16636
+"187",21051,2,0,-2,-100,"Fork","Baltimore County",0
+"188",21052,1,3,2,200,"Fort Howard","Baltimore County",0
+"189",21053,8,9,1,12.5,"Freeland","Baltimore County",2820
+"190",21054,20,32,12,60,"Gambrills","Anne Arundel County",9367
+"191",21056,1,0,-1,-100,"Gibson Island","Anne Arundel County",0
+"192",21057,7,9,2,28.5714285714286,"Glen Arm","Baltimore County",3718
+"193",21060,146,192,46,31.5068493150685,"Glen Burnie","Anne Arundel County",23756
+"194",21061,202,199,-3,-1.48514851485149,"Glen Burnie","Anne Arundel County",42373
+"195",21071,2,3,1,50,"Glyndon","Baltimore County",492
+"196",21074,34,31,-3,-8.82352941176471,"Hampstead","Carroll County",13625
+"197",21075,87,108,21,24.1379310344828,"Elkridge","Howard County",21407
+"198",21076,68,77,9,13.2352941176471,"Hanover","Anne Arundel County",10451
+"199",21077,1,0,-1,-100,"Harmans","Anne Arundel County",0
+"200",21078,75,63,-12,-16,"Havre De Grace","Harford County",14843
+"201",21082,1,0,-1,-100,"Hydes","Baltimore County",825
+"202",21084,23,20,-3,-13.0434782608696,"Jarrettsville","Harford County",6986
+"203",21085,63,58,-5,-7.93650793650794,"Joppa","Harford County",14309
+"204",21087,16,15,-1,-6.25,"Kingsville","Baltimore County",5343
+"205",21090,39,39,0,0,"Linthicum Heights","Anne Arundel County",8675
+"206",21093,67,74,7,10.4477611940298,"Lutherville Timonium","Baltimore County",33490
+"207",21102,30,23,-7,-23.3333333333333,"Manchester","Carroll County",10360
+"208",21104,4,8,4,100,"Marriottsville","Howard County",4406
+"209",21108,31,40,9,29.0322580645161,"Millersville","Anne Arundel County",15559
+"210",21111,12,8,-4,-33.3333333333333,"Monkton","Baltimore County",4550
+"211",21113,103,116,13,12.621359223301,"Odenton","Anne Arundel County",24516
+"212",21114,53,65,12,22.6415094339623,"Crofton","Anne Arundel County",21751
+"213",21117,223,260,37,16.5919282511211,"Owings Mills","Baltimore County",43195
+"214",21120,16,20,4,25,"Parkton","Baltimore County",6466
+"215",21122,212,262,50,23.5849056603774,"Pasadena","Anne Arundel County",51804
+"216",21128,33,42,9,27.2727272727273,"Perry Hall","Baltimore County",11387
+"217",21130,1,1,0,0,"Perryman","Harford County",0
+"218",21131,7,23,16,228.571428571429,"Phoenix","Baltimore County",6905
+"219",21132,5,8,3,60,"Pylesville","Harford County",2367
+"220",21133,134,135,1,0.746268656716418,"Randallstown","Baltimore County",23423
+"221",21136,92,112,20,21.7391304347826,"Reisterstown","Baltimore County",28903
+"222",21140,5,5,0,0,"Riva","Anne Arundel County",3133
+"223",21144,124,139,15,12.0967741935484,"Severn","Anne Arundel County",27098
+"224",21146,35,46,11,31.4285714285714,"Severna Park","Anne Arundel County",23707
+"225",21152,6,11,5,83.3333333333333,"Sparks Glencoe","Baltimore County",4930
+"226",21153,0,2,2,Inf,"Stevenson","Baltimore County",825
+"227",21154,24,22,-2,-8.33333333333333,"Street","Harford County",5563
+"228",21155,4,8,4,100,"Upperco","Baltimore County",2185
+"229",21156,0,1,1,Inf,"Upper Falls","Baltimore County",0
+"230",21157,76,86,10,13.1578947368421,"Westminster","Carroll County",30270
+"231",21158,38,47,9,23.6842105263158,"Westminster","Carroll County",18082
+"232",21160,9,10,1,11.1111111111111,"Whiteford","Harford County",2155
+"233",21161,16,17,1,6.25,"White Hall","Baltimore County",5010
+"234",21162,12,11,-1,-8.33333333333333,"White Marsh","Baltimore County",3333
+"235",21163,11,11,0,0,"Woodstock","Howard County",6104
+"236",21201,68,101,33,48.5294117647059,"Baltimore","Baltimore City",9628
+"237",21202,97,104,7,7.21649484536082,"Baltimore","Baltimore City",10448
+"238",21203,0,3,3,Inf,"Baltimore","Baltimore City",1082
+"239",21204,33,49,16,48.4848484848485,"Towson","Baltimore County",12824
+"240",21205,47,86,39,82.9787234042553,"Baltimore","Baltimore City",9645
+"241",21206,234,317,83,35.4700854700855,"Baltimore","Baltimore City",38796
+"242",21207,221,298,77,34.841628959276,"Gwynn Oak","Baltimore County",36682
+"243",21208,84,121,37,44.047619047619,"Pikesville","Baltimore County",28007
+"244",21209,75,74,-1,-1.33333333333333,"Baltimore","Baltimore City",20922
+"245",21210,11,13,2,18.1818181818182,"Baltimore","Baltimore City",9266
+"246",21211,53,66,13,24.5283018867925,"Baltimore","Baltimore City",11927
+"247",21212,107,118,11,10.2803738317757,"Baltimore","Baltimore City",25043
+"248",21213,156,231,75,48.0769230769231,"Baltimore","Baltimore City",22290
+"249",21214,81,111,30,37.037037037037,"Baltimore","Baltimore City",15609
+"250",21215,269,322,53,19.7026022304833,"Baltimore","Baltimore City",40096
+"251",21216,148,199,51,34.4594594594595,"Baltimore","Baltimore City",20336
+"252",21217,147,190,43,29.2517006802721,"Baltimore","Baltimore City",20560
+"253",21218,183,211,28,15.3005464480874,"Baltimore","Baltimore City",30285
+"254",21219,28,76,48,171.428571428571,"Sparrows Point","Baltimore County",8039
+"255",21220,170,226,56,32.9411764705882,"Middle River","Baltimore County",31809
+"256",21221,176,233,57,32.3863636363636,"Essex","Baltimore County",33943
+"257",21222,249,359,110,44.1767068273092,"Dundalk","Baltimore County",44123
+"258",21223,118,137,19,16.1016949152542,"Baltimore","Baltimore City",15504
+"259",21224,139,239,100,71.9424460431655,"Baltimore","Baltimore City",33150
+"260",21225,129,188,59,45.7364341085271,"Brooklyn","Anne Arundel County",22734
+"261",21226,34,39,5,14.7058823529412,"Curtis Bay","Baltimore City",5435
+"262",21227,113,141,28,24.7787610619469,"Halethorpe","Baltimore County",26627
+"263",21228,98,131,33,33.6734693877551,"Catonsville","Baltimore County",39088
+"264",21229,229,273,44,19.2139737991266,"Baltimore","Baltimore City",33786
+"265",21230,117,163,46,39.3162393162393,"Baltimore","Baltimore City",23055
+"266",21231,42,45,3,7.14285714285714,"Baltimore","Baltimore City",9885
+"267",21234,227,281,54,23.7885462555066,"Parkville","Baltimore County",56528
+"268",21236,132,142,10,7.57575757575758,"Nottingham","Baltimore County",33445
+"269",21237,122,134,12,9.83606557377049,"Rosedale","Baltimore County",24396
+"270",21239,125,159,34,27.2,"Baltimore","Baltimore City",22147
+"271",21244,151,197,46,30.4635761589404,"Windsor Mill","Baltimore County",27753
+"272",21260,2,0,-2,-100,"Baltimore","Baltimore City",0
+"273",21286,47,59,12,25.531914893617,"Towson","Baltimore County",15367
+"274",21401,70,77,7,10,"Annapolis","Anne Arundel County",30595
+"275",21403,49,69,20,40.8163265306122,"Annapolis","Anne Arundel County",25015
+"276",21405,0,1,1,Inf,"Annapolis","Anne Arundel County",555
+"277",21409,29,39,10,34.4827586206897,"Annapolis","Anne Arundel County",16232
+"278",21502,145,146,1,0.689655172413793,"Cumberland","Allegany County",29642
+"279",21503,2,0,-2,-100,"Cumberland","Allegany County",0
+"280",21520,5,9,4,80,"Accident","Garrett County",1675
+"281",21521,8,3,-5,-62.5,"Barton","Allegany County",1050
+"282",21522,0,1,1,Inf,"Bittinger","Garrett County",0
+"283",21523,2,0,-2,-100,"Bloomington","Garrett County",0
+"284",21524,2,5,3,150,"Corriganville","Allegany County",461
+"285",21529,9,4,-5,-55.5555555555556,"Ellerslie","Allegany County",610
+"286",21530,7,8,1,14.2857142857143,"Flintstone","Allegany County",1224
+"287",21531,10,13,3,30,"Friendsville","Garrett County",1787
+"288",21532,50,65,15,30,"Frostburg","Allegany County",9484
+"289",21536,21,19,-2,-9.52380952380952,"Grantsville","Garrett County",3225
+"290",21538,3,2,-1,-33.3333333333333,"Kitzmiller","Garrett County",543
+"291",21539,11,16,5,45.4545454545455,"Lonaconing","Allegany County",2079
+"292",21541,8,8,0,0,"Mc Henry","Garrett County",1345
+"293",21543,1,0,-1,-100,"Midlothian","Allegany County",0
+"294",21545,9,18,9,100,"Mount Savage","Allegany County",1667
+"295",21550,29,59,30,103.448275862069,"Oakland","Garrett County",11196
+"296",21555,8,5,-3,-37.5,"Oldtown","Allegany County",1402
+"297",21557,9,8,-1,-11.1111111111111,"Rawlings","Allegany County",1524
+"298",21561,10,8,-2,-20,"Swanton","Garrett County",2108
+"299",21562,10,12,2,20,"Westernport","Allegany County",2374
+"300",21601,53,78,25,47.1698113207547,"Easton","Talbot County",19388
+"301",21610,2,1,-1,-50,"Betterton","Kent County",0
+"302",21612,3,5,2,66.6666666666667,"Bozman","Talbot County",0
+"303",21613,65,86,21,32.3076923076923,"Cambridge","Dorchester County",13673
+"304",21617,13,20,7,53.8461538461538,"Centreville","Queen Anne's County",8123
+"305",21619,17,20,3,17.6470588235294,"Chester","Queen Anne's County",5115
+"306",21620,30,35,5,16.6666666666667,"Chestertown","Kent County",9594
+"307",21622,1,2,1,100,"Church Creek","Dorchester County",441
+"308",21623,2,6,4,200,"Church Hill","Queen Anne's County",1457
+"309",21625,5,11,6,120,"Cordova","Talbot County",2130
+"310",21626,0,1,1,Inf,"Crapo","Dorchester County",0
+"311",21628,0,2,2,Inf,"Crumpton","Queen Anne's County",435
+"312",21629,27,24,-3,-11.1111111111111,"Denton","Caroline County",7338
+"313",21631,6,5,-1,-16.6666666666667,"East New Market","Dorchester County",2308
+"314",21632,23,20,-3,-13.0434782608696,"Federalsburg","Caroline County",5102
+"315",21634,1,2,1,100,"Fishing Creek","Dorchester County",538
+"316",21635,5,9,4,80,"Galena","Kent County",1757
+"317",21636,3,0,-3,-100,"Goldsboro","Caroline County",939
+"318",21638,16,15,-1,-6.25,"Grasonville","Queen Anne's County",4211
+"319",21639,19,9,-10,-52.6315789473684,"Greensboro","Caroline County",3629
+"320",21640,4,4,0,0,"Henderson","Caroline County",1212
+"321",21641,0,1,1,Inf,"Hillsboro","Caroline County",0
+"322",21643,16,36,20,125,"Hurlock","Dorchester County",4935
+"323",21645,3,2,-1,-33.3333333333333,"Kennedyville","Kent County",861
+"324",21647,1,6,5,500,"Mcdaniel","Talbot County",0
+"325",21649,2,2,0,0,"Marydel","Caroline County",1129
+"326",21651,9,8,-1,-11.1111111111111,"Millington","Queen Anne's County",2324
+"327",21652,0,1,1,Inf,"Neavitt","Talbot County",0
+"328",21653,0,1,1,Inf,"Newcomb","Talbot County",0
+"329",21654,1,2,1,100,"Oxford","Talbot County",1155
+"330",21657,1,1,0,0,"Queen Anne","Queen Anne's County",1028
+"331",21658,11,10,-1,-9.09090909090909,"Queenstown","Queen Anne's County",3300
+"332",21659,1,0,-1,-100,"Rhodesdale","Dorchester County",806
+"333",21660,12,10,-2,-16.6666666666667,"Ridgely","Caroline County",3123
+"334",21661,13,14,1,7.69230769230769,"Rock Hall","Kent County",2140
+"335",21662,4,3,-1,-25,"Royal Oak","Talbot County",722
+"336",21663,16,17,1,6.25,"Saint Michaels","Talbot County",2855
+"337",21664,1,1,0,0,"Secretary","Dorchester County",596
+"338",21665,1,0,-1,-100,"Sherwood","Talbot County",0
+"339",21666,18,29,11,61.1111111111111,"Stevensville","Queen Anne's County",10970
+"340",21668,7,5,-2,-28.5714285714286,"Sudlersville","Queen Anne's County",1369
+"341",21671,1,4,3,300,"Tilghman","Talbot County",655
+"342",21672,1,1,0,0,"Toddville","Dorchester County",0
+"343",21673,9,19,10,111.111111111111,"Trappe","Talbot County",2710
+"344",21675,1,1,0,0,"Wingate","Dorchester County",0
+"345",21676,3,4,1,33.3333333333333,"Wittman","Talbot County",0
+"346",21677,1,0,-1,-100,"Woolford","Dorchester County",0
+"347",21678,6,5,-1,-16.6666666666667,"Worton","Kent County",1876
+"348",21679,1,3,2,200,"Wye Mills","Talbot County",500
+"349",21701,89,89,0,0,"Frederick","Frederick County",28730
+"350",21702,104,118,14,13.4615384615385,"Frederick","Frederick County",32205
+"351",21703,90,114,24,26.6666666666667,"Frederick","Frederick County",26766
+"352",21704,40,47,7,17.5,"Frederick","Frederick County",10512
+"353",21710,4,8,4,100,"Adamstown","Frederick County",3830
+"354",21711,2,1,-1,-50,"Big Pool","Washington County",842
+"355",21713,13,21,8,61.5384615384615,"Boonsboro","Washington County",8094
+"356",21714,0,1,1,Inf,"Braddock Heights","Frederick County",0
+"357",21716,18,16,-2,-11.1111111111111,"Brunswick","Frederick County",4121
+"358",21717,0,1,1,Inf,"Buckeystown","Frederick County",0
+"359",21719,1,3,2,200,"Cascade","Washington County",1331
+"360",21720,1,0,-1,-100,"Cavetown","Washington County",0
+"361",21722,18,16,-2,-11.1111111111111,"Clear Spring","Washington County",5046
+"362",21723,0,2,2,Inf,"Cooksville","Howard County",726
+"363",21727,9,11,2,22.2222222222222,"Emmitsburg","Frederick County",3730
+"364",21733,6,4,-2,-33.3333333333333,"Fairplay","Washington County",1070
+"365",21734,3,3,0,0,"Funkstown","Washington County",910
+"366",21737,1,2,1,100,"Glenelg","Howard County",1280
+"367",21738,4,1,-3,-75,"Glenwood","Howard County",2975
+"368",21740,206,192,-14,-6.79611650485437,"Hagerstown","Washington County",44548
+"369",21741,1,0,-1,-100,"Hagerstown","Washington County",675
+"370",21742,94,86,-8,-8.51063829787234,"Hagerstown","Washington County",25720
+"371",21750,18,12,-6,-33.3333333333333,"Hancock","Washington County",3263
+"372",21754,14,18,4,28.5714285714286,"Ijamsville","Frederick County",5498
+"373",21755,8,12,4,50,"Jefferson","Frederick County",4903
+"374",21756,11,6,-5,-45.4545454545455,"Keedysville","Washington County",3193
+"375",21757,1,1,0,0,"Keymar","Frederick County",2417
+"376",21758,8,6,-2,-25,"Knoxville","Frederick County",4028
+"377",21762,0,2,2,Inf,"Libertytown","Frederick County",0
+"378",21765,1,0,-1,-100,"Lisbon","Howard County",0
+"379",21766,3,4,1,33.3333333333333,"Little Orleans","Allegany County",531
+"380",21767,3,6,3,100,"Maugansville","Washington County",1197
+"381",21769,18,21,3,16.6666666666667,"Middletown","Frederick County",10249
+"382",21770,13,9,-4,-30.7692307692308,"Monrovia","Frederick County",4816
+"383",21771,48,57,9,18.75,"Mount Airy","Carroll County",26546
+"384",21773,7,10,3,42.8571428571429,"Myersville","Frederick County",4697
+"385",21774,34,37,3,8.82352941176471,"New Market","Frederick County",10243
+"386",21776,15,13,-2,-13.3333333333333,"New Windsor","Carroll County",5103
+"387",21777,4,0,-4,-100,"Point Of Rocks","Frederick County",1298
+"388",21778,3,2,-1,-33.3333333333333,"Rocky Ridge","Frederick County",951
+"389",21779,4,2,-2,-50,"Rohrersville","Washington County",796
+"390",21780,6,5,-1,-16.6666666666667,"Sabillasville","Frederick County",1300
+"391",21782,11,10,-1,-9.09090909090909,"Sharpsburg","Washington County",3567
+"392",21783,21,18,-3,-14.2857142857143,"Smithsburg","Washington County",7642
+"393",21784,63,75,12,19.047619047619,"Sykesville","Carroll County",33098
+"394",21787,22,28,6,27.2727272727273,"Taneytown","Carroll County",9033
+"395",21788,23,25,2,8.69565217391304,"Thurmont","Frederick County",10306
+"396",21790,0,1,1,Inf,"Tuscarora","Frederick County",0
+"397",21791,10,6,-4,-40,"Union Bridge","Frederick County",4524
+"398",21793,18,19,1,5.55555555555556,"Walkersville","Frederick County",8844
+"399",21794,1,1,0,0,"West Friendship","Howard County",2181
+"400",21795,36,29,-7,-19.4444444444444,"Williamsport","Washington County",7944
+"401",21797,18,23,5,27.7777777777778,"Woodbine","Howard County",7881
+"402",21798,7,7,0,0,"Woodsboro","Frederick County",2188
+"403",21801,106,108,2,1.88679245283019,"Salisbury","Wicomico County",20691
+"404",21802,2,0,-2,-100,"Salisbury","Wicomico County",1035
+"405",21804,152,155,3,1.97368421052632,"Salisbury","Wicomico County",27098
+"406",21811,219,218,-1,-0.45662100456621,"Berlin","Worcester County",18797
+"407",21813,24,30,6,25,"Bishopville","Worcester County",2464
+"408",21814,1,1,0,0,"Bivalve","Wicomico County",0
+"409",21817,21,11,-10,-47.6190476190476,"Crisfield","Somerset County",3900
+"410",21821,0,1,1,Inf,"Deal Island","Somerset County",826
+"411",21822,17,5,-12,-70.5882352941177,"Eden","Somerset County",2353
+"412",21826,21,20,-1,-4.76190476190476,"Fruitland","Wicomico County",3806
+"413",21829,0,3,3,Inf,"Girdletree","Worcester County",439
+"414",21830,10,11,1,10,"Hebron","Wicomico County",3392
+"415",21835,1,0,-1,-100,"Linkwood","Dorchester County",0
+"416",21837,10,7,-3,-30,"Mardela Springs","Wicomico County",2123
+"417",21838,2,5,3,150,"Marion Station","Somerset County",1537
+"418",21840,5,3,-2,-40,"Nanticoke","Wicomico County",0
+"419",21841,9,4,-5,-55.5555555555556,"Newark","Worcester County",736
+"420",21842,202,217,15,7.42574257425743,"Ocean City","Worcester County",9748
+"421",21843,1,0,-1,-100,"Ocean City","Worcester County",1138
+"422",21849,12,13,1,8.33333333333333,"Parsonsburg","Wicomico County",2797
+"423",21850,19,21,2,10.5263157894737,"Pittsville","Wicomico County",2290
+"424",21851,41,38,-3,-7.31707317073171,"Pocomoke City","Worcester County",5977
+"425",21853,36,34,-2,-5.55555555555556,"Princess Anne","Somerset County",6140
+"426",21856,6,3,-3,-50,"Quantico","Wicomico County",805
+"427",21861,4,2,-2,-50,"Sharptown","Wicomico County",686
+"428",21862,2,2,0,0,"Showell","Worcester County",0
+"429",21863,31,27,-4,-12.9032258064516,"Snow Hill","Worcester County",3963
+"430",21864,1,4,3,300,"Stockton","Worcester County",522
+"431",21865,2,1,-1,-50,"Tyaskin","Wicomico County",0
+"432",21869,4,3,-1,-25,"Vienna","Dorchester County",755
+"433",21871,6,8,2,33.3333333333333,"Westover","Somerset County",1524
+"434",21872,10,7,-3,-30,"Whaleyville","Worcester County",604
+"435",21874,13,17,4,30.7692307692308,"Willards","Wicomico County",1866
+"436",21875,19,17,-2,-10.5263157894737,"Delmar","Wicomico County",5235
+"437",21901,56,64,8,14.2857142857143,"North East","Cecil County",12892
+"438",21902,1,0,-1,-100,"Perry Point","Cecil County",0
+"439",21903,23,12,-11,-47.8260869565217,"Perryville","Cecil County",4847
+"440",21904,19,19,0,0,"Port Deposit","Cecil County",5905
+"441",21911,26,25,-1,-3.84615384615385,"Rising Sun","Cecil County",9243
+"442",21912,1,0,-1,-100,"Warwick","Cecil County",941
+"443",21913,2,3,1,50,"Cecilton","Cecil County",648
+"444",21914,0,1,1,Inf,"Charlestown","Cecil County",680
+"445",21915,4,4,0,0,"Chesapeake City","Cecil County",2604
+"446",21917,2,4,2,100,"Colora","Cecil County",2256
+"447",21918,11,11,0,0,"Conowingo","Cecil County",3628
+"448",21919,10,9,-1,-10,"Earleville","Cecil County",2486
+"449",21921,91,112,21,23.0769230769231,"Elkton","Cecil County",33457
+"450",21922,0,1,1,Inf,"Elkton","Cecil County",752

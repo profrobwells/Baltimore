@@ -12,6 +12,7 @@ options(scipen=999)
 # Load libraries
 library(tidyverse)
 library(lubridate)
+library(janitor)
 ```
 
 ```{r}
@@ -22,10 +23,14 @@ list.files("data")
 ```{r}
 unemployment_data <- read_csv("data/unemployement_data.csv") 
 county_zip <- read_csv("data/county_zip.csv") 
-  
+
+```
+
+```{r}
 unemployment_data <- unemployment_data |>
   clean_names()
 ```
+
 #Cleaning
 ```{r}
 md_unemployment <- unemployment_data |>
@@ -88,17 +93,15 @@ md_unemployment_counties1 <- md_unemployment_joined |>
 print(md_unemployment_counties1)
 ```
 
-
 ```{r}
 final_counties <- md_unemployment_counties |>
-  inner_join(md_unemployment_counties1, by = c("county" = "county")) 
-
-#write.csv(md_unemployment_counties1, "for_datawrapper_counties.csv")
+  inner_join(md_unemployment_counties, by = c("county" = "county")) 
 ```
 
 ```{r}
 final_counties <- final_counties |>
   mutate(pct_change = ((count_april2024 - count_april2023)/count_april2023)*100)
+write.csv(final_counties, "final_counties.csv")
 ```
 
 

@@ -1,0 +1,66 @@
+---
+title: "Baltimore Foot Traffic"
+author: "Rob Wells"
+date: "2025-01-22"
+output: html_document
+---
+```{r}
+library(tidyverse)
+```
+
+It contains monthly foot traffic information for 20,000 stores in Baltimore City, Baltimore County, and Anne Arundel County from Jan to July 2024 (NAICS=44,45,71,72, 81). 
+For each store, we have the aggregate foot traffic for the month, the same-month foot traffic last year, and the rate of change. You can also find information about the number of unique visitors and their proximity—whether they are from nearby or outside the county.
+
+```{r}
+foot <- rio::import("../data/baltimore_foot_traffic.dta")
+```
+
+```{r}
+glimpse(foot)
+```
+
+Dundalk zip code 21222
+Edgemere 21219, 21052
+Brandon Shores 21226
+
+```{r}
+#1022 results
+focus <- foot |> 
+  filter(postal_code == c("21222", "21219","21052", "21226"))
+
+focus |> 
+  count(city) |> 
+  arrange(desc(n))
+```
+
+#Biggest losers
+
+```{r}
+loser <- focus |> 
+  select(location_name, street_address, dln_visits_yoy, start) |> 
+  filter(start > "2024-03-02") |> 
+  slice_min(dln_visits_yoy, n = 20)
+
+```
+
+# Table
+```{r}
+library(kableExtra)
+table_output <- loser %>%
+  kbl(caption = "Baltimore Businesses Losing Customers") %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, bold = F, border_right = T) |> 
+  column_spec(3, width = "5em", background = "yellow") |> 
+column_spec(4, bold = F, border_right = T) 
+
+cat("<style>
+    .caption {
+      font-size: 30px !important;
+    }
+    </style>")
+table_output
+
+
+```
+

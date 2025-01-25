@@ -13,6 +13,8 @@ For each store, we have the aggregate foot traffic for the month, the same-month
 
 ```{r}
 foot <- rio::import("../data/baltimore_foot_traffic.dta")
+
+write.csv(foot, "baltimore_foot_traffic.csv")
 ```
 
 ```{r}

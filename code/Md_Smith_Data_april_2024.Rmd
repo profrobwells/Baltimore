@@ -17,11 +17,10 @@ library(tidycensus)
 #install.packages("formattable")
 library(formattable)
 library(htmlwidgets)
+#install.packages("leaflet")
 library(leaflet)
 library(sf)
 library(formattable)
-library(dplyr)
-library(tidyr)
 library(janitor)
 #install.packages("leaflet.extras")
 library(leaflet.extras)
@@ -61,39 +60,34 @@ mdzip <- rio::import("../data/ZIP_TRACT_122023.xlsx")
 md_places <- md %>% 
   inner_join(mdzip, by=c("zip1"="ZIP")) %>% 
   distinct(tract, .keep_all = TRUE) %>% 
-  mutate(pct_anymembershp1 = formattable::percent(pct_anymembershp_zip)) 
+  mutate(pct_anymembershp1 = formattable::percent(pct_anymembershp_zip)) |> 
+  janitor::clean_names() 
 
 
-write.csv(md_places, "../data/smith_md_places_april1.csv")
+#write.csv(md_places, "../data/smith_md_places_april1.csv")
 ```
 
-#MD counties
-md_counties <- rio::import("../data/md_counties_geoids.txt")
-
-md_named <- md %>% 
-  inner_join(md_counties, by=c("county"="GEOID")) %>% 
-  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
-  
-  md_named$income_per_capita <- formattable::currency(md_named$income_per_capita, digits =0L)
-
-#write.csv(md_named, "../output/md_smith_data_1.28.csv")
-
-
-
-
-# Census Place file
-
+# Simply Smith Data for B'more class
 ```{r}
-places <- rio::import("https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2020_gaz_place_24.txt") %>% 
-  mutate(geoid1 = as.character(GEOID))
+md_places_brief <- md_places |> 
+   select(usps_zip_pref_city,  income_per_capita, census_response_rate2020, census_response_rate2010, nbanks_zip, pct_anymembershp_zip, zip, tot_pop, age_above65, median_age, white, black, asian, geoid1, tract) |> 
+  rename(city = usps_zip_pref_city)
 
+write.csv(md_places_brief, "smith_school_brief_version_1_27-2025.csv")
 
+md_places_full <- md_places |> 
+     select(usps_zip_pref_city,  income_per_capita, census_response_rate2020, census_response_rate2010, nbanks_zip, pct_anymembershp_zip, zip, tot_pop, age_above65, median_age, white, black, asian, edu_highschool, edu_bachelor,edu_graduate, income_0to10k, income_10to50k, income_50to100k, income_100to200k, income_200k, income_median, income_per_capita, occupation_management, occupation_sales, occupation_naturalresource, occupation_production, res_ratio, bus_ratio, oth_ratio,tot_ratio,pct_anymembershp1,geoid1, tract, census) |> 
+  rename(city = usps_zip_pref_city)
 
-md_places <- md %>% 
-  inner_join(places, by=c("geoid1")) %>% 
-  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+write.csv(md_places_full, "smith_school_w_places_full_version_1_27-2025.csv")
 
 ```
+
+
+
+
+
+
 
 
 # Census Tract Median Income Using ACS
@@ -197,6 +191,20 @@ leafMap
 
 
 ### NOTES
+# Census Place file - this has problems - missing many values
+
+```{r}
+places <- rio::import("https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2020_gaz_place_24.txt") %>% 
+  mutate(geoid1 = as.character(GEOID))
+
+
+
+md_places1 <- md %>% 
+  left_join(places, by=c("geoid1")) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+
+```
+
 #Map by county
 ```{r}
 md_named <- read.csv("../output/md_smith_data_12.16.csv") %>% 
@@ -219,6 +227,20 @@ md_named <- md_named %>%
 # md_named<- md_named %>% 
 #    sf::st_transform('+proj=longlat +datum=WGS84')
 ```
+
+
+#MD counties
+md_counties <- rio::import("../data/md_counties_geoids.txt")
+
+md_named <- md %>% 
+  inner_join(md_counties, by=c("county"="GEOID")) %>% 
+  mutate(pct_anymembershp_zip = formattable::percent(pct_anymembershp_zip)) 
+  
+  md_named$income_per_capita <- formattable::currency(md_named$income_per_capita, digits =0L)
+
+#write.csv(md_named, "../output/md_smith_data_1.28.csv")
+
+
 
 
 ### Analysis of Maryland Data

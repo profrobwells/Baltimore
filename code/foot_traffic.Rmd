@@ -14,7 +14,7 @@ For each store, we have the aggregate foot traffic for the month, the same-month
 ```{r}
 foot <- rio::import("../data/baltimore_foot_traffic.dta")
 
-write.csv(foot, "baltimore_foot_traffic.csv")
+#write.csv(foot, "baltimore_foot_traffic.csv")
 ```
 
 ```{r}
@@ -64,5 +64,49 @@ cat("<style>
 table_output
 
 
+```
+
+# Unemployment Data
+
+```{r}
+unem_feb <- rio::import("/Users/robwells/Downloads/Unemployment_Feb2024_March2024.xlsx", sheet="Feb2024" ) |> 
+  janitor::clean_names() |> 
+  rename(feb_count = count) |> 
+   filter(state_code_value=="MD")
+
+unem_march <- rio::import("/Users/robwells/Downloads/Unemployment_Feb2024_March2024.xlsx", sheet="March 2024") |> 
+  janitor::clean_names() |> 
+  rename(march_count = count) |> 
+   filter(state_code_value=="MD")
+
+combined_unem <- unem_feb |> 
+  inner_join(unem_march, by=c("zip", "year", "state_code_value")) |> 
+  mutate(diff_march_feb = (march_count-feb_count))
+
+write.csv(combined_unem, "combined_unem_feb_march_2024.csv")
+
+```
+
+```{r}
+
+unem_feb |> 
+  count(state_code_value) |> 
+  arrange(desc(n)) |> 
+  filter(state_code_value=="MD")
+
+
+```
+
+```{r}
+unem_march |> 
+  count(state_code_value) |> 
+  arrange(desc(n))
+```
+
+```{r}
+
+combined_unem |> 
+  count(state_code_value) |> 
+  arrange(desc(n))
 ```
 

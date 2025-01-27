@@ -322,3 +322,30 @@ smith %>%
 
 ```
 
+
+```{r}
+library(ggmap)
+register_google(key = "AIzaSyDa9e_boRiEo-nfqfJ5xLZBx47KbwFV8SE" )
+
+foot_summary <- foot %>% 
+  mutate(fulladdress = paste(street_address, city, region, postal_code, sep = ", ")) |> 
+  distinct(fulladdress)
+   
+foot_summary <- foot_summary %>% 
+  mutate(geo = geocode(fulladdress)) 
+
+
+
+
+
+
+```
+
+library(ggmap)
+register_google(key = )
+
+sba_baltimore_7a <- sba_baltimore_7a %>% 
+  mutate(fulladdress = paste(BorrStreet, BorrCity, BorrState, BorrZip, sep = ", "))
+
+sba_baltimore_7a <- sba_baltimore_7a %>% 
+  mutate(geo = geocode(fulladdress)) 

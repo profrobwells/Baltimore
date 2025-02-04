@@ -1,0 +1,73 @@
+---
+title: "Key Bridge Aid"
+author: "Rob Wells"
+date: "2025-02-03"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+foot_traffic <- read.csv("/Users/robwells/Code/Baltimore/data/foot_traffic_geocode_lookup.csv")
+```
+
+```{r}
+foot_traffic <- foot_traffic |> 
+  mutate(business2 = tolower(location_name)) |> 
+  mutate(business2 = str_squish(business2)) |> 
+  mutate(business2 = str_replace_all(business2, "llc", "")) |> 
+  mutate(business2 = str_replace_all(business2, "inc", "")) |> 
+  mutate(business2 = gsub("[,.]", "", business2))
+
+
+```
+
+```{r}
+worker <- rio::import("https://docs.google.com/spreadsheets/d/1dpewrgCK18zz6tAUtmtg0rT1sNKLeGcOi2VFMHQyV6c/edit?gid=1336766514#gid=1336766514", which = "Port_Baltimore_Worker_Retention_Program") |> 
+  janitor::clean_names()
+```
+
+```{r}
+worker <- worker |> 
+  mutate(business2 = tolower(business_name)) |> 
+  mutate(business2 = str_squish(business2)) |> 
+  mutate(business2 = str_replace_all(business2, "llc", "")) |> 
+  mutate(business2 = str_replace_all(business2, "inc", "")) |> 
+  mutate(business2 = gsub("[,.]", "", business2))
+
+
+```
+
+```{r}
+bol <- read.csv("/Users/robwells/Code/Baltimore/data/baltimore_bol.csv") |> 
+  janitor::clean_names() |> 
+  select(company_name,       address_1,          address_2,         
+city,               state,              zip,                zip4,              
+latitude,           longitude,          phone,              fax,               
+website,            email,              employees,          revenue,           
+contact_formal_name,first_name,        
+middle,             last_name,          suffix,             title,             
+     last_published_date, classification, ranking_criteria, list_title, company_id, business_info) 
+```
+
+```{r}
+bol <- bol |> 
+  mutate(business2 = tolower(company_name)) |> 
+  mutate(business2 = str_squish(business2)) |> 
+  mutate(business2 = str_replace_all(business2, "llc", "")) |> 
+  mutate(business2 = str_replace_all(business2, "inc", "")) |> 
+  mutate(business2 = gsub("[,.]", "", business2))
+```
+
+
+mash up
+```{r}
+
+super_foot <- bol |> 
+  inner_join(worker, by=c("business2"))
+
+```
+

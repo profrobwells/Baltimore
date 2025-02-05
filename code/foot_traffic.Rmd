@@ -65,6 +65,81 @@ table_output
 
 
 ```
+#Geocode Foot Traffic
+
+Build lookup table: 16,475 entries
+Foot has multiple entries for the same address
+A lookup table will link back to the main database while saving the expense of geocoding 143,000 entries
+```{r}
+foot_sum <- foot |> 
+  mutate(fulladdress = paste(street_address, city, region, postal_code, sep = ", ")) |> 
+  distinct(fulladdress, .keep_all = TRUE)
+
+
+```
+
+### Geocode lookup table
+```{r}
+library(tidyr)
+library(ggmap)
+register_google(key = "")
+
+
+foot_sum <- foot_sum %>% 
+  mutate(geo = geocode(fulladdress)) 
+write.csv(foot_sum, "foot_traffic_geocode_lookup.csv")
+
+foot_sum <- foot_sum %>% 
+  unnest(geo)
+
+#Join with main data
+
+foot_sum_short <- foot_sum |> 
+  select(fulladdress, lon, lat)
+
+foot1 <- foot |> 
+  mutate(fulladdress = paste(street_address, city, region, postal_code, sep = ", ")) |>
+  left_join(foot_sum_short, by=c("fulladdress"))
+
+```
+
+fact check
+```{r}
+sum(is.na(foot1$lat))
+
+### total the places without lat lon
+x <- foot1 |> 
+  group_by(city) |> 
+  count(is.na(lat)) |> 
+  arrange(desc(n)) |> 
+  rename(valid = 'is.na(lat)')
+
+foot1 |> 
+  group_by(city) |> 
+  count() |> 
+  arrange(desc(n))
+
+```
+#failed spatial join with business data
+```{r}
+bol <- read.csv("../data/baltimore_bol.csv") |> 
+  janitor::clean_names() |> 
+  select(company_name,       address_1,          address_2,         
+city,               state,              zip,                zip4,              
+latitude,           longitude,          phone,              fax,               
+website,            email,              employees,          revenue,           
+contact_formal_name,first_name,        
+middle,             last_name,          suffix,             title,             
+     last_published_date, classification, ranking_criteria, list_title, company_id, business_info) 
+
+```
+
+# spatial join
+```{r}
+foot_traffic_biz <- foot1 |>
+  inner_join(bol, by = c("lat" = "latitude", "lon" = "longitude"))
+
+```
 
 # Unemployment Data
 

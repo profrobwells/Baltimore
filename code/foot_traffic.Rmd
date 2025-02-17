@@ -25,6 +25,7 @@ Dundalk zip code 21222
 Edgemere 21219, 21052
 Brandon Shores 21226
 
+# Dundalk
 ```{r}
 #1022 results
 focus <- foot |> 
@@ -38,12 +39,45 @@ focus |>
 #Biggest losers
 
 ```{r}
-loser <- focus |> 
-  select(location_name, street_address, dln_visits_yoy, start) |> 
-  filter(start > "2024-03-02") |> 
-  slice_min(dln_visits_yoy, n = 20)
+dundalk_loser <- focus |> 
+  select(location_name, street_address, city, region, postal_code, dln_visits_yoy, start) |> 
+  arrange(dln_visits_yoy) |> 
+  slice_min(dln_visits_yoy, n = 100) |>
+  mutate(foot_traffic_yoy = abs(dln_visits_yoy)) |> 
+  mutate(address = paste0(street_address, " ", city, " ", region, " ", postal_code)) 
+
+write.csv(dundalk_loser, "dundalk_loser.csv")
 
 ```
+
+
+```{r}
+arundel <- foot |> 
+  filter(postal_code == c("21225", "21226","21060", "21061", "21090", "21122"))
+
+arundel |> 
+  count(city) |> 
+  arrange(desc(n))
+
+
+```
+
+```{r}
+arundel_loser <- arundel |> 
+  select(location_name, street_address, city, region, postal_code, dln_visits_yoy, start) |> 
+  arrange(dln_visits_yoy) |> 
+  slice_min(dln_visits_yoy, n = 100) |>
+  mutate(foot_traffic_yoy = abs(dln_visits_yoy)) |> 
+  mutate(address = paste0(street_address, " ", city, " ", region, " ", postal_code)) 
+  
+
+
+write.csv(arundel_loser, "arundel_loser.csv")
+  
+
+
+```
+
 
 # Table
 ```{r}

@@ -1,0 +1,58 @@
+---
+title: "Maryland Port Authority Cargo Data"
+authory: Matt Cohen
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(lubridate)
+```
+
+```{r}
+mpa_cargo <- read_csv("mpa_data.csv") |> 
+  clean_names() |> 
+  mutate(
+    month = parse_date_time(month, orders = c("ymd", "mdy", "dmy")),
+    container_tons = as.numeric(container_tons),
+    auto_tons = as.numeric(auto_tons)
+  )
+```
+
+```{r}
+cargo_data <- ggplot(mpa_cargo, aes(x = month)) + 
+  geom_line(aes(y = container_tons), color = "black") + 
+  geom_line(aes(y = auto_tons), color = "red") + 
+  labs(
+    title = "Monthly Cargo Trends",
+    x = "Month",
+    y = "Tons",
+  ) + 
+  theme_minimal()
+
+print(cargo_data)
+```
+
+
+```{r}
+mpa_cargo |> 
+  mutate(date = as.Date(month)) |> 
+  filter(date > as.Date("2023-01-01")) |> 
+  ggplot(aes(x = date)) + 
+  geom_line(aes(y = container_tons, color = "Container Tons")) + 
+  geom_line(aes(y = auto_tons, color = "Auto Tons")) + 
+  labs(
+    title = "Port of Baltimore Rebouding After Key Bridge Collapse",
+    subtitle = "Monthly tonnage data from Md Port Authority",
+    x = "Date",
+    y = "Tons",
+    caption = "Graphic by Matt Cohen and Rob Wells", 
+    color = "Cargo Type"  # Legend title
+  ) + 
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_x_date(date_breaks = "2 months", date_labels = "%Y-%m") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_color_manual(values = c("Container Tons" = "black", "Auto Tons" = "red"))
+```
+

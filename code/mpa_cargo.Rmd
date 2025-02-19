@@ -10,7 +10,7 @@ library(lubridate)
 ```
 
 ```{r}
-mpa_cargo <- read_csv("mpa_data.csv") |> 
+mpa_cargo <- read_csv("../data/mpa_data.csv") |> 
   clean_names() |> 
   mutate(
     month = parse_date_time(month, orders = c("ymd", "mdy", "dmy")),

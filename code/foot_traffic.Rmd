@@ -6,15 +6,32 @@ output: html_document
 ---
 ```{r}
 library(tidyverse)
+#remotes::install_github("walkerke/tidycensus")
+library(tidyverse)
+library(tidycensus)
+#a = get_decennial(geography = "state", variables = "P1_001N", year = 2020)
+# head(a, 5)
+#install.packages("formattable")
+library(formattable)
+library(htmlwidgets)
+#install.packages("leaflet")
+library(leaflet)
+library(sf)
+library(formattable)
+library(janitor)
+#install.packages("leaflet.extras")
+library(leaflet.extras)
+library(googlesheets4)
 ```
 
 It contains monthly foot traffic information for 20,000 stores in Baltimore City, Baltimore County, and Anne Arundel County from Jan to July 2024 (NAICS=44,45,71,72, 81). 
 For each store, we have the aggregate foot traffic for the month, the same-month foot traffic last year, and the rate of change. You can also find information about the number of unique visitors and their proximity—whether they are from nearby or outside the county.
 
+#Import data
 ```{r}
-foot <- rio::import("../data/baltimore_foot_traffic.dta")
-
-#write.csv(foot, "baltimore_foot_traffic.csv")
+#foot <- rio::import("../data/baltimore_foot_traffic.dta") - old
+foot1 <- rio::import("../data/baltimore_foot_traffic_feb21_2025.dta")
+#write.csv(foot1, "baltimore_foot_traffic.csv")
 ```
 
 ```{r}
@@ -25,12 +42,11 @@ Dundalk zip code 21222
 Edgemere 21219, 21052
 Brandon Shores 21226
 
-# Dundalk
+# Dundalk / Arundel
 ```{r}
-#1022 results
-focus <- foot |> 
-  filter(postal_code == c("21222", "21219","21052", "21226"))
-
+#1671 results
+focus <- foot1 |> 
+  filter(postal_code == c("21222", "21219","21052", "21226", "21225", "21060", "21061", "21090"))
 focus |> 
   count(city) |> 
   arrange(desc(n))
@@ -39,16 +55,77 @@ focus |>
 #Biggest losers
 
 ```{r}
-dundalk_loser <- focus |> 
-  select(location_name, street_address, city, region, postal_code, dln_visits_yoy, start) |> 
-  arrange(dln_visits_yoy) |> 
-  slice_min(dln_visits_yoy, n = 100) |>
-  mutate(foot_traffic_yoy = abs(dln_visits_yoy)) |> 
-  mutate(address = paste0(street_address, " ", city, " ", region, " ", postal_code)) 
+losers <- focus |> 
+  select(location_name, street_address, city, region, postal_code, chg_nvisits_yoy, start, placekey) |> 
+  group_by(placekey) |> 
+  slice_max(start, n=1) |> #select the most recent data if multiple entries
+  ungroup() |> 
+  arrange(chg_nvisits_yoy) |> 
+  slice_min(chg_nvisits_yoy, n = 200) |>
+  mutate(address = paste0(street_address, " ", city, " ", region, " ", postal_code)) |> 
+  mutate(visit_drop = formattable::percent(chg_nvisits_yoy))
 
-write.csv(dundalk_loser, "dundalk_loser.csv")
+#write.csv(losers, "dundalk_arundel_losers.csv")
+
+
+#fact check
+
+# losers |> 
+# count(location_name) |> 
+# arrange(desc(n))
 
 ```
+
+
+
+
+#Geocode Dundalk2
+```{r}
+library(tidyr)
+library(ggmap)
+register_google(key = "")
+
+
+losers <- losers %>% 
+  mutate(geo = geocode(address)) 
+
+losers <- losers %>%
+  tidyr::unnest(geo)
+
+
+losers <- st_as_sf(losers, coords = c("lon", "lat"), crs = 4326)
+
+# write.csv(losers, "dundalk_arundel_losers.csv")
+```
+
+
+#Map 
+```{r}
+leafMap <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldStreetMap) %>%
+  setView(lng = -76.52, lat = 39.27, zoom = 11.5) %>%
+  addCircleMarkers(
+    data = losers,
+    radius = 8,
+    color = "black",
+    weight = 1,
+    fillColor = ~pal(chg_nvisits_yoy),
+    fillOpacity = 0.7,
+    popup = ~paste("<b>", location_name, "</b><br>",
+                  "Change in foot traffic: ", visit_drop, "<br>",
+                  "For the time period", start, "<br>",
+                  "Address: ", address)
+  ) |> 
+addControl(
+    html = "<div style='background-color: white; padding: 0.0001px; border-radius: 0.0001px; text-align: center;'><h4 style='margin-bottom: 2px;'>Yearly Business Decline, Dundalk & Anne Arundel Co., since Key Bridge Collapse</h4><h5 style='margin-top: 0px;'>Click dot for business details</h5></div>",
+    position = "topright"
+  )
+leafMap
+saveWidget(leafMap, "../output/foot_traffic_decline_map_feb_2025.html")
+```
+
+
+#Earlier notes
 
 
 ```{r}
@@ -61,6 +138,7 @@ arundel |>
 
 
 ```
+
 
 ```{r}
 arundel_loser <- arundel |> 
@@ -82,7 +160,7 @@ write.csv(arundel_loser, "arundel_loser.csv")
 # Table
 ```{r}
 library(kableExtra)
-table_output <- loser %>%
+table_output <- losers %>%
   kbl(caption = "Baltimore Businesses Losing Customers") %>%
   kable_classic(full_width = F, html_font = "Cambria") %>%
   column_spec(1, bold = T, border_right = T) %>%

@@ -118,7 +118,24 @@ dundalk1 <- st_as_sf(dundalk1, coords = c("lon", "lat"), crs = 4326)
 
 ```
 
+#Geocode Dundalk2
+```{r}
+library(tidyr)
+library(ggmap)
+register_google(key = "")
 
+
+dundalk1 <- dundalk %>% 
+  mutate(geo = geocode(address)) 
+
+dundalk1 <- dundalk1 %>%
+  tidyr::unnest(geo)
+
+
+dundalk1 <- st_as_sf(dundalk1, coords = c("lon", "lat"), crs = 4326)
+
+# write.csv(dundalk1, "dundalk_geo.csv")
+```
 
 
 
@@ -145,7 +162,7 @@ leafMap <- leaflet() %>%
     fillOpacity = 0.7,
     popup = ~paste("<b>", location_name, "</b><br>",
                   "Change in foot traffic: ", round(dln_visits_yoy, 2), "%<br>",
-                  "Address: ", fulladdress)
+                  "Address: ", address)
   ) %>%
   # Add legend
   addLegend(

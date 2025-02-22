@@ -129,6 +129,7 @@ saveWidget(leafMap, "../output/foot_traffic_decline_map_feb_2025.html")
 
 
 ```{r}
+#ugh
 arundel <- foot |> 
   filter(postal_code == c("21225", "21226","21060", "21061", "21090", "21122"))
 

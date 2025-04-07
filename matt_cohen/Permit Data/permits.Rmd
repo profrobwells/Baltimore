@@ -1,0 +1,80 @@
+---
+title: Baltimore County Permits
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(lubridate)
+```
+
+```{r}
+library(tidyverse)
+
+# Load data
+permits <- read_csv("Permits.csv")
+
+# Check structure of APPL_DATE
+str(permits$APPL_DATE)
+
+# View some unique values
+unique(permits$APPL_DATE)
+
+library(lubridate)
+
+permits <- permits %>%
+  mutate(appl_date = str_trim(as.character(APPL_DATE)),  # Remove leading/trailing spaces
+         appl_date = gsub("\\+.*", "", appl_date),  # Remove timezone info (+00)
+         appl_date = parse_date_time(appl_date, orders = c("ymd HMS", "ymd", "mdy HMS", "mdy")))  # Convert to date
+
+# Check if conversion worked
+head(permits$appl_date)
+
+permits <- permits %>%
+  mutate(year = year(appl_date)) %>%  # Extract year
+  filter(zip %in% c("21219", "21222", "21224"))  # Filter for Dundalk ZIPs
+
+# Group by year and count permits
+permits_by_year <- permits %>%
+  group_by(year) %>%
+  summarise(count = n())
+
+# View result
+print(permits_by_year)
+
+
+
+
+```{r}
+str(permits$appl_date)
+unique(permits$appl_date)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+# Load data
+permits <- read_csv("Permits.csv")
+
+# Ensure ZIP codes are characters & clean dates
+permits <- permits %>%
+  mutate(
+    zip = as.character(ZIP),  # Ensure ZIP is character
+    appl_date = str_trim(as.character(APPL_DATE)),  # Remove extra spaces
+    appl_date = gsub("\\+.*", "", appl_date),  # Remove timezone info
+    appl_date = parse_date_time(appl_date, orders = c("ymd HMS", "ymd", "mdy HMS", "mdy")),  # Convert date
+    year = year(appl_date)  # Extract year
+  ) %>%
+  filter(zip %in% c("21219", "21222", "21224"))  # Filter Dundalk ZIPs
+
+# Group by year and count permits
+permits_by_year <- permits %>%
+  group_by(year) %>%
+  summarise(count = n()) 
+
+# View result
+print(permits_by_year)
+```
+

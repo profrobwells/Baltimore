@@ -1,0 +1,109 @@
+---
+title: "Baltimore unemployment data"
+name: "Matt Cohen
+---
+
+```{r}
+library(DatawRappr)
+datawrapper_auth(api_key =  "67xBMLpa6Nv7wcGVQYlj6WVf5KMeLwGlWgQUKaYWpNQElwbJ9FvSMnDrZrmlJpLL", overwrite=TRUE)
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(htmltools)
+```
+#fix file path
+#fix folder names - underspace instead of blanks: UI_Data vs UI Data
+```{r}
+employment <- read_csv("./UI_Data/ui_data.csv") |> clean_names()
+#wrong file path: employment <- read_csv("ui_data.csv") |> clean_names()
+```
+
+```{r}
+employment$zip <- as.character(employment$zip)
+employment$month <- as.character(employment$month)
+```
+
+#join to zip code places data here
+
+#clean 
+```{r}
+zip_names <- rio::import("https://raw.githubusercontent.com/profrobwells/Baltimore/refs/heads/main/fall_2024_indep_study/data/county_zip.csv") |> 
+mutate(zip = as.character(zip))
+
+employment <- employment |> 
+left_join(zip_names, by=c("zip")) |> 
+rename(UI_claims = count) |> 
+mutate(month_name = as.numeric(month)) |> 
+mutate(month_name = month.name[month_name])
+
+
+```
+
+
+```{r}
+byzip <- employment |>
+  group_by(zip, primary_city) |>
+  summarize(total_count = sum(UI_claims, na.rm=TRUE)) |>
+  arrange(desc(total_count)) 
+```
+
+```{r}
+map <- dw_create_chart(type = "d3-maps-choropleth", title = "Which Maryland zip codes has the most unemployment filings over the last year?"
+)
+```
+
+```{r}
+dw_data_to_chart(byzip, chart_id = map)
+```
+
+```{r}
+dw_edit_chart(map, 
+              axes = list(
+                values = "count"
+                ), 
+              visualize = list(
+                basemap = "maryland-postcode"
+                )
+              )
+```
+
+```{r}
+dw_publish_chart(map)
+```
+
+```{r}
+iframe_code <- '<iframe src="https://datawrapper.dwcdn.net/JbJdw/1/" width="100%" height="400" style="border: none;"></iframe>'
+HTML(iframe_code)
+```
+
+```{r}
+bar_chart <- dw_create_chart(
+ type="d3-bars",
+  title="Maryland zip codes with the most unemployment"
+)
+```
+
+```{r}
+dw_data_to_chart(byzip, chart_id = bar_chart)
+```
+
+```{r}
+dw_edit_chart(bar_chart, 
+              visualize = list(
+                "base-color" = "beige",
+                "thick" = "true",
+                "sort-bars" = "true",
+                "value-label-alignment" = "right"
+                )
+              )
+```
+
+```{r}
+dw_publish_chart(bar_chart)
+```
+
+```{r}
+i_code <- '<iframe src="https://datawrapper.dwcdn.net/GFMft/1/" width="100%" height="400" style="border: none;"></iframe>'
+HTML(i_code)
+```
+

@@ -1,0 +1,110 @@
+---
+title: "Baltimore Foot Traffic"
+author: "Rob Wells"
+date: "2025-01-22"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+It contains monthly foot traffic information for 20,000 stores in Baltimore City, Baltimore County, and Anne Arundel County from Jan to July 2024 (NAICS=44,45,71,72, 81). For each store, we have the aggregate foot traffic for the month, the same-month foot traffic last year, and the rate of change. You can also find information about the number of unique visitors and their proximity—whether they are from nearby or outside the county.
+
+```{r}
+foot <- read_csv("baltimore_foot_traffic.csv")
+```
+
+```{r}
+glimpse(foot)
+```
+
+Dundalk zip code 21222 Edgemere 21219, 21052 Brandon Shores 21226
+
+```{r}
+#1022 results
+focus <- foot |> 
+  filter(postal_code == c("21225", "21226","21060", "21061", "21090", "21122"))
+
+focus |> 
+  count(city) |> 
+  arrange(desc(n))
+
+travel <- focus |> 
+  arrange(desc(pct_nvisitor_outside_10mile))
+
+travel
+```
+
+#Biggest losers
+
+```{r}
+loser <- focus |> 
+  select(location_name, street_address, dln_visits_yoy, start) |> 
+  filter(start > "2024-03-02") |> 
+ arrange(dln_visits_yoy)
+
+
+winners <- focus |>
+  select(location_name, street_address, dln_visits_yoy, start) |> 
+  filter(start > "2024-03-02") |> 
+  filter(dln_visits_yoy > 0) |>
+  arrange(desc(dln_visits_yoy))
+
+foot <- foot |>
+  select(location_name, street_address, dln_visits_yoy, start) |> 
+  filter(start > "2024-03-02") |> 
+  arrange(dln_visits_yoy)
+
+```
+
+# Table
+
+```{r}
+library(kableExtra)
+table_output <- loser %>%
+  kbl(caption = "Baltimore Businesses Losing Customers") %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, bold = F, border_right = T) |> 
+  column_spec(3, width = "5em", background = "yellow") |> 
+column_spec(4, bold = F, border_right = T) 
+
+cat("<style>
+    .caption {
+      font-size: 30px !important;
+    }
+    </style>")
+table_output
+
+
+```
+
+```{r}
+install.packages("ggmap")
+library(ggmap)
+library(tidyverse)
+
+foot <- foot |>
+  mutate(fulladdress = paste(street_address, city, region, postal_code, sep=","))
+```
+
+More experimenting...
+
+```{r}
+baltimore_focus <- foot |>
+  filter(city == "Baltimore")
+
+baltimore_losers <- baltimore_focus |>
+  select(location_name, street_address, dln_visits_yoy, start) |> 
+  filter(start > "2024-03-02") |> 
+  slice_min(dln_visits_yoy, n = 20)
+```
+
+```{r}
+geocode <- read_csv("foot_traffic_geocode_lookup.csv")
+```
+
+```{r}
+
+```

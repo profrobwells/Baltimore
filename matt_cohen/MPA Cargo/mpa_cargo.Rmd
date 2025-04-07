@@ -1,0 +1,39 @@
+---
+title: "Maryland Port Authority Cargo Data"
+authory: Matt Cohen
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(lubridate)
+install.packages("leaflet")
+library(leaflet)
+```
+
+```{r}
+mpa_cargo <- read_csv("mpa_data.csv") |> 
+  clean_names() |> 
+  mutate(
+    month = parse_date_time(month, orders = c("ymd", "mdy", "dmy")),
+    container_tons = as.numeric(container_tons),
+    auto_tons = as.numeric(auto_tons)
+  )
+```
+
+```{r}
+cargo_data <- ggplot(mpa_cargo, aes(x = month)) + 
+  geom_line(aes(y = container_tons), color = "black") + 
+  geom_line(aes(y = auto_tons), color = "red") + 
+  labs(
+    title = "Monthly Cargo Trends",
+    x = "Month",
+    y = "Tons",
+  ) + 
+  theme_minimal()
+
+print(cargo_data)
+```
+
+```{r}
+```

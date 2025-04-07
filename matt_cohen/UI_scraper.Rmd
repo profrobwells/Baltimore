@@ -1,0 +1,225 @@
+---
+title: "UI Scraper"
+author: "Wells"
+date: "2025-04-07"
+output: html_document
+---
+
+```{r}
+# Load required libraries
+library(rvest)
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(xml2)
+
+# URL of the website to scrape
+url <- "https://labor.maryland.gov/employment/uicounty.shtml"
+
+# Function to parse date
+parse_date <- function(text) {
+  # Extract date part after "Week Ending"
+  date_str <- gsub("Week Ending", "", text)
+  date_str <- trimws(date_str)
+  
+  # Try to parse the date
+  tryCatch({
+    as.Date(mdy(date_str))
+  }, error = function(e) {
+    NA
+  })
+}
+
+# Main scraping function
+scrape_md_ui_claims <- function() {
+  # Create a list to store data frames for each week
+  all_weeks <- list()
+  
+  # Try to fetch the webpage
+  tryCatch({
+    cat("Fetching webpage...\n")
+    page <- read_html(url)
+    cat("Successfully fetched webpage\n")
+    
+    # Save raw HTML for inspection
+    writeLines(as.character(page), "raw_page.html")
+    cat("Saved raw HTML to raw_page.html\n")
+    
+    # Extract all week headers with dates
+    week_headers <- page %>% 
+      html_nodes("strong") %>%
+      html_text() %>%
+      .[grepl("Week Ending", .)]
+    
+    cat("Found", length(week_headers), "week headers\n")
+    
+    # For each week header, try to extract the associated table using HTML patterns
+    for (i in 1:length(week_headers)) {
+      week_text <- week_headers[i]
+      week_date <- parse_date(week_text)
+      
+      if (!is.na(week_date) && year(week_date) == 2025) {
+        cat("Processing week:", format(week_date, "%B %d, %Y"), "\n")
+        
+        # Find this text in the page source
+        html_text <- as.character(page)
+        
+        # Look for the section heading with county data
+        county_heading <- paste0("MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY Week ending ", 
+                                format(week_date, "%B %d, %Y"))
+        
+        # This pattern appears in the debugging output
+        county_pos <- str_locate(html_text, fixed(county_heading))
+        
+        if (!is.na(county_pos[1,1])) {
+          cat("Found county data section\n")
+          
+          # Extract a chunk of HTML after this heading
+          start_pos <- county_pos[1,2]
+          end_pos <- min(start_pos + 10000, nchar(html_text))
+          chunk <- substr(html_text, start_pos, end_pos)
+          
+          # Let's look for patterns that indicate the data we want
+          # Based on the debug output, we know there are sections for:
+          # Regular UI, PUA NEW, PUA (Reclassified), PEUC Claims
+          
+          # For this approach, let's focus on Regular UI claims
+          reg_ui_pos <- str_locate(chunk, "Regular UI")
+          
+          if (!is.na(reg_ui_pos[1,1])) {
+            cat("Found Regular UI section\n")
+            
+            # Extract chunk after Regular UI heading
+            ui_chunk_start <- reg_ui_pos[1,2]
+            ui_chunk_end <- str_locate(chunk, "PUA NEW")[1,1]
+            
+            if (is.na(ui_chunk_end)) {
+              ui_chunk_end <- min(ui_chunk_start + 5000, nchar(chunk))
+            }
+            
+            ui_chunk <- substr(chunk, ui_chunk_start, ui_chunk_end)
+            
+            # Extract data from this chunk manually
+            # Assuming the data is in a table-like format with counties and numbers
+            # We'll use regex patterns to extract this data
+            
+            # Define Maryland counties
+            counties <- c("Allegany", "Anne Arundel", "Baltimore City", "Baltimore County", 
+                          "Calvert", "Caroline", "Carroll", "Cecil", "Charles", "Dorchester", 
+                          "Frederick", "Garrett", "Harford", "Howard", "Kent", "Montgomery", 
+                          "Prince George's", "Queen Anne's", "St. Mary's", "Somerset", 
+                          "Talbot", "Washington", "Wicomico", "Worcester", "Maryland")
+            
+            # Create empty data frame for this week
+            week_data <- data.frame(
+              jurisdiction = character(0),
+              initial_claims = numeric(0),
+              stringsAsFactors = FALSE
+            )
+            
+            # Try to extract data for each county
+            for (county in counties) {
+              # Look for the county name followed by numbers
+              pattern <- paste0(county, "\\s*([0-9,]+)")
+              matches <- str_match(ui_chunk, pattern)
+              
+              if (!is.na(matches[1,2])) {
+                # Extract the claims value
+                claims <- as.numeric(gsub(",", "", matches[1,2]))
+                
+                # Add to data frame
+                week_data <- rbind(week_data, data.frame(
+                  jurisdiction = county,
+                  initial_claims = claims,
+                  stringsAsFactors = FALSE
+                ))
+                
+                cat("  Found data for", county, ":", claims, "\n")
+              }
+            }
+            
+            # Add the week ending date
+            if (nrow(week_data) > 0) {
+              week_data$week_ending <- week_date
+              all_weeks[[i]] <- week_data
+              cat("Added data for week to results\n")
+            }
+          }
+        }
+      }
+    }
+    
+  }, error = function(e) {
+    cat("Error processing page:", e$message, "\n")
+  })
+  
+  # Combine all weeks into a single data frame
+  result <- do.call(rbind, all_weeks)
+  
+  # Ensure we have a data frame even if empty
+  if (is.null(result) || nrow(result) == 0) {
+    result <- data.frame(
+      jurisdiction = character(0),
+      initial_claims = numeric(0),
+      week_ending = as.Date(character(0)),
+      stringsAsFactors = FALSE
+    )
+  }
+  
+  return(result)
+}
+
+# Run the scraper
+cat("Starting Maryland UI claims scraper\n")
+ui_data <- scrape_md_ui_claims()
+
+# Show results
+cat("\nResults summary:\n")
+cat("Total rows:", nrow(ui_data), "\n")
+cat("Unique weeks:", length(unique(ui_data$week_ending)), "\n")
+
+if (nrow(ui_data) > 0) {
+  # Reorder columns
+  ui_data <- ui_data %>%
+    select(week_ending, jurisdiction, initial_claims)
+  
+  # Display sample
+  cat("Sample data:\n")
+  print(head(ui_data))
+}
+
+# Always save to CSV
+output_file <- "maryland_ui_claims_2025.csv"
+write.csv(ui_data, output_file, row.names = FALSE)
+cat("Saved results to", output_file, "\n")
+
+cat("Script execution complete.\n")
+```
+
+
+#Basic scraper for one article
+
+```{r}
+library(rvest)
+
+# Define the URL
+url2 <- "https://www.dailywire.com/news/not-encouraging-nyt-warns-kamala-in-trouble-as-poll-finds-her-tied-with-trump?topStoryPosition=1"
+
+# Read the HTML content of the page
+page <- read_html(url2)
+
+# Extract the headline (usually in an <h1> tag)
+headline <- page %>%
+  html_element("h1") %>%
+  html_text(trim = TRUE)
+
+# Extract the article text (all <p> elements)
+article_text <- page %>%
+  html_elements("p") %>%
+  html_text(trim = TRUE)
+
+# Print the headline and article content
+cat("Headline:\n", headline, "\n\n")
+cat("Article Text:\n", paste(article_text, collapse = "\n"))
+
+```

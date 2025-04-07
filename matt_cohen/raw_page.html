@@ -1,0 +1,3428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Unemployment Insurance Initial Claims by County - Division of Unemployment Insurance</title>
+<link rel="canonical" href="https://labor.maryland.gov/employment/uicounty.shtml%0D%0A">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- ICONS --><link rel="icon" href="/egov/dist/img/favicon.ico">
+<link rel="shortcut icon" href="/egov/dist/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/egov/dist/img/favicon.ico" type="image/x-icon">
+<!-- 
+    Mobile Safari ICONS: Standard Maryland flag icons. You may want to reproduce this with your agency logo.
+    See: 
+--><link rel="apple-touch-icon" href="/egov/dist/img/apple-touch-icon-150x150.png">
+<!-- Core CSS files. Do NOT modify. --><link href="/egov/dist/core/core.min.css" rel="stylesheet">
+<!-- Custom site CSS file --><link href="/egov/dist/custom/site.css?v=0131251" rel="stylesheet">
+<!--
+    Scripts that must be loaded immediately. The page relies on these to be
+    loaded ASAP in order to display/function properly. All others are at the bottom.
+--><script src="/egov/dist/lib/modernizr-3.6.0/modernizr-custom.js"></script><script src="/egov/dist/lib/jquery-3.6.0/jquery-3.6.0.min.js"></script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+<link rel="stylesheet" href="/egov/css/jquery-ui.min.css">
+<script src="/egov/js/jquery-ui.min.js"></script><script src="/egov/dist/core/accordion.js"></script><!--
+    mdgovConfig and mdgov_widgetOptions. These globals must be declared prior to loading template
+    modules and EWF widgets.
+--><script>
+
+    /* Global template JS module configuration */
+    var mdgovConfig = {
+        debug: false,
+        imageGrid: {
+            autoPlay: true
+        }
+    };
+</script><!--
+        Enterprise Widget Framework (EWF) main script. Load widgets by appending their name[-version] string
+        to the "api?load=" parameter.
+    --><script>
+            /*
+            * Global EWF configuration
+            * Documentation: https://egov.maryland.gov/doit/ewf/userdocs/
+            */
+            var mdgov_widgetOptions = {
+                /* https://egov.maryland.gov/doit/ewf/userdocs/widgets/analytics.aspx */
+                // REPLACE this with your own Google Analytics information or REMOVE object.
+                analytics: {
+                    // Google analytics property ID.
+                    gaPropertyId: "UA-124184430-4",
+                    // Used to uniquely identify site within GA
+                    analyticsIdentifier: "AgencyTemplate"
+                },
+                /* https://egov.maryland.gov/doit/ewf/userdocs/widgets/services.aspx */
+                services: {
+                    // filter object may contain ageny, category, keywords or all filters
+                    filter: {
+                        agency: 144  // MVA
+                    },
+                    // When filtering for services related to another, if all services have some common keywords, then all would be related.
+                    // Use relatedExcludeFilters to define a list of keywords that may be common across all services.
+                    relatedExcludeFilters: [
+                        'mva',
+                        'motor vehicle',
+                        'motor vehicle administration',
+                        'Maryland MVA',
+                        'maryland motor vehicle administration',
+                        'Online Service'
+                    ],
+                    // Debug set to true will output data to see what filters are doing.
+                    debug: false,
+                    // Show what data was used to match relationships between services when filtering by related
+                    showRelatedCompareData: true
+                },
+                /* https://egov.maryland.gov/doit/ewf/userdocs/widgets/nearyou.aspx */
+                nearyou: {
+                    // The DOM element the widget will be injected into.
+                    // Must already exist before the widget is loaded and injection is attempted.
+                    containerSelector: "#nearyou",
+                    // Map layers you want to load for your map. Use camelCase map layer IDs for the key
+                    // and the name can be anything you like.
+                    mapLayers: [
+                        { key: "stateAgencies", name: "State Agencies" },
+                        { key: "stateJobs", name: "State Jobs" },
+                        { key: "stateParks", name: "State Parks" }
+                        // Optionally pass a (icon: "//www.example.com/myIcon.png") property
+                        // to change the map layer's default icon
+                    ],
+                    mapLayersMenuStyle: 'legend',
+                    mapLayersMenuCaption: 'Legend',
+                    // Default datasets to fetch data for and plot on the map.
+                    defaultDataSets: [
+                        "stateAgencies",
+                        "stateParks",
+                        "stateJobs"
+                    ],
+                    // Toogle plotting defaultDataSets on page load
+                    plotDefaultData: true,
+                    // Show or hide the map disabled overlay
+                    showOverlay: false
+                }
+            };
+        </script><script src="https://egov.maryland.gov/doit/ewf/ewf.js" data-main="https://egov.maryland.gov/doit/ewf/api?load=slidenav,header-2,translate-2,footer"></script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-0YC16CCD4X"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0YC16CCD4X');
+</script>
+</head>
+<body id="mdgovBodyTop">
+
+    <div class="mdgov-background"></div>
+
+    <div id="mdgovOuterWrap" class="mdgov-outerWrap">
+
+        <!-- ACCESSIBILITY: accessMenu must be the first tabbable item in the page. -->
+        <div id="mdgov-accessMenu">
+            <a href="#mdgovMain" class="sr-only sr-only-focusable show-on-focus">Skip to Content</a>
+            <a href="http://www.maryland.gov/pages/accessibility.aspx" class="sr-only sr-only-focusable show-on-focus" target="_blank">Accessibility Information</a>
+        </div>
+
+        
+
+<!-- 
+    Notifications Container. May pre-populate with notifications for server-side generation.
+    ACCESSIBILITY: Notifications should be read before anything else by assistive technologies.
+    Should be placed FIRST in the DOM so as to be read and tabbed first. NOTE: focus is placed on client notificaitons, 
+    therefore if client notifications display on page load, they will receive focus - bypassing server-generated notifications.
+-->
+<div class="mdgov-notifications m-0">
+
+    <!-- Global <noscript> warning notification -->
+    <noscript>
+    <div role="alert" class="alert alert-warning">
+        <div class="alert-icon"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></div>
+        <div class="alert-text">
+            <strong class="h4 alert-heading">JavaScript Required</strong>
+            <p>JavaScript is required to use content on this page. Please enable JavaScript in your browser.</p>
+        </div>
+    </div>
+</noscript>
+
+<script type="text/javascript">
+ $(document).ready(function () {
+   if(window.location.href.indexOf("cpa") > -1 ) {
+   $("#laboralert").prepend('<div role="alert" aria-live="polite" class="alert alert-dismissible alert-warning" tabindex="-1"><div class="alert-icon"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></div><div class="alert-text"> <p><b>Due to temporary technical challenges, the Board of Public Accountancy is currently unable to fulfill requests for original or duplicate wall certificates.</b><br>This applies to licensees who obtained their Maryland CPA License during or after September 2024, as well as those who requested a duplicate wall certificate, or CPA\'s who mailed their original certificates back in due to an error, during the same period. While resolving the technical issue requires the assistance and support of third parties and other external factors, the Board will provide all relevant updates here on the homepage of our website. Once resolved, requests will be fulfilled in chronological order beginning with those submitted in September 2024. The Board asks you not to submit any money or requests for duplicate wall certificates.</p></div></div>');
+  }
+});
+</script><div id="laboralert"></div>
+		
+</div>
+
+        <!-- Enterprise Header -->
+<div id="header_container">
+    
+</div>
+
+        <div id="mdgovInnerWrap" class="mdgov-innerWrap mdgov-fluid">
+
+            <!-- Start Masthead -->
+            <header class="mdgov-masthead "><div class="mdgov-navBar">
+
+    <!-- Start Search -->
+    <div class="mdgov-navBar__search">
+        <form method="GET" action="//www.maryland.gov/pages/search.aspx">
+    <!-- Site ID. See https://doit.maryland.gov/webcom/Pages/SearchCollections.aspx for valid values. -->
+    <input type="hidden" name="site" value="mog-vnwn994"><!-- Required agency name --><input type="hidden" name="name" value="Labor"><div class="mdgov-search">
+        <label for="mdgov-search__input" class="sr-only">Search</label>
+        <!-- Parameter "name" value must be "q" -->
+        <input type="text" id="mdgov-search__input" name="q" class="mdgov-search__input" value="" placeholder="Search" autocomplete="off"><button type="submit" id="mdgov-search__button" class="mdgov-search__button"><i class="fas fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></button>
+    </div>
+</form>
+    </div>
+
+    <!-- Start Site Navigation -->
+    <nav id="mdgovLeftNav" class="mdgov-navBar__nav" aria-labelledby="mdgovMainNavHeading"><h2 class="sr-only" id="mdgovMainNavHeading">Main Navigation</h2>
+        <ul>
+<li><a href="/employment/unemployment.shtml">Unemployment</a></li>
+                    		<li><a href="/license/">Licensing</a></li>
+                    		<li><a href="/employment/">Jobs</a></li>
+                    		<li><a href="/labor/">Labor</a></li>
+                            <li><a href="/finance/">Financial</a></li>                    		
+                            <li><a href="/racing/">Racing</a></li>
+							<li><a href="https://paidleave.maryland.gov/" title="Family and Medical Leave Insurance">FAMLI<span class="sr-only"> Family and Medical Leave Insurance</span></a></li>
+							<li><a href="/contactinfo/">Contact Us</a></li>
+        </ul></nav>
+</div>
+
+<div class="mdgov-hero mdgov-hero--shaded">
+    <a href="/" class="mdgov-hero__brand">
+         <div class="mdgov-hero__logo">
+            
+<img class="mdgov-hero__brand__logo" src="/egov/dist/img/logo.png" alt="Go To Home Page">
+</div>
+        <div class="mdgov-hero__heading" aria-hidden="true" role="presentation">
+            <div id="mdgovAgency" class="mdgov-agency">
+                <span></span>
+                <span style="text-shadow: 1px 1px 0px #000000;" class="mdgov-agency__name">Maryland Department of Labor</span>
+            </div>
+        </div>
+    </a>
+    <div class="mdgov-social">
+<span style="text-shadow: 1px 1px 0px #000000;">
+        <!-- [ ACCESSIBILITY: Tooltip-enabled elements must include aria-label values as well for screen readers ] -->
+        <a href="https://www.instagram.com/md_labor/" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+		<a href="https://www.facebook.com/MarylandLabor" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/@MD_Labor/" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="X" aria-label="X"><i class="fab fa-square-x-twitter" aria-hidden="true"></i></a>
+        <a href="http://www.youtube.com/playlist?list=PLAF971858A68E4949" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="youtube" aria-label="youtube"><i class="fab fa-youtube-square" aria-hidden="true"></i></a>
+		<a href="https://www.linkedin.com/company/maryland-department-of-labor" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="linkedin" aria-label="linkedin"><i class="fab fa-linkedin" aria-hidden="true"></i></a></span>
+    </div>
+</div> 
+
+                
+
+            </header><!-- Begin Body Content --><!-- 
+    ACCESSIBILITY:
+    1. aria-label announces the type of navigation.
+    2. aria-current="page" should be added to the last item to indicate it is the current page.
+    3. Home link must contain the "Home" text but is hidden from view using "sr-only" class.
+--><div class="row no-gutters bg-white"> 
+
+<div class="col-md-4 col-lg-3 bg-gray">
+        <nav class="mdgov-sectionNav" aria-labelledby="mdgovSectionMenuHeading"><h2 class="mdgov-sectionNav__heading" id="mdgovSectionMenuHeading">
+        <a class="mdgov-sectionNav__toggle btn btn-secondary px-md-4" data-toggle="collapse" href="#sectionNavCollapse" role="button" aria-expanded="false" aria-controls="sectionNavCollapse">
+            Section Menu
+        </a>
+    </h2>
+
+    <div class="mdgov-sectionNav__content collapse p-3 p-md-4" id="sectionNavCollapse">
+
+        <div id="pageSectionNav" class="nav flex-column">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#sectionNavGroup1" aria-controls="sectionNavGroup1" aria-expanded="true">BEACON Online UI System</a>
+            <div id="sectionNavGroup1" class="collapse show" data-parent="#pageSectionNav">
+	<a class="nav-link" href="/employment/uibeaconoverview.shtml">BEACON System Overview</a>
+	<a class="nav-link" href="https://beacon.labor.maryland.gov/">BEACON Claimant Login</a>
+	<a class="nav-link" href="https://employer.beacon.labor.md.gov/">BEACON Employer Login</a>
+	<a class="nav-link" href="https://agent.beacon.labor.md.gov/">BEACON Third-Party Agent Login</a>
+	<a class="nav-link" href="/employment/claimfaq.shtml">BEACON FAQs - Claimants</a>
+	<a class="nav-link" href="/employment/uibeaconemployerfaqs.shtml">BEACON FAQs - Employers</a>
+	<a class="nav-link" href="/employment/uibeaconthirdpartyfaqs.shtml">BEACON FAQs - Third-Party Agents</a>
+
+				
+										 
+            </div>
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#sectionNavGroup2" aria-controls="sectionNavGroup2" aria-expanded="true">Claimants</a>
+            <div id="sectionNavGroup2" class="collapse show" data-parent="#pageSectionNav">
+              
+										<a class="nav-link" href="/employment/officenum.shtml">Claimant Contact Information</a>
+										<a class="nav-link" href="/employment/uihowtoapplyinbeacon.shtml">How to Apply for UI Benefits in BEACON</a>
+										<a class="nav-link" href="/employment/uihowtofileweeklyclaim.shtml">How to File a Weekly Claim Certification</a>
+                                        <a class="nav-link" href="/employment/new-filers.shtml">Information for New Claimants (Applying for UI Benefits)</a> 
+										<a class="nav-link" href="/employment/clmtguide/uiclmtpamphlet.pdf%20">Unemployment Insurance (UI) in MD - A Guide to Reemployment</a>
+                                        <a class="nav-link" href="/employment/claimfaq.shtml">FAQs - Claimants</a>
+										<a class="nav-link" href="/employment/clmtguide/">Flyers, Forms, and Publications - Claimants</a>
+									   <a class="nav-link" href="/employment/uirex.shtml">MD Work Search Requirements</a>
+										<a class="nav-link" href="/employment/uibenefits.shtml">Helpful Resources for Claimants</a>
+                                        <a class="nav-link" href="/employment/uiclmtvideo.shtml">Video - Sometimes Good People Make Bad Decisions</a>
+                                        <a class="nav-link" href="/employment/uiissues.shtml">Issues &amp; UI Penalties</a>
+                                        <a class="nav-link" href="/employment/uibpcfaqs.shtml"> Audits, Overpayments &amp; Fraud</a>
+                                        <a class="nav-link" href="/uiappeals/">Appeals</a> 
+			  
+			  
+            </div>
+			
+			
+			
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#sectionNavGroup3" aria-controls="sectionNavGroup3" aria-expanded="true">Resources in Spanish</a>
+            <div id="sectionNavGroup3" class="collapse show" data-parent="#pageSectionNav">
+            
+			<span lang="es"><a class="nav-link" href="/spanish/desempleo.shtml">Ayuda en Español</a></span>
+           <a class="nav-link" href="https://beacon.labor.maryland.gov/claimant-page-es.html"><span lang="es">Solicitar Beneficios en BEACON</span></a>
+           <a class="nav-link" href="/employment/uibeaconclaimantguidees.pdf"><span lang="es">La Guía del usuario del portal de reclamantes</span></a>
+          <a class="nav-link" href="/employment/uitaxadvicees.pdf"><span lang="es" xml:lang="es">Nota para Planificación de Impuestos para los Reclamantes</span></a>
+			
+			
+            </div>
+			
+			
+			
+			
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#sectionNavGroup4" aria-controls="sectionNavGroup4" aria-expanded="true">Employers &amp; Third Party Agents</a>
+            <div id="sectionNavGroup4" class="collapse show" data-parent="#pageSectionNav">
+             
+			 
+			 <a class="nav-link" href="/employment/contributions.shtml">Contact Information</a>
+          <a class="nav-link" href="/employment/empguide/empguide.pdf">Employers' Quick Reference Guide</a>
+          <a class="nav-link" href="/employment/new-employers.shtml">Information for New Employers</a>
+				         <a class="nav-link" href="/employment/new-thirdpartyagents.shtml">Information for New Third-Party Agents</a>
+          <a class="nav-link" href="/employment/uitaxfaqs.shtml">FAQs -Employers &amp; Agents</a>
+		    <a class="nav-link" href="/employment/uitaxpub.shtml">Flyers, Forms, and Publications  (Employers &amp; Agents)</a>
+		     <a class="nav-link" href="/employment/uitaxexpratefaqs.shtml">Tax Rate Information</a>
+		    <a class="nav-link" href="/employment/uitaxpaymentplans.shtml">Employer Payment Plan Information</a>
+           <a class="nav-link" href="/employment/uiassessmentvideo.shtml">Assessment Notice &amp; Pending Civil Action Letter</a>
+          <a class="nav-link" href="/employment/uitaxresources.shtml">Helpful Resources - Employers &amp; Agents</a>
+          <a class="nav-link" href="/employment/uiempvideo.shtml">Video - Spend Time to Save Money</a>
+           <a class="nav-link" href="https://www.mdnewhire.com/#/public/public-landing/login">Report New Hires</a>
+          <a class="nav-link" href="/employment/uisides.shtml">State Information Data Exchange System (SIDES)</a>
+          <a class="nav-link" href="/employment/worksharing/">Work Sharing Layoff Aversion Program</a>
+          <a class="nav-link" href="/uiappeals/">Appeals</a>
+          <a class="nav-link" href="https://www.marylandtaxes.gov/divisions/cd/business/business-MVA-holds.php">Owe Taxes? No Driver's License or Vehicle Registration Renewal</a>
+			 
+			 
+			 
+            </div>
+			
+			<a class="nav-link" href="#" data-toggle="collapse" data-target="#sectionNavGroup5" aria-controls="sectionNavGroup5" aria-expanded="true">Hot Topics</a>
+            <div id="sectionNavGroup5" class="collapse show" data-parent="#pageSectionNav">
+             
+			 <a class="nav-link" href="/employment/uiaccessibility.shtml">Accommodation Information and Resources</a>
+        <a class="nav-link" href="/employment/uistopfraud.shtml">Report UI Fraud</a>
+        <a class="nav-link" href="/whatsnews/mlr.shtml">MD Unemployment Rate</a>
+        <a class="nav-link" href="/employment/uidata.shtml">UI Metrics </a>
+        <a class="nav-link" href="/employment/uicounty.shtml">Weekly UI Claims by County</a>
+        <a class="nav-link" href="/employment/uifraudstats.shtml">Fraudulent  UI Claims Data</a>
+        <a class="nav-link" href="/county/">American Job Centers - Business &amp; Job-Seeker Resources</a>
+			 
+			 
+            </div>
+			
+			
+
+        </div>
+
+    </div>
+
+</nav>
+</div>
+
+<div class="col-md-8 col-lg-9 p-3 p-lg-4">
+  <main id="mdgovMain" class="mdgov-main"><h1>Unemployment Insurance Initial Claims by County - Unemployment Insurance</h1>
+    <div id="accordion">
+      <p><strong>Week Ending  January 04, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  January 04, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">51</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">185</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">364</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">337</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">24</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">11</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">71</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">58</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">73</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">23</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">84</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">116</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">80</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">21</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">193</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">220</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">243</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">15</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">22</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">72</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">64</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">53</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,435</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,435</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,435</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/010825.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  January 04, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  January 11, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  January 11, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">63</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">209</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">431</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">344</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">23</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">73</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">53</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">65</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">23</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">126</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">31</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">128</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">107</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">12</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">260</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">289</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">278</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">19</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">17</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">25</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">27</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">100</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">78</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">116</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,933</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,933</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,933</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/011625.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  January 11, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  January 18, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  January 18, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">38</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">191</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">398</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">340</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">35</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">72</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">40</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">55</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">19</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">91</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">25</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">133</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">85</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">249</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">254</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">350</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">16</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">17</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">11</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">19</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">26</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">71</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">47</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">75</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,685</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,685</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,685</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/012325.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  January 18, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  January 25, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  January 25, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">30</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">156</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">316</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">304</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">26</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">54</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">40</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">52</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">22</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">80</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">105</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">71</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">6</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">233</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">206</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">285</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">7</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">8</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">13</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">21</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">21</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">69</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">54</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">43</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,254</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,254</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,254</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/013025.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  January 25, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  February 01, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  February 01, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">26</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">178</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">358</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">280</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">20</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">57</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">37</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">58</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">12</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">82</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">89</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">103</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">7</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">284</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">293</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">329</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">20</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">13</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">10</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">63</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">45</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">32</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,451</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,451</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,451</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/020625.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  February 01, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  February 08, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  February 08, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">31</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">205</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">347</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">317</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">31</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">10</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">47</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">32</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">45</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">96</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">97</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">99</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">6</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">404</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">437</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">277</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">5</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">11</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">8</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">14</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">27</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">60</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">47</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">35</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,711</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,711</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,711</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/021325.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  February 08, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  February 15, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  February 15, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">40</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">166</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">346</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">286</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">62</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">21</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">52</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">10</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">81</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">11</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">93</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">101</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">6</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">329</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">260</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">292</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">10</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">6</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">13</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">8</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">17</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">44</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">37</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">22</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,340</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,340</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,340</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/022025.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  February 15, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  February 22, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  February 22, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">158</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">346</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">283</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">20</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">15</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">49</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">49</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">61</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">8</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">93</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">10</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">90</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">104</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">1</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">388</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">317</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">346</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">10</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">2</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">6</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">13</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">19</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">51</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">33</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">21</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,511</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,511</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,511</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/022725.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  February 22, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  March 01, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  March 01, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">156</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">323</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">247</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">27</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">12</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">49</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">26</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">63</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">16</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">97</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">7</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">70</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">109</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">2</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">345</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">241</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">323</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">10</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">7</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">20</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">55</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">36</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">12</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,289</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,289</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,289</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/030625.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  March 01, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  March 08, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  March 08, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">27</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">220</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">393</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">310</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">27</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">43</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">40</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">74</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">24</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">118</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">84</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">121</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">3</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">425</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">252</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">369</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">15</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">4</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">9</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">26</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">46</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">34</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">13</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,704</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,704</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,704</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/031325.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  March 08, 2025</a></p>
+      </div>
+      <p><strong>Week Ending  March 15, 2025</strong></p>
+      <div>
+        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  March 15, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+            <td dir="LTR" align="right" width="82">17</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+            <td dir="LTR" align="right" width="82">151</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+            <td dir="LTR" align="right" width="82">328</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+            <td dir="LTR" align="right" width="82">308</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+            <td dir="LTR" align="right" width="82">23</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+            <td dir="LTR" align="right" width="82">18</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+            <td dir="LTR" align="right" width="82">32</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+            <td dir="LTR" align="right" width="82">28</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+            <td dir="LTR" align="right" width="82">61</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+            <td dir="LTR" align="right" width="82">16</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+            <td dir="LTR" align="right" width="82">91</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+            <td dir="LTR" align="right" width="82">5</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+            <td dir="LTR" align="right" width="82">81</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+            <td dir="LTR" align="right" width="82">104</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+            <td dir="LTR" align="right" width="82">5</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+            <td dir="LTR" align="right" width="82">328</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+            <td dir="LTR" align="right" width="82">278</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+            <td dir="LTR" align="right" width="82">345</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+            <td dir="LTR" align="right" width="82">17</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+            <td dir="LTR" align="right" width="82">6</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+            <td dir="LTR" align="right" width="82">8</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+            <td dir="LTR" align="right" width="82">8</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+            <td dir="LTR" align="right" width="82">23</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+            <td dir="LTR" align="right" width="82">52</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+            <td dir="LTR" align="right" width="82">28</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+            <td dir="LTR" align="right" width="82">12</td>
+            <td dir="LTR" align="right" width="82">0</td>
+            <td dir="LTR" align="right" width="138">0</td>
+            <td dir="LTR" align="right" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+            <td dir="LTR" width="82">2,373</td>
+            <td dir="LTR" width="82">0</td>
+            <td dir="LTR" width="138">0</td>
+            <td dir="LTR" width="94">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="82"> </td>
+            <td dir="LTR" width="138"> </td>
+            <td dir="LTR" width="94"> </td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,373</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+            <td colspan="4" dir="LTR" width="396">0</td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+            <td colspan="4" dir="LTR" width="396">2,373</td>
+          </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/032025.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  March 15, 2025</a></p>
+      </div>
+   <p><strong>Week Ending  March 22, 2025</strong></p>
+	  <div>
+		        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  March 22, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR">ALLEGANY</td>
+      <td dir="LTR" align="right">27</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">ANNE ARUNDEL</td>
+      <td dir="LTR" align="right">170</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">BALTIMORE</td>
+      <td dir="LTR" align="right">304</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">BALTIMORE CITY</td>
+      <td dir="LTR" align="right">315</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">CALVERT</td>
+      <td dir="LTR" align="right">17</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">CAROLINE</td>
+      <td dir="LTR" align="right">13</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">CARROLL</td>
+      <td dir="LTR" align="right">47</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">CECIL</td>
+      <td dir="LTR" align="right">31</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">CHARLES</td>
+      <td dir="LTR" align="right">52</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">DORCHESTER</td>
+      <td dir="LTR" align="right">11</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">FREDERICK</td>
+      <td dir="LTR" align="right">86</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">GARRETT</td>
+      <td dir="LTR" align="right">11</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">HARFORD</td>
+      <td dir="LTR" align="right">79</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">HOWARD</td>
+      <td dir="LTR" align="right">86</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">KENT</td>
+      <td dir="LTR" align="right">6</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">MONTGOMERY</td>
+      <td dir="LTR" align="right">285</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">NON-MARYLAND</td>
+      <td dir="LTR" align="right">210</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">PRINCE GEORGES</td>
+      <td dir="LTR" align="right">293</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">QUEEN ANNES</td>
+      <td dir="LTR" align="right">13</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">SOMERSET</td>
+      <td dir="LTR" align="right">6</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">ST MARYS</td>
+      <td dir="LTR" align="right">16</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">TALBOT</td>
+      <td dir="LTR" align="right">6</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">Unknown</td>
+      <td dir="LTR" align="right">17</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">WASHINGTON</td>
+      <td dir="LTR" align="right">50</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">WICOMICO</td>
+      <td dir="LTR" align="right">37</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR">WORCESTER</td>
+      <td dir="LTR" align="right">19</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+      <td dir="LTR" align="right">0</td>
+    </tr>
+<tr>
+<td dir="LTR"> </td>
+      <td dir="LTR"> </td>
+      <td dir="LTR"> </td>
+      <td dir="LTR"> </td>
+      <td dir="LTR"> </td>
+    </tr>
+<tr>
+<td dir="LTR">Totals by Type: </td>
+      <td dir="LTR">2,207</td>
+      <td dir="LTR">0</td>
+      <td dir="LTR">0</td>
+      <td dir="LTR">0</td>
+    </tr>
+<tr>
+<td dir="LTR"> </td>
+      <td dir="LTR"> </td>
+      <td dir="LTR"> </td>
+      <td dir="LTR"> </td>
+      <td dir="LTR"> </td>
+    </tr>
+<tr>
+<td dir="LTR">Total Regular UI Claims:</td>
+      <td colspan="4" dir="LTR">2,207</td>
+    </tr>
+<tr>
+<td dir="LTR">Total New PUA and PEUC:</td>
+      <td colspan="4" dir="LTR">0</td>
+    </tr>
+<tr>
+<td dir="LTR">Total New UI Claims:</td>
+      <td colspan="4" dir="LTR">2,207</td>
+    </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/032725.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  March 22, 2025</a></p>
+		</div>
+		
+		<p><strong>Week Ending  March 29, 2025</strong></p>
+	  <div>
+		        <table class="table-responsive" width="96%" cellspacing="0" cellpadding="0" align="center" border="1">
+<tr>
+<td colspan="5" align="center"><strong>MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE TOTAL CLAIMS FILED BY COUNTY <br>
+              Week ending  March 29, 2025</strong></td>
+          </tr>
+<tr>
+<td width="25%"><strong>Claim Filed    By: </strong></td>
+            <td align="center" width="15%"><strong>Regular UI</strong></td>
+            <td align="center" width="15%"><strong>PUA NEW </strong></td>
+            <td align="center" width="15%"><strong>PUA (Reclassified)*</strong></td>
+            <td align="center" width="15%"><strong>PEUC Claims</strong></td>
+          </tr>
+<tr>
+<td dir="LTR" width="184">ALLEGANY</td>
+    <td dir="LTR" align="right" width="82">22</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">ANNE ARUNDEL</td>
+    <td dir="LTR" align="right" width="82">161</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE</td>
+    <td dir="LTR" align="right" width="82">346</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">BALTIMORE CITY</td>
+    <td dir="LTR" align="right" width="82">273</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">CALVERT</td>
+    <td dir="LTR" align="right" width="82">31</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">CAROLINE</td>
+    <td dir="LTR" align="right" width="82">10</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">CARROLL</td>
+    <td dir="LTR" align="right" width="82">39</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">CECIL</td>
+    <td dir="LTR" align="right" width="82">29</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">CHARLES</td>
+    <td dir="LTR" align="right" width="82">60</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">DORCHESTER</td>
+    <td dir="LTR" align="right" width="82">15</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">FREDERICK</td>
+    <td dir="LTR" align="right" width="82">84</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">GARRETT</td>
+    <td dir="LTR" align="right" width="82">4</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">HARFORD</td>
+    <td dir="LTR" align="right" width="82">54</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">HOWARD</td>
+    <td dir="LTR" align="right" width="82">90</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">KENT</td>
+    <td dir="LTR" align="right" width="82">7</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">MONTGOMERY</td>
+    <td dir="LTR" align="right" width="82">266</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">NON-MARYLAND</td>
+    <td dir="LTR" align="right" width="82">209</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">PRINCE GEORGES</td>
+    <td dir="LTR" align="right" width="82">279</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">QUEEN ANNES</td>
+    <td dir="LTR" align="right" width="82">5</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">SOMERSET</td>
+    <td dir="LTR" align="right" width="82">3</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">ST MARYS</td>
+    <td dir="LTR" align="right" width="82">6</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">TALBOT</td>
+    <td dir="LTR" align="right" width="82">10</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">Unknown</td>
+    <td dir="LTR" align="right" width="82">15</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">WASHINGTON</td>
+    <td dir="LTR" align="right" width="82">49</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">WICOMICO</td>
+    <td dir="LTR" align="right" width="82">25</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">WORCESTER</td>
+    <td dir="LTR" align="right" width="82">12</td>
+    <td dir="LTR" align="right" width="82">0</td>
+    <td dir="LTR" align="right" width="138">0</td>
+    <td dir="LTR" align="right" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+    <td dir="LTR" width="82"> </td>
+    <td dir="LTR" width="82"> </td>
+    <td dir="LTR" width="138"> </td>
+    <td dir="LTR" width="94"> </td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">Totals by Type: </td>
+    <td dir="LTR" width="82">2,104</td>
+    <td dir="LTR" width="82">0</td>
+    <td dir="LTR" width="138">0</td>
+    <td dir="LTR" width="94">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184"> </td>
+    <td dir="LTR" width="82"> </td>
+    <td dir="LTR" width="82"> </td>
+    <td dir="LTR" width="138"> </td>
+    <td dir="LTR" width="94"> </td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">Total Regular UI Claims:</td>
+    <td colspan="4" dir="LTR" width="396">2,104</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">Total New PUA and PEUC:</td>
+    <td colspan="4" dir="LTR" width="396">0</td>
+  </tr>
+<tr>
+<td dir="LTR" width="184">Total New UI Claims:</td>
+    <td colspan="4" dir="LTR" width="396">2,104</td>
+  </tr>
+</table>
+<p><a class="sub" href="https://oui.doleta.gov/press/2025/040325.pdf">US Department of Labor (USDOL) Unemployment Insurance Weekly Claims Report Week Ending  March 29, 2025</a></p>
+		</div>	
+	  </div>
+    <p> </p>
+    
+    	<p><a href="uicounty.shtml">Unemployment Insurance Initial Claims by County</a></p>
+	<p><a href="uicountyjulytodec2024.shtml">Unemployment Insurance Initial Claims by County for July to December 2024</a></p>
+	<p><a href="uicountyjantojune2024.shtml">Unemployment Insurance Initial Claims by County for January to June 2024</a></p>
+	<p><a href="uicountyjulytodec2023.shtml">Unemployment Insurance Initial Claims by County for July to December 2023</a></p>
+	<p><a href="uicountyjantojune2023.shtml">Unemployment Insurance Initial Claims by County for January to June 2023</a></p>
+	<p><a href="uicountyjulytodec2022.shtml">Unemployment Insurance Initial Claims by County for July to December 2022</a></p>
+	<p><a href="uicountyjantojune2022.shtml">Unemployment Insurance Initial Claims by County for January to June 2022</a></p>
+	<p><a href="uicountyjulytodec2021.shtml">Unemployment Insurance Initial Claims by County for July to December 2021</a></p>
+	 <p><a href="uicountyjantojune2021.shtml">Unemployment Insurance Initial Claims by County for January to June 2021</a></p>
+     <p><a href="uicounty2020.shtml">Unemployment Insurance Initial Claims by County for 2020</a></p>
+
+     <p>Weekly data is now available for the review of potentially <a href="uifraudstats.shtml">fraudulent unemployment insurance claims</a>.
+    </p>
+<p> </p>
+  </main>
+</div>
+
+</div>
+
+            <!-- End Body Content -->
+
+        </div>
+
+        <footer id="mdgovFooter" class="mdgov-footer-2024"><div class="container-fluid">
+                            <div class="mdgov-footer-2024__top">
+                                <div class="mdgov-footer-2024__agency">
+                                    <div class="mdgov-footer-2024__agency__logo">
+                                        <img src="https://doit.maryland.gov/Style%20Library/egov/img/logo.png" alt="Maryland Logo">
+</div>
+                                    <div class="mdgov-footer-2024__agency__address">
+                                        <address>
+                                            <strong><span>Maryland Department of Labor</span></strong><br><span>100 S. Charles Street, Tower I, Baltimore, MD 21201</span><br><span>Dial 7-1-1 to place a call through Maryland Relay</span>
+                                        </address>
+                                    </div>
+                                </div>
+                                <div class="mdgov-footer-2024__agency__links">
+                                    <ul class="mdgov-footer-2024__nav">
+<li><a href="/aboutdllr/">About Us</a></li> 
+                      			  <li><a href="/aboutdllr/privacystatement.shtml">Privacy</a></li>
+                                  <li>
+<a href="/oeope/posters.shtml">Posters</a> </li>
+                                  <li>
+<a href="/aboutdllr/mpia.shtml">MPIA</a> </li>
+                                  <li><a href="https://elections.maryland.gov/voter_registration/" target="_blank">Register to Vote</a></li>
+                      			  <li><a href="/spanish/"><span lang="es">Ayuda en español</span></a></li>
+                                                
+                                    </ul>
+</div>
+                                <div class="mdgov-footer-2024__social">
+                                    <div class="mdgov-social">
+                                        <a href="https://www.instagram.com/md_labor/" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+										<a href="https://www.facebook.com/MarylandLabor" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+										<a href="https://twitter.com/@MD_Labor/" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter"><i class="fab fa-square-x-twitter" aria-hidden="true"></i></a>
+										<a href="http://www.youtube.com/playlist?list=PLAF971858A68E4949" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="youtube" aria-label="youtube"><i class="fab fa-youtube-square" aria-hidden="true"></i></a>
+										<a href="https://www.linkedin.com/company/maryland-department-of-labor" target="_blank" class="mdgov-social__icon" data-toggle="tooltip" data-placement="top" title="linkedin" aria-label="linkedin"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                        <!-- Global Footer Widget -->
+                            <div id="footer_container"></div>
+                        <!-- / Global Footer Widget -->
+                        </div>
+                    </footer>
+</div>
+
+    
+
+
+
+<!--
+    Loading scripts just before </body> ensures HTML content is downloaded and parsed first.
+    This also means the site can begin to display prior to loading all JS, which helps display performance.
+-->
+<script src="/egov/dist/lib/bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script><script src="/egov/dist/core/core.min.js"></script><script src="/egov/dist/custom/site.js"></script>
+</body>
+</html>
+

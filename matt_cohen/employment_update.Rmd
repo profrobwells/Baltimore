@@ -3,6 +3,8 @@ title: "Baltimore unemployment data"
 name: "Matt Cohen
 ---
 
+Source:  https://github.com/mdcohen99/BaltimoreClassData 
+
 ```{r}
 library(DatawRappr)
 datawrapper_auth(api_key =  "67xBMLpa6Nv7wcGVQYlj6WVf5KMeLwGlWgQUKaYWpNQElwbJ9FvSMnDrZrmlJpLL", overwrite=TRUE)

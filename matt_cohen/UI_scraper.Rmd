@@ -1,10 +1,198 @@
 ---
 title: "UI Scraper"
-author: "Wells"
-date: "2025-04-07"
+author: "Wells/Cohen/Claude"
+date: "2025-04-11"
 output: html_document
 ---
 
+And here we extract unemployment insurance claims from the state of Maryland's website
+https://labor.maryland.gov/employment/uicounty.shtml
+
+
+#Part 1: Extract the raw html from the page
+ simplified extracts hmtl from page
+```{r}
+# Load required libraries
+library(rvest)
+
+# URL of the website to scrape
+# url <- "https://labor.maryland.gov/employment/uicounty.shtml"
+
+url <- "https://labor.maryland.gov/employment/uicountyjulytodec2024.shtml"
+
+# Main function to download and save the raw HTML
+download_raw_html <- function() {
+  # Try to fetch the webpage
+  tryCatch({
+    cat("Fetching webpage...\n")
+    page <- read_html(url)
+    cat("Successfully fetched webpage\n")
+    
+    # Save raw HTML for inspection
+    writeLines(as.character(page), "raw_page.html")
+    cat("Saved raw HTML to raw_page.html\n")
+    
+    return(TRUE)
+  }, error = function(e) {
+    cat("Error fetching webpage:", conditionMessage(e), "\n")
+    return(FALSE)
+  })
+}
+
+# Execute the function
+download_raw_html()
+```
+#Part 2: extract table from raw html file
+```{r}
+# Load required libraries
+# Load required libraries
+library(rvest)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(lubridate)
+library(readr)
+
+# Function to read and parse the HTML file
+extract_unemployment_data <- function(html_file) {
+  # Read HTML content
+  html_content <- read_file(html_file)
+  
+  # Parse HTML
+  html_doc <- read_html(html_content)
+  
+  # Extract all tables - no class filter since tables don't have the expected class
+  tables <- html_doc %>% html_nodes("table")
+  
+  # Initialize empty dataframe to store all data
+  all_data <- data.frame(
+    WeekEnding = character(),
+    County = character(),
+    RegularUI = numeric(),
+    PuaNew = numeric(),
+    PuaReclassified = numeric(),
+    PeucClaims = numeric(),
+    stringsAsFactors = FALSE
+  )
+  
+  # Extract week ending dates from paragraph headers
+  week_headers <- html_doc %>% 
+    html_nodes("p strong") %>% 
+    html_text() %>%
+    str_trim()
+  
+  # Extract dates that match the pattern "Week Ending Month DD, YYYY"
+  date_headers <- week_headers[grep("^Week Ending\\s+[A-Za-z]+\\s+\\d{1,2},\\s+\\d{4}$", week_headers)]
+  
+  # Process each table
+  for (i in 1:length(tables)) {
+    # Only process tables that are likely unemployment data tables (skip navigation tables, etc.)
+    table_text <- tables[i] %>% html_text()
+    if (!str_detect(table_text, "Regular UI|MARYLAND DEPARTMENT OF LABOR DIVISION OF UNEMPLOYMENT INSURANCE")) {
+      next
+    }
+    
+    # Get the table as a node
+    table_node <- tables[i]
+    
+    # Extract week ending date from the table's first row which contains the header
+    first_row <- table_node %>% html_nodes("tr:first-child") %>% html_text()
+    
+    date_match <- str_extract(first_row, "Week ending\\s+([A-Za-z]+\\s+\\d{1,2},\\s+\\d{4})")
+    
+    if (is.na(date_match) || length(date_match) == 0) {
+      # Try to extract date from the corresponding paragraph header
+      idx <- which(grepl(paste0("table_", i), names(tables)))
+      if (length(idx) > 0 && idx <= length(date_headers)) {
+        date_text <- str_replace(date_headers[idx], "Week Ending\\s+", "")
+      } else if (i <= length(date_headers)) {
+        # Try to use the corresponding header directly
+        date_text <- str_replace(date_headers[i], "Week Ending\\s+", "")
+      } else {
+        # If we still can't find the date, use the index
+        date_text <- paste("Week", i)
+      }
+    } else {
+      date_text <- str_replace(date_match, "Week ending\\s+", "")
+      date_text <- str_trim(date_text)
+    }
+    
+    # Extract all rows from the table
+    rows <- table_node %>% html_nodes("tr")
+    
+    # Skip the first two rows (header rows) and process the rest
+    for (j in 3:length(rows)) {
+      if (j <= length(rows)) {
+        cells <- rows[j] %>% html_nodes("td") %>% html_text()
+        
+        # Only process rows with the expected number of cells
+        if (length(cells) == 5) {
+          county <- str_trim(cells[1])
+          
+          # Skip header or summary rows
+          if (county %in% c("Claim Filed    By:", "", "Totals by Type:", 
+                           "Total Regular UI Claims:", "Total New PUA and PEUC:", 
+                           "Total New UI Claims:", " ")) {
+            next
+          }
+          
+          # Clean and convert the numeric values - be more careful with empty cells
+          regular_ui_str <- str_trim(cells[2])
+          regular_ui <- if(regular_ui_str == "" || regular_ui_str == " ") NA_real_ else as.numeric(str_replace_all(regular_ui_str, "[^0-9]", ""))
+          
+          pua_new_str <- str_trim(cells[3])
+          pua_new <- if(pua_new_str == "" || pua_new_str == " ") NA_real_ else as.numeric(str_replace_all(pua_new_str, "[^0-9]", ""))
+          
+          pua_reclass_str <- str_trim(cells[4])
+          pua_reclass <- if(pua_reclass_str == "" || pua_reclass_str == " ") NA_real_ else as.numeric(str_replace_all(pua_reclass_str, "[^0-9]", ""))
+          
+          peuc_claims_str <- str_trim(cells[5])
+          peuc_claims <- if(peuc_claims_str == "" || peuc_claims_str == " ") NA_real_ else as.numeric(str_replace_all(peuc_claims_str, "[^0-9]", ""))
+          
+          # Only add rows with valid county names and numeric values
+          if (!is.na(county) && !is.na(regular_ui) && county != "") {
+            new_row <- data.frame(
+              WeekEnding = date_text,
+              County = county,
+              RegularUI = regular_ui,
+              PuaNew = pua_new,
+              PuaReclassified = pua_reclass,
+              PeucClaims = peuc_claims,
+              stringsAsFactors = FALSE
+            )
+            
+            all_data <- bind_rows(all_data, new_row)
+          }
+        }
+      }
+    }
+  }
+  
+  return(all_data)
+}
+
+# Process the file
+unemployment_data <- extract_unemployment_data("raw_page.html")
+
+# Check the data
+str(unemployment_data)
+head(unemployment_data)
+summary(unemployment_data)
+
+# Check counts by week
+unemployment_data %>%
+  group_by(WeekEnding) %>%
+  summarize(count = n()) %>%
+  print(n = Inf)
+
+# Export to CSV
+write_csv(unemployment_data, "maryland_unemployment_claims_july_dec_2024.csv")
+```
+
+#---------------------------------------------
+# Notes below
+#---------------------------------------------
+This code failed but it did extract the raw table. So it was adapted for the first chunk
 ```{r}
 # Load required libraries
 library(rvest)
@@ -197,29 +385,438 @@ cat("Script execution complete.\n")
 ```
 
 
-#Basic scraper for one article
+# extra suggested by claude
 
 ```{r}
-library(rvest)
+# Create basic visualizations
+library(ggplot2)
 
-# Define the URL
-url2 <- "https://www.dailywire.com/news/not-encouraging-nyt-warns-kamala-in-trouble-as-poll-finds-her-tied-with-trump?topStoryPosition=1"
+# Weekly trend of total claims
+weekly_totals <- unemployment_data %>%
+  group_by(WeekEnding) %>%
+  summarize(TotalClaims = sum(RegularUI, na.rm = TRUE))
 
-# Read the HTML content of the page
-page <- read_html(url2)
+ggplot(weekly_totals, aes(x = WeekEnding, y = TotalClaims, group = 1)) +
+  geom_line() +
+  geom_point() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Maryland Weekly Unemployment Claims (Jan-Apr 2025)",
+       x = "Week Ending",
+       y = "Total Claims")
 
-# Extract the headline (usually in an <h1> tag)
-headline <- page %>%
-  html_element("h1") %>%
-  html_text(trim = TRUE)
+# Top counties by claims
+top_counties <- unemployment_data %>%
+  filter(County != "NON-MARYLAND", County != "Unknown") %>%
+  group_by(County) %>%
+  summarize(TotalClaims = sum(RegularUI, na.rm = TRUE)) %>%
+  arrange(desc(TotalClaims)) %>%
+  head(5)
 
-# Extract the article text (all <p> elements)
-article_text <- page %>%
-  html_elements("p") %>%
-  html_text(trim = TRUE)
-
-# Print the headline and article content
-cat("Headline:\n", headline, "\n\n")
-cat("Article Text:\n", paste(article_text, collapse = "\n"))
-
+ggplot(top_counties, aes(x = reorder(County, -TotalClaims), y = TotalClaims)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Top 5 Maryland Counties by Total UI Claims (Jan-Apr 2025)",
+       x = "County",
+       y = "Total Claims")
 ```
+
+
+
+
+# matt's all in one method (buggy)
+```{r}
+# Load required libraries
+library(rvest)
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(xml2)
+
+# Specific URLs provided for scraping
+urls_to_scrape <- c(
+  "https://labor.maryland.gov/employment/uicounty.shtml",                    # Current
+  "https://labor.maryland.gov/employment/uicountyjulytodec2024.shtml",       # Jul-Dec 2024
+  "https://labor.maryland.gov/employment/uicountyjantojune2024.shtml",       # Jan-Jun 2024
+  "https://labor.maryland.gov/employment/uicountyjulytodec2023.shtml",       # Jul-Dec 2023
+  "https://labor.maryland.gov/employment/uicountyjantojune2023.shtml",       # Jan-Jun 2023
+  "https://labor.maryland.gov/employment/uicountyjulytodec2022.shtml",       # Jul-Dec 2022
+  "https://labor.maryland.gov/employment/uicountyjantojune2022.shtml",       # Jan-Jun 2022
+  "https://labor.maryland.gov/employment/uicountyjulytodec2021.shtml",       # Jul-Dec 2021
+  "https://labor.maryland.gov/employment/uicountyjantojune2021.shtml"        # Jan-Jun 2021
+)
+
+# Define Maryland counties
+counties <- c("Allegany", "Anne Arundel", "Baltimore City", "Baltimore County", 
+              "Calvert", "Caroline", "Carroll", "Cecil", "Charles", "Dorchester", 
+              "Frederick", "Garrett", "Harford", "Howard", "Kent", "Montgomery", 
+              "Prince George's", "Queen Anne's", "St. Mary's", "Somerset", 
+              "Talbot", "Washington", "Wicomico", "Worcester", "Maryland")
+
+# Function to extract table data - works directly with the HTML tables
+extract_table_data <- function(table, date) {
+  # Try to parse table using html_table
+  table_df <- tryCatch({
+    html_table(table, fill = TRUE)
+  }, error = function(e) {
+    return(NULL)
+  })
+  
+  if (is.null(table_df) || nrow(table_df) == 0) {
+    return(NULL)
+  }
+  
+  # Check if this appears to be a county claims table
+  if (ncol(table_df) < 2) {
+    return(NULL)
+  }
+  
+  # Look for county names in the first column
+  found_counties <- 0
+  for (county in counties) {
+    if (any(grepl(county, table_df[[1]], ignore.case = TRUE))) {
+      found_counties <- found_counties + 1
+    }
+  }
+  
+  # If we found at least a few counties, this is probably our table
+  if (found_counties >= 5) {
+    cat("Found table with", found_counties, "counties for date", format(date, "%B %d, %Y"), "\n")
+    
+    # Prepare data frame for results
+    results <- data.frame(
+      jurisdiction = character(0),
+      initial_claims = numeric(0),
+      stringsAsFactors = FALSE
+    )
+    
+    # Extract data for each county
+    for (county in counties) {
+      county_rows <- grep(county, table_df[[1]], ignore.case = TRUE)
+      
+      if (length(county_rows) > 0) {
+        row_idx <- county_rows[1]  # Take the first match if multiple
+        
+        # Find the claims value - should be in the second column
+        claims_col <- 2
+        if (ncol(table_df) > 2) {
+          # If there are more columns, look for one with numeric data
+          for (col in 2:ncol(table_df)) {
+            if (is.numeric(table_df[[col]]) || all(grepl("^[0-9,]+$", table_df[[col]]))) {
+              claims_col <- col
+              break
+            }
+          }
+        }
+        
+        claims_value <- table_df[row_idx, claims_col]
+        
+        # Convert to numeric if needed
+        if (is.character(claims_value)) {
+          claims_value <- as.numeric(gsub(",", "", claims_value))
+        }
+        
+        results <- rbind(results, data.frame(
+          jurisdiction = county,
+          initial_claims = as.numeric(claims_value),
+          stringsAsFactors = FALSE
+        ))
+      }
+    }
+    
+    if (nrow(results) > 0) {
+      return(results)
+    }
+  }
+  
+  return(NULL)
+}
+
+# Function to parse dates from headers
+parse_week_date <- function(text) {
+  # Remove "Week Ending" or similar prefixes
+  date_str <- gsub("Week [Ee]nding", "", text)
+  date_str <- trimws(date_str)
+  
+  # Try to parse the date
+  tryCatch({
+    as.Date(mdy(date_str))
+  }, error = function(e) {
+    NA
+  })
+}
+
+# Function to find tables that might contain county data
+find_date_tables <- function(page) {
+  # Find all headers that might indicate a date
+  headers <- page %>% 
+    html_nodes("h1, h2, h3, h4, h5, h6, strong, b") %>%
+    html_text()
+  
+  date_headers <- headers[grepl("Week [Ee]nding", headers)]
+  
+  results <- list()
+  
+  # For each potential date header
+  for (header_text in date_headers) {
+    date <- parse_week_date(header_text)
+    
+    if (!is.na(date)) {
+      # Find all tables on the page
+      tables <- page %>% html_nodes("table")
+      
+      for (table in tables) {
+        # Check if this table is related to our date
+        table_html <- as.character(table)
+        
+        # Check if the table contains the date or is near our header
+        if (grepl(format(date, "%B %d"), table_html, ignore.case = TRUE) ||
+            grepl(format(date, "%B %e"), table_html, ignore.case = TRUE)) {
+          
+          results[[length(results) + 1]] <- list(
+            date = date,
+            table = table
+          )
+        }
+      }
+    }
+  }
+  
+  return(results)
+}
+
+# Alternative approach: extract data directly using text patterns 
+extract_data_from_pattern <- function(html_text, date) {
+  data <- data.frame(
+    jurisdiction = character(0),
+    initial_claims = numeric(0),
+    stringsAsFactors = FALSE
+  )
+  
+  # Try to find the date in the HTML
+  date_str <- format(date, "%B %d, %Y")
+  date_pattern <- paste0("Week [Ee]nding ", date_str)
+  
+  # If we can find this date in the text
+  if (grepl(date_pattern, html_text, ignore.case = TRUE)) {
+    # Look for county data after this date
+    for (county in counties) {
+      # Create pattern to find county followed by a number
+      pattern <- paste0(county, "\\s*([0-9,]+)")
+      
+      matches <- str_match_all(html_text, pattern)[[1]]
+      
+      if (nrow(matches) > 0) {
+        # Use the first match
+        claims_value <- as.numeric(gsub(",", "", matches[1, 2]))
+        
+        data <- rbind(data, data.frame(
+          jurisdiction = county,
+          initial_claims = claims_value,
+          stringsAsFactors = FALSE
+        ))
+      }
+    }
+  }
+  
+  if (nrow(data) > 0) {
+    return(data)
+  } else {
+    return(NULL)
+  }
+}
+
+# Main scraping function - now with multiple extraction approaches
+scrape_md_ui_claims <- function() {
+  all_data <- list()
+  data_counter <- 1
+  
+  for (url_index in 1:length(urls_to_scrape)) {
+    url <- urls_to_scrape[url_index]
+    cat("\n----------------------------\n")
+    cat("Processing URL:", url, "\n")
+    
+    tryCatch({
+      cat("Fetching webpage...\n")
+      page <- read_html(url)
+      cat("Successfully fetched webpage\n")
+      
+      # Get the full HTML text for pattern matching
+      html_text <- as.character(page)
+      
+      # Approach 1: Find date headers and look for tables
+      date_tables <- find_date_tables(page)
+      cat("Found", length(date_tables), "potential date/table pairs\n")
+      
+      # Extract weeks from headers for approach 2
+      week_headers <- page %>% 
+        html_nodes("*") %>%
+        html_text() %>%
+        .[grepl("Week [Ee]nding", ., ignore.case = TRUE)]
+      
+      # Get unique dates from both approaches
+      all_dates <- c()
+      
+      # Add dates from tables
+      for (dt in date_tables) {
+        all_dates <- c(all_dates, dt$date)
+      }
+      
+      # Add dates from headers
+      for (header in week_headers) {
+        date <- parse_week_date(header)
+        if (!is.na(date)) {
+          all_dates <- c(all_dates, date)
+        }
+      }
+      
+      # Remove duplicates and sort
+      all_dates <- sort(unique(all_dates))
+      cat("Found", length(all_dates), "unique dates to process\n")
+      
+      # Process each date
+      for (date in all_dates) {
+        cat("Processing date:", format(date, "%B %d, %Y"), "\n")
+        
+        # Try to get data from tables first
+        table_data <- NULL
+        
+        # Check if we have a table for this date
+        for (dt in date_tables) {
+          if (dt$date == date) {
+            table_data <- extract_table_data(dt$table, date)
+            if (!is.null(table_data)) {
+              cat("Successfully extracted data from table\n")
+              break
+            }
+          }
+        }
+        
+        # If no data from tables, try pattern matching
+        if (is.null(table_data)) {
+          cat("Trying pattern matching approach...\n")
+          table_data <- extract_data_from_pattern(html_text, date)
+          
+          if (!is.null(table_data)) {
+            cat("Successfully extracted data using pattern matching\n")
+          }
+        }
+        
+        # If we have data, add to results
+        if (!is.null(table_data) && nrow(table_data) > 0) {
+          table_data$week_ending <- date
+          table_data$year <- year(date)
+          table_data$source_url <- url
+          
+          all_data[[data_counter]] <- table_data
+          data_counter <- data_counter + 1
+          
+          # Print a sample of the data
+          cat("Sample data for", format(date, "%B %d, %Y"), ":\n")
+          print(head(table_data[, c("jurisdiction", "initial_claims")], 3))
+        } else {
+          cat("Could not extract data for this date\n")
+        }
+      }
+      
+    }, error = function(e) {
+      cat("Error processing URL:", url, ":", e$message, "\n")
+    })
+  }
+  
+  # Combine all data into a single data frame
+  result <- do.call(rbind, all_data)
+  
+  # Ensure we have a data frame even if empty
+  if (is.null(result) || nrow(result) == 0) {
+    result <- data.frame(
+      jurisdiction = character(0),
+      initial_claims = numeric(0),
+      week_ending = as.Date(character(0)),
+      year = numeric(0),
+      source_url = character(0),
+      stringsAsFactors = FALSE
+    )
+  }
+  
+  return(result)
+}
+
+# Run the scraper
+cat("Starting Maryland UI claims scraper\n")
+start_time <- Sys.time()
+ui_data <- scrape_md_ui_claims()
+end_time <- Sys.time()
+elapsed <- end_time - start_time
+cat("Scraping completed in", round(elapsed, 2), "seconds\n")
+
+# Show results
+cat("\nResults summary:\n")
+cat("Total rows:", nrow(ui_data), "\n")
+cat("Unique weeks:", length(unique(ui_data$week_ending)), "\n")
+cat("Years covered:", paste(sort(unique(ui_data$year)), collapse=", "), "\n")
+
+if (nrow(ui_data) > 0) {
+  # Summary by year
+  year_summary <- ui_data %>%
+    filter(jurisdiction == "Maryland") %>%
+    group_by(year) %>%
+    summarize(
+      weeks = n_distinct(week_ending),
+      total_claims = sum(initial_claims, na.rm = TRUE)
+    )
+  
+  cat("\nData summary by year:\n")
+  print(year_summary)
+  
+  # Date range
+  cat("\nDate range:", format(min(ui_data$week_ending), "%B %d, %Y"), "to", 
+      format(max(ui_data$week_ending), "%B %d, %Y"), "\n")
+  
+  # Check for potential duplicates
+  potential_dupes <- ui_data %>%
+    group_by(week_ending, jurisdiction) %>%
+    summarize(count = n(), .groups = "drop") %>%
+    filter(count > 1)
+  
+  if (nrow(potential_dupes) > 0) {
+    cat("\nWarning: Potential duplicate records found for some week/jurisdiction combinations:\n")
+    print(potential_dupes)
+    
+    # Remove duplicates
+    ui_data <- ui_data %>%
+      group_by(week_ending, jurisdiction) %>%
+      slice(1) %>%
+      ungroup()
+    
+    cat("Duplicates removed. New row count:", nrow(ui_data), "\n")
+  }
+  
+  # Reorder columns and drop source_url which is only used for debugging
+  ui_data <- ui_data %>%
+    select(week_ending, year, jurisdiction, initial_claims)
+  
+  # Display sample
+  cat("\nSample data:\n")
+  print(head(ui_data))
+  
+  # Save to CSV
+  output_file <- "maryland_ui_claims_combined.csv"
+  write.csv(ui_data, output_file, row.names = FALSE)
+  cat("Saved results to", output_file, "\n")
+  
+  # Create a time series summary for Maryland
+  md_summary <- ui_data %>%
+    filter(jurisdiction == "Maryland") %>%
+    arrange(week_ending) %>%
+    select(week_ending, initial_claims)
+  
+  summary_file <- "maryland_ui_claims_timeseries.csv"
+  write.csv(md_summary, summary_file, row.names = FALSE)
+  cat("Saved Maryland time series to", summary_file, "\n")
+}
+
+cat("Script execution complete.\n")
+```
+
+
+

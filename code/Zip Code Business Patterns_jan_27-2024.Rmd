@@ -31,7 +31,7 @@ library(censusapi)
 library(htmltools)
 
 # Add key to .Renviron
-Sys.setenv(CENSUS_KEY="9cabe8a191a1f824755d4a1845f13cb08faa2c5f")
+Sys.setenv(CENSUS_KEY="XXXX")
 # Reload .Renviron
 readRenviron("~/.Renviron")
 # Check to see that the expected key is output in your R console

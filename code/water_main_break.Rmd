@@ -13,7 +13,7 @@ library(ggmap)
 
 import data
 ```{r}
-water <- read.csv("./data/tabula-2024-2025 Water Main Breaks.csv")
+water <- read.csv("../data/tabula-2024-2025 Water Main Breaks.csv")
 
 # First, create a new data frame with the original column names as the first row
 first_row <- data.frame(
@@ -31,6 +31,12 @@ colnames(water) <- c("workorderid", "date", "description", "address")
 # Combine the data frames
 water_complete <- rbind(first_row, water)
 
+water_complete[1, "workorderid"] <- "1286160"
+water_complete[1, "date"] <- "1/2/2024"
+water_complete[1, "description"] <- "WATER MAIN BREAK"
+water_complete[1, "address"] <- "5614 WINTHROPE AVE"
+
+
 water <- water_complete
 ```
 
@@ -43,8 +49,69 @@ water <- water |>
 
 ```
 
+```{r}
+water <- water %>%
+  mutate(details = ifelse(grepl("^[0-9]", address), "yes", "no")) |> 
+  mutate(date1 = as.Date(date, "%m/%d/%Y" )) |> 
+  mutate(yearmo = zoo::as.yearmon(date1, "%m_%Y")) +
+  
 
 
+```
+
+```{r}
+water |> 
+  count(yearmo) |> 
+  mutate(pct = round(n/sum(n),2)) |> 
+  arrange(yearmo) |> 
+   ggplot(aes(x = yearmo, y = n, fill = n)) +
+  geom_col(position = "dodge", show.legend = FALSE) +
+  labs(title = "Water Main Breaks, Leaks in Baltimore Area, 2024 - Feb 2025",
+       subtitle = "Primarily water main breaks",
+       caption = "Graphic by Rob Wells, 4-14-2025",
+       y="Number of Breaks",
+       x="Year-Month") +
+    scale_x_continuous(breaks = as.numeric(unique(water$yearmo)),
+                     labels = format(unique(water$yearmo), "%b %Y")) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+
+
+
+```
+
+
+
+
+# full address vs intersections   
+```{r}
+
+water |> 
+  count(details)
+
+#9.4% of the addresses lack numbers and are intersections
+
+
+water |> 
+  count(address) |> 
+  filter(n > 1) |> 
+  arrange(desc(n))
+```
+
+#filtered to just addresses
+```{r}
+
+filtered_water <- water |> 
+  filter(details == "yes")
+
+write.csv(filtered_water, "../data/filtered_water.csv")
+
+```
+
+
+
+
+#GEOCODE
 ```{r}
 
 losers <- losers %>% 

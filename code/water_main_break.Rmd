@@ -8,7 +8,7 @@ output: html_document
 library(tidyverse)
 library(tidyr)
 library(ggmap)
-register_google(key = "AIzaSyCLhP1Uwd2rv0thzuqab7ane0epa7KOgfw")
+#register_google(key = "XXXX")
 ```
 
 import data

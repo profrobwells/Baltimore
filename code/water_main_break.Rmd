@@ -1,0 +1,62 @@
+---
+title: "Water_Main_Breaks"
+author: "Wells"
+date: "2025-04-14"
+output: html_document
+---
+```{r}
+library(tidyverse)
+library(tidyr)
+library(ggmap)
+register_google(key = "AIzaSyCLhP1Uwd2rv0thzuqab7ane0epa7KOgfw")
+```
+
+import data
+```{r}
+water <- read.csv("./data/tabula-2024-2025 Water Main Breaks.csv")
+
+# First, create a new data frame with the original column names as the first row
+first_row <- data.frame(
+  col1 = colnames(water)[1],
+  col2 = colnames(water)[2],
+  col3 = colnames(water)[3],
+  col4 = colnames(water)[4],
+  stringsAsFactors = FALSE
+)
+
+# Now rename the columns in both data frames with your desired names
+colnames(first_row) <- c("workorderid", "date", "description", "address")
+colnames(water) <- c("workorderid", "date", "description", "address")
+
+# Combine the data frames
+water_complete <- rbind(first_row, water)
+
+water <- water_complete
+```
+
+
+#prepare data
+```{r}
+
+water <- water |> 
+  mutate(address1 = paste0(address, ", ", "baltimore"))
+
+```
+
+
+
+```{r}
+
+losers <- losers %>% 
+  mutate(geo = geocode(address)) 
+
+losers <- losers %>%
+  tidyr::unnest(geo)
+
+
+losers <- st_as_sf(losers, coords = c("lon", "lat"), crs = 4326)
+
+# write.csv(losers, "dundalk_arundel_losers.csv")
+
+```
+

@@ -1,0 +1,262 @@
+---
+title: "Unemployment Data Analysis"
+author: Matt Cohen
+---
+
+```{r}
+library(DatawRappr)
+library(tidyverse)
+#datawrapper_auth(api_key =  "fill in api", overwrite=TRUE)
+library(janitor)
+library(lubridate)
+library(htmltools)
+
+```
+
+#**Loading original data set**#
+
+```{r}
+ui_data <- read_csv("ui_data.csv") |> clean_names() 
+```
+
+```{r}
+ui_data$zip <- as.character(ui_data$zip)
+ui_data$month <- as.character(ui_data$month)
+```
+
+
+#**Adding location data**
+
+```{r}
+locations <- read_csv("https://raw.githubusercontent.com/profrobwells/Baltimore/refs/heads/main/fall_2024_indep_study/data/county_zip.csv") |> clean_names() 
+```
+
+```{r}
+locations$zip <- as.character(locations$zip)
+```
+
+#**Joining data and creating pivot table to group by zip code**
+
+```{r}
+combined_data <- left_join(ui_data, locations, by="zip")
+```
+
+```{r}
+ui_pivot <- combined_data |>
+  group_by(zip, primary_city, county) |>
+  summarize(count = sum(count)) |>
+  arrange(desc(count)) 
+```
+
+```{r}
+combined_data |>
+  group_by(county) |>
+  summarize(total = sum(count)) |>
+  arrange(desc(total))
+```
+
+
+#**Beginning map creation**
+
+```{r}
+map <- dw_create_chart(type = "d3-maps-choropleth", title = "Unemployment stats"
+)
+ 
+```
+
+```{r}
+dw_data_to_chart(ui_pivot, chart_id = map)
+```
+
+```{r}
+view(dw_basemaps)
+```
+
+```{r}
+dw_edit_chart(map, 
+              title = "Which Maryland zip codes has the most unemployment filings over the last year?", intro = "From April 2024 through February 2025, zip code 21222 — the main zip code for Dundalk, located just outside the Baltimore city line and at the foot of the Key Bridge — had the third most highest unemployment insurance claims of any zip code in the state.", byline = "Matt Cohen", source_name = "Maryland Dept. of Labor",
+              axes = list(
+                values = "count"
+                ), 
+              visualize = list(
+                basemap = "maryland-postcode"
+                )
+              )
+```
+
+```{r}
+dw_publish_chart(map)
+```
+
+```{r}
+iframe_code <- '<iframe src="https://datawrapper.dwcdn.net/Jhbsf/1/" width="100%" height="400" style="border: none;"></iframe>'
+HTML(iframe_code)
+```
+
+#**Adding weekly county-level UI data**
+
+```{r}
+counties_ui_raw <- read_csv("storage/filtered_ui_counties.csv") |> clean_names()
+md_ui_weekly <- read_csv("storage/weekly_ui_data.csv") |> clean_names()
+```
+
+```{r}
+state_median <- md_ui_weekly |>
+  group_by(week_ending) |>
+  mutate(median = median(regular_ui)) 
+  
+  write.csv(state_median, "median_udpate.csv", row.names = FALSE)
+```
+
+
+
+#**Creating county level chart**
+
+```{r}
+weekly_ui_line <- dw_create_chart()
+```
+
+```{r}
+dw_data_to_chart(counties_ui_raw, weekly_ui_line)
+```
+
+```{r}
+dw_edit_chart(weekly_ui_line, title = "Weekly unemployment insurnace claims spiked in surrounding counties after Key Bridge collapse", intro = "The week ending March 30 had the most amounts of unemployment insurance claims of any week in 2024 in Maryland. The Key Bridge collapsed on March 26", byline = "Matt Cohen", source_name = "Maryland Dept. of Labor")
+
+
+```
+
+```{r}
+dw_publish_chart(weekly_ui_line)
+```
+```{r}
+iframe_code <- '<iframe src="https://datawrapper.dwcdn.net/YGqTg/1/" width="100%" height="400" style="border: none;"></iframe>'
+HTML(iframe_code)
+```
+
+#**WORKING WITH WORKER SUPPORT PROGRAM DATA**
+
+```{r}
+wsp_data <- read_csv("worker_support_data.csv") |> clean_names() 
+```
+```{r}
+wsp_data <- wsp_data |> rename(zip = zip_code)
+wsp_data$zip <- as.character(wsp_data$zip)
+```
+
+```{r}
+zip_database <- read_csv("https://raw.githubusercontent.com/mdcohen99/BaltimoreClassData/refs/heads/main/UI%20Data/zip_code_database.csv")
+```
+
+
+```{r}
+wsp_joined <- left_join(wsp_data, zip_database, by="zip")
+
+wsp_joined$zip <- as.character(wsp_joined$zip)
+```
+
+```{r}
+write.csv(wsp_joined, "wsp_joined.csv", row.names = FALSE)
+```
+
+#**creating dataframe of summary tables of WSP data**
+
+```{r}
+wsp_zips_by_state <- wsp_joined |>
+  group_by(state) |>
+  summarize(zip_codes_with_claimant = n()) |>
+  arrange(desc(zip_codes_with_claimant))
+```
+
+```{r}
+wsp_recipients_by_state <- wsp_joined |>
+  group_by(state) |>
+  summarize(total_recipients = sum(number_of_claimants)) |>
+  arrange(desc(total_recipients))
+```
+
+```{r}
+wsp_summary_combined <- left_join(wsp_zips_by_state, wsp_recipients_by_state, by="state")
+```
+
+```{r}
+write.csv(wsp_summary_combined, "wsp_summary.csv", row.names=FALSE)
+```
+
+```{r}
+wsp_joined |>
+  group_by(county) |>
+  summarize(total = sum(number_of_claimants)) |>
+  arrange(desc(total))
+
+wsp_by_city <- wsp_joined |>
+  group_by(primary_city) |>
+  summarize(total = sum(number_of_claimants)) |>
+  arrange(desc(total))
+
+write.csv(wsp_by_city, "wsp_by_city.csv", row.names=FALSE)
+
+
+```
+```{r}
+wsp_data |> summarize(total = sum(number_of_claimants))
+```
+
+#**Maryland map of WSP by zip codes**
+```{r}
+wsp_chart <- dw_create_chart()
+```
+
+```{r}
+dw_data_to_chart(wsp_joined, wsp_chart)
+```
+
+```{r}
+dw_edit_chart(wsp_chart, type = "d3-maps-choropleth",
+              visualize = list(
+                basemap="maryland-zip-codes-2020"
+              ), title="Baltimore, Anne Arundel County residents make up majority of Worker Support Program claims", intro="Maryland created the Worker Support Program in the wake of the Key Bridge collapse. The program provided temporary relief to Port of Baltimore workers. The 3,363 approved applicants received weekly $430 payments. Workers from 11 states received money from the program. Maryland made up the overwhelming majority with 3,259 workers. Pennsylvannia (63), Delaware (15) and Virginia (14) each had more than 10. At least one worker in further away states like Washington, Florida, Minnestota and Georgia received money, too.", source_name="Maryland Dept. of Labor", byline="Matt Cohen", "custom-font"="Google Fonts:Source Serif 4")
+```
+
+```{r}
+dw_publish_chart(wsp_chart)
+```
+
+#**Southeast WSP map**
+
+```{r}
+south_wsp_chart <- dw_create_chart()
+```
+
+```{r}
+dw_data_to_chart(wsp_joined, south_wsp_chart)
+```
+
+```{r}
+dw_edit_chart(south_wsp_chart, type="d3-maps-choropleth", visualize = list(
+                basemap="south-zip"
+              ), )
+```
+
+#**bullet bar chart for summary table**#
+
+```{r}
+bullet_chart <- dw_create_chart()
+```
+
+```{r}
+dw_data_to_chart(wsp_summary_combined, bullet_chart)
+```
+
+```{r}
+dw_edit_chart(bullet_chart, type="d3-bars-bullet", byline="Matt Cohen", source_name = "Maryland Department of Labor", title="WSP claims by state, zip codes per state")
+```
+
+```{r}
+dw_retrieve_chart_metadata(bullet_chart)
+```
+
+```{r}
+dw_publish_chart(bullet_chart)
+```
+

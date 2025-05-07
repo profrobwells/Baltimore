@@ -38,7 +38,9 @@ locations$zip <- as.character(locations$zip)
 #**Joining data and creating pivot table to group by zip code**
 
 ```{r}
-combined_data <- left_join(ui_data, locations, by="zip")
+combined_data <- left_join(ui_data, locations, by="zip") |> 
+   mutate(yearmo = paste0(month, "_", year)) |> 
+  mutate(date = as.Date(paste0("01_", yearmo), format = "%d_%m_%Y"))  
 ```
 
 ```{r}
@@ -49,11 +51,32 @@ ui_pivot <- combined_data |>
 ```
 
 ```{r}
+ui_pivot1 <- combined_data |>
+  group_by(zip, primary_city, date) |>
+  summarize(count = sum(count)) |>
+  arrange(date) 
+```
+
+
+
+```{r}
 combined_data |>
   group_by(county) |>
   summarize(total = sum(count)) |>
   arrange(desc(total))
 ```
+
+```{r}
+x <- combined_data |>
+   mutate(yearmo = paste0(month, "_", year)) |> 
+  mutate(date = as.Date(paste0("01_", yearmo), format = "%d_%m_%Y")) |> 
+  group_by(county, date) |>
+  summarize(total = sum(count)) |>
+  arrange(date)
+```
+
+
+
 
 
 #**Beginning map creation**

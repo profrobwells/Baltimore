@@ -36,7 +36,7 @@ library(googlesheets4)
 Census API key.
 
 ```{r message=FALSE}
-census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE, overwrite = TRUE)
+census_api_key("XXXX", install = TRUE, overwrite = TRUE)
 ```
 
 # Import Smith School Baltimore Data

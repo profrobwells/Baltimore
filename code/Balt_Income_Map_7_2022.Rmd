@@ -113,6 +113,8 @@ balt_income_all <- filter(md_income_all, grepl ("Baltimore", County))
 baltcity_income <- filter(balt_income_all, grepl ("Baltimore city", County)) %>% 
   filter(variable=="median_income")
 
+write.csv(baltcity_income, "../data/baltcity_income_2010_2020.csv")
+
 ```
 
 ```{r}

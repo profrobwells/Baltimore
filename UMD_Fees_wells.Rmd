@@ -1,0 +1,96 @@
+---
+title: "UMD Fees"
+date: 9-08-2025
+---
+Your Name - Rob Wells
+Follow along with the demo to learn how to calculate percentage change using R and the Tidyverse. You should get started by loading the tidyverse in a new R block.
+
+
+### Task 1: Load the tidyverse, janitor
+Janitor performs important data cleaning operations
+
+```{r}
+library(tidyverse)
+install.packages('janitor')
+library(janitor)
+```
+
+
+
+
+### Task 2: Load the UMD Fees dataset from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/umd_fees.csv
+
+
+```{r}
+umd_fees <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/umd_fees.csv") |> 
+   clean_names()
+```
+
+### Task 3: Calculate the percentage change in each category between Fall 2024 and Fall 2021 using `mutate()`
+
+```{r}
+umd_fees_pct <- umd_fees |> mutate(pct_change = (fall_2024- fall_2021)/fall_2021 * 100)
+```
+
+
+### Task 4: Calculate the mean and median fees for Fall 2024 using `mutate()`
+
+```{r}
+
+umd_fees |> 
+    summarize(mean_2021_fees = mean(fall_2021),
+            median_2024_fees = median(fall_2024,
+            mean_2024_fees = mean(fall_2021))
+)
+
+
+```
+
+### Task 5: Add to the previous the max and minimum values for 2024 in addition to the mean and median fees for Fall 2024 using `mutate()`
+
+```{r}
+
+umd_fees |> 
+    summarize(mean_2024_fees = mean(fall_2024),
+            median_2024_fees = median(fall_2024),
+            max_2024_fees = max(fall_2024),
+            min_2024_fees = min(fall_2024)
+)
+
+
+```
+
+### Mutate exercise
+
+Mutate is a powerful command that allows you to create a new column and fill it with the results of another calculation. We will be using it a lot.
+
+In this demonstration, we calculate the total number of incidents per year for each category using `mutate()`, calling the new column `total_fees`. 
+
+Then calculate the average number of incidents per month for each category of crime, calling the new column `average_fees`. Assign the result to a new dataframe called `umd_fee_averages`.
+
+
+```{r}
+
+umd_fees_pct <- umd_fees |> 
+  mutate(total_fees1 = fall_2024 + fall_2023 + fall_2022 + fall_2021) |> 
+  mutate(total_fees = rowSums(across(2:5))) |> 
+  mutate(average_fees = total_fees/4)
+
+```
+
+Note that lines 73 and 74 do the same thing. 
+Line 74 is preferred because there's less typing! rowSums(across) tells R to add across the rows. We specify rows 2 through 5.
+
+
+PRO TIP! Remember this mutate command for the homework.
+HINT HINT HINT
+
+### Task 6: Describe our results
+
+Write a few sentences about what you found in the data. What's the story here?
+
+
+
+
+
+When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.

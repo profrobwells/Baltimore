@@ -1,0 +1,137 @@
+---
+title: "Breana"
+author: "your name"
+date: "2026-10-14"
+output: html_document
+---
+
+NIBRS Group A Crime Data
+
+Baltimore City
+Baltimore City
+Summary
+This dataset represents the location and characteristics of major (Group A) crime against persons such as homicide, shooting, robbery, aggravated assault etc. within the City of Baltimore. Data is updated weekly. This dataset contains crime data starting 1/1/2022 through present under the National Incident-Based Reporting System (NIBRS). For more information, please see the Description by clicking View Full Details below. NOTE: dates and times displayed are in local Eastern Time (ET), but data currently downloads in Coordinated Universal Time (UTC) per platform settings.
+
+https://arcgisportal.baltimorepolice.org/publiccrimemap/
+Data downloaded Oct 14 2026
+
+
+
+Summary
+
+This dataset represents the location and characteristics of major (Group A) crime against persons such as homicide, shooting, robbery, aggravated assault etc. within the City of Baltimore. Data is updated weekly. This dataset contains crime data starting 1/1/2022 through present under the National Incident-Based Reporting System (NIBRS). For more information, please see the Description by clicking View Full Details below. NOTE: dates and times displayed are in local Eastern Time (ET), but data currently downloads in Coordinated Universal Time (UTC) per platform settings.
+
+This dataset represents the location and characteristics of major (Group A) crime against persons such as homicide, shooting, robbery, aggravated assault etc. within the City of Baltimore. Data is updated weekly. This dataset contains crime data starting 1/1/2022 through present.
+
+Note: The way the Baltimore Police Department collects and reports data on crimes has changed, effective Jan. 1, 2025. The FBI has mandated that all law enforcement agencies across the country make the transition to the National Incident-Based Reporting System (NIBRS) to improve the overall quality, accuracy and timeliness of crime data collected.
+
+For more information, visit: https://www.baltimorepolice.org/nibrs
+
+ If you have any questions or need to report an issue for this dataset, please use this feedback form to submit your response, and the Open Baltimore support team will contact you.
+
+DATA DICTIONARY:
+
+Field Name	Description
+CCNumber	Unique identifier for the record.
+CrimeDateTime	Date and time when the crime occurred.
+Description	Type of crime incident reported.
+CrimeCode	Code assigned to categorize the crime type.
+Weapon	Indicates if a weapon was involved in the crime incident.
+Shooting	Indicates if a shooting of a firearm was involved in the crime incident.
+Post	Police post (sub-unit of geography under districts) under the current mapping scheme.
+Gender	Sex or gender of the victim.
+Age	Age of the victim.
+Race	Race of the victim.
+Ethnicity	Ethnicity of the victim.
+Old_District	Police district under the previous mapping scheme.
+New_District	Police district under the current mapping scheme.
+Inside_Outside	Indicates whether the crime occurred indoors or outdoors.
+Neighborhood	Neighborhood where the incident occurred.
+Location	Address or general location where the incident occurred.
+Longitude	Longitude of the incident's geographic location.
+Latitude	Latitude of the incident's geographic location.
+GeoLocation	Concatenation of the Latitude and Longitude fields.
+PremiseType	Type of premise where the incident occurred (residence, business, vacant building).
+Total_Incidents	Total number of incidents occurring for the reported crime.
+ 
+Looking for something else? See other datasets nearby
+
+Attributes
+Learn about charts
+
+
+CCNumber
+
+
+CrimeDateTime
+
+
+
+CrimeCode
+
+
+Description
+
+
+Inside_Outside
+
+
+
+Weapon
+
+
+Shooting
+
+
+
+Post
+
+
+Gender
+
+
+
+Age
+Load more
+
+
+
+```{r}
+library(tidyverse)
+library(janitor)
+```
+
+
+```{r}
+
+crime <- read_csv("/Users/robwells/Downloads/NIBRS_GroupA_Crime_Data_1100291637803527672.csv") |> 
+  clean_names()
+
+```
+
+```{r}
+crime <- crime |> 
+  mutate(date = mdy_hms(crime_date_time),
+         year = year(date))
+```
+
+
+
+```{r}
+
+fed_hill <- crime |> 
+  filter(neighborhood == "FEDERAL HILL")
+
+```
+
+
+```{r}
+
+yearly_crime <- crime |> 
+  group_by(year) |> 
+  count(neighborhood) |> 
+  mutate(percent = (n/sum(n)))
+
+
+```
+
